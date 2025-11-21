@@ -1,0 +1,12 @@
+display_name: "Dify"
+key: "adapter-dify"
+description:
+provider: "user"
+modality: "text"
+task: "chat_completion"
+process_input:
+  language: "jinja"
+  source_code: !include dify_input.jinja
+process_output:
+  language: "jinja"
+  source_code: !include dify_output.jinja

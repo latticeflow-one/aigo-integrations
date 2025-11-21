@@ -1,0 +1,21 @@
+{% set chunks = [] %}
+{% for event in body.split('\n') %}
+    {% set event = event.strip() %}
+    {% if event.startswith('data:') and '[DONE]' not in event %}
+        {% set message = event[5:].strip() | fromjson %}
+        {% set choice = message.choices[0] %}
+        {% if choice.delta is defined and 'content' in choice.delta %}
+            {% set _ = chunks.append(choice.delta.content) %}
+        {% endif %}
+    {% endif %}
+{% endfor %}
+{
+    "choices": [
+        {
+            "message": {
+                "content": {{ chunks | join('') | tojson }},
+                "role": "assistant"
+            }
+        }
+    ]
+}

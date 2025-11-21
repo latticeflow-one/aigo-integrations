@@ -1,0 +1,11 @@
+display_name: "gpt-4.1-mini-2025-04-14 P"
+key: "gpt-4-1-mini-2025-04-14-provider"
+description: "GPT-4.1 Mini 2025-04-14"
+rate_limit: 200
+modality: "text"
+task: "chat_completion"
+adapter_id: latticeflow$openai
+config:
+  connection_type: provider_connection
+  provider_id: openai
+  model_key: "gpt-4.1-mini-2025-04-14"

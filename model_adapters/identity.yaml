@@ -1,6 +1,8 @@
-display_name: "Identity Adapter"
+display_name: "Identity"
 key: "identity-adapter"
-description: "Identity Adapter"
+description: >
+  This is an identity adapter, i.e. adapter that does no transformation of the model 
+  input or output.
 provider: "user"
 modality: "text"
 task: "chat_completion"

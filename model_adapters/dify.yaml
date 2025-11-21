@@ -1,6 +1,8 @@
 display_name: "Dify"
 key: "adapter-dify"
-description:
+long_description: > 
+  Adapter for Dify chat messages. See 
+  [documentation](https://docs.dify.ai/api-reference/chatflow/send-chat-message#send-chat-message).
 provider: "user"
 modality: "text"
 task: "chat_completion"

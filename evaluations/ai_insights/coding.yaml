@@ -3,7 +3,7 @@
 task_specifications:
   - task_key: latticeflow$human_eval
     task_config: {}
-    entity_key: "openai-gpt-5-nano"
+    entity_key: "<model_key>"
     display_name: "Human Eval"
 
 config:

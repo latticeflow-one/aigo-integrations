@@ -1,0 +1,11 @@
+# key: ai-insights-scientific-reasoning
+# display_name: AI Insights - Scientific Reasoning
+task_specifications:
+  - task_key: latticeflow$arc
+    task_config:
+      k_shot: 0
+    entity_key: "openai-gpt-5-nano"
+    display_name: "AI2 Reasoning Challenge (ARC)"
+
+config:
+  mode: "debug"

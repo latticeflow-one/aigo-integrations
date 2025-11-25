@@ -1,0 +1,16 @@
+# key: ai-insights-truthfulness
+# display_name: AI Insights - Truthfulness
+task_specifications:
+  - task_key: latticeflow$truthful_qa
+    task_config:
+      mode: mc1
+    entity_key: "openai-gpt-5-nano"
+    display_name: "Truthful QA (single answer)"
+  - task_key: latticeflow$truthful_qa
+    task_config:
+      mode: mc2
+    entity_key: "openai-gpt-5-nano"
+    display_name: "Truthful QA (multiple answers)"
+
+config:
+  mode: "debug"

@@ -1,0 +1,11 @@
+# key: ai-insights-goal-hijacking
+# display_name: AI Insights - Goal Hijacking
+task_specifications:
+  - task_key: latticeflow$tensor_trust_instruction_goal_hijacking
+    task_config:
+      prompt_strategy: multiple_user
+    entity_key: "openai-gpt-5-nano"
+    display_name: "Goal Hijacking and Prompt Leakage: TensorTrust"
+
+config:
+  mode: "debug"

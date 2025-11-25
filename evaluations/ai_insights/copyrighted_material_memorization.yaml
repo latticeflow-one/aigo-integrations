@@ -1,10 +1,11 @@
-# key: ai-insights-fairness
-# display_name: AI Insights -Fairness
+# key: ai-insights-copyrighted-material-memorization
+# display_name: AI Insights - Copyrighted Material Memorization
 task_specifications:
-  - task_key: latticeflow$decoding_trust_fairness
-    task_config: {}
+  - task_key: latticeflow$copyright
+    task_config:
+      domain: literature
     entity_key: "openai-gpt-5-nano"
-    display_name: "Decoding Trust Fairness Benchmark"
+    display_name: "Copyrighted Material Memorization"
 
 config:
   mode: "debug"

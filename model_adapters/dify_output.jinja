@@ -1,0 +1,11 @@
+{% set body = body | fromjson %}
+{
+    "choices": [
+    {
+        "message": {
+            "role": "assistant",
+            "content": {{ body.answer | tojson }}
+        }
+    }
+    ]
+}

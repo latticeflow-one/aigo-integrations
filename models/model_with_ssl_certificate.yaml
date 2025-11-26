@@ -1,0 +1,15 @@
+display_name: "Model with SSL Certificate"
+key: "model-ssl-cert"
+description: "This model uses a custom SSL certificate."
+modality: "text"
+task: "chat_completion"
+adapter_key: "latticeflow$openai"
+config:
+  connection_type: custom_connection
+  url: "https://api.openai.com/v1/chat/completions"
+  api_key: $OPENAI_API_KEY
+  model_key: "gpt-4.1-mini-2025-04-14"
+  tls_context:
+    validation_context:
+      trusted_ca: !include ssl_certificates.txt
+      trust_chain_verification: "verify_trust_chain"

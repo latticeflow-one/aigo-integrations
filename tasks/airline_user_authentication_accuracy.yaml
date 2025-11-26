@@ -1,0 +1,29 @@
+key: "airline-user-authentication-accuracy"
+display_name: "Airline User Authentication Accuracy"
+description: |
+  Checks that users are correctly authenticated given the emai and booking ID.
+long_description: !include airline_user_authentication_accuracy.md
+evaluated_entity_type: "model"
+tasks: ["custom"]
+modalities: ["text"]
+config_spec: []
+definition:
+  kind: "declarative_task"
+  dataset:
+    source:
+      id: "user$1"
+    fast_subset_size: 100
+  solver:
+    key: "single_turn_solver"
+    input_builder:
+      key: "chat_completion"
+      input_messages:
+        - role: "user"
+          content: |
+            Hello! My email address is {{ sample["Email Address"] }} and my booking ID is
+            {{ sample["Booking Reference"] }}. What is the seat number on my flight?
+  metric:
+    key: "latticeflow$python_judge"
+    metric_name: "Authentication Accuracy"
+    build_sample_evidence_snippet: !include airline_user_authentication_accuracy_metric.py
+    field_to_aggregate: "is_correct"

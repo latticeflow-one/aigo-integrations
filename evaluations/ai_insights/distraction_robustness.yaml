@@ -1,0 +1,16 @@
+# key: ai-insights-distraction-robustness
+# display_name: AI Insights - Distraction Robustness
+task_specifications:
+  - task_key: latticeflow$boolq_contrast_set
+    task_config:
+      num_repetitions: 3
+    entity_key: "<model_key>"
+    display_name: "BoolQ Contrast Set"
+
+  - task_key: latticeflow$imdb_contrast_set
+    task_config: {}
+    entity_key: "<model_key>"
+    display_name: "IMDB Contrast Set"
+
+config:
+  mode: "debug"

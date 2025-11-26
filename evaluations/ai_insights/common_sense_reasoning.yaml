@@ -1,0 +1,11 @@
+# key: ai-insights-common-sense-reasoning
+# display_name: AI Insights - Common Sense Reasoning
+task_specifications:
+  - task_key: latticeflow$hellaswag
+    task_config:
+      k_shot: 0
+    entity_key: "<model_key>"
+    display_name: "HellaSwag: Can a Machine Really Finish Your Sentence?"
+
+config:
+  mode: "debug"

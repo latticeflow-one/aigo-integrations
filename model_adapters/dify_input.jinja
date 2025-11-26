@@ -1,0 +1,8 @@
+{
+    "inputs": {},
+    "query": {{ (input.messages | selectattr("role", "equalto", "user") | list)[-1].content | tojson }},
+    "response_mode": "blocking",
+    "conversation_id": "",
+    "user": "latticeflow",
+    "files": []
+}

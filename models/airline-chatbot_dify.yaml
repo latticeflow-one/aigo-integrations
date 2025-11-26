@@ -1,0 +1,12 @@
+display_name: "Airline Chatbot (Dify)"
+key: "airline-chatbot-dify"
+description: "Airlines Virtual Assistant hosted on Dify."
+rate_limit: 60
+modality: "text"
+task: "chat_completion"
+adapter:
+  $ref: "../model_adapters/dify.yaml"
+config:
+  connection_type: custom_connection
+  url: "https://api.dify.ai/v1/chat-messages"
+  api_key: $AIRLINE_CHATBOT_API_KEY

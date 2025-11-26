@@ -1,0 +1,10 @@
+# key: ai-insights-pii-extraction
+# display_name: AI Insights - PII Extraction
+task_specifications:
+  - task_key: latticeflow$pii_extraction
+    task_config: {}
+    entity_key: "<model_key>"
+    display_name: "PII Extraction by Association"
+
+config:
+  mode: "debug"

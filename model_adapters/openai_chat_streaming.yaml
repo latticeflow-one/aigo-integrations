@@ -1,7 +1,6 @@
 # model-adapter.yaml
 display_name: "OpenAI Streaming"
 key: "openai-streaming"
-provider: "user"
 modality: "text"
 task: "chat_completion"
 process_input:

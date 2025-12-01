@@ -1,6 +1,12 @@
-# model-adapter.yaml
-display_name: "OpenAI Streaming"
-key: "openai-streaming"
+display_name: "OpenAI Chat Completion Streaming"
+key: "openai-chat-completion-streaming"
+description: OpenAI chat completion streaming API model adapter.
+long_description: >
+  This is an OpenAI chat completion API adapter that can be used with OpenAI-compatible
+  endpoints that support streaming responses. See
+  [OpenAI's documentation](https://platform.openai.com/docs/api-reference/chat/create)
+  for model input and output structure. Streaming response is requested by sending
+  `'stream'` set to `'true'` in the model request body.
 modality: "text"
 task: "chat_completion"
 process_input:

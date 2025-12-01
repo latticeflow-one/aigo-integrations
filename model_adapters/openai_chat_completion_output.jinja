@@ -1,0 +1,16 @@
+{% set body = body | fromjson %}
+{
+  "choices": [
+      {% for choice in body.choices %}
+      {
+          "message": {
+              "role": {{choice.message.role | tojson}},
+              "content": {{choice.message.content | tojson}}
+              {% if choice.message.refusal is not none %}
+              , "refusal": {{choice.message.refusal | tojson}}
+              {% endif %}
+          }{% if not loop.last %},{% endif %}
+      }
+      {% endfor %}
+  ]
+}

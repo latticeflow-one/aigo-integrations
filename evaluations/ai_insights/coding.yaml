@@ -3,7 +3,7 @@ key: "ai-insights-coding"
 task_specifications:
   - task_key: "latticeflow$human_eval"
     task_config: {}
-    model_key: "$LF_MODEL_KEY"
+    model_key: $LF_MODEL_KEY
     display_name: "Human Eval"
 config:
   mode: "debug"

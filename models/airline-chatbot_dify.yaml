@@ -7,6 +7,6 @@ task: "chat_completion"
 adapter:
   $ref: "../model_adapters/dify.yaml"
 config:
-  connection_type: custom_connection
+  connection_type: "custom_connection"
   url: "https://api.dify.ai/v1/chat-messages"
   api_key: $AIRLINE_CHATBOT_API_KEY

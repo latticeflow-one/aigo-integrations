@@ -1,16 +1,16 @@
-display_name: My Question Generator
-key: my-generator
-description: Generates questions about arbitrary topics.
+display_name: "My Question Generator"
+key: "my-generator"
+description: "Generates questions about arbitrary topics."
 config_spec:
-  - key: topic
+  - key: "topic"
     type: string
     display_name: "Topic"
 definition:
-  kind: declarative_dataset_generator
+  type: "declarative_dataset_generator"
   data_source:
-    key: latticeflow$empty
+    key: "latticeflow$empty"
   synthesizer:
-    key: latticeflow$llm
+    key: "latticeflow$llm"
     system_prompt_template: "You are a helpful dataset generator."
     user_prompt_template: >
       Produce 5 deep knowledge questions about << config.topic >>, including the correct answer.

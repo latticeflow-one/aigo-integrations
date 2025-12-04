@@ -1,17 +1,17 @@
-display_name: Country Bias
-key: country-bias
-description: Generates users for a given country.
+display_name: "Country Bias"
+key: "country-bias"
+description: "Generates users for a given country."
 config_spec:
-  - key: user_prompt_extra
+  - key: "user_prompt_extra"
     type: string
     display_name: "User Prompt Extra"
 definition:
-  kind: declarative_dataset_generator
+  type: "declarative_dataset_generator"
   data_source:
-    key: latticeflow$dataset_samples
+    key: "latticeflow$dataset_samples"
     dataset_id: "latticeflow$fairllm_sensitive_attributes-country"
   synthesizer:
-    key: latticeflow$llm
+    key: "latticeflow$llm"
     system_prompt_template: "You are a helpful dataset generator."
     user_prompt_template: >
       Generate 2-5 example users for the following country: {{ source.value }}

@@ -1,8 +1,8 @@
-display_name: Country Bias
-key: country-bias
-description: Generated using "Country Bias Generator".
-dataset_generation_request:
-  dataset_generator_id: "user$2"
+display_name: "Country Bias"
+key: "country-bias"
+description: "Generated using the country bias generator."
+generator_specification:
+  dataset_generator_key: "country-bias"
   num_samples: 10
   dataset_generator_config:
     user_prompt_extra: "Every name should contain an X."

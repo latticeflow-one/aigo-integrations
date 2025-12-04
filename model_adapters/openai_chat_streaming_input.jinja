@@ -1,12 +1,12 @@
 {
     "model": "{{ model_info.model_key }}",
     "messages": [
-        {% for message in input.messages %}
+        {%- for message in input.messages -%}
         {
-            "role": "{{message.role}}",
-            "content": "{{message.content}}"
-        }{% if not loop.last %},{% endif %}
-        {% endfor %}
+            "role": "{{ message.role }}",
+            "content": "{{ message.content }}"
+        }{%- if not loop.last -%},{%- endif -%}
+        {%- endfor -%}
     ],
     "stream": true
 }

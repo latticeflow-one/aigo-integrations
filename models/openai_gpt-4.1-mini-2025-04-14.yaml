@@ -7,9 +7,10 @@ description: >
 rate_limit: 200
 modality: "text"
 task: "chat_completion"
-adapter_id: latticeflow$openai
+adapter:
+  key: "latticeflow$openai"
 config:
-  connection_type: custom_connection
+  connection_type: "custom_connection"
   url: "https://api.openai.com/v1/chat/completions"
   api_key: $OPENAI_API_KEY
   model_key: "gpt-4.1-mini-2025-04-14"

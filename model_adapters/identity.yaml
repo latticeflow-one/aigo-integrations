@@ -3,12 +3,12 @@ key: "identity-adapter"
 description: >
   This is an identity adapter, i.e. adapter that does no transformation of the model 
   input or output.
-provider: "user"
 modality: "text"
 task: "chat_completion"
 process_input:
   language: "jinja"
-  source_code: "{{ input | tojson }}"
+  source_code: |
+    {{ input | tojson }}
 process_output:
   language: "jinja"
   source_code: |

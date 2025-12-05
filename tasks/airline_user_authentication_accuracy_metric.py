@@ -23,7 +23,7 @@ def is_correct_seat(answer_text, expected_seat):
     return found_seat is not None and found_seat.upper() == expected_seat.upper()
 
 
-def build_sample_evidence(sample: dict, model_input, model_output) -> dict:
+def compute_scores(sample: dict, model_input, model_output) -> dict:
     question = model_input["messages"][0]["content"]
     model_completion = model_output["choices"][0]["message"]["content"]
 

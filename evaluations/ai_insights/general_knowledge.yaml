@@ -1,348 +1,347 @@
-# key: ai-insights-general-knowledge
-# display_name: AI Insights - General Knowledge
+display_name: "AI Insights - General Knowledge"
+key: "ai-insights-general-knowledge"
 task_specifications:
-  - task_key: latticeflow$mmlu
+  - task_key: "latticeflow$mmlu"
     task_config:
       few_shot: true
       subject: abstract_algebra
-    entity_key: "<model_key>"
+    model_key: $LF_MODEL_KEY
     display_name: "MMLU Abstract Algebra (Few Shot)"
-  - task_key: latticeflow$mmlu
+  - task_key: "latticeflow$mmlu"
     task_config:
       few_shot: true
       subject: anatomy
-    entity_key: "<model_key>"
+    model_key: $LF_MODEL_KEY
     display_name: "MMLU Anatomy (Few Shot)"
-  - task_key: latticeflow$mmlu
+  - task_key: "latticeflow$mmlu"
     task_config:
       few_shot: true
       subject: astronomy
-    entity_key: "<model_key>"
+    model_key: $LF_MODEL_KEY
     display_name: "MMLU Astronomy (Few Shot)"
-  - task_key: latticeflow$mmlu
+  - task_key: "latticeflow$mmlu"
     task_config:
       few_shot: true
       subject: business_ethics
-    entity_key: "<model_key>"
+    model_key: $LF_MODEL_KEY
     display_name: "MMLU Business Ethics (Few Shot)"
-  - task_key: latticeflow$mmlu
+  - task_key: "latticeflow$mmlu"
     task_config:
       few_shot: true
       subject: clinical_knowledge
-    entity_key: "<model_key>"
+    model_key: $LF_MODEL_KEY
     display_name: "MMLU Clinical Knowledge (Few Shot)"
-  - task_key: latticeflow$mmlu
+  - task_key: "latticeflow$mmlu"
     task_config:
       few_shot: true
       subject: college_biology
-    entity_key: "<model_key>"
+    model_key: $LF_MODEL_KEY
     display_name: "MMLU College Biology (Few Shot)"
-  - task_key: latticeflow$mmlu
+  - task_key: "latticeflow$mmlu"
     task_config:
       few_shot: true
       subject: college_chemistry
-    entity_key: "<model_key>"
+    model_key: $LF_MODEL_KEY
     display_name: "MMLU College Chemistry (Few Shot)"
-  - task_key: latticeflow$mmlu
+  - task_key: "latticeflow$mmlu"
     task_config:
       few_shot: true
       subject: college_computer_science
-    entity_key: "<model_key>"
+    model_key: $LF_MODEL_KEY
     display_name: "MMLU College Computer Science (Few Shot)"
-  - task_key: latticeflow$mmlu
+  - task_key: "latticeflow$mmlu"
     task_config:
       few_shot: true
       subject: college_mathematics
-    entity_key: "<model_key>"
+    model_key: $LF_MODEL_KEY
     display_name: "MMLU College Mathematics (Few Shot)"
-  - task_key: latticeflow$mmlu
+  - task_key: "latticeflow$mmlu"
     task_config:
       few_shot: true
       subject: college_medicine
-    entity_key: "<model_key>"
+    model_key: $LF_MODEL_KEY
     display_name: "MMLU College Medicine (Few Shot)"
-  - task_key: latticeflow$mmlu
+  - task_key: "latticeflow$mmlu"
     task_config:
       few_shot: true
       subject: college_physics
-    entity_key: "<model_key>"
+    model_key: $LF_MODEL_KEY
     display_name: "MMLU College Physics (Few Shot)"
-  - task_key: latticeflow$mmlu
+  - task_key: "latticeflow$mmlu"
     task_config:
       few_shot: true
       subject: computer_security
-    entity_key: "<model_key>"
+    model_key: $LF_MODEL_KEY
     display_name: "MMLU Computer Security (Few Shot)"
-  - task_key: latticeflow$mmlu
+  - task_key: "latticeflow$mmlu"
     task_config:
       few_shot: true
       subject: conceptual_physics
-    entity_key: "<model_key>"
+    model_key: $LF_MODEL_KEY
     display_name: "MMLU Conceptual Physics (Few Shot)"
-  - task_key: latticeflow$mmlu
+  - task_key: "latticeflow$mmlu"
     task_config:
       few_shot: true
       subject: econometrics
-    entity_key: "<model_key>"
+    model_key: $LF_MODEL_KEY
     display_name: "MMLU Econometrics (Few Shot)"
-  - task_key: latticeflow$mmlu
+  - task_key: "latticeflow$mmlu"
     task_config:
       few_shot: true
       subject: electrical_engineering
-    entity_key: "<model_key>"
+    model_key: $LF_MODEL_KEY
     display_name: "MMLU Electrical Engineering (Few Shot)"
-  - task_key: latticeflow$mmlu
+  - task_key: "latticeflow$mmlu"
     task_config:
       few_shot: true
       subject: elementary_mathematics
-    entity_key: "<model_key>"
+    model_key: $LF_MODEL_KEY
     display_name: "MMLU Elementary Mathematics (Few Shot)"
-  - task_key: latticeflow$mmlu
+  - task_key: "latticeflow$mmlu"
     task_config:
       few_shot: true
       subject: formal_logic
-    entity_key: "<model_key>"
+    model_key: $LF_MODEL_KEY
     display_name: "MMLU Formal Logic (Few Shot)"
-  - task_key: latticeflow$mmlu
+  - task_key: "latticeflow$mmlu"
     task_config:
       few_shot: true
       subject: global_facts
-    entity_key: "<model_key>"
+    model_key: $LF_MODEL_KEY
     display_name: "MMLU Global Facts (Few Shot)"
-  - task_key: latticeflow$mmlu
+  - task_key: "latticeflow$mmlu"
     task_config:
       few_shot: true
       subject: high_school_biology
-    entity_key: "<model_key>"
+    model_key: $LF_MODEL_KEY
     display_name: "MMLU High School Biology (Few Shot)"
-  - task_key: latticeflow$mmlu
+  - task_key: "latticeflow$mmlu"
     task_config:
       few_shot: true
       subject: high_school_chemistry
-    entity_key: "<model_key>"
+    model_key: $LF_MODEL_KEY
     display_name: "MMLU High School Chemistry (Few Shot)"
-  - task_key: latticeflow$mmlu
+  - task_key: "latticeflow$mmlu"
     task_config:
       few_shot: true
       subject: high_school_computer_science
-    entity_key: "<model_key>"
+    model_key: $LF_MODEL_KEY
     display_name: "MMLU High School Computer Science (Few Shot)"
-  - task_key: latticeflow$mmlu
+  - task_key: "latticeflow$mmlu"
     task_config:
       few_shot: true
       subject: high_school_european_history
-    entity_key: "<model_key>"
+    model_key: $LF_MODEL_KEY
     display_name: "MMLU High School European History (Few Shot)"
-  - task_key: latticeflow$mmlu
+  - task_key: "latticeflow$mmlu"
     task_config:
       few_shot: true
       subject: high_school_geography
-    entity_key: "<model_key>"
+    model_key: $LF_MODEL_KEY
     display_name: "MMLU High School Geography (Few Shot)"
-  - task_key: latticeflow$mmlu
+  - task_key: "latticeflow$mmlu"
     task_config:
       few_shot: true
       subject: high_school_government_and_politics
-    entity_key: "<model_key>"
+    model_key: $LF_MODEL_KEY
     display_name: "MMLU High School Government And Politics (Few Shot)"
-  - task_key: latticeflow$mmlu
+  - task_key: "latticeflow$mmlu"
     task_config:
       few_shot: true
       subject: high_school_macroeconomics
-    entity_key: "<model_key>"
+    model_key: $LF_MODEL_KEY
     display_name: "MMLU High School Macroeconomics (Few Shot)"
-  - task_key: latticeflow$mmlu
+  - task_key: "latticeflow$mmlu"
     task_config:
       few_shot: true
       subject: high_school_mathematics
-    entity_key: "<model_key>"
+    model_key: $LF_MODEL_KEY
     display_name: "MMLU High School Mathematics (Few Shot)"
-  - task_key: latticeflow$mmlu
+  - task_key: "latticeflow$mmlu"
     task_config:
       few_shot: true
       subject: high_school_microeconomics
-    entity_key: "<model_key>"
+    model_key: $LF_MODEL_KEY
     display_name: "MMLU High School Microeconomics (Few Shot)"
-  - task_key: latticeflow$mmlu
+  - task_key: "latticeflow$mmlu"
     task_config:
       few_shot: true
       subject: high_school_physics
-    entity_key: "<model_key>"
+    model_key: $LF_MODEL_KEY
     display_name: "MMLU High School Physics (Few Shot)"
-  - task_key: latticeflow$mmlu
+  - task_key: "latticeflow$mmlu"
     task_config:
       few_shot: true
       subject: high_school_psychology
-    entity_key: "<model_key>"
+    model_key: $LF_MODEL_KEY
     display_name: "MMLU High School Psychology (Few Shot)"
-  - task_key: latticeflow$mmlu
+  - task_key: "latticeflow$mmlu"
     task_config:
       few_shot: true
       subject: high_school_statistics
-    entity_key: "<model_key>"
+    model_key: $LF_MODEL_KEY
     display_name: "MMLU High School Statistics (Few Shot)"
-  - task_key: latticeflow$mmlu
+  - task_key: "latticeflow$mmlu"
     task_config:
       few_shot: true
       subject: high_school_us_history
-    entity_key: "<model_key>"
+    model_key: $LF_MODEL_KEY
     display_name: "MMLU High School Us History (Few Shot)"
-  - task_key: latticeflow$mmlu
+  - task_key: "latticeflow$mmlu"
     task_config:
       few_shot: true
       subject: high_school_world_history
-    entity_key: "<model_key>"
+    model_key: $LF_MODEL_KEY
     display_name: "MMLU High School World History (Few Shot)"
-  - task_key: latticeflow$mmlu
+  - task_key: "latticeflow$mmlu"
     task_config:
       few_shot: true
       subject: human_aging
-    entity_key: "<model_key>"
+    model_key: $LF_MODEL_KEY
     display_name: "MMLU Human Aging (Few Shot)"
-  - task_key: latticeflow$mmlu
+  - task_key: "latticeflow$mmlu"
     task_config:
       few_shot: true
       subject: human_sexuality
-    entity_key: "<model_key>"
+    model_key: $LF_MODEL_KEY
     display_name: "MMLU Human Sexuality (Few Shot)"
-  - task_key: latticeflow$mmlu
+  - task_key: "latticeflow$mmlu"
     task_config:
       few_shot: true
       subject: international_law
-    entity_key: "<model_key>"
+    model_key: $LF_MODEL_KEY
     display_name: "MMLU International Law (Few Shot)"
-  - task_key: latticeflow$mmlu
+  - task_key: "latticeflow$mmlu"
     task_config:
       few_shot: true
       subject: jurisprudence
-    entity_key: "<model_key>"
+    model_key: $LF_MODEL_KEY
     display_name: "MMLU Jurisprudence (Few Shot)"
-  - task_key: latticeflow$mmlu
+  - task_key: "latticeflow$mmlu"
     task_config:
       few_shot: true
       subject: logical_fallacies
-    entity_key: "<model_key>"
+    model_key: $LF_MODEL_KEY
     display_name: "MMLU Logical Fallacies (Few Shot)"
-  - task_key: latticeflow$mmlu
+  - task_key: "latticeflow$mmlu"
     task_config:
       few_shot: true
       subject: machine_learning
-    entity_key: "<model_key>"
+    model_key: $LF_MODEL_KEY
     display_name: "MMLU Machine Learning (Few Shot)"
-  - task_key: latticeflow$mmlu
+  - task_key: "latticeflow$mmlu"
     task_config:
       few_shot: true
       subject: management
-    entity_key: "<model_key>"
+    model_key: $LF_MODEL_KEY
     display_name: "MMLU Management (Few Shot)"
-  - task_key: latticeflow$mmlu
+  - task_key: "latticeflow$mmlu"
     task_config:
       few_shot: true
       subject: marketing
-    entity_key: "<model_key>"
+    model_key: $LF_MODEL_KEY
     display_name: "MMLU Marketing (Few Shot)"
-  - task_key: latticeflow$mmlu
+  - task_key: "latticeflow$mmlu"
     task_config:
       few_shot: true
       subject: medical_genetics
-    entity_key: "<model_key>"
+    model_key: $LF_MODEL_KEY
     display_name: "MMLU Medical Genetics (Few Shot)"
-  - task_key: latticeflow$mmlu
+  - task_key: "latticeflow$mmlu"
     task_config:
       few_shot: true
       subject: miscellaneous
-    entity_key: "<model_key>"
+    model_key: $LF_MODEL_KEY
     display_name: "MMLU Miscellaneous (Few Shot)"
-  - task_key: latticeflow$mmlu
+  - task_key: "latticeflow$mmlu"
     task_config:
       few_shot: true
       subject: moral_disputes
-    entity_key: "<model_key>"
+    model_key: $LF_MODEL_KEY
     display_name: "MMLU Moral Disputes (Few Shot)"
-  - task_key: latticeflow$mmlu
+  - task_key: "latticeflow$mmlu"
     task_config:
       few_shot: true
       subject: moral_scenarios
-    entity_key: "<model_key>"
+    model_key: $LF_MODEL_KEY
     display_name: "MMLU Moral Scenarios (Few Shot)"
-  - task_key: latticeflow$mmlu
+  - task_key: "latticeflow$mmlu"
     task_config:
       few_shot: true
       subject: nutrition
-    entity_key: "<model_key>"
+    model_key: $LF_MODEL_KEY
     display_name: "MMLU Nutrition (Few Shot)"
-  - task_key: latticeflow$mmlu
+  - task_key: "latticeflow$mmlu"
     task_config:
       few_shot: true
       subject: philosophy
-    entity_key: "<model_key>"
+    model_key: $LF_MODEL_KEY
     display_name: "MMLU Philosophy (Few Shot)"
-  - task_key: latticeflow$mmlu
+  - task_key: "latticeflow$mmlu"
     task_config:
       few_shot: true
       subject: prehistory
-    entity_key: "<model_key>"
+    model_key: $LF_MODEL_KEY
     display_name: "MMLU Prehistory (Few Shot)"
-  - task_key: latticeflow$mmlu
+  - task_key: "latticeflow$mmlu"
     task_config:
       few_shot: true
       subject: professional_accounting
-    entity_key: "<model_key>"
+    model_key: $LF_MODEL_KEY
     display_name: "MMLU Professional Accounting (Few Shot)"
-  - task_key: latticeflow$mmlu
+  - task_key: "latticeflow$mmlu"
     task_config:
       few_shot: true
       subject: professional_law
-    entity_key: "<model_key>"
+    model_key: $LF_MODEL_KEY
     display_name: "MMLU Professional Law (Few Shot)"
-  - task_key: latticeflow$mmlu
+  - task_key: "latticeflow$mmlu"
     task_config:
       few_shot: true
       subject: professional_medicine
-    entity_key: "<model_key>"
+    model_key: $LF_MODEL_KEY
     display_name: "MMLU Professional Medicine (Few Shot)"
-  - task_key: latticeflow$mmlu
+  - task_key: "latticeflow$mmlu"
     task_config:
       few_shot: true
       subject: professional_psychology
-    entity_key: "openai-gpt-5-nano"
+    model_key: $LF_MODEL_KEY
     display_name: "MMLU Professional Psychology (Few Shot)"
-  - task_key: latticeflow$mmlu
+  - task_key: "latticeflow$mmlu"
     task_config:
       few_shot: true
       subject: public_relations
-    entity_key: "openai-gpt-5-nano"
+    model_key: $LF_MODEL_KEY
     display_name: "MMLU Public Relations (Few Shot)"
-  - task_key: latticeflow$mmlu
+  - task_key: "latticeflow$mmlu"
     task_config:
       few_shot: true
       subject: security_studies
-    entity_key: "openai-gpt-5-nano"
+    model_key: $LF_MODEL_KEY
     display_name: "MMLU Security Studies (Few Shot)"
-  - task_key: latticeflow$mmlu
+  - task_key: "latticeflow$mmlu"
     task_config:
       few_shot: true
       subject: sociology
-    entity_key: "openai-gpt-5-nano"
+    model_key: $LF_MODEL_KEY
     display_name: "MMLU Sociology (Few Shot)"
-  - task_key: latticeflow$mmlu
+  - task_key: "latticeflow$mmlu"
     task_config:
       few_shot: true
       subject: us_foreign_policy
-    entity_key: "openai-gpt-5-nano"
+    model_key: $LF_MODEL_KEY
     display_name: "MMLU Us Foreign Policy (Few Shot)"
-  - task_key: latticeflow$mmlu
+  - task_key: "latticeflow$mmlu"
     task_config:
       few_shot: true
       subject: virology
-    entity_key: "openai-gpt-5-nano"
+    model_key: $LF_MODEL_KEY
     display_name: "MMLU Virology (Few Shot)"
-  - task_key: latticeflow$mmlu
+  - task_key: "latticeflow$mmlu"
     task_config:
       few_shot: true
       subject: world_religions
-    entity_key: "openai-gpt-5-nano"
+    model_key: $LF_MODEL_KEY
     display_name: "MMLU World Religions (Few Shot)"
-
 config:
   mode: "debug"

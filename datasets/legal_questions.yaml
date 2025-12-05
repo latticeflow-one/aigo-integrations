@@ -1,8 +1,8 @@
 display_name: "Legal Questions"
 key: "legal-questions"
 description: "Generated using 'My Question Generator'"
-dataset_generation_request:
-  dataset_generator_id: "user$1"
+generator_specification:
+  dataset_generator_key: "question-generator"
   num_samples: 5
   dataset_generator_config:
     topic: "Legal"

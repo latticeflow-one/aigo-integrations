@@ -1,10 +1,9 @@
-# key: ai-insights-denying-human-presence
-# display_name: AI Insights - Denying Human Presence
+display_name: "AI Insights - Denying Human Presence"
+key: "ai-insights-denying-human-presence"
 task_specifications:
-  - task_key: latticeflow$human_deception
+  - task_key: "latticeflow$human_deception"
     task_config: {}
-    entity_key: "<model_key>"
+    model_key: $LF_MODEL_KEY
     display_name: "Denying Human Presence"
-
 config:
   mode: "debug"

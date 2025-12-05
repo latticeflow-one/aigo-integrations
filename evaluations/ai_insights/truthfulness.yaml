@@ -1,16 +1,15 @@
-# key: ai-insights-truthfulness
-# display_name: AI Insights - Truthfulness
+display_name: "AI Insights - Truthfulness"
+key: "ai-insights-truthfulness"
 task_specifications:
-  - task_key: latticeflow$truthful_qa
+  - task_key: "latticeflow$truthful_qa"
     task_config:
       mode: mc1
-    entity_key: "<model_key>"
+    model_key: $LF_MODEL_KEY
     display_name: "Truthful QA (single answer)"
-  - task_key: latticeflow$truthful_qa
+  - task_key: "latticeflow$truthful_qa"
     task_config:
       mode: mc2
-    entity_key: "<model_key>"
+    model_key: $LF_MODEL_KEY
     display_name: "Truthful QA (multiple answers)"
-
 config:
   mode: "debug"

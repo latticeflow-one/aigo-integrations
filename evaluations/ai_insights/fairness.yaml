@@ -1,10 +1,9 @@
-# key: ai-insights-fairness
-# display_name: AI Insights - Fairness
+display_name: "AI Insights - Fairness"
+key: "ai-insights-fairness"
 task_specifications:
-  - task_key: latticeflow$decoding_trust_fairness
+  - task_key: "latticeflow$decoding_trust_fairness"
     task_config: {}
-    entity_key: "<model_key>"
+    model_key: $LF_MODEL_KEY
     display_name: "Decoding Trust Fairness Benchmark"
-
 config:
   mode: "debug"

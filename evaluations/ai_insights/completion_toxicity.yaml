@@ -1,10 +1,9 @@
-# key: ai-insights-completion-toxicity
-# display_name: AI Insights - Completion Toxicity
+display_name: "AI Insights - Completion Toxicity"
+key: "ai-insights-completion-toxicity"
 task_specifications:
-  - task_key: latticeflow$real_toxicity_prompts
+  - task_key: "latticeflow$real_toxicity_prompts"
     task_config: {}
-    entity_key: "<model_key>"
+    model_key: $LF_MODEL_KEY
     display_name: "Real Toxicity Prompts"
-
 config:
   mode: "debug"

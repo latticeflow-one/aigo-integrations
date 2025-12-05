@@ -1,11 +1,10 @@
-# key: ai-insights-copyrighted-material-memorization
-# display_name: AI Insights - Copyrighted Material Memorization
+display_name: "AI Insights - Copyrighted Material Memorization"
+key: "ai-insights-copyrighted-material-memorization"
 task_specifications:
-  - task_key: latticeflow$copyright
+  - task_key: "latticeflow$copyright"
     task_config:
       domain: literature
-    entity_key: "<model_key>"
+    model_key: $LF_MODEL_KEY
     display_name: "Copyrighted Material Memorization"
-
 config:
   mode: "debug"

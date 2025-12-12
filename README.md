@@ -18,16 +18,16 @@ Use this repository to:
 
 ## Repository Structure
 
-This repository is structured to modularize the different components of an AI system. We use **YAML** as the primary configuration language to define entity metadata, prompt templates, and runtime requirements.
+This repository is structured to modularize the different components in AI GO!. We use **YAML** as the primary configuration language to define entity metadata, prompt templates, and runtime requirements.
 
 - [**apps/**](./apps)
   - Contains application-level configurations that tie multiple components (models, datasets, evaluators) together into cohesive workflows.
 
 - [**tasks/**](./tasks)
-  - Defines the fundamental GenAI tasks (e.g., `text-generation`, `question-answering`, `summarization`) that models and datasets must adhere to.
+  - Defines the evaluation tasks that test your GenAI application. To define a task, it includes to specify the dataset, solver, and scoring metrics.
 
 - [**models/**](./models)
-  - YAML definitions for specific LLM architectures and versions. This is where you register your model identity and reference its artifacts or API endpoints.
+  - YAML definitions for specific GenAI models. This is where you register your model identity and reference its artifacts or API endpoints.
 
 - [**model_adapters/**](./model_adapters)
   - The integration glue code. These scripts or containers wrap your raw model inference code (or API calls to providers like OpenAI/Anthropic) to communicate with the LatticeFlow platform's standard interfaces.

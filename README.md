@@ -13,8 +13,8 @@ Use this repository to:
 
 ## Platform Overview
 
-![LatticeFlow AI GO! Platform Screenshot](PLACEHOLDER_LINK_TO_SCREENSHOT)
-*Above: A view of the AI GO! dashboard where these integrations come to life.*
+<img width="1526" height="637" alt="image" src="https://github.com/user-attachments/assets/e42bde36-4dc1-4177-bb90-60bd8a018bcc" />
+
 
 ## Repository Structure
 

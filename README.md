@@ -22,27 +22,50 @@ This repository is structured to modularize the different components in AI GO!. 
 
 - [**apps/**](./apps)
   - Contains application-level configurations that tie multiple components (models, datasets, evaluators) together into cohesive workflows.
+  - Example, to create an AI App:
+    ```shell
+    lf app create airline_chatbot.yaml
+    ```
 
 - [**tasks/**](./tasks)
   - Defines the evaluation tasks that test your GenAI application. To define a task, it includes to specify the dataset, solver, and scoring metrics.
+  - Example, to create a Task:
+    ```shell
+    lf task create sentiment_analysis_task.yaml
+    ```
 
 - [**models/**](./models)
   - YAML definitions for specific GenAI models. This is where you register your model identity and reference its artifacts or API endpoints.
+  - Example, to create a Model:
+    ```shell
+    lf model create model_with_api_key_auth.yaml
+    ```
 
 - [**model_adapters/**](./model_adapters)
   - The integration glue code. These scripts or containers wrap your raw model inference code (or API calls to providers like OpenAI/Anthropic) to communicate with the LatticeFlow platform's standard interfaces.
+  - Example, to create a Model Adapter:
+    ```shell
+    lf model-adapter create openai_chat_completion.yaml
+    ```
 
 - [**datasets/**](./datasets)
   - Configurations for registered datasets, including metadata about prompt-response pairs, splits, and source locations.
+  - Example, to create a Dataset:
+    ```shell
+    lf dataset create country_bias.yaml
+    ```
 
 - [**dataset_generators/**](./dataset_generators)
   - Scripts and configs for generating synthetic prompts or processing raw text corpora into ingestion-ready formats.
+  - Example, to create a Dataset Generator:
+    ```shell
+    lf dataset-generator create question_generator.yaml
+    ```
 
 - [**evaluations/**](./evaluations)
   - Definitions for custom metrics (e.g., correctness, hallucinations, toxicity) and evaluation loops used to score model performance.
+  - Example, to run an Evaluation:
+    ```shell
+    lf evaluation run toxicity_evaluator.yaml
+    ```
 
-## Concrete Usage Example
-
-*(Placeholder: This section will demonstrate a step-by-step guide on how to register a new LLM and run an evaluation using the files provided in this repo.)*
-
-<!-- TODO: Insert concrete example here -->

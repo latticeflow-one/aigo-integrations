@@ -1,0 +1,32 @@
+display_name: "Simple Instructions Following"
+key: "simple-instructions-following"
+description: >
+  Evaluates whether model follows instructions of responding with an allowed response.
+evaluated_entity_type: "model"
+config_spec:
+  - display_name: "Ground Truth Option"
+    key: "ground_truth"
+    type: "string"
+definition:
+  dataset:
+    key: "instructions-categorical-options"
+  solver:
+    type: "single_turn_solver"
+    input_builder:
+      type: "chat_completion"
+      input_messages:
+        - role: "user"
+          content: >
+            You must respond with only the specified of the options in the list. No 
+            thinking tokens, no explanations in sentences, no punctuations, no quotes.
+            Just pick the option from the list of allowed responses and respond.
+            
+            Example: If asked for first option in [A, B, C], allowed response is only: A.
+            Example: If asked for last option in [A, B, C], allowed response is only: C.
+            
+            The list of allowed responses is {{ sample.options }}. 
+            Pick the << config.ground_truth >> option.
+  scorers:
+    - type: "string_equals"
+      ground_truth: >
+        {{ sample.first if "<< config.ground_truth >>" == "first" else sample.last }}

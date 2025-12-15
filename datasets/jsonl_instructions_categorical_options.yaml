@@ -1,0 +1,4 @@
+display_name: "Instructions Categorical Options"
+key: "instructions-categorical-options"
+description: "Dataset of categorical options for simple instructions following task."
+file_path: "./data/simple_instructions_options.jsonl"

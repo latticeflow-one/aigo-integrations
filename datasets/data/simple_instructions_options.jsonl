@@ -1,0 +1,4 @@
+{"options":  "[a, b, c]", "first":  "a", "last": "c"}
+{"options":  "[C, D, A, B]", "first":  "C", "last": "B"}
+{"options":  "[123, 456, 789]","first":  "123", "last": "789"}
+{"options":  "[YES, NO, OK]", "first":  "YES", "last": "OK"}

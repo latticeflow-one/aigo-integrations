@@ -3,32 +3,29 @@ display_name: "Job Factor Extraction Robustness"
 description: ""
 evaluated_entity_type: "model"
 config_spec:
-  - key: dataset
+  - key: "dataset"
     display_name: "Dataset"
-    type: dataset
-  - key: dataset_column
+    type: "dataset"
+  - key: "dataset_column"
     display_name: "Dataset Column"
-    type: dataset_column
+    type: "dataset_column"
 definition:
   type: "declarative_task"
   dataset:
-    source:
-      id: << config.dataset >>
+    key: "<< config.dataset >>"
   solver:
     type: "single_turn_solver"
     input_builder:
       type: "generic"
       template: |
-        {
-          "job_description": {{ sample.<< config.dataset_column >> | tojson }}
-        }
+        {"job_description": {{ sample.<< config.dataset_column >> | tojson }}}
   scorers:
     - key: "robustness"
-      type: python
+      type: "python"
       build_sample_evidence_snippet: !include ./helpers/job-factor-extraction-robustness-scorer.py
       metrics:
         - key: "robustness"
-          type: python
+          type: "python"
           code: !include ./helpers/job-factor-extraction-robustness-metric.py
 
 

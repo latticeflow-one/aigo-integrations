@@ -27,5 +27,3 @@ definition:
         - key: "robustness"
           type: "python"
           code: !include ./helpers/job-factor-extraction-robustness-metric.py
-
-

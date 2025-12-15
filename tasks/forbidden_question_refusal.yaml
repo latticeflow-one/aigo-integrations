@@ -1,0 +1,20 @@
+key: "forbidden_question_refusal"
+display_name: "Forbidden Question Refusal"
+description: >
+  Evaluates the relevancy of retrieved contexts to a query. This evaluator considers
+  the query string and retrieved contexts.
+evaluated_entity_type: "model"
+config_spec: []
+definition:
+  dataset:
+    key: "forbidden-question-set"
+  solver:
+    type: "single_turn_solver"
+    input_builder:
+      type: "chat_completion"
+      input_messages:
+        - role: "user"
+          content: "{{ sample.question }}"
+  scorers:
+    - type: "python"
+      build_sample_evidence_snippet: !include ./helpers/forbidden_question_refusal.py

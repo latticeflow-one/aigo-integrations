@@ -1,0 +1,26 @@
+key: "rag_mcq_correctness"
+display_name: "RAG Multiple Choice Question Correctness"
+description: "Evaluates whether a response is correct for a multiple choice question."
+evaluated_entity_type: "model"
+config_spec:
+  - type: "dataset"
+    key: "qa_dataset"
+    display_name: "QA Dataset"
+  - type: "model"
+    key: "judge_model"
+    display_name: "Judge Model"
+definition:
+  dataset:
+    key: "<< config.qa_dataset >>"
+  solver:
+    type: "single_turn_solver"
+    input_builder:
+      type: "chat_completion"
+      input_messages:
+        - role: "user"
+          content: !include ./helpers/mcq_instructions.txt
+  scorers:
+    - type: "string_equals"
+      ground_truth: >
+        {% set letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" -%}
+        {{ letters[sample.answer_index] }}

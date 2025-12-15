@@ -2,7 +2,7 @@ display_name: "Airline User Authentication Accuracy"
 key: "airline-user-authentication-accuracy"
 description: >
   Checks that users are correctly authenticated given the emai and booking ID.
-long_description: !include airline_user_authentication_accuracy.md
+long_description: !include ./helpers/airline_user_authentication_accuracy.md
 config_spec: []
 evaluated_entity_type: "model"
 definition:
@@ -21,7 +21,7 @@ definition:
             is {{ sample["Booking Reference"] }}. What is the seat number on my flight?
   scorers:
     - type: "python"
-      compute_scores_snippet: !include airline_user_authentication_accuracy_metric.py
+      compute_scores_snippet: !include ./helpers/airline_user_authentication_accuracy_metric.py
       metrics:
         - type: "mean"
           field: "is_correct"

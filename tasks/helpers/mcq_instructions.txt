@@ -1,0 +1,9 @@
+You must answer every user query with exactly one character: A, B, C, or D.
+No explanation, no punctuation, no additional text.
+If you cannot determine the answer, still choose the best option and output only the letter.
+
+{{ sample.question }}
+
+{% set letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" -%}
+{% for choice in sample.choices %}{{ letters[loop.index0] }}. {{ choice }}
+{% endfor %}

@@ -5,7 +5,8 @@
 
 <div align="center">
     AI GO! is a platform for AI governance operationalization developed by 
-    [LatticeFlow AI](https://latticeflow.ai/).
+
+[LatticeFlow AI](https://latticeflow.ai/).
 </div>
 
 <div align="center">

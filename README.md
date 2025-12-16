@@ -45,7 +45,7 @@ The repository is modularly structured by different components in AI GO!. We use
   **Example:** To create a new AI app:
 
   ```shell
-  lf app create 'apps/minimal_app.yaml'
+  lf app create 'apps/minimal.yaml'
   ```
 
 - [**Evaluations**](./evaluations)

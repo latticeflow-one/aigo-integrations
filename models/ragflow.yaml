@@ -5,8 +5,7 @@ rate_limit: 60
 modality: "text"
 task: "chat_completion"
 adapter:
-  $ref: "../../model_adapters/ragflow.yaml"
-  # key: "adapter-ragflow"
+  $ref: "../model_adapters/ragflow.yaml"
 config:
   connection_type: "custom_connection"
   url: $RAGFLOW_URL

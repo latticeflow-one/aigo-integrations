@@ -5,7 +5,7 @@ rate_limit: 60
 modality: "text"
 task: "chat_completion"
 adapter:
-  $ref: "../../model_adapters/dify.yaml"
+  $ref: "../model_adapters/dify.yaml"
 config:
   connection_type: "custom_connection"
   url: "https://api.dify.ai/v1/chat-messages"

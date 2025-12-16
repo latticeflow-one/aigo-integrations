@@ -1,0 +1,11 @@
+{% set body = body | fromjson %}
+{
+    "choices": [
+      {% for choice in body.choices %}
+      {
+          "message": {{ choice.message | tojson }}
+          {% if not loop.last %},{% endif %}
+      }
+      {% endfor %}
+    ]
+}

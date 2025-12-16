@@ -1,0 +1,28 @@
+display_name: "RAGFlow"
+key: "adapter-ragflow"
+description: "Adapter for RAGFlow models."
+modality: "text"
+task: "chat_completion"
+process_input:
+  language: "jinja"
+  source_code: >
+    {
+      "model": "{{ model_info.model_key }}",
+      "messages": {{ input.messages | tojson }},
+      "stream": false,
+      "reference": true
+    }
+process_output:
+  language: "jinja"
+  source_code: >
+    {% set body = body | fromjson %}
+    {
+      "choices": [
+          {% for choice in body.choices %}
+          {
+              "message": {{ choice.message | tojson }}
+              {% if not loop.last %},{% endif %}
+          }
+          {% endfor %}
+      ]
+    }

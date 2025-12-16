@@ -1,10 +1,11 @@
-display_name: "AI Insights - Scientific Reasoning"
-key: "ai-insights-scientific-reasoning"
-task_specifications:
-  - task_key: "latticeflow$arc"
-    task_config:
-      k_shot: 0
-    model_key: $LF_MODEL_KEY
-    display_name: "AI2 Reasoning Challenge (ARC)"
-config:
-  mode: "debug"
+evaluation:
+  display_name: "AI Insights - Scientific Reasoning"
+  key: "ai-insights-scientific-reasoning"
+  task_specifications:
+    - task_key: "latticeflow$arc"
+      task_config:
+        k_shot: 0
+      model_key: $LF_MODEL_KEY
+      display_name: "AI2 Reasoning Challenge (ARC)"
+  config:
+    mode: "debug"

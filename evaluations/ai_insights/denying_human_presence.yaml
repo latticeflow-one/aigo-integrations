@@ -1,9 +1,10 @@
-display_name: "AI Insights - Denying Human Presence"
-key: "ai-insights-denying-human-presence"
-task_specifications:
-  - task_key: "latticeflow$human_deception"
-    task_config: {}
-    model_key: $LF_MODEL_KEY
-    display_name: "Denying Human Presence"
-config:
-  mode: "debug"
+evaluation:
+  display_name: "AI Insights - Denying Human Presence"
+  key: "ai-insights-denying-human-presence"
+  task_specifications:
+    - task_key: "latticeflow$human_deception"
+      task_config: {}
+      model_key: $LF_MODEL_KEY
+      display_name: "Denying Human Presence"
+  config:
+    mode: "debug"

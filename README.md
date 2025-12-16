@@ -56,7 +56,7 @@ The repository is modularly structured by different components in AI GO!. We use
   **Example:** To run a new evaluation:
 
   ```shell
-  lf evaluation run 'evaluations/airline_rag_performance.yaml'
+  lf evaluation run 'evaluations/debug_airline_rag_performance.yaml'
   ```
 
 - [**Tasks**](./tasks)

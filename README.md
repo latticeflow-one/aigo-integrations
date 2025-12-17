@@ -20,8 +20,6 @@
 
 Welcome to the **LatticeFlow AI GO! Integrations** repository. 
 
-<img width="1526" height="637" alt="image" src="https://github.com/user-attachments/assets/e42bde36-4dc1-4177-bb90-60bd8a018bcc" />
-
 ## Purpose
 
 This repository serves as the central hub for learning how to connect your AI ecosystem

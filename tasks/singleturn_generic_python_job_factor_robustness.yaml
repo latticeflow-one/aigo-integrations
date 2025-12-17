@@ -1,5 +1,5 @@
-key: "job-factor-extraction-robustness"
 display_name: "Job Factor Extraction Robustness"
+key: "job-factor-extraction-robustness"
 description: ""
 evaluated_entity_type: "model"
 config_spec:

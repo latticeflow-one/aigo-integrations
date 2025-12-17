@@ -8,5 +8,5 @@ adapter:
   key: "adapter-dify"
 config:
   connection_type: "custom_connection"
-  url: "https://api.dify.ai/v1/chat-messages"
+  url: $DIFY_URL
   api_key: $DIFY_API_KEY

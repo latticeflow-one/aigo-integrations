@@ -1,5 +1,5 @@
-key: "rag_context_relevancy"
 display_name: "RAG Context Relevancy"
+key: "rag_context_relevancy"
 description: >
   Evaluates the relevancy of retrieved contexts to a query. This evaluator considers 
   the query string and retrieved contexts.

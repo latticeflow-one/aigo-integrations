@@ -1,5 +1,5 @@
-key: "rag_claim_recall"
 display_name: "RAG Claim Recall"
+key: "rag_claim_recall"
 description: "Measures the fraction of ground-truth answer claims that are found in the retrieved chunks."
 evaluated_entity_type: "model"
 config_spec:

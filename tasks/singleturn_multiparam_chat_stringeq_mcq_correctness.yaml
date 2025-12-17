@@ -1,5 +1,5 @@
-key: "rag_mcq_correctness"
 display_name: "RAG Multiple Choice Question Correctness"
+key: "rag_mcq_correctness"
 description: "Evaluates whether a response is correct for a multiple choice question."
 evaluated_entity_type: "model"
 config_spec:

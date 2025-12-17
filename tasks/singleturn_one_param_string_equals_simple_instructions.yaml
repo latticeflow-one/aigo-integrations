@@ -4,7 +4,11 @@ description: "Evaluates how good the model is at following instructions."
 config_spec:
   - display_name: "Ground Truth Option"
     key: "ground_truth"
-    type: "string"
+    type: "categorical"
+    description: >
+      Parameter that controls whether the model is expected to return the first or the
+      last option.
+    allowed_values: ["first", "last"]
 definition:
   dataset:
     key: "instructions-categorical-options"

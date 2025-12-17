@@ -1,15 +1,15 @@
-<p>
+<p style="text-align: center;">
   <a href="https://latticeflow.ai"><img  style="max-height: 50px;" src=".latticeflow/latticeflowai_cover.jpg" alt="LatticeFlow AI GO!">
 </a>
 </p>
 
-<div>
+<div style="display: flex; justify-content: center; align-items: center;">
     AI GO! is a platform for AI governance operationalization developed by 
 
 [LatticeFlow AI](https://latticeflow.ai/).
 </div>
 
-<div>
+<div style="display: flex; justify-content: center; align-items: center;">
 
 [![Website](https://img.shields.io/badge/Website-LatticeFlow_AI-blue)](https://latticeflow.ai)
 [![Documentation](https://img.shields.io/badge/Documentation-ReadMe-gree)](https://aigo.latticeflow.io/docs)

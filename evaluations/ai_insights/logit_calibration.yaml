@@ -1,83 +1,84 @@
-display_name: "AI Insights - Logit Calibration"
-key: "ai-insights-logit-calibration"
-task_specifications:
-  - task_key: "latticeflow$mc_big_bench"
-    task_config:
-      few_shot: true
-      task: emoji_movie
-    model_key: $LF_MODEL_KEY
-    display_name: "Big Bench - Emoji Movie"
-  - task_key: "latticeflow$mc_big_bench"
-    task_config:
-      few_shot: true
-      task: formal_fallacies_syllogisms_negation
-    model_key: $LF_MODEL_KEY
-    display_name: "Big Bench - Formal Fallacies Syllogisms Negation"
-  - task_key: "latticeflow$mc_big_bench"
-    task_config:
-      few_shot: true
-      task: hindu_knowledge
-    model_key: $LF_MODEL_KEY
-    display_name: "Big Bench - Hindu Knowledge"
-  - task_key: "latticeflow$mc_big_bench"
-    task_config:
-      few_shot: true
-      task: known_unknowns
-    model_key: $LF_MODEL_KEY
-    display_name: "Big Bench - Known Unknowns"
-  - task_key: "latticeflow$mc_big_bench"
-    task_config:
-      few_shot: true
-      task: language_identification
-    model_key: $LF_MODEL_KEY
-    display_name: "Big Bench - Language Identification"
-  - task_key: "latticeflow$mc_big_bench"
-    task_config:
-      few_shot: true
-      task: logic_grid_puzzle
-    model_key: $LF_MODEL_KEY
-    display_name: "Big Bench - Logic Grid Puzzle"
-  - task_key: "latticeflow$mc_big_bench"
-    task_config:
-      few_shot: true
-      task: logical_deduction
-    model_key: $LF_MODEL_KEY
-    display_name: "Big Bench - Logical Deduction"
-  - task_key: "latticeflow$mc_big_bench"
-    task_config:
-      few_shot: true
-      task: misconceptions_russian
-    model_key: $LF_MODEL_KEY
-    display_name: "Big Bench - Misconceptions Russian"
-  - task_key: "latticeflow$mc_big_bench"
-    task_config:
-      few_shot: true
-      task: novel_concepts
-    model_key: $LF_MODEL_KEY
-    display_name: "Big Bench - Novel Concepts"
-  - task_key: "latticeflow$mc_big_bench"
-    task_config:
-      few_shot: true
-      task: play_dialog_same_or_different
-    model_key: $LF_MODEL_KEY
-    display_name: "Big Bench - Play Dialog Same Or Different"
-  - task_key: "latticeflow$mc_big_bench"
-    task_config:
-      few_shot: true
-      task: strange_stories
-    model_key: $LF_MODEL_KEY
-    display_name: "Big Bench - Strange Stories"
-  - task_key: "latticeflow$mc_big_bench"
-    task_config:
-      few_shot: true
-      task: strategyqa
-    model_key: $LF_MODEL_KEY
-    display_name: "Big Bench - Strategyqa"
-  - task_key: "latticeflow$mc_big_bench"
-    task_config:
-      few_shot: true
-      task: symbol_interpretation
-    model_key: $LF_MODEL_KEY
-    display_name: "Big Bench - Symbol Interpretation"
-config:
-  mode: "debug"
+evaluation:
+  display_name: "AI Insights - Logit Calibration"
+  key: "ai-insights-logit-calibration"
+  task_specifications:
+    - task_key: "latticeflow$mc_big_bench"
+      task_config:
+        few_shot: true
+        task: emoji_movie
+      model_key: $LF_MODEL_KEY
+      display_name: "Big Bench - Emoji Movie"
+    - task_key: "latticeflow$mc_big_bench"
+      task_config:
+        few_shot: true
+        task: formal_fallacies_syllogisms_negation
+      model_key: $LF_MODEL_KEY
+      display_name: "Big Bench - Formal Fallacies Syllogisms Negation"
+    - task_key: "latticeflow$mc_big_bench"
+      task_config:
+        few_shot: true
+        task: hindu_knowledge
+      model_key: $LF_MODEL_KEY
+      display_name: "Big Bench - Hindu Knowledge"
+    - task_key: "latticeflow$mc_big_bench"
+      task_config:
+        few_shot: true
+        task: known_unknowns
+      model_key: $LF_MODEL_KEY
+      display_name: "Big Bench - Known Unknowns"
+    - task_key: "latticeflow$mc_big_bench"
+      task_config:
+        few_shot: true
+        task: language_identification
+      model_key: $LF_MODEL_KEY
+      display_name: "Big Bench - Language Identification"
+    - task_key: "latticeflow$mc_big_bench"
+      task_config:
+        few_shot: true
+        task: logic_grid_puzzle
+      model_key: $LF_MODEL_KEY
+      display_name: "Big Bench - Logic Grid Puzzle"
+    - task_key: "latticeflow$mc_big_bench"
+      task_config:
+        few_shot: true
+        task: logical_deduction
+      model_key: $LF_MODEL_KEY
+      display_name: "Big Bench - Logical Deduction"
+    - task_key: "latticeflow$mc_big_bench"
+      task_config:
+        few_shot: true
+        task: misconceptions_russian
+      model_key: $LF_MODEL_KEY
+      display_name: "Big Bench - Misconceptions Russian"
+    - task_key: "latticeflow$mc_big_bench"
+      task_config:
+        few_shot: true
+        task: novel_concepts
+      model_key: $LF_MODEL_KEY
+      display_name: "Big Bench - Novel Concepts"
+    - task_key: "latticeflow$mc_big_bench"
+      task_config:
+        few_shot: true
+        task: play_dialog_same_or_different
+      model_key: $LF_MODEL_KEY
+      display_name: "Big Bench - Play Dialog Same Or Different"
+    - task_key: "latticeflow$mc_big_bench"
+      task_config:
+        few_shot: true
+        task: strange_stories
+      model_key: $LF_MODEL_KEY
+      display_name: "Big Bench - Strange Stories"
+    - task_key: "latticeflow$mc_big_bench"
+      task_config:
+        few_shot: true
+        task: strategyqa
+      model_key: $LF_MODEL_KEY
+      display_name: "Big Bench - Strategyqa"
+    - task_key: "latticeflow$mc_big_bench"
+      task_config:
+        few_shot: true
+        task: symbol_interpretation
+      model_key: $LF_MODEL_KEY
+      display_name: "Big Bench - Symbol Interpretation"
+  config:
+    mode: "debug"

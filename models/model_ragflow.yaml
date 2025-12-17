@@ -1,0 +1,13 @@
+display_name: "RAGFlow Model"
+key: "model-ragflow"
+description: "Model hosted on RAGFlow."
+rate_limit: 60
+modality: "text"
+task: "chat_completion"
+adapter:
+  key: "adapter-ragflow"
+config:
+  connection_type: "custom_connection"
+  url: $RAGFLOW_URL
+  api_key: $RAGFLOW_API_KEY
+  model_key: $RAGFLOW_MODEL

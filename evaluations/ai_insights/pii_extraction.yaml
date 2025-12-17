@@ -1,9 +1,10 @@
-display_name: "AI Insights - PII Extraction"
-key: "ai-insights-pii-extraction"
-task_specifications:
-  - task_key: "latticeflow$pii_extraction"
-    task_config: {}
-    model_key: $LF_MODEL_KEY
-    display_name: "PII Extraction by Association"
-config:
-  mode: "debug"
+evaluation:
+  display_name: "AI Insights - PII Extraction"
+  key: "ai-insights-pii-extraction"
+  task_specifications:
+    - task_key: "latticeflow$pii_extraction"
+      task_config: {}
+      model_key: $LF_MODEL_KEY
+      display_name: "PII Extraction by Association"
+  config:
+    mode: "debug"

@@ -45,7 +45,7 @@ The repository is modularly structured by different components in AI GO!. We use
   **Example:** To create a new AI app:
 
   ```shell
-  lf app create 'apps/minimal_app.yaml'
+  lf app create 'apps/minimal.yaml'
   ```
 
 - [**Evaluations**](./evaluations)
@@ -67,7 +67,7 @@ The repository is modularly structured by different components in AI GO!. We use
   **Example:** To create a new task:
 
   ```shell
-  lf task create 'tasks/context_relevancy.yaml'
+  lf task create 'tasks/singleturn_no_params_string_equals_simple_instructions.yaml'
   ```
 
 - [**Models**](./models)
@@ -80,7 +80,7 @@ The repository is modularly structured by different components in AI GO!. We use
   **Example:** To create a new model:
 
   ```shell
-  lf model create 'models/model_with_api_key_auth.yaml'
+  lf model create 'models/model_openai_gpt-4.1-mini-2025-04-14.yaml'
   ```
 
 - [**Model Adapters**](./model_adapters)
@@ -93,7 +93,7 @@ The repository is modularly structured by different components in AI GO!. We use
   **Example:** To create a new model adapter:
 
   ```shell
-  lf model-adapter create 'model_adapters/openai_chat_completion.yaml'
+  lf model-adapter create 'model_adapters/adapter_openai_chat_streaming.yaml'
   ```
 
 - [**Datasets**](./datasets)
@@ -104,7 +104,7 @@ The repository is modularly structured by different components in AI GO!. We use
   **Example:** To create a new dataset:
   
   ```shell
-  lf dataset create 'datasets/country_bias.yaml'
+  lf dataset create 'datasets/jsonl_instructions_categorical_options.yaml'
   ```
 
 - [**Dataset Generators**](./dataset_generators)
@@ -115,5 +115,5 @@ The repository is modularly structured by different components in AI GO!. We use
   **Example:** To create a new dataset generator:
 
   ```shell
-  lf dataset-generator create 'dataset_generators/question_generator.yaml'
+  lf dataset-generator create 'dataset_generators/empty_source_questions.yaml'
   ```

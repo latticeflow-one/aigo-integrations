@@ -1,10 +1,11 @@
-display_name: "AI Insights - Goal Hijacking"
-key: "ai-insights-goal-hijacking"
-task_specifications:
-  - task_key: "latticeflow$tensor_trust_instruction_goal_hijacking"
-    task_config:
-      prompt_strategy: multiple_user
-    model_key: $LF_MODEL_KEY
-    display_name: "Goal Hijacking and Prompt Leakage: TensorTrust"
-config:
-  mode: "debug"
+evaluation:
+  display_name: "AI Insights - Goal Hijacking"
+  key: "ai-insights-goal-hijacking"
+  task_specifications:
+    - task_key: "latticeflow$tensor_trust_instruction_goal_hijacking"
+      task_config:
+        prompt_strategy: multiple_user
+      model_key: $LF_MODEL_KEY
+      display_name: "Goal Hijacking and Prompt Leakage: TensorTrust"
+  config:
+    mode: "debug"

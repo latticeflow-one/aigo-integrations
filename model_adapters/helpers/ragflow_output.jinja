@@ -1,0 +1,18 @@
+{% set body = body | fromjson %}
+{
+    "choices": [
+        {% for choice in body.choices %}
+            {% set msg = choice.message %}
+            {% set clean_msg = {} %}
+            {% for k, v in msg.items() %}
+                {% if k != "reference" %}
+                {% set _ = clean_msg.update({k: v}) %}
+                {% endif %}
+            {% endfor %}
+            {
+                "message": {{ clean_msg | tojson }},
+                "references": {{ msg.reference | tojson }}
+            }{% if not loop.last %},{% endif %}
+        {% endfor %}
+    ]
+}

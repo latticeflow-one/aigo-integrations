@@ -3,7 +3,7 @@ key: "question-generator"
 description: "Generates questions about arbitrary topics."
 config_spec:
   - key: "topic"
-    type: string
+    type: "string"
     display_name: "Topic"
 definition:
   type: "declarative_dataset_generator"
@@ -13,9 +13,10 @@ definition:
     type: "llm"
     system_prompt_template: "You are a helpful dataset generator."
     user_prompt_template: >
-      Produce 5 deep knowledge questions about << config.topic >>, including the correct answer.
+      Produce 5 deep knowledge questions about << config.topic >>, including the correct
+      answer.
     sample_properties:
       question:
-        type: string
+        type: "string"
       answer:
-        type: string
+        type: "string"

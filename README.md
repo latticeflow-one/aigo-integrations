@@ -1,15 +1,15 @@
-<p align="center">
+<p>
   <a href="https://latticeflow.ai"><img  style="max-height: 50px;" src=".latticeflow/latticeflowai_cover.jpg" alt="LatticeFlow AI GO!">
 </a>
 </p>
 
-<div align="center">
+<div>
     AI GO! is a platform for AI governance operationalization developed by 
 
 [LatticeFlow AI](https://latticeflow.ai/).
 </div>
 
-<div align="center">
+<div>
 
 [![Website](https://img.shields.io/badge/Website-LatticeFlow_AI-blue)](https://latticeflow.ai)
 [![Documentation](https://img.shields.io/badge/Documentation-ReadMe-gree)](https://aigo.latticeflow.io/docs)
@@ -56,7 +56,7 @@ The repository is modularly structured by different components in AI GO!. We use
   **Example:** To run a new evaluation:
 
   ```shell
-  lf evaluation run 'evaluations/debug_airline_rag_performance.yaml'
+  lf evaluation run 'evaluations/airline_rag_performance.yaml'
   ```
 
 - [**Tasks**](./tasks)
@@ -67,7 +67,7 @@ The repository is modularly structured by different components in AI GO!. We use
   **Example:** To create a new task:
 
   ```shell
-  lf task create 'tasks/context_relevancy.yaml'
+  lf task create 'tasks/singleturn_no_params_string_equals_simple_instructions.yaml'
   ```
 
 - [**Models**](./models)
@@ -80,7 +80,7 @@ The repository is modularly structured by different components in AI GO!. We use
   **Example:** To create a new model:
 
   ```shell
-  lf model create 'models/model_with_api_key_auth.yaml'
+  lf model create 'models/model_openai_gpt-4.1-mini-2025-04-14.yaml'
   ```
 
 - [**Model Adapters**](./model_adapters)
@@ -93,7 +93,7 @@ The repository is modularly structured by different components in AI GO!. We use
   **Example:** To create a new model adapter:
 
   ```shell
-  lf model-adapter create 'model_adapters/openai_chat_completion.yaml'
+  lf model-adapter create 'model_adapters/adapter_openai_chat_streaming.yaml'
   ```
 
 - [**Datasets**](./datasets)
@@ -104,7 +104,7 @@ The repository is modularly structured by different components in AI GO!. We use
   **Example:** To create a new dataset:
   
   ```shell
-  lf dataset create 'datasets/country_bias.yaml'
+  lf dataset create 'datasets/jsonl_instructions_categorical_options.yaml'
   ```
 
 - [**Dataset Generators**](./dataset_generators)
@@ -115,5 +115,5 @@ The repository is modularly structured by different components in AI GO!. We use
   **Example:** To create a new dataset generator:
 
   ```shell
-  lf dataset-generator create 'dataset_generators/question_generator.yaml'
+  lf dataset-generator create 'dataset_generators/empty_source_questions.yaml'
   ```

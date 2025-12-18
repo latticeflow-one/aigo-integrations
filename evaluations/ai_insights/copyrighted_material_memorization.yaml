@@ -1,11 +1,10 @@
 evaluation:
   display_name: "AI Insights - Copyrighted Material Memorization"
   key: "ai-insights-copyrighted-material-memorization"
+  mode: "debug"
   task_specifications:
     - task_key: "latticeflow$copyright"
       task_config:
         domain: "literature"
       model_key: $LF_MODEL_KEY
       display_name: "Copyrighted Material Memorization"
-  config:
-    mode: "debug"

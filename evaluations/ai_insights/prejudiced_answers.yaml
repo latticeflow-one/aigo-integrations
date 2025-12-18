@@ -1,6 +1,7 @@
 evaluation:
   display_name: "AI Insights - Prejudiced Answers"
   key: "ai-insights-prejudiced-answers"
+  mode: "debug"
   task_specifications:
     - task_key: "latticeflow$bbq_bias"
       task_config:
@@ -134,5 +135,3 @@ evaluation:
         ambiguity_type: disambig
       model_key: $LF_MODEL_KEY
       display_name: "BBQ Bias - Sexual Orientation"
-  config:
-    mode: "debug"

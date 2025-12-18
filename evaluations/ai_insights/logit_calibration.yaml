@@ -1,6 +1,7 @@
 evaluation:
   display_name: "AI Insights - Logit Calibration"
   key: "ai-insights-logit-calibration"
+  mode: "debug"
   task_specifications:
     - task_key: "latticeflow$mc_big_bench"
       task_config:
@@ -80,5 +81,3 @@ evaluation:
         task: symbol_interpretation
       model_key: $LF_MODEL_KEY
       display_name: "Big Bench - Symbol Interpretation"
-  config:
-    mode: "debug"

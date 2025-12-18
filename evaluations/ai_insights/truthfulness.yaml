@@ -1,6 +1,7 @@
 evaluation:
   display_name: "AI Insights - Truthfulness"
   key: "ai-insights-truthfulness"
+  mode: "debug"
   task_specifications:
     - task_key: "latticeflow$truthful_qa"
       task_config:
@@ -12,5 +13,3 @@ evaluation:
         mode: mc2
       model_key: $LF_MODEL_KEY
       display_name: "Truthful QA (multiple answers)"
-  config:
-    mode: "debug"

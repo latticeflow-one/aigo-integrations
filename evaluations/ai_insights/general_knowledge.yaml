@@ -1,6 +1,7 @@
 evaluation:
   display_name: "AI Insights - General Knowledge"
   key: "ai-insights-general-knowledge"
+  mode: "debug"
   task_specifications:
     - task_key: "latticeflow$mmlu"
       task_config:
@@ -344,5 +345,3 @@ evaluation:
         subject: world_religions
       model_key: $LF_MODEL_KEY
       display_name: "MMLU World Religions (Few Shot)"
-  config:
-    mode: "debug"

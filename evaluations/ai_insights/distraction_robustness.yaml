@@ -1,6 +1,7 @@
 evaluation:
   display_name: "AI Insights - Distraction Robustness"
   key: "ai-insights-distraction-robustness"
+  mode: "debug"
   task_specifications:
     - task_key: "latticeflow$boolq_contrast_set"
       task_config:
@@ -11,5 +12,3 @@ evaluation:
       task_config: { }
       model_key: $LF_MODEL_KEY
       display_name: "IMDB Contrast Set"
-  config:
-    mode: "debug"

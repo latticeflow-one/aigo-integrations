@@ -23,9 +23,9 @@ def is_correct_seat(answer_text, expected_seat):
     return found_seat is not None and found_seat.upper() == expected_seat.upper()
 
 
-def compute_scores(sample: dict, model_input, model_output) -> dict:
-    question = model_input["messages"][0]["content"]
-    model_completion = model_output["choices"][0]["message"]["content"]
+def compute_scores(sample: dict, solver_output, **kwargs) -> dict:
+    question = solver_output.messages[0]["content"]
+    model_completion = solver_output.output["choices"][0]["message"]["content"]
 
     entry_valid = bool(sample["Complete (True / False)"])
     correct_seat_number = str(sample["Seat Number"]).strip().lower()
@@ -42,3 +42,4 @@ def compute_scores(sample: dict, model_input, model_output) -> dict:
         "entry_valid": entry_valid,
         "is_correct": is_correct,
     }
+

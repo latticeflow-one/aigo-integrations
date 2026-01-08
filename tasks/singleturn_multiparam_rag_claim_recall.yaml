@@ -1,5 +1,5 @@
-display_name: "RAG Claim Recall"
 key: "rag_claim_recall"
+display_name: "RAG Claim Recall"
 description: "Measures the fraction of ground-truth answer claims that are found in the retrieved chunks."
 evaluated_entity_type: "model"
 config_spec:
@@ -24,9 +24,11 @@ definition:
       type: "chat_completion"
       input_messages:
         - role: "user"
-          content: "{{ sample.question }}"
+          content: "{{ sample.<< config.query_column >> }}"
   scorers:
-    - type: "rag_checker_claim_recall"
+    - type: "rag_checker"
       query_column: "<< config.query_column >>"
       target_column: "<< config.target_column >>"
-      judge_model_id: "<< config.judge_model >>"
+      judge_model_key: "<< config.judge_model >>"
+      scores_to_compute:
+        - "claim_recall"

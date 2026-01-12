@@ -1,0 +1,4 @@
+display_name: "QA Dataset"
+key: "qa_multiple_answers"
+description: "Dataset of general knowledge questions-answers for RAG evaluations with multiple answers."
+file_path: "./data/qa_multiple_answers.jsonl"

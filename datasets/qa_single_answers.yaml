@@ -1,0 +1,4 @@
+display_name: "QA Dataset"
+key: "qa_single_answers"
+description: "Dataset of general knowledge questions-answers for RAG evaluations with single answer."
+file_path: "./data/qa_single_answers.jsonl"

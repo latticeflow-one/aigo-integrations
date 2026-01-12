@@ -1,7 +1,6 @@
 display_name: "Model with SSL Certificate"
 key: "model-ssl-cert"
 description: "This model uses a custom SSL certificate."
-modality: "text"
 task: "chat_completion"
 adapter:
   key: "latticeflow$openai"

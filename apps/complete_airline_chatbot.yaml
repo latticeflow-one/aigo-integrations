@@ -1,6 +1,6 @@
 display_name: "Airline Chatbot"
 key: "airline-chatbot"
-industry_type: "Airlines"
+tags: ["airlines", "chatbot", "customer-support"]
 description: "Airlines Virtual Assistant"
 long_description: |
   # Swiss Airlines Virtual Assistant

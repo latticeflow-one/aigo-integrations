@@ -1,3 +1,8 @@
-{"job_id":"job_001","job_description":"Backend Python Engineer needed to build REST APIs and optimize PostgreSQL. Required: Python, SQL. Nice: Docker."}
-{"job_id":"job_002","job_description":"Data Analyst role focused on building dashboards and reports. Required: SQL, Excel. Nice: Python, BI tools."}
-{"job_id":"job_003","job_description":"DevOps Engineer responsible for CI/CD pipelines, cloud infrastructure, and monitoring. Required: Linux, AWS. Nice: Terraform."}
+{"job_id":"job_001","variant":"unchanged","job_description":"Backend Python Engineer needed to build REST APIs and optimize PostgreSQL. Required: Python, SQL. Nice: Docker."}
+{"job_id":"job_001","variant":"typos","job_description":"Backend Python Enginer needed to build REST API's and optimize Postgres. Required: Python, SQL. Nice: Docker."}
+{"job_id":"job_002","variant":"unchanged","job_description":"Data Analyst role focused on building dashboards and reports. Required: SQL, Excel. Nice: Python, BI tools."}
+{"job_id":"job_002","variant":"paraphrase","job_description":"We are looking for a data analyst to create reports and dashboards. Must have SQL and Excel skills. Python and BI experience are a plus."}
+{"job_id":"job_003","variant":"unchanged","job_description":"DevOps Engineer responsible for CI/CD pipelines, cloud infrastructure, and monitoring. Required: Linux, AWS. Nice: Terraform."}
+{"job_id":"job_003","variant":"reordered","job_description":"Required: Linux and AWS. Nice: Terraform. The role involves maintaining cloud infrastructure, CI/CD pipelines, and monitoring systems."}
+{"job_id":"job_004","variant":"unchanged","job_description":"Customer Support Specialist handling tickets and customer inquiries. Required: communication skills, CRM experience."}
+{"job_id":"job_004","variant":"noise","job_description":"Customer Support Specialist handling tickets and customer inquiries. Required: communication skills, CRM experience. Apply now! Great culture!"}

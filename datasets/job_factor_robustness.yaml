@@ -1,4 +1,0 @@
-display_name: "Job Factor Robustness"
-key: "job-factor-robustness"
-description: "Dataset of job descriptions with unchanged and perturbed variants for robustness evaluation."
-file_path: "./data/job_factor_robustness.jsonl"

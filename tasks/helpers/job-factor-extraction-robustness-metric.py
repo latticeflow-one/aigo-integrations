@@ -78,7 +78,7 @@ def _similarity(
     )
 
 
-def aggregate(scores: list[dict]) -> dict[str, float]:
+def compute_metrics(scores: list[dict]) -> dict[str, float]:
     results = scores
 
     # Find the outputs on the unchanged inputs.

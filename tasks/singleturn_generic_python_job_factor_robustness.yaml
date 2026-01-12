@@ -22,8 +22,8 @@ definition:
   scorers:
     - key: "robustness"
       type: "python"
-      build_sample_evidence_snippet: !include ./helpers/job-factor-extraction-robustness-scorer.py
+      compute_scores_snippet: !include ./helpers/job-factor-extraction-robustness-scorer.py
       metrics:
         - key: "robustness"
           type: "python"
-          code: !include ./helpers/job-factor-extraction-robustness-metric.py
+          compute_metrics_snippet: !include ./helpers/job-factor-extraction-robustness-metric.py

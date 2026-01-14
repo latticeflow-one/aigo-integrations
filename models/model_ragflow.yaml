@@ -2,7 +2,6 @@ display_name: "RAGFlow Model"
 key: "model-ragflow"
 description: "Model hosted on RAGFlow."
 rate_limit: 60
-modality: "text"
 task: "chat_completion"
 adapter:
   key: "adapter-ragflow"

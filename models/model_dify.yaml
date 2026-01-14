@@ -2,7 +2,6 @@ display_name: "Dify Model"
 key: "model-dify"
 description: "Model hosted on Dify."
 rate_limit: 60
-modality: "text"
 task: "chat_completion"
 adapter:
   key: "adapter-dify"

@@ -1,7 +1,6 @@
 display_name: "RAGFlow"
 key: "adapter-ragflow"
 description: "Adapter for RAGFlow models."
-modality: "text"
 task: "chat_completion"
 process_input:
   language: "jinja"

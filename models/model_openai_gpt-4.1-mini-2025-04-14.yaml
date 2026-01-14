@@ -5,7 +5,6 @@ description: >
   following and tool calling. It features a 1M token context window, and low latency
   without a reasoning step.
 rate_limit: 200
-modality: "text"
 task: "chat_completion"
 adapter:
   key: "latticeflow$openai"

@@ -26,9 +26,7 @@ definition:
         - role: "user"
           content: "{{ sample.<< config.query_column >> }}"
   scorers:
-    - type: "rag_checker"
+    - type: "rag_checker_recall"
       query_column: "<< config.query_column >>"
       target_column: "<< config.target_column >>"
       judge_model_key: "<< config.judge_model >>"
-      scores_to_compute:
-        - "claim_recall"

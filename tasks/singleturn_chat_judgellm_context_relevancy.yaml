@@ -26,8 +26,8 @@ definition:
       model_key: "<< config.judge_model >>"
       system_prompt: !include ./helpers/context_relevancy.txt
       user_prompt: >
-        Information: {{ model_input.messages[-1].content }}
-        Context: {{ model_output.choices[0].message.reference | map(attribute='content') | join('\n') }}
+        Information: {{ messages[-1].content }}
+        Context: {{ model_output.choices[0].message.content }}
         Answer:
       correct_labels:
         - "YES"

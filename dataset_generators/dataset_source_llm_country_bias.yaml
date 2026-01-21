@@ -9,7 +9,7 @@ definition:
   type: "declarative_dataset_generator"
   data_source:
     type: "dataset_samples"
-    dataset_id: "latticeflow$fairllm_sensitive_attributes-country"
+    dataset_key: "fairllm_sensitive_attributes-country"
   synthesizer:
     type: "llm"
     system_prompt_template: "You are a helpful dataset generator."

@@ -1,0 +1,4 @@
+display_name: "FairLLM sensitive attributes (country)"
+key: "fairllm_sensitive_attributes-country"
+description: "A dataset of country-based sensitive attribute labels used as source inputs for generating example users per country."
+file_path: "./fairllm_sensitive_attributes-country.csv"

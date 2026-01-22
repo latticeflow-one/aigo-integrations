@@ -1,0 +1,7 @@
+display_name: "QA Dataset"
+key: "qa-generated-from-template"
+description: "Dataset of general knowledge questions-answers."
+generator_specification:
+  dataset_generator_key: "dataset-generator-from-template"
+  num_samples: 10
+  dataset_generator_config: {}

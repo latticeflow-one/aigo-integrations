@@ -1,0 +1,27 @@
+display_name: "Singleturn Solver Generic Input"
+key: "singleturn-generic-input"
+description: "Example task that uses singleturn solver with generic input builder."
+config_spec: []
+definition:
+  dataset:
+    key: "qa-single-answers"
+  solver:
+    type: "single_turn_solver"
+    input_builder:
+      type: generic
+      template: >
+        {
+            "messages": [
+            {
+              "role": "system",
+              "content": "You are a helpful assistant."
+            },
+            {
+              "role": "user",
+              "content": "{{ sample.question }}"
+            }
+          ]
+        }
+  scorers:
+    - type: "string_equals"
+      ground_truth: "{{ sample.target }}"

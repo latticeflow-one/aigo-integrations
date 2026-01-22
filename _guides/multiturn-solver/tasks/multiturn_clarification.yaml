@@ -33,7 +33,7 @@ definition:
             role: "user"
             content: |
               If the previous message is a question, answer it using the information
-              in the other messages and in the sample data below.
+              in the other messages.
               If the question is asking for confirmation, always answer 'Yes'.
 
               Otherwise, answer with '<done>'.

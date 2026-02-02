@@ -23,7 +23,7 @@ def is_correct_seat(answer_text, expected_seat):
     return found_seat is not None and found_seat.upper() == expected_seat.upper()
 
 
-def compute_scores(sample: dict, solver_output, **kwargs) -> dict:
+def compute_scores(sample: dict, solver_output) -> dict:
     question = solver_output.messages[0]["content"]
     model_completion = solver_output.output["choices"][0]["message"]["content"]
 

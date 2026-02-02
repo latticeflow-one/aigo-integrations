@@ -1,9 +1,0 @@
-evaluation:
-  display_name: "AI Insights - Coding"
-  key: "ai-insights-coding"
-  mode: "debug"
-  task_specifications:
-    - task_key: "latticeflow$human_eval"
-      task_config: { }
-      model_key: $LF_MODEL_KEY
-      display_name: "Human Eval"

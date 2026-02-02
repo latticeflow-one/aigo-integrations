@@ -3,9 +3,9 @@ key: "model-dify"
 description: "Model hosted on Dify."
 rate_limit: 60
 task: "chat_completion"
-adapter:
-  key: "adapter-dify"
 config:
+  adapter:
+    key: "adapter-dify"
   connection_type: "custom_connection"
   url: $DIFY_URL
   api_key: $DIFY_API_KEY

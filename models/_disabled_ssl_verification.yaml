@@ -2,9 +2,9 @@ display_name: "Model with Disabled SSL Verification"
 key: "model-ssl-disabled"
 description: "This model has SSL certificate verification disabled."
 task: "chat_completion"
-adapter:
-  key: "latticeflow$openai"
 config:
+  adapter:
+    key: "latticeflow$openai_chat_completion"
   connection_type: "custom_connection"
   url: "https://api.openai.com/v1/chat/completions"
   api_key: $OPENAI_API_KEY

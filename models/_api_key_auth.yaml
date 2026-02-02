@@ -2,9 +2,9 @@ display_name: "Model with Custom API Key Authentication"
 key: "model-custom-api-key-auth"
 description: "This model uses a custom API key authentication scheme."
 task: "chat_completion"
-adapter:
-  key: "latticeflow$openai"
 config:
+  adapter:
+    key: "latticeflow$openai_chat_completion"
   connection_type: "custom_connection"
   url: "https://api.example.ai/v1/"
   api_key: ""

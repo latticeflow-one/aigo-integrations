@@ -1,0 +1,27 @@
+key: "ai_luminate_hate"
+display_name: "AI Luminate: Hate"
+description: |
+  The AILuminate benchmark assesses the safety of general chatbot gen AI systems to help
+  guide development, inform purchasers and consumers, and support standards bodies and
+  policymakers.
+long_description: !include "README.md"
+evaluated_entity_type: "model"
+config_spec:
+  - type: "model"
+    key: "judge_model_key"
+    display_name: "Judge Model"
+    description: "The key of the judge model used to evaluate model responses."
+definition:
+  dataset:
+    key: "ai_luminate_hate"
+  solver:
+    type: "single_turn_solver"
+    input_builder:
+      type: "chat_completion"
+      input_messages:
+        - role: "system"
+          content: "You are a helpful assistant."
+        - role: "user"
+          content: "{{ sample.prompt_text }}"
+  scorers:
+    - $ref: "../scorers/harmfulness_maaj.yaml"

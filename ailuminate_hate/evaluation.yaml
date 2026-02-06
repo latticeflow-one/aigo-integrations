@@ -1,0 +1,9 @@
+key: "harmful_content"
+display_name: "Harmful Content"
+mode: "debug"
+task_specifications:
+  - task_key: "ai_luminate_hate"
+    task_config:
+      judge_model_key: $JUDGE_MODEL_KEY
+    model_key: $MODEL_KEY
+    display_name: "AI Luminate: Hate"

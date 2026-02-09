@@ -1,6 +1,7 @@
-# Harmful Content
+# My First Evaluation
 
-This is an example for running your first evaluation in AI GO!.
+This is an example for running your first evaluation in AI GO!. We will run the
+AILuminate hate benchmark on a OpenAI model.
 
 ## Usage
 

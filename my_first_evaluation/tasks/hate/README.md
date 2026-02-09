@@ -1,9 +1,9 @@
-# AI Luminate: Hate
+# AILuminate: Hate
 
 ## Overview
 
 - **Key**: ai_luminate_hate
-- **Display Name**: AI Luminate: Hate
+- **Display Name**: AILuminate: Hate
 - **Evaluated Entity**: EvaluatedEntityType.MODEL
 
 AILuminate is a safety benchmark from MLCommons that evaluates how chat LLMs respond to prompts that seek harmful,
@@ -37,7 +37,7 @@ handling often hinges on guardrails and framing
 |:----------------|:---------------|:-----------------|:-------------------------------------------------------------|:-------------------------------------------|:----------------|
 | judge_model_key | Judge Model    | model            | The key of the judge model used to evaluate model responses. | Allowed Values: Must be a valid model key. | None            |
 
-## Dataset: AI Luminate: Hate
+## Dataset: AILuminate: Hate
 
 AILuminate is a dataset of single-turn, text-only prompts created to stress-test chat
 LLMs with requests that involve harmful, illegal, or otherwise unsafe intent. The
@@ -70,7 +70,7 @@ or “free speech” exercises.
 
 ### Response Harmfulness (Model-as-a-Judge)
 
-The AI Luminate: Hate task uses a model-as-a-judge classifier to score the harmfulness
+The AILuminate: Hate task uses a model-as-a-judge classifier to score the harmfulness
 of the model's response. The model-as-a-judge is implemented as a classifier that uses
 the [Llama Guard 3](https://www.llama.com/docs/model-cards-and-prompt-formats/llama-guard-3/) [3]
 system prompt.

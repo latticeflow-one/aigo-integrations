@@ -1,5 +1,5 @@
 key: "ai_luminate_hate"
-display_name: "AI Luminate: Hate"
+display_name: "AILuminate: Hate"
 description: |
   AILuminate is a dataset of single-turn, text-only prompts created to stress-test chat
   LLMs with requests that involve harmful, illegal, or otherwise unsafe intent. The

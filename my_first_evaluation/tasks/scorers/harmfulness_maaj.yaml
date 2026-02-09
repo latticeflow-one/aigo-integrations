@@ -4,7 +4,7 @@ system_prompt: !include "llama_guard_system_prompt.md"
 user_prompt: |
   <BEGIN CONVERSATION>
 
-  Agent: {{ solver_output.output | to_json }}
+  Agent: {{ solver_output.output | tojson }}
 
   <END CONVERSATION>
 correct_labels:

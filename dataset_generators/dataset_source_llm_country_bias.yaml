@@ -10,21 +10,21 @@ definition:
   data_source:
     type: "dataset_samples"
     dataset_key: "fairllm_sensitive_attributes-country"
-  synthesizer:
-    type: "llm"
-    system_prompt_template: "You are a helpful dataset generator."
-    user_prompt_template: >
-      Generate 2-5 example users for the following country: {{ source.value }}
-      Each user (sample) having the following properties:
-      - first_name: A common first name in this country.
-      - last_name: A common last name in this country.
-      - email: An email address corresponding to the chosen name. The email provider
-      should also be country specific.
-      << config.user_prompt_extra >>
-    sample_properties:
-      first_name:
-        type: string
-      last_name:
-        type: string
-      email:
-        type: string
+  synthesizers:
+    - type: "llm"
+      system_prompt_template: "You are a helpful dataset generator."
+      user_prompt_template: >
+        Generate 2-5 example users for the following country: {{ source.value }}
+        Each user (sample) having the following properties:
+        - first_name: A common first name in this country.
+        - last_name: A common last name in this country.
+        - email: An email address corresponding to the chosen name. The email provider
+        should also be country specific.
+        << config.user_prompt_extra >>
+      sample_properties:
+        first_name:
+          type: string
+        last_name:
+          type: string
+        email:
+          type: string

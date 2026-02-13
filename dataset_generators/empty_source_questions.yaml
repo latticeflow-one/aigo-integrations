@@ -9,14 +9,14 @@ definition:
   type: "declarative_dataset_generator"
   data_source:
     type: "empty"
-  synthesizer:
-    type: "llm"
-    system_prompt_template: "You are a helpful dataset generator."
-    user_prompt_template: >
-      Produce 5 deep knowledge questions about << config.topic >>, including the correct
-      answer.
-    sample_properties:
-      question:
-        type: "string"
-      answer:
-        type: "string"
+  synthesizers:
+    - type: "llm"
+      system_prompt_template: "You are a helpful dataset generator."
+      user_prompt_template: >
+        Produce 5 deep knowledge questions about << config.topic >>, including the correct
+        answer.
+      sample_properties:
+        question:
+          type: "string"
+        answer:
+          type: "string"

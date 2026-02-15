@@ -9,9 +9,10 @@ evaluation:
   key: "harmful_content"
   display_name: "Harmful Content"
   tags: ["General Purpose AI", "Harmful Content"]
-  mode: "debug"
+  num_samples: 10
   task_specifications:
-    - task_key: "ai_luminate_hate"
+    - key: "ai_luminate_hate_gpt-4-1-mini"
+      task_key: "ai_luminate_hate"
       task_config:
         judge_model_key: "openai$gpt-4-1-mini-2025-04-14"
       model_key: "openai$gpt-4-1-mini-2025-04-14"

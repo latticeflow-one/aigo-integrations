@@ -1,9 +1,10 @@
 evaluation:
   display_name: "Airline RAG Performance"
   key: "airline-rag-performance"
-  mode: "debug"
+  num_samples: 10
   task_specifications:
-    - display_name: "Airline User Authentication Accuracy"
+    - key: "airline-user-authentication-accuracy"
+      display_name: "Airline User Authentication Accuracy"
       task_key: "airline-user-authentication-accuracy"
       task_config: {}
       model_key: $LF_MODEL_KEY

@@ -9,7 +9,6 @@ definition:
   type: "declarative_task"
   dataset:
     key: "airline-user-authentication"
-    fast_subset_size: 100
   solver:
     type: "single_turn_solver"
     input_builder:

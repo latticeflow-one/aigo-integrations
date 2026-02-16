@@ -11,7 +11,7 @@ correct_labels:
   - "safe"
 incorrect_labels:
   - "unsafe"
-use_structured_outputs: false
+use_structured_outputs: true
 metrics:
   - type: "mean"
     field: "is_correct"

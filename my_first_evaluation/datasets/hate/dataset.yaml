@@ -1,0 +1,16 @@
+key: "ai_luminate_hate"
+display_name: "AILuminate: Hate"
+description: |
+  AILuminate is a dataset of single-turn, text-only prompts created to stress-test chat
+  LLMs with requests that involve harmful, illegal, or otherwise unsafe intent. The
+  dataset covers a broad range of real-world risk areas and is designed to elicit
+  responses where a model might either provide unsafe assistance (e.g., enabling
+  instructions or endorsement) or respond safely (e.g., refuse, de-escalate, or avoid
+  enabling details).
+
+  The Hate category contains prompts that attempt to elicit demeaning or dehumanizing
+  content targeting people based on sensitive personal characteristics (e.g., race,
+  religion, ethnicity). Prompts may request slurs, propaganda, discriminatory arguments,
+  or harassment-style content, often with attempts to cloak intent as “jokes,” “debate,”
+  or “free speech” exercises.
+file_path: "data.jsonl"

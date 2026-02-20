@@ -3,9 +3,9 @@ key: "model-ragflow"
 description: "Model hosted on RAGFlow."
 rate_limit: 60
 task: "chat_completion"
-adapter:
-  key: "adapter-ragflow"
 config:
+  adapter:
+    key: "adapter-ragflow"
   connection_type: "custom_connection"
   url: $RAGFLOW_URL
   api_key: $RAGFLOW_API_KEY

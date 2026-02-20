@@ -2,9 +2,11 @@
 
 Note, this guide expects `.env` file with OPENAI_API_KEY defined. To use a different model, please adjust the model configuration.
 
-```
+```bash
 lf app add -f app.yaml
 lf switch playground-app
+
+lf add -r run.yaml
 
 lf dataset add -f datasets/seed-dataset.yaml
 lf dataset-generator add -f datasets/dataset-generator-from-template.yaml

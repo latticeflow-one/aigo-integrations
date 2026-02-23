@@ -5,7 +5,7 @@ datasets:
 tasks:
   - $ref: "./tasks/singleturn_generic_input.yaml"
 evaluation:
-  key: singleturn-generic-input
+  key: "singleturn-generic-input"
   display_name: "Single-turn Solver Generic Input"
   tags: ["Guides"]
   task_specifications:

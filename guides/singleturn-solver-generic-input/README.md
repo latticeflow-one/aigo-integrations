@@ -17,3 +17,9 @@ lf switch playground-app
 lf integration add --provider openai --api-key $OPENAI_API_KEY
 lf run -f run.yaml
 ```
+
+If you want to iterate on the task definition, try:
+
+```bash
+lf test task -f run.yaml -sk singleturn-generic-input-gpt-5-nano -n 1
+```

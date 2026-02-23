@@ -4,7 +4,7 @@ description: "Checks that the model can remember information from previous inter
 evaluated_entity_type: "model"
 definition:
   dataset:
-    key: conversation-memory-questions
+    key: conversation_memory_questions
   solver:
     type: multi_turn_solver
     message_builders:

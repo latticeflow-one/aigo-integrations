@@ -1,3 +1,6 @@
+models:
+  - $provider: "openai/gpt-5-nano"
+
 datasets:
   - $ref: ./datasets/seed-dataset.yaml
   - display_name: "QA Dataset"

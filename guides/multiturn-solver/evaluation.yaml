@@ -1,5 +1,5 @@
 models:
-  - $ref: ./models/openai_gpt-4.1-mini-2025-04-14.yaml
+  - $provider: "openai/gpt-5-nano"
 
 tasks:
   - $ref: ./tasks/multiturn_clarification.yaml
@@ -11,8 +11,8 @@ evaluation:
   key: multiturn-solver
   display_name: "Multiturn Solver"
   mode: debug
-  task_specifications: 
+  task_specifications:
     - task_key: multiturn-clarification
-      task_config: 
-        judge_model: "gpt-4-1-mini-2025-04-14"
-      model_key: "gpt-4-1-mini-2025-04-14"
+      task_config:
+        judge_model: "openai$gpt-5-nano"
+      model_key: "openai$gpt-5-nano"

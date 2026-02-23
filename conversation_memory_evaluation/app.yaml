@@ -1,0 +1,7 @@
+display_name: "Conversation Memory Evaluation"
+key: "conversation_memory"
+tags: ["General Purpose AI", "Chat Completion"]
+description: >
+  Evaluation of a chat model's ability to remember information from previous messages in
+  the conversation.
+long_description: !include README.md

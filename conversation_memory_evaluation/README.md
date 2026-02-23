@@ -13,6 +13,6 @@ that the conversation history is preserved across multiple turns.
 ```bash
 lf app add -f app.yaml
 lf switch conversation_memory
-export OPENAI_API_KEY="..."
+export OPENAI_API_KEY=<OPENAI_API_KEY>
 lf run -f run.yaml
 ```

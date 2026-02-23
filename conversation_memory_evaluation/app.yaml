@@ -4,7 +4,4 @@ tags: ["General Purpose AI", "Chat Completion"]
 description: >
   Evaluation of a chat model's ability to remember information from previous messages in
   the conversation.
-
-  The main purpose of this evaluation is to validate the model integration, especially
-  that the conversation history is preserved across multiple turns.
 long_description: !include README.md

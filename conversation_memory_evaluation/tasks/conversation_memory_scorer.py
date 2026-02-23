@@ -1,4 +1,5 @@
 def compute_scores(sample, solver_output):
+    # Extract the assistant responses from the conversation defined by the solver.
     response_0 = solver_output.messages[2]
     assert response_0["role"] == "assistant"
     response_1 = solver_output.messages[4]

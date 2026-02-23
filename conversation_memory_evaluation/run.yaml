@@ -1,4 +1,3 @@
-model_adapters: []
 models:
   - $ref: "./models/gpt_5_nano.yaml"
 datasets:
@@ -10,7 +9,7 @@ evaluation:
   display_name: "Conversation Memory"
   tags: ["General Purpose AI", "Chat Completion"]
   task_specifications:
-    - key: "conversation_memory"
+    - key: "conversation_memory_gpt_5_nano"
       task_key: "conversation_memory"
       model_key: "gpt_5_nano"
       display_name: "Conversation Memory"

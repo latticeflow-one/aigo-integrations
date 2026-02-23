@@ -10,7 +10,7 @@ datasets:
 evaluation:
   key: singleturn-generic-input
   display_name: "Single-turn Solver Generic Input"
-  mode: debug
+  tags: ["Guides"]
   task_specifications:
     - key: "singleturn-generic-input-gpt-5-nano"
       task_key: "singleturn-generic-input"

@@ -1,6 +1,6 @@
-display_name: "Singleturn Solver Generic Input"
+display_name: "Single-turn Solver Generic Input"
 key: "singleturn-generic-input"
-description: "Example task that uses singleturn solver with generic input builder."
+description: "Example task that uses a single-turn solver with generic input builder."
 config_spec: []
 definition:
   dataset:

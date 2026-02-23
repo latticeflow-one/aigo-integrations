@@ -1,7 +1,8 @@
 display_name: "Multiturn Clarification"
 key: "multiturn-clarification"
-description: "Example task that uses multiturn solver to answer extra clarifying model questions."
-config_spec: 
+description: >
+  Example task that uses multiturn solver to answer extra clarifying model questions.
+config_spec:
   - type: "model"
     key: "judge_model"
     display_name: "Judge Model"
@@ -16,12 +17,15 @@ definition:
         content: | 
           You are a helpful assistant. 
           
-          When asked about a question about countries in Europe, always repeat the question back 
-          to the user and ask for confirmation that you have understood the question.
+          When asked about a question about countries in Europe, always repeat the
+          question back to the user and ask for confirmation that you have understood
+          the question.
 
-          When asked question about non-European countries, answer directly without asking for confirmation.
+          When asked a question about non-European countries, answer directly without
+          asking for confirmation.
 
-          In both cases, when providing the factual answer, do not include any additional explanations only the answer as a single word.
+          In both cases, when providing the factual answer, do not include any
+          additional explanations or punctuation, but only answer with a single word.
       - type: "chat_message"
         role: "user"
         content: "{{ sample.question }}"

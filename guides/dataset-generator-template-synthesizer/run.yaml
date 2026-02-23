@@ -7,7 +7,6 @@ datasets:
       dataset_generator_key: "dataset-generator-from-template"
       num_samples: 10
       dataset_generator_config: {}
-
 dataset_generators:
   - display_name: "Dataset Generator from Template"
     key: "dataset-generator-from-template"

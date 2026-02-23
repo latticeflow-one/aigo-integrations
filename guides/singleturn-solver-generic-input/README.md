@@ -7,10 +7,13 @@ input builder.
 
 ## Usage
 
-Note, this guide expects `.env` file with OPENAI_API_KEY defined. To use a different model, please adjust the model configuration.
+This guide uses an OpenAI model as an example. It requires the OpenAI integration to 
+be configured either in the UI or as an environment variable `OPENAI_API_KEY` in the
+terminal. To use a different model, please adjust the model configuration.
 
 ```bash
 lf app add -f app.yaml
 lf switch playground-app
-lf run -f evaluation.yaml
+lf integration add --provider openai --api-key $OPENAI_API_KEY
+lf run -f run.yaml
 ```

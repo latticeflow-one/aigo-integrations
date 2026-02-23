@@ -14,7 +14,7 @@ definition:
             "messages": [
             {
               "role": "system",
-              "content": "You are a helpful assistant."
+              "content": "You are a helpful assistant. Answer with no punctuation."
             },
             {
               "role": "user",

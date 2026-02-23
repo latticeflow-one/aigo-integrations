@@ -1,3 +1,7 @@
 display_name: "Playground App"
 key: "playground-app"
 tags: ["Guides", "Dataset Generation"]
+description: >
+  This guide shows an example of a dataset generator that uses a Jinja template in the
+  synthesizer.
+long_description: !include README.md

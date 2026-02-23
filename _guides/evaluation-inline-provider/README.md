@@ -1,6 +1,6 @@
 ## Usage
 
-```
+```bash
 lf app add -f app.yaml
 lf switch playground-app
 

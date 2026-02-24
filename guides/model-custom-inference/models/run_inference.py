@@ -15,7 +15,7 @@ def run_inference(body: str, environment: dict):
         },
         content=json.dumps(body_dict).encode(),
         timeout=10.0,
-        verify=False,
+        verify=True,
     )
     response.raise_for_status()
     return response.text

@@ -12,4 +12,4 @@ config:
     MODEL_ENDPOINT_URL: "https://api.openai.com/v1/chat/completions"
     MODEL_ENDPOINT_API_KEY: $OPENAI_API_KEY
     MODEL_KEY: "gpt-4.1-nano"
-  timeout: 10
+  timeout: 15

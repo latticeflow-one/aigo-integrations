@@ -1,4 +1,4 @@
-display_name: "Identity"
+display_name: "Identity Chat Completion"
 key: "identity-adapter"
 description: >
   This is an identity adapter, i.e. adapter that does no transformation of the model 

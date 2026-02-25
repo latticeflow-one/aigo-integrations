@@ -11,5 +11,8 @@ process_input:
 process_output:
   language: "jinja"
   source_code: |
-    {% set body = body | fromjson %}
-    {{ body | tojson }}
+    {% if status_code != 200 %}
+        {"error": "A non-200 status code ({{ status_code }}) was returned by the model."}
+    {% else %}
+    {{ body }}
+    {% endif %}

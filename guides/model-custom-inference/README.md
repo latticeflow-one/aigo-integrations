@@ -9,8 +9,12 @@ as an example.
 
 ## Usage
 
-This guide uses an OpenAI model as an example. It requires OpenAI's api key to be set as
-a environment variable `OPENAI_API_KEY` in the  terminal.
+This guide uses an OpenAI model as an example. Configure the OpenAI API key by
+creating a `.env` file.
+
+```bash
+OPENAI_API_KEY=<OPENAI_API_KEY>
+```
 
 ```bash
 lf app add -f app.yaml

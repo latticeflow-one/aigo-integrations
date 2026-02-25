@@ -1,0 +1,28 @@
+model_adapters:
+  - display_name: "RAGFlow Chat Completion"
+    key: "adapter-ragflow"
+    description: "Adapter for RAGFlow models."
+    long_description: >
+      Adapter for RAGFlow OpenAI compatible messages. See
+      [documentation](https://ragflow.io/docs/http_api_reference#openai-compatible-api).
+    task: "chat_completion"
+    process_input:
+      language: "jinja"
+      source_code: !include "./model_adapters/ragflow_input.jinja"
+    process_output:
+      language: "jinja"
+      source_code: !include "./model_adapters/ragflow_output.jinja"
+
+models:
+  - display_name: "RAGFlow Model"
+    key: "model-ragflow"
+    description: "Model hosted on RAGFlow."
+    rate_limit: 60
+    task: "chat_completion"
+    config:
+      adapter:
+        key: "adapter-ragflow"
+      connection_type: "custom_connection"
+      url: $RAGFLOW_URL
+      api_key: $RAGFLOW_API_KEY
+      model_key: $RAGFLOW_MODEL

@@ -1,7 +1,0 @@
------BEGIN CERTIFICATE-----
-<CERT 1>
------END CERTIFICATE----
-
------BEGIN CERTIFICATE-----
-<CERT 2>
------END CERTIFICATE----

@@ -1,0 +1,34 @@
+model_adapters:
+  - display_name: "OpenAI Chat Completion"
+    key: "openai-chat-completion"
+    description: OpenAI chat completion API model adapter.
+    long_description: >
+      This is an OpenAI chat completion API adapter that can be used with
+      OpenAI-compatible endpoints. See
+      [OpenAI's documentation](https://developers.openai.com/api/reference/resources/chat/subresources/completions/methods/create)
+      for model input and output structure.
+    task: "chat_completion"
+    process_input:
+      language: "jinja"
+      source_code: !include "./model_adapters/openai_chat_completion_input.jinja"
+    process_output:
+      language: "jinja"
+      source_code: !include "./model_adapters/openai_chat_completion_output.jinja"
+
+
+models:
+  - display_name: "OpenAI GPT-4.1 Nano"
+    key: "openai-gpt-4-1-nano"
+    description: >
+      Fastest, most cost-efficient version of GPT-4.1 GPT-4.1 nano excels at instruction
+      following and tool calling.
+    rate_limit: 60
+    task: "chat_completion"
+    config:
+      adapter:
+        key: "openai-chat-completion"
+      connection_type: "custom_connection"
+      url: "https://api.openai.com/v1/chat/completions"
+      api_key: $OPENAI_API_KEY
+      model_key: "gpt-4.1-nano"
+

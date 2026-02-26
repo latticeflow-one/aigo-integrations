@@ -11,5 +11,5 @@ config:
   model_key: "gpt-4.1-mini-2025-04-14"
   tls_context:
     validation_context:
-      trusted_ca: !include "./ssl_certificates.txt"
+      trusted_ca: $SSL_CERTIFICATE
       trust_chain_verification: "verify_trust_chain"

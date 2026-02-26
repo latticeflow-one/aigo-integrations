@@ -1,0 +1,15 @@
+models:
+  - $provider: "openai/gpt-5-nano"
+datasets:
+  - $ref: "./datasets/qa_single_answers.yaml"
+tasks:
+  - $ref: "./tasks/multiturn_clarification.yaml"
+evaluation:
+  key: "multiturn-solver"
+  display_name: "Multiturn Solver"
+  task_specifications:
+    - key: "multiturn-clarification-gpt-5-nano"
+      task_key: "multiturn-clarification"
+      task_config:
+        judge_model: "openai$gpt-5-nano"
+      model_key: "openai$gpt-5-nano"

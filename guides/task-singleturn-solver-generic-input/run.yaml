@@ -1,0 +1,14 @@
+models:
+  - $provider: "openai/gpt-5-nano"
+datasets:
+  - $ref: "./datasets/qa_single_answers.yaml"
+tasks:
+  - $ref: "./tasks/singleturn_generic_input.yaml"
+evaluation:
+  key: "singleturn-generic-input"
+  display_name: "Single-turn Solver Generic Input"
+  tags: ["Guides"]
+  task_specifications:
+    - key: "singleturn-generic-input-gpt-5-nano"
+      task_key: "singleturn-generic-input"
+      model_key: "openai$gpt-5-nano"

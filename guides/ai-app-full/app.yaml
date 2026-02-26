@@ -1,0 +1,12 @@
+display_name: "Airline Chatbot"
+key: "airline-chatbot-app"
+tags: ["Guides", "Chatbot", "Airlines", "EU AI Act"]
+description: "LatticeFlow AI Airlines Virtual Assistant"
+long_description: !include "./README.md"
+key_info:
+  lifecycle_stage: "production"
+  user_types: "external"
+  data_classification: "confidential"
+  has_pii_access: true
+  has_client_data_access: true
+  built_by: "in_house"

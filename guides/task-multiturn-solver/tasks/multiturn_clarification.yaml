@@ -1,0 +1,51 @@
+display_name: "Multiturn Clarification"
+key: "multiturn-clarification"
+description: >
+  Example task that uses multiturn solver to answer extra clarifying model questions.
+config_spec:
+  - type: "model"
+    key: "judge_model"
+    display_name: "Judge Model"
+definition:
+  dataset:
+    key: "qa-single-answers"
+  solver:
+    type: "multi_turn_solver"
+    message_builders:
+      - type: "chat_message"
+        role: "system"
+        content: | 
+          You are a helpful assistant. 
+          
+          When asked about a question about countries in Europe, always repeat the
+          question back to the user and ask for confirmation that you have understood
+          the question.
+
+          When asked a question about non-European countries, answer directly without
+          asking for confirmation.
+
+          In both cases, when providing the factual answer, do not include any
+          additional explanations or punctuation, but only answer with a single word.
+      - type: "chat_message"
+        role: "user"
+        content: "{{ sample.question }}"
+      - type: "generate"
+      - type: "generate_message"
+        model_key: "<< config.judge_model >>"
+        extra_input_messages:
+          - type: "chat_message"
+            role: "user"
+            content: |
+              If the previous message is a question, answer it using the information
+              in the other messages.
+              If the question is asking for confirmation, always answer 'Yes'.
+
+              Otherwise, answer with '<done>'.
+        output_role: "user"
+        terminate_if:
+          includes: "<done>"
+          keep_iteration: false
+      - type: "generate"
+  scorers:
+    - type: "string_equals"
+      ground_truth: "{{ sample.target }}"

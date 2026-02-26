@@ -1,0 +1,4 @@
+display_name: "Seed Dataset"
+key: "seed-dataset"
+description: "Seed dataset with countries and cities."
+file_path: "./seed-dataset.csv"

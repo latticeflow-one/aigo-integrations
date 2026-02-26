@@ -1,0 +1,15 @@
+display_name: "OpenAI GPT-4.1 Nano (Custom Inference)"
+key: "gpt-4-1-nano-custom-inference"
+description: "OpenAI's GPT-5 Nano defined as a model with custom inference."
+rate_limit: 60
+task: "chat_completion"
+config:
+  connection_type: "custom_inference"
+  adapter:
+    key: "latticeflow$openai_chat_completion"
+  run_inference_snippet: !include "./run_inference.py"
+  environment:
+    MODEL_ENDPOINT_URL: "https://api.openai.com/v1/chat/completions"
+    MODEL_ENDPOINT_API_KEY: $OPENAI_API_KEY
+    MODEL_KEY: "gpt-4.1-nano"
+  timeout: 15

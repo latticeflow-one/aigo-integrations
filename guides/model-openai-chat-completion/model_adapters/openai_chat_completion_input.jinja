@@ -1,0 +1,17 @@
+{
+    "model": "{{ model_info.model_key }}",
+    "messages": [
+        {% for message in input.messages %}
+        {
+            "role": "{{ message.role }}",
+            "content": {{ message.content | tojson }}
+        }{% if not loop.last %},{% endif %}
+        {% endfor %}
+    ]
+    {% if input.response_format is defined and input.response_format is not none %}
+        ,"response_format": {{ input.response_format | tojson }}
+    {% endif %}
+    {% for key, value in kwargs.items() %}
+        ,"{{ key }}": {{ value | tojson }}
+    {% endfor %}
+}

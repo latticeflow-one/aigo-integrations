@@ -20,8 +20,6 @@
 
 Welcome to the **LatticeFlow AI GO! Integrations** repository. 
 
-## Purpose
-
 This repository serves as the central hub for learning how to connect your AI ecosystem
 with the LatticeFlow AI GO! platform. Whether you are benchmarking your AI system,
 connecting a custom RAG agent, or evaluating safety guardrails, this repository contains

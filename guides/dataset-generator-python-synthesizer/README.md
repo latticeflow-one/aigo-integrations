@@ -6,6 +6,9 @@ This guide shows an example of a dataset generator that uses a Python script as 
 synthesizer. The dataset generator is then used to generate a sample dataset of simple
 math questions.
 
+It showcases how to generate math questions without any seed dataset, how to use
+standard Python libraries and how to introduce randomness.
+
 ## Usage
 
 ```bash

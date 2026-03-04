@@ -19,7 +19,7 @@ def synthesize(source: dict[str, Any]) -> list[dict[str, Any]]:
         "division",
         "factorial",
     ]:
-        num_examples = rng.randint(1, 10)
+        num_examples = rand_int(lo=1, hi=10)
 
         for _ in range(num_examples):
             if operation == "addition":
@@ -64,7 +64,7 @@ def synthesize(source: dict[str, Any]) -> list[dict[str, Any]]:
                 )
 
             elif operation == "factorial":
-                n = rand_int(lo=0, hi=20)
+                n = rand_int()
                 targets.append(
                     {
                         "operation": operation,
@@ -72,5 +72,7 @@ def synthesize(source: dict[str, Any]) -> list[dict[str, Any]]:
                         "answer": math.factorial(n),
                     }
                 )
+            else:
+                raise NotImplementedError()
 
     return targets

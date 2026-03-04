@@ -1,10 +1,7 @@
 datasets:
-  - $ref: "./datasets/seed-dataset.yaml"
   - display_name: "QA Dataset"
     key: "dataset-python-synthesizer"
-    description: >
-      Dataset of general knowledge questions-answers generated using the Python
-      synthesizer.
+    description: "Dataset of simple math questions."
     generator_specification:
       dataset_generator_key: "dataset-generator-python-synthesizer"
       num_samples: 10
@@ -16,8 +13,7 @@ dataset_generators:
     config_spec: []
     definition:
       data_source:
-        type: "dataset_samples"
-        dataset_key: "seed-dataset"
+        type: "empty"
       synthesizers:
         - type: "python"
           synthesize_snippet: !include "./dataset_generators/synthesize.py"

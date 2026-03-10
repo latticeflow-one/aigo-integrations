@@ -1,36 +1,5 @@
 datasets:
-  - $ref: ./datasets/seed-dataset.yaml
-  - display_name: "QA Dataset"
-    key: "qa-generated-from-template"
-    description: "Dataset of general knowledge questions-answers."
-    generator_specification:
-      dataset_generator_key: "dataset-generator-from-template"
-      num_samples: 10
-      dataset_generator_config: {}
+  - $ref: "./datasets/seed-dataset.yaml"
+  - $ref: "./datasets/qa_dataset.yaml"
 dataset_generators:
-  - display_name: "Dataset Generator from Template"
-    key: "dataset-generator-from-template"
-    description: "This is a simple dataset generator."
-    config_spec: []
-    definition:
-      data_source:
-        type: "dataset_samples"
-        dataset_key: "seed-dataset"
-      synthesizers:
-        - type: "template"
-          template: |
-            I'm in {{ source.country }}, in the city of {{ source.city }}.
-    
-            I want to walk {distance} in the {direction} direction.
-    
-            What is the name of the city I will arrive at?
-          fields:
-            distance:
-              - "100km"
-              - "200km"
-              - "300km"
-            direction:
-              - "north"
-              - "south"
-              - "east"
-              - "west"
+  - $ref: "./dataset_generators/generator_from_templates.yaml"

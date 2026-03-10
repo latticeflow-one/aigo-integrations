@@ -1,0 +1,10 @@
+display_name: "Dataset Generator with Python Synthesizer"
+key: "dataset-generator-python-synthesizer"
+description: "This is a simple dataset generator."
+config_spec: []
+definition:
+  data_source:
+    type: "empty"
+  synthesizers:
+    - type: "python"
+      synthesize_snippet: !include "./synthesize.py"

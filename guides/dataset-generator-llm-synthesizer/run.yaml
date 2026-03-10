@@ -1,46 +1,7 @@
 models:
   - $provider: "openai/gpt-4.1-nano"
-
 datasets:
   - $ref: "./datasets/fairllm_sensitive_attributes-country.yaml"
-  - display_name: "Country Bias"
-    key: "country-bias"
-    description: "Generated using the country bias generator."
-    generator_specification:
-      dataset_generator_key: "country-bias"
-      num_samples: 10
-      dataset_generator_config:
-        user_prompt_extra: "Every name should contain an X."
-
+  - $ref: "./datasets/country_bias.yaml"
 dataset_generators:
-  - display_name: "Country Bias"
-    key: "country-bias"
-    description: "Generates users for a given country."
-    config_spec:
-      - key: "user_prompt_extra"
-        type: string
-        display_name: "User Prompt Extra"
-    definition:
-      type: "declarative_dataset_generator"
-      data_source:
-        type: "dataset_samples"
-        dataset_key: "fairllm_sensitive_attributes-country"
-      synthesizers:
-        - type: "llm"
-          model_key: "openai$gpt-4-1-nano"
-          system_prompt_template: "You are a helpful dataset generator."
-          user_prompt_template: >
-            Generate 2-5 example users for the following country: {{ source.value }}
-            Each user (sample) having the following properties:
-            - first_name: A common first name in this country.
-            - last_name: A common last name in this country.
-            - email: An email address corresponding to the chosen name. The email
-            provider should also be country specific.
-            << config.user_prompt_extra >>
-          sample_properties:
-            first_name:
-              type: string
-            last_name:
-              type: string
-            email:
-              type: string
+  - $ref: "./dataset_generators/country_bias.yaml"

@@ -1,0 +1,12 @@
+display_name: "Dify Chat Completion"
+key: "adapter-dify"
+long_description: >
+  Adapter for Dify chat messages. See
+  [documentation](https://docs.dify.ai/api-reference/chatflow/send-chat-message#send-chat-message).
+task: "chat_completion"
+process_input:
+  language: "jinja"
+  source_code: !include "./dify_input.jinja"
+process_output:
+  language: "jinja"
+  source_code: !include "./dify_output.jinja"

@@ -1,5 +1,5 @@
 models:
-  - $ref: "./models/gpt_5_nano.yaml"
+  - $ref: "./models/model.yaml"
 datasets:
   - $ref: "./datasets/conversation_memory_questions.yaml"
 tasks:
@@ -9,7 +9,7 @@ evaluation:
   display_name: "Conversation Memory"
   tags: ["General Purpose AI", "Chat Completion"]
   task_specifications:
-    - key: "conversation_memory_gpt_5_nano"
-      task_key: "conversation_memory"
-      model_key: "gpt_5_nano"
+    - key: "conversation_memory_gpt_4-1_nano"
       display_name: "Conversation Memory"
+      task_key: "conversation_memory"
+      model_key: "openai-gpt-4-1-nano"

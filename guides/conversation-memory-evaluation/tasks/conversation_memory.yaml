@@ -1,17 +1,20 @@
-key: "conversation_memory"
 display_name: "Conversation Memory"
-description: "Checks that the model can remember information from previous interactions in a conversation."
+key: "conversation_memory"
+description: >
+  Checks that the model can remember information from previous interactions in a
+  conversation.
 evaluated_entity_type: "model"
 definition:
   dataset:
-    key: conversation_memory_questions
+    key: "conversation_memory_questions"
   solver:
-    type: multi_turn_solver
+    type: "multi_turn_solver"
     message_builders:
       - type: "chat_message"
         role: "system"
         content: >
-          You are a helpful assistant. In every message, you have to mention the user's name.
+          You are a helpful assistant. In every message, you have to mention the user's
+          name.
       - type: "chat_message"
         role: "user"
         content: "{{ sample.question_0 }}"
@@ -21,22 +24,22 @@ definition:
         content: "{{ sample.question_1 }}"
       - type: "generate"
   scorers:
-    - type: python
-      compute_scores_snippet: !include conversation_memory_scorer.py
+    - type: "python"
+      compute_scores_snippet: !include "conversation_memory_scorer.py"
       metrics:
-        - type: mean
+        - type: "mean"
           key: "name_mentioned_response_0"
           field: "name_mentioned_response_0"
           name: "Name Mentioned in First Response"
-        - type: mean
+        - type: "mean"
           key: "name_mentioned_response_1"
           field: "name_mentioned_response_1"
           name: "Name Mentioned in Second Response"
-        - type: mean
+        - type: "mean"
           key: "correct_answer_response_0"
           field: "correct_answer_response_0"
           name: "Correct Answer in First Response"
-        - type: mean
+        - type: "mean"
           key: "correct_answer_response_1"
           field: "correct_answer_response_1"
           name: "Correct Answer in Second Response"

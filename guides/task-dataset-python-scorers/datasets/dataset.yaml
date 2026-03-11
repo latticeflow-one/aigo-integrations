@@ -1,0 +1,5 @@
+display_name: "Hello Dataset"
+key: "hello-dataset"
+source:
+  type: "local"
+  file_path: "./data.jsonl"

@@ -1,0 +1,8 @@
+display_name: "Playground App"
+key: "playground-app"
+tags: ["Guides", "Tasks", "Data Quality"]
+description: >
+  This guide shows an example of two tasks that evaluate the data quality of a dataset.
+  It evaluates the completeness of dataset samples using a single-sample Python scorer
+  and the uniqueness of dataset samples using an all-samples Python scorer.
+long_description: !include "README.md"

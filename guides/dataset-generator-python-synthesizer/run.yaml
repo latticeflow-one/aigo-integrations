@@ -1,19 +1,4 @@
 datasets:
-  - display_name: "QA Dataset"
-    key: "dataset-python-synthesizer"
-    description: "Dataset of simple math questions."
-    generator_specification:
-      dataset_generator_key: "dataset-generator-python-synthesizer"
-      num_samples: 10
-      dataset_generator_config: {}
+  - $ref: "./datasets/dataset.yaml"
 dataset_generators:
-  - display_name: "Dataset Generator with Python Synthesizer"
-    key: "dataset-generator-python-synthesizer"
-    description: "This is a simple dataset generator."
-    config_spec: []
-    definition:
-      data_source:
-        type: "empty"
-      synthesizers:
-        - type: "python"
-          synthesize_snippet: !include "./dataset_generators/synthesize.py"
+  - $ref: "./dataset_generators/dataset_generator.yaml"

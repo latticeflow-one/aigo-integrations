@@ -10,9 +10,15 @@ that the conversation history is preserved across multiple turns.
 
 ## Usage
 
+This guide uses an OpenAI model as an example. Configure the OpenAI API key by
+creating a `.env` file.
+
+```bash
+OPENAI_API_KEY=<OPENAI_API_KEY>
+```
+
 ```bash
 lf app add -f app.yaml
-lf switch conversation_memory
-export OPENAI_API_KEY=<OPENAI_API_KEY>
+lf switch playground-app
 lf run -f run.yaml
 ```

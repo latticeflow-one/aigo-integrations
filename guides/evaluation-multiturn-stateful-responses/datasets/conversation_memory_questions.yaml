@@ -1,0 +1,5 @@
+display_name: "Conversation Memory Questions"
+key: "conversation_memory_questions"
+source:
+  type: "local"
+  file_path: "./conversation_memory_questions.jsonl"

@@ -1,0 +1,19 @@
+display_name: "Completeness Task"
+key: "completeness-task"
+description: >
+  Evaluates the completeness rate of a field for each sample in a dataset.
+evaluated_entity_type: "dataset"
+tags: ["Data Quality"]
+config_spec:
+  - type: "string"
+    key: "field"
+    display_name: "Field"
+definition:
+  type: "declarative_task"
+  scorers:
+    - type: "python"
+      compute_scores_snippet: !include "completeness_scorer.py"
+      metrics:
+        - type: "mean"
+          field: "is_complete"
+          name: "Field Completeness"

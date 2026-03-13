@@ -1,0 +1,22 @@
+datasets:
+  - $ref: "./datasets/dataset.yaml"
+tasks:
+  - $ref: "./tasks/uniqueness.yaml"
+  - $ref: "./tasks/completeness.yaml"
+evaluation:
+  display_name: "Data Quality"
+  key: "data-quality"
+  tags: ["Data Quality", "Uniqueness", "Completeness"]
+  task_specifications:
+    - key: "uniqueness-task-hello-dataset"
+      task_key: "uniqueness-task"
+      task_config:
+        field: "content"
+      dataset_key: "hello-dataset"
+      display_name: "Sample Uniqueness in Hello Dataset"
+    - key: "completeness-task-hello-dataset"
+      task_key: "completeness-task"
+      task_config:
+        field: "content"
+      dataset_key: "hello-dataset"
+      display_name: "Sample Completeness in Hello Dataset"

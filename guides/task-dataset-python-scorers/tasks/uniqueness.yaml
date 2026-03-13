@@ -1,0 +1,19 @@
+display_name: "Uniqueness Task"
+key: "uniqueness-task"
+description: >
+  Evaluates the uniqueness rate of values in a field across samples in a dataset.
+tags: ["Data Quality"]
+evaluated_entity_type: "dataset"
+config_spec:
+  - type: "string"
+    key: "field"
+    display_name: "Field"
+definition:
+  type: "declarative_task"
+  scorers:
+    - type: "python_all_samples"
+      compute_scores_snippet: !include "uniqueness_scorer.py"
+      metrics:
+        - type: "mean"
+          field: "is_unique"
+          name: "Uniqueness Rate"

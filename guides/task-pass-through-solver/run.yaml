@@ -1,0 +1,15 @@
+models:
+  - $provider: "openai/gpt-5-nano"
+datasets:
+  - $ref: "./datasets/recorded_qa_traces.yaml"
+tasks:
+  - $ref: "./tasks/pass_through.yaml"
+evaluation:
+  key: "pass-through-solver"
+  display_name: "Pass-through Solver"
+  tags: ["Guides"]
+  task_specifications:
+    - key: "pass-through-qa"
+      task_key: "pass-through-qa"
+      display_name: "Pass-through QA"
+      model_key: "openai$gpt-5-nano"

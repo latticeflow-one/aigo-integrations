@@ -9,6 +9,7 @@ definition:
     key: "recorded-qa-traces"
   solver:
     type: "pass_through_solver"
+    message_format: "open_responses"
     trace_column: "trace"
   scorers:
     - type: "string_equals"

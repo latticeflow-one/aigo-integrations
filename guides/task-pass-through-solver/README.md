@@ -45,6 +45,7 @@ The task specification in `tasks/pass_through.yaml` configures the solver as:
 ```yaml
 solver:
   type: "pass_through_solver"
+  message_format: "open_responses"
   trace_column: "trace"
 ```
 
@@ -106,7 +107,7 @@ One record demonstrates a multi-turn conversation where the model uses a
 
 ## Message Format
 
-The `pass_through_solver` supports an optional `message_format` field:
+The `pass_through_solver` supports an optional `message_format` field, note that in order to parse function call and outputs, you must use `open_responses` format:
 
 | Value | Description |
 |---|---|

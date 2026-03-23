@@ -1,0 +1,13 @@
+key: "harmbench_illegal"
+display_name: "HarmBench: Illegal Activities"
+description: >-
+  HarmBench is a standardized evaluation framework for automated red teaming methods
+  targeting large language models (LLMs).
+source:
+  type: "huggingface"
+  path: "allenai/tulu-3-harmbench-eval"
+  split: "test"
+  filters:
+    - op: "equals"
+      expression: "{{SemanticCategory}}"
+      value: "illegal"

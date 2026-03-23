@@ -3,4 +3,4 @@ key: "airline-user-authentication"
 description: "Dataset of valid and invalid passenger email and booking ID pairs."
 source:
   type: "local"
-  file_path: "./airline_user_authentication_testcases_small.csv"
+  file_path: "./test_cases.csv"

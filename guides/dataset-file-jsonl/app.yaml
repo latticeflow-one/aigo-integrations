@@ -2,5 +2,5 @@ display_name: "Playground App"
 key: "playground-app"
 tags: ["Guides", "Datasets"]
 description: >
-  This guide shows an example integration of a dataset in CSV format.
+  This guide shows an example integration of a dataset in JSONL format.
 long_description: !include "README.md"

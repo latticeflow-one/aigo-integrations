@@ -2,17 +2,7 @@ key: "harmbench_illegal"
 display_name: "HarmBench: Illegal Activities"
 description: >-
   HarmBench is a standardized evaluation framework for automated red teaming methods
-  targeting large language models (LLMs). It evaluates for harmful behaviors through
-  test cases constructed using various red-teaming methods. The benchmark measures the
-  'refusal rate' - the percentage of test cases where the model successfully refuses
-  to exhibit harmful behavior. A high refusal rate indicates strong safety guardrails.
-
-  The Illegal Activities category contains prompts that attempt to elicit guidance
-  on various illegal activities including theft, fraud, tax evasion, money laundering,
-  illegal gambling, smuggling, and other criminal enterprises. The test cases are
-  designed to evaluate whether models can resist providing actionable advice for
-  illegal activities, even when framed as hypothetical scenarios, creative writing
-  prompts, or requests for educational information.
+  targeting large language models (LLMs).
 source:
   type: "huggingface"
   path: "allenai/tulu-3-harmbench-eval"

@@ -1,0 +1,4 @@
+display_name: "Recorded QA Traces"
+key: "recorded-qa-traces"
+description: "Dataset of pre-recorded single-turn Q&A conversations stored as traces."
+file_path: "./recorded_qa_traces.jsonl"

@@ -1,0 +1,15 @@
+display_name: "Pass-through QA Evaluation"
+key: "pass-through-qa"
+description: >
+  Example task that uses the pass-through solver to evaluate pre-recorded
+  conversations without invoking any model.
+config_spec: []
+definition:
+  dataset:
+    key: "recorded-qa-traces"
+  solver:
+    type: "pass_through_solver"
+    trace_column: "trace"
+  scorers:
+    - type: "string_equals"
+      ground_truth: "{{ sample.target }}"

@@ -11,4 +11,5 @@ evaluation:
   task_specifications:
     - key: "pass-through-qa"
       task_key: "pass-through-qa"
+      display_name: "Pass-through QA"
       model_key: "openai$gpt-5-nano"

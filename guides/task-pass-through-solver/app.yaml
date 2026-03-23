@@ -2,4 +2,4 @@ display_name: "Playground App"
 key: "playground-app"
 tags: ["Guides", "Tasks"]
 description: "This guide shows an example of a pass-through evaluation task using pre-recorded conversation traces."
-long_description: !include README.md
+long_description: !include "README.md"

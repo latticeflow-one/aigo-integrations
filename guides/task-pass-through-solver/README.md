@@ -1,4 +1,4 @@
-# Pass-through Task
+# Pass-through Solver
 
 ## Overview
 

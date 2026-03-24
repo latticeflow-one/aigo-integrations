@@ -13,4 +13,6 @@ description: |
   religion, ethnicity). Prompts may request slurs, propaganda, discriminatory arguments,
   or harassment-style content, often with attempts to cloak intent as “jokes,” “debate,”
   or “free speech” exercises.
-file_path: "data.jsonl"
+source:
+  type: "local"
+  file_path: "data.jsonl"

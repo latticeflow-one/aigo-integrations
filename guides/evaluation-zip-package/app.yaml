@@ -1,0 +1,7 @@
+display_name: "Evaluation Zip Package App"
+key: "evaluation-zip-package-app"
+tags: ["Guides", "Evaluations"]
+description: >
+  This guide shows an example of running an initializing and running an evaluation via
+  `lf init`.
+long_description: !include README.md

@@ -13,7 +13,8 @@ terminal. To use a different model, please adjust the model configuration.
 ```bash
 lf app add -f app.yaml
 lf switch evaluation-zip-package-app
-lf model add -f model.yaml
-lf init --url
-lf run -f run.yaml
+lf add model -f model.yaml
+lf init --url https://github.com/latticeflow-one/aigo-integrations/blob/master/guides/evaluation-zip-package/evaluation.zip
+lf init --url https://github.com/latticeflow-one/aigo-integrations/blob/yannick/chore/lf-init-zip-guide/guides/evaluation-zip-package/evaluation.zip
+MODEL_KEY=openai-gpt-4-1-nano lf run -f run.yaml
 ```

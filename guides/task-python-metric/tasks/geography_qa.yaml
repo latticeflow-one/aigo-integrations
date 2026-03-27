@@ -1,0 +1,23 @@
+display_name: "Geography QA Evaluation"
+key: "geography-qa"
+description: >
+  Evaluates model answers on geography questions using a Python scorer for
+  per-sample scoring and a Python metric for custom cross-sample aggregation.
+evaluated_entity_type: "model"
+config_spec: []
+definition:
+  dataset:
+    key: "geography-qa"
+  solver:
+    type: "single_turn_solver"
+    input_builder:
+      type: "chat_completion"
+      input_messages:
+        - role: "user"
+          content: "What is the capital of {{ sample.country }}? Answer in one word."
+  scorers:
+    - type: "python"
+      compute_scores_snippet: !include "geography_scorer.py"
+      metrics:
+        - type: "python"
+          compute_metrics_snippet: !include "geography_metric.py"

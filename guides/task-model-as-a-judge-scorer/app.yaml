@@ -1,0 +1,7 @@
+display_name: "Playground App"
+key: "playground-app"
+tags: ["Guides", "Tasks"]
+description: >
+  This guide shows an example of the model-as-a-judge scorer for evaluating
+  RAG task responses, with configurable judge model and evaluation dimension.
+long_description: !include README.md

@@ -1,0 +1,7 @@
+display_name: "Playground App"
+key: "playground-app"
+tags: ["Guides", "Tasks"]
+description: >
+  This guide shows an example of a Python solver that manages the conversation
+  trace programmatically using a custom run_solver function.
+long_description: !include README.md

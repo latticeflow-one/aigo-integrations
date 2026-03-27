@@ -1,0 +1,17 @@
+models:
+  - $provider: "openai/gpt-4.1-nano"
+
+datasets:
+  - $ref: "./datasets/geography_qa.yaml"
+
+tasks:
+  - $ref: "./tasks/geography_qa.yaml"
+
+evaluation:
+  key: "python-metric"
+  display_name: "Python Metric"
+  tags: ["Guides"]
+  task_specifications:
+    - key: "geography-qa-gpt-4-1-nano"
+      task_key: "geography-qa"
+      model_key: "openai$gpt-4-1-nano"

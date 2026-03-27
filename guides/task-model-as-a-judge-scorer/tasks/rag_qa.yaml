@@ -1,0 +1,57 @@
+display_name: "RAG QA Evaluation"
+key: "rag-qa"
+description: >
+  Evaluates model responses on retrieval-augmented generation tasks using a
+  model-as-a-judge scorer. Supports configurable judge model and evaluation dimension.
+evaluated_entity_type: "model"
+config_spec:
+  - type: "dataset"
+    key: "qa_dataset"
+    display_name: "QA Dataset"
+    description: "The dataset to evaluate against."
+  - type: "model"
+    key: "judge_model"
+    display_name: "Judge Model"
+  - type: "categorical"
+    key: "evaluation_dimension"
+    display_name: "Evaluation Dimension"
+    description: "The aspect of the model response to evaluate."
+    allowed_values: ["groundedness", "relevance"]
+definition:
+  dataset:
+    key: "<< config.qa_dataset >>"
+  solver:
+    type: "single_turn_solver"
+    input_builder:
+      type: "chat_completion"
+      input_messages:
+        - role: "system"
+          content: "You are a helpful assistant. Use only the provided context to answer."
+        - role: "user"
+          content: |
+            Context: {{ sample.context }}
+            Question: {{ sample.question }}
+  scorers:
+    - type: "model_as_a_judge_scorer"
+      model_key: "<< config.judge_model >>"
+      system_prompt: >
+        You are an evaluator assessing the << config.evaluation_dimension >> of a
+        model response to a question.
+        On a scale from 0 to 100, assign 100 if the response is fully
+        << config.evaluation_dimension >> and 0 if it is not at all.
+        Return only the numeric score.
+      user_prompt: >
+        <context>{{ sample.context }}</context>
+        <response>{{ model_output.choices[0].message.content }}</response>
+      score_min: 0
+      score_max: 100
+      metrics:
+        - type: "mean"
+          field: "score"
+          name: "Mean Score"
+        - type: "min"
+          field: "score"
+          name: "Min Score"
+        - type: "max"
+          field: "score"
+          name: "Max Score"

@@ -1,0 +1,19 @@
+models:
+  - $provider: "openai/gpt-4.1-nano"
+
+datasets:
+  - $ref: "./datasets/mcqa.yaml"
+
+tasks:
+  - $ref: "./tasks/mcqa.yaml"
+
+evaluation:
+  key: "string-equals-mcqa-scorer"
+  display_name: "String Equals MCQA Scorer"
+  tags: ["Guides"]
+  task_specifications:
+    - key: "mcqa-gpt-4-1-nano"
+      task_key: "mcqa"
+      model_key: "openai$gpt-4-1-nano"
+      task_config:
+        answer_column: "answer"

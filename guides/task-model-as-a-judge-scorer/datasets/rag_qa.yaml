@@ -1,0 +1,6 @@
+display_name: "RAG QA Dataset"
+key: "rag-qa"
+description: "Dataset of questions with supporting context passages for RAG evaluation."
+source:
+  type: "local"
+  file_path: "./rag_qa.jsonl"

@@ -1,0 +1,6 @@
+key: "languages-dataset"
+display_name: "Languages Dataset"
+description: "A dataset of languages."
+source:
+  type: "local"
+  file_path: "./languages.csv"

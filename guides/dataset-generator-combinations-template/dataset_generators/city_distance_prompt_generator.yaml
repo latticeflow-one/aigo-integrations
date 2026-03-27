@@ -1,0 +1,25 @@
+key: "city-distance-prompt-generator"
+display_name: "City Distance Prompt Generator"
+description: "Generates navigation prompts from all combinations of cities and distances."
+config_spec: []
+definition:
+  type: "declarative_dataset_generator"
+  data_source:
+    type: "dataset_sample_combinations"
+    dataset_keys:
+      - "cities-dataset"
+      - "distances-dataset"
+  synthesizers:
+    - type: "template"
+      template: |
+        I'm in {{ source.cities-dataset.city }}, the capital of {{ source.cities-dataset.country }}.
+
+        I want to travel {{ source.distances-dataset.distance }} in the {direction} direction.
+
+        What is the name of the city I will arrive at?
+      fields:
+        direction:
+          - "north"
+          - "south"
+          - "east"
+          - "west"

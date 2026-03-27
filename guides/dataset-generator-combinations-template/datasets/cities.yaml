@@ -1,0 +1,6 @@
+key: "cities-dataset"
+display_name: "Cities Dataset"
+description: "A dataset of countries and their capital cities."
+source:
+  type: "local"
+  file_path: "./cities.csv"

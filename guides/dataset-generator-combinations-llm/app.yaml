@@ -1,0 +1,7 @@
+display_name: "Playground App"
+key: "playground-app"
+tags: ["Guides", "Dataset Generators"]
+description: >
+  This guide shows how to generate a dataset from all combinations of two source
+  datasets using an LLM synthesizer.
+long_description: !include README.md

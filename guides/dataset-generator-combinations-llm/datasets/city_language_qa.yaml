@@ -1,0 +1,7 @@
+key: "city-language-qa-generated"
+display_name: "City Language QA Generated"
+description: "A generated dataset combining city and language to produce QA samples."
+generator_specification:
+  dataset_generator_key: "city-language-qa-generator"
+  num_samples: 3
+  dataset_generator_config: {}

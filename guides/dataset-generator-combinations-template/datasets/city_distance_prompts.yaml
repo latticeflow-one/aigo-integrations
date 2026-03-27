@@ -1,0 +1,7 @@
+key: "city-distance-prompts-generated"
+display_name: "City Distance Prompts Generated"
+description: "A generated dataset of navigation prompts from city and distance combinations."
+generator_specification:
+  dataset_generator_key: "city-distance-prompt-generator"
+  num_samples: 3
+  dataset_generator_config: {}

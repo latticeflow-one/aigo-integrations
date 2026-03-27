@@ -1,0 +1,6 @@
+display_name: "QA Single Answers"
+key: "qa-single-answers"
+description: "Dataset of general knowledge questions with single-word answers."
+source:
+  type: "local"
+  file_path: "./qa_single_answers.jsonl"

@@ -1,0 +1,7 @@
+display_name: "Playground App"
+key: "playground-app"
+tags: ["Guides", "Tasks"]
+description: >
+  This guide shows an example of a multi-turn task that uses the loop message
+  builder to handle clarifying model questions before producing a final answer.
+long_description: !include README.md

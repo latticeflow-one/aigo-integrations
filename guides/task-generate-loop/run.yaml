@@ -1,0 +1,19 @@
+models:
+  - $provider: "openai/gpt-4.1-nano"
+
+datasets:
+  - $ref: "./datasets/qa_single_answers.yaml"
+
+tasks:
+  - $ref: "./tasks/generate_loop.yaml"
+
+evaluation:
+  key: "generate-loop"
+  display_name: "Generate Loop"
+  tags: ["Guides"]
+  task_specifications:
+    - key: "generate-loop-gpt-4-1-nano"
+      task_key: "generate-loop"
+      model_key: "openai$gpt-4-1-nano"
+      task_config:
+        judge_model: "openai$gpt-4-1-nano"

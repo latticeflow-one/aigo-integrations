@@ -1,0 +1,19 @@
+datasets:
+  - $ref: "./datasets/questions.yaml"
+
+models:
+  - $provider: "openai/gpt-4.1-nano"
+
+tasks:
+  - $ref: "./tasks/language_labeling.yaml"
+
+evaluation:
+  key: "language-labeling-evaluation"
+  display_name: "Language Labeling Evaluation"
+  task_specifications:
+    - key: "language-labeling-gpt-4-1-nano"
+      task_key: "language-labeling"
+      display_name: "Language Labeling OpenAI GPT-4.1 Nano"
+      task_config:
+        judge_model: "openai$gpt-4-1-nano"
+      model_key: "openai$gpt-4-1-nano"

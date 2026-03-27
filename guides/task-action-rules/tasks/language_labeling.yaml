@@ -1,0 +1,63 @@
+key: "language-labeling"
+display_name: "Language Labeling"
+description: >
+  Answers multilingual questions and labels the response language. Action rules
+  exclude non-English responses, specific holdout sample IDs, and dataset-flagged
+  holdout samples from metric calculations.
+evaluated_entity_type: "model"
+config_spec:
+  - type: "model"
+    key: "judge_model"
+    display_name: "Judge Model"
+    description: "The model used to label the language of model responses."
+definition:
+  dataset:
+    key: "multilingual-questions"
+  solver:
+    type: "single_turn_solver"
+    input_builder:
+      type: "chat_completion"
+      input_messages:
+        - role: "system"
+          content: "Respond in the same language as the question. Answer concisely."
+        - role: "user"
+          content: "{{ sample.question }}"
+  scorers:
+    - type: "labeler_via_model"
+      key: "language_labeller"
+      model_key: "<< config.judge_model >>"
+      system_prompt: >
+        You are a language detection assistant.
+        Respond with exactly one of these labels:
+        - 'ENGLISH': if the text is entirely in English
+        - 'OTHER': if the text is in any other language or mixed languages
+      user_prompt: >
+        <TEXT>{{ solver_output.output }}</TEXT>
+        Label:
+      valid_labels:
+        - "ENGLISH"
+        - "OTHER"
+      metrics:
+        - type: "mean"
+          field: "is_correct"
+          name: "English Response Rate"
+  actions:
+    - key: "exclude_non_english"
+      action: "exclude_from_metrics"
+      filter:
+        op: "equals"
+        expression: "{{ scores.language_labeller.label }}"
+        value: "OTHER"
+    - key: "exclude_sample_ids"
+      action: "exclude_from_metrics"
+      filter:
+        op: "in"
+        expression: "{{ sample.sample_id }}"
+        values:
+          - "3"
+          - "6"
+    - key: "exclude_holdout"
+      action: "exclude_from_metrics"
+      filter:
+        op: "is_true"
+        expression: "{{ sample.is_holdout }}"

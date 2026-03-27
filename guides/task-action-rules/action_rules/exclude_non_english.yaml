@@ -1,0 +1,6 @@
+key: "exclude_non_english"
+action: "exclude_from_metrics"
+filter:
+  op: "equals"
+  expression: "{{ scores.language_labeller.label }}"
+  value: "OTHER"

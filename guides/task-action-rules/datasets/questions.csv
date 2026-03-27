@@ -1,0 +1,9 @@
+sample_id,question,is_holdout
+1,What is 2 + 2?,false
+2,Quelle est la capitale de la France?,false
+3,Who invented the telephone?,false
+4,Wer hat die Relativitätstheorie entwickelt?,false
+5,What is the speed of light?,true
+6,Qui a peint la Joconde?,false
+7,Was ist die Hauptstadt von Deutschland?,false
+8,What year did World War II end?,true

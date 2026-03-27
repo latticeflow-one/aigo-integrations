@@ -1,0 +1,14 @@
+display_name: "OpenAI GPT-4.1 Nano"
+key: "openai-gpt-4-1-nano"
+description: >
+  Fastest, most cost-efficient version of GPT-4.1 GPT-4.1 nano excels at instruction
+  following and tool calling.
+rate_limit: 60
+task: "chat_completion"
+config:
+  connection_type: "custom_connection"
+  adapter:
+    key: "latticeflow$openai_chat_completion"
+  url: "https://api.openai.com/v1/chat/completions"
+  api_key: $OPENAI_API_KEY
+  model_key: "gpt-4.1-nano"

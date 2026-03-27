@@ -1,0 +1,8 @@
+display_name: "Policy Quality Gate"
+key: "policy-quality-gate"
+tags: ["Guides", "Policies"]
+description: >
+  This guide shows how to use policies to enforce quality thresholds on evaluation
+  metrics. The example policy enforces that a faithfulness metric is computed and
+  meets a minimum threshold.
+long_description: !include README.md

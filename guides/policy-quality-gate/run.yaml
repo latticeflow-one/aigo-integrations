@@ -1,0 +1,50 @@
+datasets:
+  - $ref: "./datasets/rag_qa.yaml"
+
+models:
+  - $provider: "openai/gpt-4.1-nano"
+
+tasks:
+  - $ref: "./tasks/rag_faithfulness.yaml"
+
+evaluation:
+  key: "rag-faithfulness-evaluation"
+  display_name: "RAG Faithfulness Evaluation"
+  task_specifications:
+    - key: "rag-faithfulness-gpt-4-1-nano"
+      task_key: "rag-faithfulness-task"
+      display_name: "RAG Faithfulness OpenAI GPT-4.1 Nano"
+      model_key: "openai$gpt-4-1-nano"
+
+policies:
+  - key: "rag_quality_gate_v1"
+    display_name: "RAG Quality Gate v1"
+    description: "Baseline quality thresholds for production RAG systems."
+    rules:
+      - key: "faithfulness_is_high"
+        display_name: "Faithfulness is High"
+        description: "Faithfulness must exceed 70%."
+        definition:
+          type: "threshold"
+          metric: "faithfulness"
+          operator: ">"
+          threshold: 0.7
+        scope: "all_latest"
+      - key: "faithfulness_is_measured"
+        display_name: "Faithfulness is Measured"
+        description: "Faithfulness metric must be computed."
+        definition:
+          type: "exists"
+          metric: "faithfulness"
+        scope: "all_latest"
+      - key: "faithfulness_in_rag_eval"
+        display_name: "Faithfulness in RAG Evaluation"
+        description: "Faithfulness must be measured in the specific RAG evaluation."
+        definition:
+          type: "exists"
+          metric: "faithfulness"
+        scope:
+          evaluation_keys:
+            - "rag-faithfulness-evaluation"
+          task_specification_keys:
+            - "rag-faithfulness-gpt-4-1-nano"

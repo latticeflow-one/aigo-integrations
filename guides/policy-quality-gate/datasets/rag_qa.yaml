@@ -1,0 +1,6 @@
+key: "rag-qa-dataset"
+display_name: "RAG QA Dataset"
+description: "A dataset of context-question pairs for evaluating RAG faithfulness."
+source:
+  type: "local"
+  file_path: "./rag_qa.csv"

@@ -1,9 +1,16 @@
-# Evaluation Zip Package
+# Initialize and Run Evaluation from ZIP Package
 
 ## Overview
 
 This guide shows an example of initializing, configuring, and running an evaluation
-using a ZIP package from URL.
+from a ZIP package from URL, using the `lf init` CLI command.
+
+Concretely, this guide:
+
+1. Adds a new app and custom model.
+2. Fetches the ZIP package `evaluation.zip` using `lf init --url`.
+3. Configures the evaluation by setting the `$MODEL_KEY` environment variable.
+4. Runs the evaluation using `lf run`.
 
 ## Evaluation ZIP Structure
 

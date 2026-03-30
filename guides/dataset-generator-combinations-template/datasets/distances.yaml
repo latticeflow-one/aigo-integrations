@@ -1,4 +1,4 @@
-key: "distances-dataset"
+key: "distances_dataset"
 display_name: "Distances Dataset"
 description: "A dataset of travel distances."
 source:

@@ -1,4 +1,4 @@
-key: "cities-dataset"
+key: "cities_dataset"
 display_name: "Cities Dataset"
 description: "A dataset of countries and their capital cities."
 source:

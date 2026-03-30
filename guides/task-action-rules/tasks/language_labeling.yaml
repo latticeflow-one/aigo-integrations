@@ -2,7 +2,7 @@ key: "language-labeling"
 display_name: "Language Labeling"
 description: >
   Answers multilingual questions and labels the response language. Action rules
-  exclude non-English responses, specific holdout sample IDs, and dataset-flagged
+  exclude non-English responses, specific sample IDs, and dataset-flagged
   holdout samples from metric calculations.
 evaluated_entity_type: "model"
 config_spec:
@@ -42,22 +42,6 @@ definition:
           field: "is_correct"
           name: "English Response Rate"
   actions:
-    - key: "exclude_non_english"
-      action: "exclude_from_metrics"
-      filter:
-        op: "equals"
-        expression: "{{ scores.language_labeller.label }}"
-        value: "OTHER"
-    - key: "exclude_sample_ids"
-      action: "exclude_from_metrics"
-      filter:
-        op: "in"
-        expression: "{{ sample.sample_id }}"
-        values:
-          - "3"
-          - "6"
-    - key: "exclude_holdout"
-      action: "exclude_from_metrics"
-      filter:
-        op: "is_true"
-        expression: "{{ sample.is_holdout }}"
+    - $ref: "../action_rules/exclude_non_english.yaml"
+    - $ref: "../action_rules/exclude_sample_ids.yaml"
+    - $ref: "../action_rules/exclude_holdout.yaml"

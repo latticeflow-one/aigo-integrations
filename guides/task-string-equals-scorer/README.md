@@ -5,8 +5,8 @@
 This guide shows an example of a task that uses the string equals scorer to evaluate
 model responses against both a fixed and a dynamic ground truth value.
 
-The task evaluates yes/no questions with two scorers: one checks for a specific fixed
-answer and one checks against the correct answer from the dataset. It also demonstrates
+The task evaluates yes/no questions with a string equals scorer that checks model
+responses against the correct answer from the dataset. It also demonstrates
 `int` and `boolean` config parameters to control response length and context inclusion.
 
 ## Usage

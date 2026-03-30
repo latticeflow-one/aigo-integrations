@@ -10,8 +10,8 @@ Three action rules demonstrate the three filter types available:
 
 - **Exclude non-English responses** — using a `FilterComparison` to exclude samples
   where the language labeler produced `OTHER`
-- **Exclude specific sample IDs** — using a `FilterMembership` to exclude a known
-  list of holdout sample IDs
+- **Exclude specific sample IDs** — using a `FilterMembership` to exclude a fixed
+  list of sample IDs (for example, samples reserved for manual inspection)
 - **Exclude holdout samples** — using a `FilterUnary` to exclude samples flagged in
   the dataset as held out
 

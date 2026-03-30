@@ -7,14 +7,14 @@ definition:
   data_source:
     type: "dataset_sample_combinations"
     dataset_keys:
-      - "cities-dataset"
-      - "distances-dataset"
+      - "cities_dataset"
+      - "distances_dataset"
   synthesizers:
     - type: "template"
       template: |
-        I'm in {{ source.cities-dataset.city }}, the capital of {{ source.cities-dataset.country }}.
+        I'm in {{ source.city }}, the capital of {{ source.country }}.
 
-        I want to travel {{ source.distances-dataset.distance }} in the {direction} direction.
+        I want to travel {{ source.distance }} in the {direction} direction.
 
         What is the name of the city I will arrive at?
       fields:

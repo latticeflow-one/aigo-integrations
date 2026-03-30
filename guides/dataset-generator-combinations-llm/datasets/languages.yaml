@@ -1,4 +1,4 @@
-key: "languages-dataset"
+key: "languages_dataset"
 display_name: "Languages Dataset"
 description: "A dataset of languages."
 source:

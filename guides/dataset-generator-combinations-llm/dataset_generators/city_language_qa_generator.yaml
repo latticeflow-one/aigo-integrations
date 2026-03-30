@@ -7,16 +7,16 @@ definition:
   data_source:
     type: "dataset_sample_combinations"
     dataset_keys:
-      - "cities-dataset"
-      - "languages-dataset"
+      - "cities_dataset"
+      - "languages_dataset"
   synthesizers:
     - type: "llm"
       model_key: "openai$gpt-4-1-nano"
       system_prompt_template: "You are a helpful dataset generator."
       user_prompt_template: >
-        Generate a question-answer pair about {{ source.cities-dataset.city }},
-        the capital of {{ source.cities-dataset.country }}, written in
-        {{ source.languages-dataset.language }}.
+        Generate a question-answer pair about {{ source.city }},
+        the capital of {{ source.country }}, written in
+        {{ source.language }}.
       sample_properties:
         question:
           type: string

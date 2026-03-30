@@ -4,5 +4,5 @@ filter:
   op: "in"
   expression: "{{ sample.sample_id }}"
   values:
-    - "5"
-    - "7"
+    - "3"
+    - "6"

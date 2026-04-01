@@ -1,0 +1,7 @@
+datasets:
+  - $ref: "./datasets/cities.yaml"
+  - $ref: "./datasets/distances.yaml"
+  - $ref: "./datasets/city_distance_prompts.yaml"
+
+dataset_generators:
+  - $ref: "./dataset_generators/city_distance_prompt_generator.yaml"

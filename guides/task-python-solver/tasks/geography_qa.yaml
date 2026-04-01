@@ -1,0 +1,28 @@
+display_name: "Geography QA Evaluation"
+key: "geography-qa"
+description: >
+  Evaluates model answers on geography questions using a Python solver that
+  manages the conversation trace programmatically.
+evaluated_entity_type: "model"
+config_spec: []
+definition:
+  dataset:
+    key: "geography-qa"
+  solver:
+    type: "python"
+    run_solver_snippet: |
+      async def run_solver(sample, model, trace):
+          trace.append_system_message(
+              "You are a helpful assistant. Answer with a single word or short phrase."
+          )
+          trace.append_user_message(sample["question"])
+          response = await model.predict(trace.items)
+          trace.add_model_response(response)
+          return trace
+  scorers:
+    - type: "string_equals"
+      ground_truth: "{{ sample.answer }}"
+      metrics:
+        - type: "mean"
+          field: "is_correct"
+          name: "Accuracy"

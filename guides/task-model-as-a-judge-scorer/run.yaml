@@ -1,0 +1,26 @@
+models:
+  - $provider: "openai/gpt-4.1-nano"
+
+datasets:
+  - $ref: "./datasets/rag_qa.yaml"
+
+tasks:
+  - $ref: "./tasks/rag_qa.yaml"
+
+evaluation:
+  key: "model-as-a-judge-scorer"
+  display_name: "Model As A Judge Scorer"
+  tags: ["Guides"]
+  task_specifications:
+    - key: "rag-qa-groundedness-gpt-4-1-nano"
+      task_key: "rag-qa"
+      model_key: "openai$gpt-4-1-nano"
+      task_config:
+        judge_model: "openai$gpt-4-1-nano"
+        evaluation_dimension: "groundedness"
+    - key: "rag-qa-relevance-gpt-4-1-nano"
+      task_key: "rag-qa"
+      model_key: "openai$gpt-4-1-nano"
+      task_config:
+        judge_model: "openai$gpt-4-1-nano"
+        evaluation_dimension: "relevance"

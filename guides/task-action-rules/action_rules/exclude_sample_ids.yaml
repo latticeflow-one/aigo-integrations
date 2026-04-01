@@ -1,0 +1,8 @@
+key: "exclude_sample_ids"
+action: "exclude_from_metrics"
+filter:
+  op: "in"
+  expression: "{{ sample.sample_id }}"
+  values:
+    - "3"
+    - "6"

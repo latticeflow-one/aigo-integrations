@@ -1,0 +1,12 @@
+key: "boolq-correct-answers"
+display_name: "BoolQ: Correct Answers Only"
+description: >-
+  The BoolQ reading comprehension dataset filtered to only include samples
+  where the correct answer is true.
+source:
+  type: "huggingface"
+  path: "google/boolq"
+  split: "validation"
+  filters:
+    - op: "is_true"
+      expression: "{{ answer }}"

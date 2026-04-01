@@ -1,0 +1,6 @@
+key: "distances_dataset"
+display_name: "Distances Dataset"
+description: "A dataset of travel distances."
+source:
+  type: "local"
+  file_path: "./distances.csv"

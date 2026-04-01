@@ -1,0 +1,6 @@
+display_name: "Multiple Choice QA Dataset"
+key: "mcqa"
+description: "Dataset of multiple choice questions with single-character answer options."
+source:
+  type: "local"
+  file_path: "./mcqa.jsonl"

@@ -1,0 +1,57 @@
+display_name: "Generate Loop"
+key: "generate-loop"
+description: >
+  Evaluates model answers on general knowledge questions using a multi-turn solver
+  with a loop message builder that handles clarifying questions before producing a
+  final answer.
+evaluated_entity_type: "model"
+config_spec:
+  - type: "model"
+    key: "judge_model"
+    display_name: "Judge Model"
+    description: "Model used to respond to clarifying questions within the loop."
+definition:
+  dataset:
+    key: "qa-single-answers"
+  solver:
+    type: "multi_turn_solver"
+    message_builders:
+      - type: "chat_message"
+        role: "system"
+        content: |
+          You are a helpful assistant.
+
+          When answering a question, always repeat it back to the user first
+          and ask for confirmation that you have understood correctly.
+
+          Once the user confirms, answer with a single word and nothing else.
+      - type: "chat_message"
+        role: "user"
+        content: "{{ sample.question }}"
+      - type: "generate"
+      - type: "loop"
+        max_iterations: 3
+        on_max_iterations: "continue"
+        message_builders:
+          - type: "generate_message"
+            model_key: "<< config.judge_model >>"
+            extra_input_messages:
+              - type: "chat_message"
+                role: "user"
+                content: |
+                  If the previous message is a question asking for confirmation,
+                  answer 'Yes'.
+
+                  Otherwise, answer with '<done>'.
+            output_role: "user"
+            terminate_if:
+              includes: "<done>"
+              keep_iteration: false
+          - type: "generate"
+  scorers:
+    - type: "string_equals"
+      ground_truth: "{{ sample.target }}"
+      metrics:
+        - type: "mean"
+          field: "is_correct"
+          name: "Accuracy"

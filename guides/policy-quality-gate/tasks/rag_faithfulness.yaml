@@ -1,0 +1,36 @@
+key: "rag-faithfulness-task"
+display_name: "RAG Faithfulness Evaluation"
+description: "Evaluates whether model responses are faithful to the provided context."
+evaluated_entity_type: "model"
+config_spec: []
+definition:
+  dataset:
+    key: "rag-qa-dataset"
+  solver:
+    type: "single_turn_solver"
+    input_builder:
+      type: "chat_completion"
+      input_messages:
+        - role: "system"
+          content: "Answer the question using only the information provided in the context."
+        - role: "user"
+          content: |
+            Context: {{ sample.context }}
+            Question: {{ sample.question }}
+  scorers:
+    - type: "model_as_a_judge_classifier"
+      model_key: "openai$gpt-4-1-nano"
+      system_prompt: |
+        You are a judge evaluating whether an answer is faithful to the provided context.
+        Respond with 'faithful' if the answer only contains information from the context.
+        Respond with 'unfaithful' if the answer contains information not present in the context.
+      user_prompt: |
+        Context: {{ sample.context }}
+        Answer: {{ solver_output.output }}
+      correct_labels: ["faithful"]
+      incorrect_labels: ["unfaithful"]
+      use_structured_outputs: true
+      metrics:
+        - type: "mean"
+          field: "is_correct"
+          name: "faithfulness"

@@ -1,0 +1,10 @@
+models:
+  - $provider: "openai/gpt-4.1-nano"
+
+datasets:
+  - $ref: "./datasets/cities.yaml"
+  - $ref: "./datasets/languages.yaml"
+  - $ref: "./datasets/city_language_qa.yaml"
+
+dataset_generators:
+  - $ref: "./dataset_generators/city_language_qa_generator.yaml"

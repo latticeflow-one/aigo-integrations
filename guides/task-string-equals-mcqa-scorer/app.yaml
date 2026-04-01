@@ -1,0 +1,7 @@
+display_name: "Playground App"
+key: "playground-app"
+tags: ["Guides", "Tasks"]
+description: >
+  This guide shows an example of the string equals MCQA scorer for evaluating
+  multiple choice question answering tasks with a configurable answer column.
+long_description: !include README.md

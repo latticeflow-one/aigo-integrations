@@ -1,0 +1,7 @@
+display_name: "Action Rules"
+key: "action-rules-app"
+tags: ["Guides", "Tasks", "Action Rules"]
+description: >
+  This guide shows how to use action rules to exclude specific samples from
+  metric calculations based on scorer outputs and sample metadata.
+long_description: !include "README.md"

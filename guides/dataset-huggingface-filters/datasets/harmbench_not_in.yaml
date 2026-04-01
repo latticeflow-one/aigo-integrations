@@ -1,0 +1,15 @@
+key: "harmbench_non_harmful"
+display_name: "HarmBench: Non-Harmful Categories"
+description: >-
+  The HarmBench evaluation dataset filtered to exclude copyright and chemical/biological
+  categories, keeping only the remaining safety-relevant categories.
+source:
+  type: "huggingface"
+  path: "allenai/tulu-3-harmbench-eval"
+  split: "test"
+  filters:
+    - op: "not_in"
+      expression: "{{ SemanticCategory }}"
+      values:
+        - "copyright"
+        - "chemical_biological"

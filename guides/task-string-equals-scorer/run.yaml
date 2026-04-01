@@ -1,0 +1,20 @@
+models:
+  - $provider: "openai/gpt-4.1-nano"
+
+datasets:
+  - $ref: "./datasets/yes_no_qa.yaml"
+
+tasks:
+  - $ref: "./tasks/yes_no_qa.yaml"
+
+evaluation:
+  key: "string-equals-scorer"
+  display_name: "String Equals Scorer"
+  tags: ["Guides"]
+  task_specifications:
+    - key: "yes-no-qa-gpt-4-1-nano"
+      task_key: "yes-no-qa"
+      model_key: "openai$gpt-4-1-nano"
+      task_config:
+        max_words: 1
+        include_context: true

@@ -1,0 +1,6 @@
+display_name: "Yes/No QA Dataset"
+key: "yes-no-qa"
+description: "Dataset of yes/no questions with answers and supporting context."
+source:
+  type: "local"
+  file_path: "./yes_no_qa.jsonl"

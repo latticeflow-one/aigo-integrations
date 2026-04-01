@@ -1,0 +1,41 @@
+display_name: "Yes/No QA Evaluation"
+key: "yes-no-qa"
+description: >
+  Evaluates model accuracy on yes/no questions. Supports configurable response
+  length and optional context inclusion.
+evaluated_entity_type: "model"
+config_spec:
+  - type: "int"
+    key: "max_words"
+    display_name: "Max Words"
+    description: "Maximum number of words the model should use in its answer."
+    default_value: 1
+    min: 1
+    max: 5
+  - type: "boolean"
+    key: "include_context"
+    display_name: "Include Context"
+    description: "Whether to include supporting context in the user message."
+definition:
+  dataset:
+    key: "yes-no-qa"
+  solver:
+    type: "single_turn_solver"
+    input_builder:
+      type: "chat_completion"
+      input_messages:
+        - role: "system"
+          content: "Answer in at most << config.max_words >> word(s). Respond with YES or NO only."
+        - role: "user"
+          content: |
+            {{ sample.question }}
+            {% if << config.include_context >> %}
+            Context: {{ sample.context }}
+            {% endif %}
+  scorers:
+    - type: "string_equals"
+      ground_truth: "{{ sample.answer }}"
+      metrics:
+        - type: "mean"
+          field: "is_correct"
+          name: "Accuracy"

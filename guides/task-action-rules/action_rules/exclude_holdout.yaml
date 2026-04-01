@@ -1,0 +1,5 @@
+key: "exclude_holdout"
+action: "exclude_from_metrics"
+filter:
+  op: "is_true"
+  expression: "{{ sample.is_holdout }}"

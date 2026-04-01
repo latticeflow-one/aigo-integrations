@@ -1,0 +1,6 @@
+display_name: "Geography QA Dataset"
+key: "geography-qa"
+description: "Dataset of geography questions with expected single-word answers."
+source:
+  type: "local"
+  file_path: "./geography_qa.jsonl"

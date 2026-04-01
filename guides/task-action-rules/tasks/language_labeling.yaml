@@ -1,9 +1,9 @@
 key: "language-labeling"
 display_name: "Language Labeling"
 description: >
-  Answers multilingual questions and labels the response language. Action rules
-  exclude non-English responses, specific sample IDs, and dataset-flagged
-  holdout samples from metric calculations.
+  Answers multilingual questions, labels the response language, and scores answer
+  quality. Action rules exclude non-English responses, specific sample IDs, and
+  dataset-flagged holdout samples from the quality metric.
 evaluated_entity_type: "model"
 config_spec:
   - type: "model"
@@ -25,6 +25,7 @@ definition:
   scorers:
     - type: "labeler_via_model"
       key: "language_labeller"
+      purpose: "qa"
       model_key: "<< config.judge_model >>"
       system_prompt: >
         You are a language detection assistant.
@@ -37,10 +38,23 @@ definition:
       valid_labels:
         - "ENGLISH"
         - "OTHER"
+    - type: "model_as_a_judge_scorer"
+      key: "answer_quality"
+      model_key: "<< config.judge_model >>"
+      system_prompt: >
+        You are an expert evaluator. Rate the quality of the answer to the given
+        question on a scale from 0 to 100, where 100 means the answer is fully
+        correct and complete, and 0 means it is entirely wrong or unhelpful.
+        Return only the numeric score.
+      user_prompt: >
+        <question>{{ sample.question }}</question>
+        <answer>{{ solver_output.output }}</answer>
+      score_min: 0
+      score_max: 100
       metrics:
         - type: "mean"
-          field: "is_correct"
-          name: "English Response Rate"
+          field: "score"
+          name: "Mean Answer Quality"
   actions:
     - $ref: "../action_rules/exclude_non_english.yaml"
     - $ref: "../action_rules/exclude_sample_ids.yaml"

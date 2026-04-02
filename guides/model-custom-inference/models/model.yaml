@@ -1,6 +1,6 @@
 display_name: "OpenAI GPT-4.1 Nano (Custom Inference)"
 key: "gpt-4-1-nano-custom-inference"
-description: "OpenAI's GPT-5 Nano defined as a model with custom inference."
+description: "OpenAI's GPT-4-1 Nano defined as a model with custom inference."
 rate_limit: 60
 task: "chat_completion"
 config:

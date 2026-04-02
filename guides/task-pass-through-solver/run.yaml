@@ -1,5 +1,5 @@
 models:
-  - $provider: "openai/gpt-4-1-nano"
+  - $provider: "openai/gpt-4.1-nano"
 datasets:
   - $ref: "./datasets/recorded_qa_traces.yaml"
 tasks:

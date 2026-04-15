@@ -1,8 +1,8 @@
-# LangSmith Model
+# OpenCode Model
 
 ## Overview
 
-This guide shows an example integration of an agent hosted by OpenCode. 
+This guide shows an example integration of an OpenCode agent. 
 
 ## Usage
 

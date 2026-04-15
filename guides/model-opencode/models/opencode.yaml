@@ -1,0 +1,17 @@
+key: "opencode-agent"
+display_name: "Opencode AI Agent"
+description: "Opencode AI Agent."
+task: "chat_completion"
+rate_limit: 20
+# The agent operates on a shared file system, which means that concurrent requests
+# can interfere with each other if they modify files.
+# To control this, you can set the max_concurrent_requests parameter.
+# max_concurrent_requests: 1
+config:
+  connection_type: "custom_inference"
+  run_inference_snippet: !include run_inference.py
+  environment:
+    BASE_URL: $OPENCODE_BASE_URL
+    MODEL_PROVIDER_ID: $MODEL_PROVIDER_ID
+    MODEL_ID: $MODEL_ID
+  timeout: 120

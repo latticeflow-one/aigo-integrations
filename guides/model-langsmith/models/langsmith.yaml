@@ -1,0 +1,13 @@
+key: "langsmith-model"
+display_name: "Langsmith Model"
+description: "Langsmith Model."
+task: "chat_completion"
+rate_limit: 30
+config:
+  connection_type: "custom_inference"
+  run_inference_snippet: !include run_langsmith_inference.py
+  environment:
+    LANGSMITH_ENDPOINT_URL: $LANGSMITH_ENDPOINT_URL
+    LANGSMITH_API_KEY: $LANGSMITH_API_KEY
+    LANGSMITH_ASSISTANT_ID: $LANGSMITH_ASSISTANT_ID
+  timeout: 180

@@ -1,0 +1,6 @@
+display_name: "Playground App"
+key: "playground-app"
+tags: ["Guides", "Models"]
+description: >
+  This guide shows an example integration of an OpenCode agent.
+long_description: !include README.md

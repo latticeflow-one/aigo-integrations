@@ -2,7 +2,8 @@
 {
     "choices": [
         {% for choice in body.choices %}
-            {% set msg = choice.message %}
+            {% set raw_msg = choice.message if choice.message is defined else {} %}
+            {% set msg = raw_msg if raw_msg is mapping else {} %}
             {% set clean_msg = {} %}
             {% for k, v in msg.items() %}
                 {% if k != "reference" %}
@@ -11,7 +12,7 @@
             {% endfor %}
             {
                 "message": {{ clean_msg | tojson }},
-                "references": {{ msg.reference | tojson }}
+                "references": {{ (msg.reference if msg.reference is defined else []) | tojson }}
             }{% if not loop.last %},{% endif %}
         {% endfor %}
     ]

@@ -1,0 +1,48 @@
+models:
+  - $provider: "openai/gpt-5-nano"
+
+datasets:
+  - key: simple-dataset
+    display_name: "Simple Dataset"
+    source:
+      type: local
+      file_path: "./datasets/simple_dataset.csv"
+
+tasks:
+  - key: "is-foobarized"
+    description: "Check if text is foobarized"
+    display_name: "Is Foobarized?"
+    evaluated_entity_type: "model"
+    tasks: ["custom"]
+    tags: []
+    definition:
+      type: "declarative_task"
+      dataset:
+        key: "simple-dataset"
+      solver:
+        type: "single_turn_solver"
+        input_builder:
+          type: "chat_completion"
+          input_messages:
+            - role: "user"
+              content: >
+                Respond with YES if the text is foobarized (starts with 'foo' and ends with 'bar'), otherwise respond with NO. 
+                TEXT: '{{ sample.text }}'
+      scorers:
+        - type: "string_equals"
+          ground_truth: "NO"
+          display_name: "Foobarization Scorer"
+          metrics:
+            - key: "mean_key"
+              type: "mean"
+              field: "is_correct"
+              name: "Mean Accuracy"
+
+evaluation:
+  key: "foobarization-evaluation"
+  display_name: "Foobarization Evaluation"
+  task_specifications:
+    - key: "foobarization-spec"
+      task_key: is-foobarized
+      task_config: {}
+      model_key: "openai$gpt-5-nano"

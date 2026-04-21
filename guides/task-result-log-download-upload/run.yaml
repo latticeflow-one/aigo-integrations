@@ -1,5 +1,5 @@
 models:
-  - $provider: "openai/gpt-5-nano"
+  - $provider: "openai/gpt-4.1-nano"
 
 datasets:
   - key: simple-dataset
@@ -26,7 +26,7 @@ tasks:
           input_messages:
             - role: "user"
               content: >
-                Respond with YES if the text is foobarized (starts with 'foo' and ends with 'bar'), otherwise respond with NO. 
+                Respond with YES if the text is foobarized (starts with 'foo' and ends with 'bar'), otherwise respond with NO.
                 TEXT: '{{ sample.text }}'
       scorers:
         - type: "string_equals"
@@ -45,4 +45,4 @@ evaluation:
     - key: "foobarization-spec"
       task_key: is-foobarized
       task_config: {}
-      model_key: "openai$gpt-5-nano"
+      model_key: "openai$gpt-4-1-nano"

@@ -1,2 +1,6 @@
 key: another-app
 display_name: Another App
+tags: ["Guides", "Task Result Log Download/Upload"]
+description: >
+  Destination AI app used in the task result log download/upload guide.
+long_description: !include ../README.md

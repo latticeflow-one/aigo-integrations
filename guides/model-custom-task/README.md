@@ -2,8 +2,9 @@
 
 ## Overview
 
-This guide shows an example integration of OpenAI GPT-4.1 Nano integrated as a custom
-task (i.e. a non-chat-completion model).
+This guide shows an example integration of OpenAI GPT-4.1 Nano integrated as a 
+custom task model. Note, that this is not a demo example, GPT-4.1 is a chat completion
+model and is recommended to be integrated as a chat-completion task model.
 
 The model uses the default chat completion API
 [endpoint](https://developers.openai.com/api/reference/resources/chat/subresources/completions/methods/create).

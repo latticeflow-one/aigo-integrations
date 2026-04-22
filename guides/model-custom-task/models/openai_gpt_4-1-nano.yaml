@@ -1,0 +1,15 @@
+display_name: "OpenAI GPT-4.1 Nano (Custom Task)"
+key: "openai-gpt-4-1-nano-custom"
+description: >
+  Fastest, most cost-efficient version of GPT-4.1 GPT-4.1 nano excels at instruction
+  following and tool calling.
+rate_limit: 60
+task: "custom"
+config:
+  connection_type: "custom_connection"
+  adapter:
+    key: "latticeflow$identity_custom"
+  url: "https://api.openai.com/v1/chat/completions"
+  api_key: "<< secrets.OPENAI_API_KEY >>"
+secrets:
+  OPENAI_API_KEY: $OPENAI_API_KEY

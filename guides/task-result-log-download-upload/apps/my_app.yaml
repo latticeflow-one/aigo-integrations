@@ -1,0 +1,5 @@
+key: "my-app"
+display_name: "My App"
+tags: ["Guides", "Task Result Log"]
+description: "Source AI app used in the task result log download/upload guide."
+long_description: !include "../README.md"

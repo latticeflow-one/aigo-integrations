@@ -8,7 +8,7 @@ chatbot.
 ## Usage
 
 ```bash
-lf app add -f app.yaml
+lf add app -f app.yaml
 lf switch airline-chatbot-app
 ```
 

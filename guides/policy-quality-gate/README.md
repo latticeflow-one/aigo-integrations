@@ -16,7 +16,7 @@ The example policy checks that:
 Requires OpenAI integration (UI or `OPENAI_API_KEY` env var).
 
 ```sh
-lf app add -f app.yaml
+lf add app -f app.yaml
 lf switch policy-quality-gate
 lf integration add --provider openai --api-key $OPENAI_API_KEY
 ```

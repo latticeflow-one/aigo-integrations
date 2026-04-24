@@ -60,7 +60,7 @@ be configured as an environment variable `OPENAI_API_KEY` in the
 terminal. To use a different model, please adjust the model configuration.
 
 ```bash
-lf app add -f app.yaml
+lf add app -f app.yaml
 lf switch playground-app
 lf add model -f model.yaml
 lf init --url https://github.com/latticeflow-one/aigo-integrations/raw/refs/heads/master/guides/evaluation-init-from-zip-package/evaluation.zip

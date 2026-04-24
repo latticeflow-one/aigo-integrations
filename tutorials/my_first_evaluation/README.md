@@ -8,7 +8,7 @@ AILuminate hate benchmark on a OpenAI model.
 ## Usage
 
 ```bash
-lf app add -f app.yaml
+lf add app -f app.yaml
 lf switch my-first-eval
 lf integration add --provider openai --api-key $OPENAI_API_KEY
 lf run run.yaml

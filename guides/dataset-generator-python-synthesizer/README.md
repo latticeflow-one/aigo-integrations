@@ -12,7 +12,7 @@ standard Python libraries and how to introduce randomness.
 ## Usage
 
 ```bash
-lf app add -f app.yaml
+lf add app -f app.yaml
 lf switch playground-app 
 lf add -f run.yaml
 ```

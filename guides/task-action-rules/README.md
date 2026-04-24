@@ -27,7 +27,7 @@ from the `Mean Answer Quality` metric:
 ## Usage
 
 ```bash
-lf app add -f app.yaml
+lf add app -f app.yaml
 lf switch action-rules-app
 lf integration add --provider openai --api-key $OPENAI_API_KEY
 lf run -f run.yaml

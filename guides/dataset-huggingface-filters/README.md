@@ -17,7 +17,7 @@ operators. Three dataset examples are included:
 ## Usage
 
 ```bash
-lf app add -f app.yaml
+lf add app -f app.yaml
 lf switch playground-app
 lf add dataset -f datasets/harmbench_illegal.yaml
 lf add dataset -f datasets/harmbench_not_in.yaml

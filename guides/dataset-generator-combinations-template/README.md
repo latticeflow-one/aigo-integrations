@@ -12,7 +12,7 @@ for travel direction.
 ## Usage
 
 ```sh
-lf app add -f app.yaml
+lf add app -f app.yaml
 lf switch playground-app
 lf run -f run.yaml
 ```

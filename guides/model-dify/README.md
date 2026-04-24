@@ -20,7 +20,7 @@ DIFY_API_KEY=<DIFY_API_KEY>
 ```
 
 ```bash
-lf app add -f app.yaml
+lf add app -f app.yaml
 lf switch playground-app
 lf add -f run.yaml
 lf test model model-dify

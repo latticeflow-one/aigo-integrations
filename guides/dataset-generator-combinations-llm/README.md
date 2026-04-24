@@ -13,7 +13,7 @@ to produce a question-answer pair for each city-language combination.
 Requires OpenAI integration (UI or `OPENAI_API_KEY` env var).
 
 ```sh
-lf app add -f app.yaml
+lf add app -f app.yaml
 lf switch playground-app
 lf integration add --provider openai --api-key $OPENAI_API_KEY
 lf run -f run.yaml

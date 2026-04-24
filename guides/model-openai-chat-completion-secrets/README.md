@@ -18,7 +18,7 @@ OPENAI_API_KEY=<OPENAI_API_KEY>
 ```
 
 ```bash
-lf app add -f app.yaml
+lf add app -f app.yaml
 lf switch playground-app
 lf add model -f models/openai_gpt_4-1-nano.yaml
 lf test model openai-gpt-4-1-nano

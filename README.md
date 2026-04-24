@@ -41,7 +41,7 @@ For example, to run an evaluation on the knowledge of a model on a specific topi
 2. Run the commands.
 
     ```bash
-    lf app add -f app.yaml
+    lf add app -f app.yaml
     lf switch playground-app
     lf integration add --provider openai --api-key $OPENAI_API_KEY
     lf run -f run.yaml

@@ -26,7 +26,7 @@ the UI or as an environment variable `OPENAI_API_KEY` in the terminal. To use a
 different model, please adjust the model configuration.
 
 ```bash
-lf app add -f app.yaml
+lf add app -f app.yaml
 lf switch playground-app
 lf integration add --provider openai --api-key $OPENAI_API_KEY
 lf run -f run.yaml

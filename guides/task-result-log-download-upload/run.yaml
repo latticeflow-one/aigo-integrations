@@ -14,7 +14,7 @@ tasks:
     tasks: ["custom"]
     tags: []
     definition:
-      type: "declarative_task"
+      type: "benchmark_task"
       dataset:
         key: "simple-dataset"
       solver:

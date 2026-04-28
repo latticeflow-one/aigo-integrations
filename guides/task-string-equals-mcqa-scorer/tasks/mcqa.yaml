@@ -3,13 +3,13 @@ key: "mcqa"
 description: >
   Evaluates model accuracy on multiple choice questions using MCQA string equality
   scoring with a configurable answer column.
-evaluated_entity_type: "model"
 config_spec:
   - type: "dataset_column"
     key: "answer_column"
     display_name: "Answer Column"
     description: "Dataset column containing the correct single-character answer choice."
 definition:
+  evaluated_entity_type: "model"
   dataset:
     key: "mcqa"
   solver:

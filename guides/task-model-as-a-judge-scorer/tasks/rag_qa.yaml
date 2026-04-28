@@ -3,7 +3,6 @@ key: "rag-qa"
 description: >
   Evaluates model responses on retrieval-augmented generation tasks using a
   model-as-a-judge scorer. Supports configurable judge model and evaluation dimension.
-evaluated_entity_type: "model"
 config_spec:
   - type: "dataset"
     key: "qa_dataset"
@@ -18,6 +17,7 @@ config_spec:
     description: "The aspect of the model response to evaluate."
     allowed_values: ["groundedness", "relevance"]
 definition:
+  evaluated_entity_type: "model"
   dataset:
     key: "<< config.qa_dataset >>"
   solver:

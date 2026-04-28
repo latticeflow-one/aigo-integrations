@@ -5,6 +5,7 @@ description: >
   conversations without invoking any model.
 config_spec: []
 definition:
+  evaluated_entity_type: "model"
   dataset:
     key: "recorded-qa-traces"
   solver:

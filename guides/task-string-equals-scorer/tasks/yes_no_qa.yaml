@@ -3,7 +3,6 @@ key: "yes-no-qa"
 description: >
   Evaluates model accuracy on yes/no questions. Supports configurable response
   length and optional context inclusion.
-evaluated_entity_type: "model"
 config_spec:
   - type: "int"
     key: "max_words"
@@ -17,6 +16,7 @@ config_spec:
     display_name: "Include Context"
     description: "Whether to include supporting context in the user message."
 definition:
+  evaluated_entity_type: "model"
   dataset:
     key: "yes-no-qa"
   solver:

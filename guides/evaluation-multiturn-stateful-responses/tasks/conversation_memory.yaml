@@ -3,8 +3,8 @@ key: "conversation_memory"
 description: >
   Checks that the model can remember information from previous interactions in a
   conversation.
-evaluated_entity_type: "model"
 definition:
+  evaluated_entity_type: "model"
   dataset:
     key: "conversation_memory_questions"
   solver:

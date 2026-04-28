@@ -4,13 +4,13 @@ description: >
   Answers multilingual questions, labels the response language, and scores answer
   quality. Action rules exclude non-English responses, specific sample IDs, and
   dataset-flagged holdout samples from the quality metric.
-evaluated_entity_type: "model"
 config_spec:
   - type: "model"
     key: "judge_model"
     display_name: "Judge Model"
     description: "The model used to label the language of model responses."
 definition:
+  evaluated_entity_type: "model"
   dataset:
     key: "multilingual-questions"
   solver:

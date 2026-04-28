@@ -1,9 +1,9 @@
 display_name: "Harry Potter Trivia Task"
 key: "hp-trivia"
 description: "Assesses the model knowledge of Harry Potter trivia."
-evaluated_entity_type: "model"
 config_spec: []
 definition:
+  evaluated_entity_type: "model"
   dataset:
     key: "hp-trivia-dataset"
   solver:

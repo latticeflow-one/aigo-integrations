@@ -1,0 +1,9 @@
+key: langsmith-traces
+display_name: LangSmith Traces
+description: "Traces imported from a LangSmith project."
+source:
+  type: langsmith
+  project: $LANGSMITH_PROJECT
+  api_key: $LANGSMITH_API_KEY
+  api_url: $LANGSMITH_ENDPOINT_URL
+  limit: 10

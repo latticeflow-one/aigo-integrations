@@ -1,0 +1,6 @@
+key: claude-code-traces
+display_name: Claude Code Traces
+description: "Traces imported from local Claude Code sessions."
+source:
+  type: claude_code
+  limit: 10

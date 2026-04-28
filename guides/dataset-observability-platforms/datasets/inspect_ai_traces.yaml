@@ -1,0 +1,7 @@
+key: inspect-ai-traces
+display_name: Inspect AI Traces
+description: "Traces imported from Inspect AI eval log files."
+source:
+  type: inspect_ai
+  path: "./logs/"
+  limit: 10

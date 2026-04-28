@@ -7,7 +7,6 @@ config_spec:
     key: "judge_model"
     display_name: "Judge Model"
 definition:
-  evaluated_entity_type: "model"
   dataset:
     key: "qa-single-answers"
   solver:

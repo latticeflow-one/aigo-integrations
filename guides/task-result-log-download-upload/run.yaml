@@ -10,11 +10,11 @@ tasks:
   - key: "is-foobarized"
     description: "Check if text is foobarized"
     display_name: "Is Foobarized?"
-    evaluated_entity_type: "model"
     tasks: ["custom"]
     tags: []
     definition:
-      type: "declarative_task"
+      evaluated_entity_type: "model"
+      type: "benchmark_task"
       dataset:
         key: "simple-dataset"
       solver:

@@ -4,13 +4,13 @@ description: >
   Evaluates model answers on general knowledge questions using a multi-turn solver
   with a loop message builder that handles clarifying questions before producing a
   final answer.
-evaluated_entity_type: "model"
 config_spec:
   - type: "model"
     key: "judge_model"
     display_name: "Judge Model"
     description: "Model used to respond to clarifying questions within the loop."
 definition:
+  evaluated_entity_type: "model"
   dataset:
     key: "qa-single-answers"
   solver:

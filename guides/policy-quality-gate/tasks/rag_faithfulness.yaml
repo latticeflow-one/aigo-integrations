@@ -1,9 +1,9 @@
 key: "rag-faithfulness-task"
 display_name: "RAG Faithfulness Evaluation"
 description: "Evaluates whether model responses are faithful to the provided context."
-evaluated_entity_type: "model"
 config_spec: []
 definition:
+  evaluated_entity_type: "model"
   dataset:
     key: "rag-qa-dataset"
   solver:

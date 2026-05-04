@@ -1,0 +1,12 @@
+tasks:
+  - $ref: "./tasks/enforces-https.yaml"
+
+evaluation:
+  key: "enforces-https-eval"
+  display_name: "Enforces HTTPS"
+  task_specifications:
+    - key: "enforces-https-spec"
+      task_key: "enforces-https"
+      task_config:
+        url: "https://github.com"
+  cache_policy: "no-cache"

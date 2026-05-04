@@ -1,0 +1,9 @@
+key: opencode-traces
+display_name: OpenCode Session Traces
+description: >
+  Pre-recorded OpenCode coding agent sessions converted to Open Responses
+  trace format. Each sample contains a full session trace (with sub-agent
+  spans) and a source identifier.
+source:
+  type: local
+  file_path: "./opencode_traces.jsonl"

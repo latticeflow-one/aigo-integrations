@@ -1,5 +1,5 @@
 tasks:
-  - $ref: "./tasks/enforces-https.yaml"
+  - $ref: "./tasks/enforces_https.yaml"
 
 evaluation:
   key: "enforces-https-eval"

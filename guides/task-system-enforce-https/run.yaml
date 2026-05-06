@@ -4,9 +4,16 @@ tasks:
 evaluation:
   key: "enforces-https-eval"
   display_name: "Enforces HTTPS"
+  tags: ["Security"]
   task_specifications:
-    - key: "enforces-https-spec"
+    - key: "enforces-https-github"
+      display_name: "GitHub"
       task_key: "enforces-https"
       task_config:
         url: "https://github.com"
+    - key: "enforces-https-httpforever"
+      display_name: "HTTPForever"
+      task_key: "enforces-https"
+      task_config:
+        url: "http://httpforever.com/"
   cache_policy: "no-cache"

@@ -21,7 +21,7 @@ The task produces one metric:
 
 ```bash
 lf add app -f app.yaml
-lf switch system-task-app
+lf switch system-task-enforces-https
 lf run -f run.yaml
 ```
 

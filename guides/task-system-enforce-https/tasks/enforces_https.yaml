@@ -1,6 +1,7 @@
 display_name: "Enforces HTTPS"
 key: "enforces-https"
 description: "Checks whether a given URL enforces HTTPS by redirecting HTTP requests to HTTPS."
+tags: ["Security"]
 config_spec:
   - type: "string"
     key: "url"

@@ -1,5 +1,5 @@
-key: langsmith-traces
-display_name: LangSmith Traces
+key: "langsmith-traces"
+display_name: "LangSmith Traces"
 description: "Traces imported from a LangSmith project."
 source:
   type: langsmith

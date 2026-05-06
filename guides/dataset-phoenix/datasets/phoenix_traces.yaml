@@ -1,5 +1,5 @@
-key: phoenix-traces
-display_name: Arize Phoenix Traces
+key: "phoenix-traces"
+display_name: "Arize Phoenix Traces"
 description: "Traces imported from an Arize Phoenix project."
 source:
   type: phoenix

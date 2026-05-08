@@ -1,0 +1,9 @@
+key: "phoenix-traces"
+display_name: "Arize Phoenix Traces"
+description: "Traces imported from an Arize Phoenix project."
+source:
+  type: phoenix
+  project: $PHOENIX_PROJECT
+  base_url: $PHOENIX_BASE_URL
+  api_key: $PHOENIX_API_KEY
+  limit: 10

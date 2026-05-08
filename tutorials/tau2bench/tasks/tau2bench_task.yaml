@@ -1,0 +1,42 @@
+key: tau2bench-telecom-eval
+display_name: "Tau2Bench Telecom Evaluation"
+description: >
+  Evaluates pre-recorded tau2bench telecom agent traces against the benchmark's
+  evaluation criteria (action checks + environment assertions).  Uses a
+  pass-through solver — no model is called.
+config_spec:
+  - type: dataset
+    key: eval_dataset
+    display_name: "Evaluation Dataset"
+definition:
+  evaluated_entity_type: model
+  dataset:
+    key: "<< config.eval_dataset >>"
+  solver:
+    type: pass_through_solver
+    message_format: "open_responses"
+    trace_column: "trace"
+  scorers:
+    - type: python
+      compute_scores_snippet: !include "tau2bench_scorer.py"
+      metrics:
+        - type: mean
+          key: reward
+          field: reward
+          name: "Reward (Computed)"
+        - type: mean
+          key: action_score
+          field: action_score
+          name: "Action Score"
+        - type: mean
+          key: env_assertion_score
+          field: env_assertion_score
+          name: "Env Assertion Score"
+        - type: mean
+          key: action_coverage
+          field: action_coverage
+          name: "Action Coverage"
+        - type: mean
+          key: reward_match
+          field: reward_match
+          name: "Reward Match Rate"

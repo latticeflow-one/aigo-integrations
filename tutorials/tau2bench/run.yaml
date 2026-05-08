@@ -1,0 +1,69 @@
+models:
+  - $provider: "openai/gpt-4.1-nano"
+
+datasets:
+  - $ref: "./datasets/claude-opus-4-5_high_telecom_gpt-5-2_4trials.yaml"
+  - $ref: "./datasets/claude-sonnet-4-5_enabled_telecom_gpt-5-2_4trials.yaml"
+  - $ref: "./datasets/geminiflash-telecom.yaml"
+  - $ref: "./datasets/geminipro-telecom.yaml"
+  - $ref: "./datasets/glm-5_enabled_telecom_gpt-5-2_4trials.yaml"
+  - $ref: "./datasets/gpt-5-2_high_telecom_gpt-5-2_4trials.yaml"
+  - $ref: "./datasets/gpt-5-2_none_telecom_gpt-5-2_4trials.yaml"
+  - $ref: "./datasets/qwen3-5-397b-a17b_enabled_telecom_gpt-5-2_4trials.yaml"
+
+tasks:
+  - $ref: "./tasks/tau2bench_task.yaml"
+
+evaluation:
+  key: tau2bench-telecom-eval
+  display_name: "Tau2Bench Telecom Evaluation"
+  cache_policy: no-cache
+  task_specifications:
+    - key: claude-opus-eval
+      task_key: tau2bench-telecom-eval
+      model_key: "openai$gpt-4-1-nano"
+      display_name: "Claude Opus 4.5"
+      task_config:
+        eval_dataset: claude-opus-4-5_high_telecom_gpt-5-2_4trials
+    - key: claude-sonnet-eval
+      task_key: tau2bench-telecom-eval
+      model_key: "openai$gpt-4-1-nano"
+      display_name: "Claude Sonnet 4.5"
+      task_config:
+        eval_dataset: claude-sonnet-4-5_enabled_telecom_gpt-5-2_4trials
+    - key: gemini-flash-eval
+      task_key: tau2bench-telecom-eval
+      model_key: "openai$gpt-4-1-nano"
+      display_name: "Gemini Flash"
+      task_config:
+        eval_dataset: geminiflash-telecom
+    - key: gemini-pro-eval
+      task_key: tau2bench-telecom-eval
+      model_key: "openai$gpt-4-1-nano"
+      display_name: "Gemini Pro"
+      task_config:
+        eval_dataset: geminipro-telecom
+    - key: glm-5-eval
+      task_key: tau2bench-telecom-eval
+      model_key: "openai$gpt-4-1-nano"
+      display_name: "GLM-5"
+      task_config:
+        eval_dataset: glm-5_enabled_telecom_gpt-5-2_4trials
+    - key: gpt-5-2-high-eval
+      task_key: tau2bench-telecom-eval
+      model_key: "openai$gpt-4-1-nano"
+      display_name: "GPT-5.2 High"
+      task_config:
+        eval_dataset: gpt-5-2_high_telecom_gpt-5-2_4trials
+    - key: gpt-5-2-none-eval
+      task_key: tau2bench-telecom-eval
+      model_key: "openai$gpt-4-1-nano"
+      display_name: "GPT-5.2 None"
+      task_config:
+        eval_dataset: gpt-5-2_none_telecom_gpt-5-2_4trials
+    - key: qwen3-5-eval
+      task_key: tau2bench-telecom-eval
+      model_key: "openai$gpt-4-1-nano"
+      display_name: "Qwen 3.5 397B"
+      task_config:
+        eval_dataset: qwen3-5-397b-a17b_enabled_telecom_gpt-5-2_4trials

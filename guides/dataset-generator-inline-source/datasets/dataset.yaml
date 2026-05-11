@@ -1,0 +1,7 @@
+display_name: "Science Questions Dataset"
+key: "science-questions-dataset"
+description: "Generated using 'My Science Question Generator'"
+generator_specification:
+  dataset_generator_key: "science-question-generator"
+  num_samples: 15
+  dataset_generator_config: {}

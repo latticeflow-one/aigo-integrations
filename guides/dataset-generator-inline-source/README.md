@@ -22,5 +22,5 @@ lf run -f run.yaml
 If you want to iterate on the dataset generation, try:
 
 ```bash
-lf test dataset -f run.yaml --key science-question-generator --num-samples 15
+lf test dataset -f run.yaml --key science-questions-dataset --num-samples 10
 ```

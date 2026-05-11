@@ -1,0 +1,26 @@
+display_name: "My Science Question Generator"
+key: "science-question-generator"
+description: "Generates questions about pre-defined science topics."
+definition:
+  type: "declarative_dataset_generator"
+  data_source:
+    type: "inline_samples"
+    samples:
+      - topic: "Biology"
+        style: "Multiple choice"
+      - topic: "Chemistry"
+        style: "Open-ended"
+      - topic: "Physics"
+        style: "Proofs"
+  synthesizers:
+    - type: "llm"
+      model_key: "openai$gpt-4-1-nano"
+      system_prompt: "You are a helpful dataset generator."
+      user_prompt_template: >
+        Produce 5 questions about {{ source.topic }} in the following style: 
+        {{ source.style }}. Also include the answer.
+      sample_properties:
+        question:
+          type: "string"
+        answer:
+          type: "string"

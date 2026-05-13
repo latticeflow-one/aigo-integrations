@@ -132,22 +132,33 @@ The scorer reads these structures at runtime and applies exactly the checks each
 
 The scorer is a Python file that defines a `compute_scores` function. AI GO! calls it once per sample, passing the dataset row and the solver output.
 
-### Extract function calls from the trace
-
-First, a helper to pull structured data out of the trace:
+We organize all scoring logic in a `TraceScorer` class. The constructor parses the trace once, and assertion handlers access that shared state via `self`:
 
 ```python
-def _extract_calls(trace):
-    """Extract function calls paired with their outputs from the trace."""
+class TraceScorer:
+
+    def __init__(self, trace, init_actions):
+        self.trace = trace
+        self.calls = self.extract_calls()
+        self.status_bar = self.find_last_status_bar()
+        self.broken = {a["func_name"] for a in init_actions}
+```
+
+`self.calls` holds the extracted function calls, `self.status_bar` is the last Status Bar text from the trace, and `self.broken` tracks which device capabilities were deliberately broken during scenario setup. All assertion handlers can access these without extra arguments.
+
+### Extract function calls from the trace
+
+```python
+def extract_calls(self):
     outputs = {}
-    for item in trace.items:
+    for item in self.trace.items:
         if item.type == "function_call_output":
             outputs[item.call_id] = (
                 item.output if isinstance(item.output, str) else str(item.output)
             )
 
     calls = []
-    for item in trace.items:
+    for item in self.trace.items:
         if item.type == "function_call":
             args = json.loads(item.arguments) if item.arguments else {}
             calls.append({
@@ -166,11 +177,11 @@ This walks the trace items in two passes: first collecting outputs by `call_id`,
 Action checks answer: *"Did the agent perform this specific tool call?"*
 
 ```python
-def _check_actions(expected, calls):
+def check_actions(self, expected):
     return [
         any(
             c["name"] == action["name"] and c["created_by"] == action["requestor"]
-            for c in calls
+            for c in self.calls
         )
         for action in expected
     ]
@@ -180,33 +191,22 @@ Each expected action specifies a `name` and `requestor` (who should have made th
 
 ### Environment assertion dispatch
 
-Environment assertions answer: *"Is the environment in the expected state?"* Each assertion type requires different logic, so the scorer dispatches by `func_name`:
+Environment assertions answer: *"Is the environment in the expected state?"* Each assertion type requires different logic. The `func_name` in the data maps directly to a method on the class, so dispatch is just a `getattr` call:
 
 ```python
-_HANDLERS = {
-    "assert_service_status":        ...,
-    "assert_mobile_data_status":    ...,
-    "assert_internet_speed":        ...,
-    "assert_can_send_mms":          ...,
-    "assert_no_overdue_bill":       ...,
-    "assert_data_refueling_amount": ...,
-}
-
-def _check_env_assertions(assertions, trace, calls, init_actions):
-    status_bar = _last_status_bar(trace)
-    broken = {a["func_name"] for a in init_actions}
+def check_env_assertions(self, assertions):
     results = []
     for assertion in assertions:
-        handler = _HANDLERS.get(assertion["func_name"])
+        handler = getattr(self, assertion["func_name"], None)
         if handler is None:
             results.append(False)
             continue
-        met = handler(assertion["arguments"], status_bar, calls, broken)
+        met = handler(assertion.get("arguments", {}))
         results.append(met == assertion.get("assert_value", True))
     return results
 ```
 
-The `broken` set tracks which device capabilities were deliberately broken during scenario setup -- this context is needed by some assertion handlers.
+Adding a new assertion type means adding a method whose name matches the `func_name` in the data. No registration step needed.
 
 ### Assertion handlers
 
@@ -215,43 +215,42 @@ Each handler inspects trace data in a different way. Here are three examples tha
 **Pattern 1 -- Check a tool output for a text pattern:**
 
 ```python
-def _assert_service_status(args, status_bar, calls):
-    expected = args["expected_status"]
-    if status_bar is not None:
-        has_signal = "📶" in status_bar
-        no_signal = "📵" in status_bar or "✈" in status_bar
-        if expected == "connected":
+def assert_service_status(self, expected):
+    status = expected["expected_status"]
+    if self.status_bar is not None:
+        has_signal = "📶" in self.status_bar
+        no_signal = "📵" in self.status_bar or "✈" in self.status_bar
+        if status == "connected":
             return has_signal and not no_signal
-        else:
-            return no_signal or not has_signal
+        return no_signal or not has_signal
     # Fallback: if agent transferred, service was never fixed
-    transferred = any(c["name"] == "transfer_to_human_agents" for c in calls)
-    return (not transferred) if expected == "connected" else True
+    transferred = any(c["name"] == "transfer_to_human_agents" for c in self.calls)
+    return (not transferred) if status == "connected" else True
 ```
 
-This reads the last Status Bar from the trace's tool outputs and checks for signal indicators.
+This reads the last Status Bar from the trace's tool outputs and checks for signal indicators. Notice how `self.status_bar` and `self.calls` are already available -- no need to pass them as arguments.
 
 **Pattern 2 -- Cross-reference initial state with trace actions:**
 
 ```python
-def _assert_no_overdue_bill(args, calls, broken):
-    if "suspend_line_for_overdue_bill" not in broken:
+def assert_no_overdue_bill(self, expected):
+    if "suspend_line_for_overdue_bill" not in self.broken:
         return True   # bill was never overdue
-    return any(c["name"] == "make_payment" for c in calls)
+    return any(c["name"] == "make_payment" for c in self.calls)
 ```
 
-This checks whether a bill was made overdue in the scenario setup (`broken` set), and if so, whether the agent guided the user to make a payment.
+This checks whether a bill was made overdue in the scenario setup (`self.broken`), and if so, whether the agent guided the user to make a payment.
 
 **Pattern 3 -- Match specific tool call arguments:**
 
 ```python
-def _assert_data_refueling_amount(args, calls):
+def assert_data_refueling_amount(self, expected):
     return any(
         c["name"] == "refuel_data"
-        and c["args"].get("customer_id") == args["customer_id"]
-        and c["args"].get("line_id") == args["line_id"]
-        and c["args"].get("gb_amount") == args["expected_amount"]
-        for c in calls
+        and c["args"].get("customer_id") == expected["customer_id"]
+        and c["args"].get("line_id") == expected["line_id"]
+        and c["args"].get("gb_amount") == expected["expected_amount"]
+        for c in self.calls
     )
 ```
 
@@ -259,36 +258,33 @@ This verifies that the agent called `refuel_data` with exactly the right custome
 
 ### Combine into the final score
 
-The entry point ties everything together. Both components must pass:
+The `score` method ties both components together:
 
 ```python
-def compute_scores(sample, solver_output):
-    trace = solver_output.trace
-    criteria = sample["evaluation_criteria"]
-    init_actions = sample["initial_state"]["initialization_actions"]
-
-    calls = _extract_calls(trace)
-
-    # 1. Action checks
-    action_results = _check_actions(criteria.get("actions", []), calls)
+def score(self, criteria):
+    action_results = self.check_actions(criteria.get("actions", []))
     action_score = 1.0 if all(action_results) else 0.0 if action_results else 1.0
     action_coverage = sum(action_results) / len(action_results) if action_results else 1.0
 
-    # 2. Environment assertions
-    env_results = _check_env_assertions(
-        criteria.get("env_assertions", []), trace, calls, init_actions,
-    )
+    env_results = self.check_env_assertions(criteria.get("env_assertions", []))
     env_score = 1.0 if all(env_results) else 0.0 if env_results else 1.0
 
-    # 3. Both must pass
-    score = min(action_score, env_score)
-
     return {
-        "score": score,
+        "score": min(action_score, env_score),
         "action_score": action_score,
         "env_assertion_score": env_score,
         "action_coverage": action_coverage,
     }
+```
+
+### The entry point
+
+The `compute_scores` function instantiates the class and delegates:
+
+```python
+def compute_scores(sample, solver_output):
+    scorer = TraceScorer(solver_output.trace, sample["initial_state"]["initialization_actions"])
+    return scorer.score(sample["evaluation_criteria"])
 ```
 
 The scorer returns a dict of fields. AI GO! stores these per-sample and aggregates them into metrics defined in the task YAML.
@@ -411,15 +407,18 @@ The sample-dependent scoring pattern generalizes to any evaluation where samples
 
 ### Adding new assertion types
 
-Add a handler function and register it in the dispatch table:
+Just add a method to `TraceScorer` whose name matches the `func_name` in the data:
 
 ```python
-def _assert_new_check(args, calls):
-    # Your evaluation logic here
-    return True or False
+class TraceScorer:
+    ...
 
-_HANDLERS["assert_new_check"] = lambda a, sb, calls, broken: _assert_new_check(a, calls)
+    def assert_new_check(self, expected):
+        # Your evaluation logic using self.calls, self.status_bar, etc.
+        return True or False
 ```
+
+No registration or dispatch table needed -- `check_env_assertions` resolves the method by name automatically.
 
 ### Evaluating multiple models
 
@@ -444,7 +443,7 @@ To adapt this for a different benchmark:
 
 1. **Convert traces** to the AI GO! trace format (items with `message`, `function_call`, `function_call_output` types)
 2. **Embed evaluation criteria** in each dataset sample -- whatever fields your scorer needs to know what to check
-3. **Write assertion handlers** that extract signals from the trace and compare against the per-sample criteria
-4. **Register handlers** in a dispatch table keyed by assertion type
+3. **Extend `TraceScorer`** with assertion handlers that extract signals from the trace and compare against the per-sample criteria
+4. **Name each handler** to match the `func_name` in the data -- dispatch happens automatically
 
-The scorer's structure -- extract calls, dispatch by assertion type, combine components -- stays the same regardless of the benchmark domain.
+The scorer's structure -- parse trace once, dispatch by assertion type, combine components -- stays the same regardless of the benchmark domain.

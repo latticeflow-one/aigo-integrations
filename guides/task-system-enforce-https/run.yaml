@@ -6,7 +6,7 @@ evaluation:
   display_name: "Enforces HTTPS"
   tags: ["Security"]
   description: "Tests whether HTTP is properly enforced across main systems."
-  long_description: >
+  long_description: |
     Tests whether HTTP is properly enforced across main systems.
     
     # Systems

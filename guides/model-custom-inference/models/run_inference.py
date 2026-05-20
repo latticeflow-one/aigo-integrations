@@ -1,9 +1,12 @@
+from __future__ import annotations
+
 import json
+from typing import Any
 
 import httpx
 
 
-def run_inference(body: str, environment: dict):
+def run_inference(body: str, environment: dict[str, Any]) -> str:
     body_dict = json.loads(body)
     body_dict["model"] = environment["MODEL_KEY"]
 

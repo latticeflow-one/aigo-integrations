@@ -1,21 +1,19 @@
 from __future__ import annotations
 
 import json
+from typing import Any
 
 import httpx
 
 
-def run_inference(body: str | bytes, environment: dict[str, str]) -> str:
-    base_url = environment["LANGSMITH_ENDPOINT_URL"].rstrip("/").removesuffix(
-        "/runs/wait"
+def run_inference(body: str, environment: dict[str, Any]) -> str:
+    base_url = (
+        environment["LANGSMITH_ENDPOINT_URL"].rstrip("/").removesuffix("/runs/wait")
     )
     api_key = environment["LANGSMITH_API_KEY"]
     assistant_id = environment["LANGSMITH_ASSISTANT_ID"]
 
-    headers = {
-        "X-Api-Key": api_key,
-        "X-Auth-Scheme": "langsmith-api-key",
-    }
+    headers = {"X-Api-Key": api_key, "X-Auth-Scheme": "langsmith-api-key"}
 
     request_data = json.loads(body)
     request_messages = request_data.get("messages", [])

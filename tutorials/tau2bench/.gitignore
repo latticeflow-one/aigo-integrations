@@ -4,3 +4,4 @@ tau2bench_traces
 datasets
 .risk-interpret
 eval_export_41
+__pycache__

@@ -15,6 +15,7 @@ definition:
   synthesizers:
     - type: "llm"
       model_key: "openai$gpt-4-1-nano"
+      use_structured_outputs: true
       system_prompt: "You are a helpful dataset generator."
       user_prompt_template: >
         Produce 5 questions about {{ source.topic }} in the following style: 

@@ -1,7 +1,7 @@
-"""Convert tau2bench JSON trace files into LatticeFlow AI GO datasets.
+"""Convert a tau2bench JSON trace file into a LatticeFlow AI GO dataset.
 
-Reads tau2bench simulation JSONs from --input-dir, writes per-file .jsonl
-datasets and matching dataset YAML specs to --output-dir.
+Reads a single tau2bench simulation JSON from --input-file, writes a .jsonl
+dataset and a matching dataset YAML spec to the current directory.
 """
 
 from __future__ import annotations
@@ -9,6 +9,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import re
 import uuid
 from pathlib import Path
 from typing import Any
@@ -18,7 +19,7 @@ import yaml
 from latticeflow.core.dtypes import AssistantMessage
 from latticeflow.core.dtypes import SYNTHETIC_MESSAGE_STATUS
 from latticeflow.core.dtypes import Trace
-from latticeflow.core.dtypes import TraceItem as TraceItemType
+from latticeflow.core.dtypes import TraceItem
 from latticeflow.core.dtypes import UserMessage
 from latticeflow.core.dtypes import FunctionCall
 from latticeflow.core.dtypes import FunctionCallOutput
@@ -26,13 +27,6 @@ from latticeflow.core.dtypes import FunctionCallOutputStatusEnum
 from latticeflow.core.dtypes import FunctionCallStatus
 from latticeflow.core.dtypes import InputTextContent
 from latticeflow.core.dtypes import OutputTextContent
-
-
-def _sanitize_key(name: str) -> str:
-    """Sanitize a filename into a valid AI GO entity key (``[a-zA-Z0-9_-]``)."""
-    import re
-
-    return re.sub(r"[^a-zA-Z0-9_\-]", "-", name)
 
 
 class Tau2BenchMessageConverter:
@@ -49,7 +43,7 @@ class Tau2BenchMessageConverter:
     """
 
     def __init__(self) -> None:
-        self.items: list[TraceItemType] = []
+        self.items: list[TraceItem] = []
         self.pending_calls: dict[str, str] = {}  # original_call_id -> role
 
     @staticmethod
@@ -146,7 +140,7 @@ class Tau2BenchMessageConverter:
     # Main orchestrator
     # ------------------------------------------------------------------
 
-    def convert(self, messages: list[dict[str, Any]]) -> list[TraceItemType]:
+    def convert(self, messages: list[dict[str, Any]]) -> list[TraceItem]:
         """Process all messages and return the list of TraceItems."""
         for message in messages:
             role = message["role"]
@@ -166,59 +160,49 @@ class Tau2BenchMessageConverter:
         return self.items
 
 
-def _build_task_lookup(tasks: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
-    """Build a task_id -> task metadata dict, excluding the ``id`` field."""
-    lookup: dict[str, dict[str, Any]] = {}
-    for task in tasks:
-        metadata = {k: v for k, v in task.items() if k != "id"}
-        lookup[task["id"]] = metadata
-    return lookup
-
-
-def convert_simulation(
-    simulation: dict[str, Any],
-    task_lookup: dict[str, dict[str, Any]],
-) -> dict[str, Any]:
+def convert_simulation(simulation: dict[str, Any]) -> dict[str, Any]:
     """Convert a tau2bench simulation into a JSONL row dict."""
     converter = Tau2BenchMessageConverter()
     trace_items = converter.convert(simulation["messages"])
     trace = Trace.from_items(items=trace_items)
 
-    task_id = simulation["task_id"]
-    task_metadata = task_lookup.get(task_id)
-
     return {
         "trace": trace.model_dump(mode="json"),
         "simulation_id": simulation["id"],
-        "task_id": task_id,
-        "trial": simulation["trial"],
-        "task_metadata": task_metadata,
-        "reward_info": simulation.get("reward_info"),
-        "agent_cost": simulation.get("agent_cost"),
-        "user_cost": simulation.get("user_cost"),
-        "seed": simulation.get("seed"),
-        "termination_reason": simulation["termination_reason"],
-        "duration": simulation["duration"],
+        "task_id": simulation["task_id"],
+        "agent_cost": simulation.get("agent_cost", 0.0),
+        "user_cost": simulation.get("user_cost", 0.0),
     }
 
 
-def convert_file(input_path: Path, output_dir: Path) -> None:
-    """Convert one tau2bench JSON file into a .jsonl dataset and .yaml spec."""
+def main() -> None:
+    parser = argparse.ArgumentParser(
+        description="Convert a tau2bench JSON trace into a LatticeFlow AI GO dataset."
+    )
+    parser.add_argument(
+        "--input-file",
+        type=Path,
+        required=True,
+        help="Path to a tau2bench JSON file.",
+    )
+    args = parser.parse_args()
+
+    input_path = args.input_file
+    if not input_path.is_file():
+        raise SystemExit(f"Input file does not exist: {input_path}")
+
     stem = input_path.stem
-    key = _sanitize_key(stem)
-    jsonl_path = output_dir / f"{key}.jsonl"
-    yaml_path = output_dir / f"{key}.yaml"
+    key = re.sub(r"[^a-zA-Z0-9_\-]", "-", stem)
+    jsonl_path = Path(f"{key}.jsonl")
+    yaml_path = Path(f"{key}.yaml")
 
     with open(input_path) as file:
         data = json.load(file)
 
     simulations = data["simulations"]
-    task_lookup = _build_task_lookup(data.get("tasks", []))
-    print(
-        f"Converting {input_path.name}: {len(simulations)} simulations, {len(task_lookup)} tasks"
-    )
+    print(f"Converting {input_path.name}: {len(simulations)} simulations")
 
-    lines = [json.dumps(convert_simulation(sim, task_lookup)) for sim in simulations]
+    lines = [json.dumps(convert_simulation(sim)) for sim in simulations]
     jsonl_path.write_text("\n".join(lines) + "\n")
 
     dataset_spec = {
@@ -229,51 +213,9 @@ def convert_file(input_path: Path, output_dir: Path) -> None:
     with open(yaml_path, "w") as file:
         yaml.dump(dataset_spec, file, default_flow_style=False, sort_keys=False)
 
-    print(f"  -> {jsonl_path.name} ({len(simulations)} rows)")
-    print(f"  -> {yaml_path.name}")
-
-
-def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(
-        description="Convert tau2bench JSON traces into LatticeFlow AI GO datasets."
-    )
-    parser.add_argument(
-        "--input-dir",
-        type=Path,
-        required=True,
-        help="Directory containing tau2bench JSON files.",
-    )
-    parser.add_argument(
-        "--output-dir",
-        type=Path,
-        default=Path("datasets"),
-        help="Output directory for .jsonl and .yaml files (default: ./datasets).",
-    )
-    return parser.parse_args()
-
-
-def main() -> None:
-    args = parse_args()
-    input_dir: Path = args.input_dir
-    output_dir: Path = args.output_dir
-
-    if not input_dir.is_dir():
-        raise SystemExit(f"Input directory does not exist: {input_dir}")
-
-    json_files = sorted(input_dir.glob("*.json"))
-    if not json_files:
-        raise SystemExit(f"No JSON files found in {input_dir}")
-
-    output_dir.mkdir(parents=True, exist_ok=True)
-    print(f"Found {len(json_files)} JSON files in {input_dir}")
-    print(f"Output directory: {output_dir}")
-    print()
-
-    for json_file in json_files:
-        convert_file(json_file, output_dir)
-        print()
-
-    print("Done.")
+    print(f"  -> {jsonl_path} ({len(simulations)} rows)")
+    print(f"  -> {yaml_path}")
+    print("\nDone.")
 
 
 if __name__ == "__main__":

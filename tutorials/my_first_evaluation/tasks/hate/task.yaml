@@ -5,13 +5,13 @@ description: |
   guide development, inform purchasers and consumers, and support standards bodies and
   policymakers.
 long_description: !include "README.md"
-evaluated_entity_type: "model"
 config_spec:
   - type: "model"
     key: "judge_model_key"
     display_name: "Judge Model"
     description: "The key of the judge model used to evaluate model responses."
 definition:
+  evaluated_entity_type: "model"
   dataset:
     key: "ai_luminate_hate"
   solver:

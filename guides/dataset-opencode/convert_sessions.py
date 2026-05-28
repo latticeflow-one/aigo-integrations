@@ -23,26 +23,26 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-from latticeflow.assessment.dtypes import (
-    CompactionEvent,
-    CustomEvent,
-    ErrorEvent,
-    FunctionCallEvent,
-    MessageEvent,
-    ModelCallEvent,
-    ModelUsage,
-    SpanBeginEvent,
-    SpanEndEvent,
-    Trace,
-    TraceMetadata,
-)
-from latticeflow.assessment.dtypes import (
-    SYNTHETIC_MESSAGE_STATUS as STATUS,
-)
-from latticeflow.bindings.open_responses.models import (
-    FunctionCallStatus,
-    MessageRole,
-)
+from latticeflow.core.dtypes import AssistantMessage
+from latticeflow.core.dtypes import CompactionEvent
+from latticeflow.core.dtypes import ErrorEvent
+from latticeflow.core.dtypes import FunctionCall
+from latticeflow.core.dtypes import FunctionCallEvent
+from latticeflow.core.dtypes import FunctionCallStatus
+from latticeflow.core.dtypes import InputTextContent
+from latticeflow.core.dtypes import MessageEvent
+from latticeflow.core.dtypes import ModelCallEvent
+from latticeflow.core.dtypes import ModelUsage
+from latticeflow.core.dtypes import OutputTextContent
+from latticeflow.core.dtypes import ReasoningTextContent
+from latticeflow.core.dtypes import SpanBeginEvent
+from latticeflow.core.dtypes import SpanEndEvent
+from latticeflow.core.dtypes import SYNTHETIC_MESSAGE_STATUS as STATUS
+from latticeflow.core.dtypes import Trace
+from latticeflow.core.dtypes import TraceEvent
+from latticeflow.core.dtypes import TraceItem
+from latticeflow.core.dtypes import TraceMetadata
+from latticeflow.core.dtypes import UserMessage
 
 logger = logging.getLogger(__name__)
 
@@ -61,32 +61,24 @@ def _msg_id() -> str:
 
 def _make_user_message(
     texts: list[str],
-) -> dict[str, Any]:
-    """Build a raw Open Responses user message dict."""
-    return {
-        "type": "message",
-        "id": _msg_id(),
-        "status": STATUS.value,
-        "role": MessageRole.user.value,
-        "content": [{"type": "input_text", "text": t} for t in texts],
-    }
+) -> UserMessage:
+    """Build an Open Responses user message."""
+    return UserMessage(
+        id=_msg_id(),
+        status=STATUS,
+        content=[InputTextContent(text=t) for t in texts],
+    )
 
 
 def _make_assistant_message(
-    content_parts: list[dict[str, Any]],
-) -> dict[str, Any]:
-    """Build a raw Open Responses assistant message dict.
-
-    content_parts should be dicts like {"type": "output_text", "text": ...}
-    or {"type": "reasoning_text", "text": ...}.
-    """
-    return {
-        "type": "message",
-        "id": _msg_id(),
-        "status": STATUS.value,
-        "role": MessageRole.assistant.value,
-        "content": content_parts,
-    }
+    content_parts: list[OutputTextContent | ReasoningTextContent],
+) -> AssistantMessage:
+    """Build an Open Responses assistant message."""
+    return AssistantMessage(
+        id=_msg_id(),
+        status=STATUS,
+        content=content_parts,
+    )
 
 
 def _ts(epoch_ms: int | float | None) -> datetime | None:
@@ -199,23 +191,14 @@ class SessionConverter:
         self,
         messages: list[dict[str, Any]],
         span_id: str | None,
-    ) -> list[
-        MessageEvent
-        | FunctionCallEvent
-        | ModelCallEvent
-        | SpanBeginEvent
-        | SpanEndEvent
-        | CompactionEvent
-        | ErrorEvent
-        | CustomEvent
-    ]:
+    ) -> list[TraceEvent]:
         """Convert a list of OpenCode messages into TraceEvents.
 
         Groups consecutive assistant messages (same parentID) into a single
         logical assistant turn, emitting one MessageEvent for text content
         and individual FunctionCallEvents/ModelCallEvents per step.
         """
-        events: list[Any] = []
+        events: list[TraceEvent] = []
 
         # Group messages: user messages standalone, consecutive assistant
         # messages with same parentID grouped together.
@@ -266,9 +249,9 @@ class SessionConverter:
         self,
         msg: dict[str, Any],
         span_id: str | None,
-    ) -> list[Any]:
+    ) -> list[TraceEvent]:
         """Convert a user message into events."""
-        events: list[Any] = []
+        events: list[TraceEvent] = []
         parts = msg.get("parts", [])
         timestamp = _ts(msg["info"]["time"]["created"])
 
@@ -309,7 +292,7 @@ class SessionConverter:
         self,
         assistant_messages: list[dict[str, Any]],
         span_id: str | None,
-    ) -> list[Any]:
+    ) -> list[TraceEvent]:
         """Convert a group of assistant messages (one logical turn) into events.
 
         Produces:
@@ -319,15 +302,15 @@ class SessionConverter:
         - SpanBegin/SpanEnd for sub-agent task tool calls
         - ErrorEvent for errors
         """
-        events: list[Any] = []
+        events: list[TraceEvent] = []
 
         # Collect all text/reasoning content across steps for the consolidated
         # assistant MessageEvent.
-        all_content_parts: list[dict[str, Any]] = []
+        all_content_parts: list[OutputTextContent | ReasoningTextContent] = []
 
         # Track items produced per step for ModelCallEvent.output_items.
         # We accumulate input context as we go (messages seen so far).
-        accumulated_items: list[dict[str, Any]] = []
+        accumulated_items: list[TraceItem] = []
 
         for msg in assistant_messages:
             msg_info = msg["info"]
@@ -419,11 +402,7 @@ class SessionConverter:
                     if text:
                         step_parts.append(part)
                         all_content_parts.append(
-                            {
-                                "type": "output_text",
-                                "text": text,
-                                "annotations": [],
-                            }
+                            OutputTextContent(text=text, annotations=[])
                         )
                     if step_start_time is None:
                         time_data = part.get("time", {})
@@ -433,9 +412,7 @@ class SessionConverter:
                     text = part.get("text", "")
                     if text:
                         step_parts.append(part)
-                        all_content_parts.append(
-                            {"type": "reasoning_text", "text": text}
-                        )
+                        all_content_parts.append(ReasoningTextContent(text=text))
                     if step_start_time is None:
                         time_data = part.get("time", {})
                         step_start_time = time_data.get("start")
@@ -467,41 +444,38 @@ class SessionConverter:
 
     def _extract_step_output_items(
         self, step_parts: list[dict[str, Any]]
-    ) -> list[dict[str, Any]]:
+    ) -> list[TraceItem]:
         """Extract Open Responses items produced by a single step.
 
         Used for ModelCallEvent.output_items.
         """
-        items: list[dict[str, Any]] = []
-        text_parts: list[dict[str, Any]] = []
-        reasoning_parts: list[dict[str, Any]] = []
+        items: list[TraceItem] = []
+        text_parts: list[OutputTextContent] = []
+        reasoning_parts: list[ReasoningTextContent] = []
 
         for part in step_parts:
             part_type = part.get("type")
             if part_type == "text":
                 text = part.get("text", "")
                 if text:
-                    text_parts.append(
-                        {"type": "output_text", "text": text, "annotations": []}
-                    )
+                    text_parts.append(OutputTextContent(text=text, annotations=[]))
             elif part_type == "reasoning":
                 text = part.get("text", "")
                 if text:
-                    reasoning_parts.append({"type": "reasoning_text", "text": text})
+                    reasoning_parts.append(ReasoningTextContent(text=text))
             elif part_type == "tool":
                 call_id = part.get("callID", str(uuid.uuid4()))
                 tool_name = part.get("tool", "unknown")
                 state = part.get("state", {})
                 arguments = _safe_json(state.get("input", {}))
                 items.append(
-                    {
-                        "type": "function_call",
-                        "id": str(uuid.uuid4()),
-                        "call_id": call_id,
-                        "name": tool_name,
-                        "arguments": arguments,
-                        "status": FunctionCallStatus.completed.value,
-                    }
+                    FunctionCall(
+                        id=str(uuid.uuid4()),
+                        call_id=call_id,
+                        name=tool_name,
+                        arguments=arguments,
+                        status=FunctionCallStatus.completed,
+                    )
                 )
 
         # If there were text/reasoning parts, add as an assistant message.
@@ -534,9 +508,9 @@ class SessionConverter:
         part: dict[str, Any],
         span_id: str | None,
         mc_event_id: str | None,
-    ) -> list[Any]:
+    ) -> list[TraceEvent]:
         """Convert a tool part into FunctionCallEvent(s) and optionally spans."""
-        events: list[Any] = []
+        events: list[TraceEvent] = []
         tool_name = part.get("tool", "unknown")
         call_id = part.get("callID", str(uuid.uuid4()))
         state = part.get("state", {})

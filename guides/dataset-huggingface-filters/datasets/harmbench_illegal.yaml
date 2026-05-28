@@ -9,5 +9,5 @@ source:
   split: "test"
   filters:
     - op: "equals"
-      expression: "{{SemanticCategory}}"
+      expression: "{{ sample.SemanticCategory }}"
       value: "illegal"

@@ -9,7 +9,7 @@ source:
   split: "test"
   filters:
     - op: "not_in"
-      expression: "{{ SemanticCategory }}"
+      expression: "{{ sample.SemanticCategory }}"
       values:
         - "copyright"
         - "chemical_biological"

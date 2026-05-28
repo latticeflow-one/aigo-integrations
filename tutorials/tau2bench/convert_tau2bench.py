@@ -15,17 +15,17 @@ from typing import Any
 
 import yaml
 
-from latticeflow.assessment.dtypes import AssistantMessage
-from latticeflow.assessment.dtypes import SYNTHETIC_MESSAGE_STATUS
-from latticeflow.assessment.dtypes import Trace
-from latticeflow.assessment.dtypes import TraceItem as TraceItemType
-from latticeflow.assessment.dtypes import UserMessage
-from latticeflow.bindings.open_responses.models import FunctionCall
-from latticeflow.bindings.open_responses.models import FunctionCallOutput
-from latticeflow.bindings.open_responses.models import FunctionCallOutputStatusEnum
-from latticeflow.bindings.open_responses.models import FunctionCallStatus
-from latticeflow.bindings.open_responses.models import InputTextContent
-from latticeflow.bindings.open_responses.models import OutputTextContent
+from latticeflow.core.dtypes import AssistantMessage
+from latticeflow.core.dtypes import SYNTHETIC_MESSAGE_STATUS
+from latticeflow.core.dtypes import Trace
+from latticeflow.core.dtypes import TraceItem as TraceItemType
+from latticeflow.core.dtypes import UserMessage
+from latticeflow.core.dtypes import FunctionCall
+from latticeflow.core.dtypes import FunctionCallOutput
+from latticeflow.core.dtypes import FunctionCallOutputStatusEnum
+from latticeflow.core.dtypes import FunctionCallStatus
+from latticeflow.core.dtypes import InputTextContent
+from latticeflow.core.dtypes import OutputTextContent
 
 
 def _sanitize_key(name: str) -> str:
@@ -174,7 +174,9 @@ def convert_file(input_path: Path, output_dir: Path) -> None:
 
     simulations = data["simulations"]
     task_lookup = _build_task_lookup(data.get("tasks", []))
-    print(f"Converting {input_path.name}: {len(simulations)} simulations, {len(task_lookup)} tasks")
+    print(
+        f"Converting {input_path.name}: {len(simulations)} simulations, {len(task_lookup)} tasks"
+    )
 
     with open(jsonl_path, "w") as file:
         for simulation in simulations:

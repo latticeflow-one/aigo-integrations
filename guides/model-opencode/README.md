@@ -2,7 +2,7 @@
 
 ## Overview
 
-This guide shows an example integration of an OpenCode agent. 
+This guide shows an example integration of an OpenCode agent.
 
 ## Usage
 

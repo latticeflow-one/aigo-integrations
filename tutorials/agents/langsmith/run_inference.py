@@ -35,6 +35,7 @@ from latticeflow.core.dtypes import MessageStatus
 from latticeflow.core.dtypes import ModelUsage
 from latticeflow.core.dtypes import OpenResponsesModelOutput
 from latticeflow.core.dtypes import OutputTextContent
+from latticeflow.core.dtypes import TraceItem
 
 
 # ── Model-side types ──────────────────────────────────────────────────────
@@ -60,6 +61,79 @@ class RawModelOutput(BaseModel):
 
     thread_id: str
     final_state: dict
+
+
+# ── Open Responses converter ──────────────────────────────────────────────
+
+
+class OpenResponsesConverter:
+    """Converts LangGraph per-turn messages into an ``OpenResponsesModelOutput``."""
+
+    def build(self, messages: list[Any], **kwargs: Any) -> OpenResponsesModelOutput:
+        """Convert raw LangGraph turn messages into an ``OpenResponsesModelOutput``."""
+        items: list[TraceItem] = []
+        num_prompt_tokens = 0
+        num_completion_tokens = 0
+        for message in messages:
+            msg_type = message.get("type")
+            if msg_type == "ai":
+                # One `ai` message may carry several tool calls and/or text.
+                for call in message.get("tool_calls") or []:
+                    items.append(self.build_function_call(call, **kwargs))
+                content = message.get("content") or ""
+                if isinstance(content, str) and content.strip():
+                    items.append(self.build_assistant_message(message, **kwargs))
+
+                # Token usage is reported once per `ai` message.
+                usage = message.get("usage_metadata") or {}
+                num_prompt_tokens += usage.get("input_tokens", 0) or 0
+                num_completion_tokens += usage.get("output_tokens", 0) or 0
+            elif msg_type == "tool":
+                items.append(self.build_function_call_output(message, **kwargs))
+            else:
+                raise ValueError(f"Unhandled message type: `{msg_type}`")
+
+        return OpenResponsesModelOutput(
+            items=items,
+            usage=self.build_usage(num_prompt_tokens, num_completion_tokens),
+        )
+
+    def build_assistant_message(self, message: dict, **kwargs: Any) -> Message:
+        return Message(
+            id=str(uuid.uuid4()),
+            status=MessageStatus.completed,
+            role=MessageRole.assistant,
+            content=[OutputTextContent(text=message["content"], annotations=[])],
+            # Carried as an extra field so the next turn can reuse the thread.
+            thread_id=kwargs.get("thread_id", ""),
+        )
+
+    def build_function_call(self, call: dict, **kwargs: Any) -> FunctionCall:
+        return FunctionCall(
+            id=str(uuid.uuid4()),
+            call_id=call["id"],
+            name=call["name"],
+            arguments=json.dumps(call.get("args") or {}),
+            status=FunctionCallStatus.completed,
+        )
+
+    def build_function_call_output(
+        self, message: dict, **kwargs: Any
+    ) -> FunctionCallOutput:
+        return FunctionCallOutput(
+            id=str(uuid.uuid4()),
+            call_id=message["tool_call_id"],
+            output=message.get("content") or "",
+            status=FunctionCallOutputStatusEnum.completed,
+        )
+
+    def build_usage(
+        self, num_prompt_tokens: int = 0, num_completion_tokens: int = 0
+    ) -> ModelUsage:
+        return ModelUsage(
+            num_prompt_tokens=num_prompt_tokens,
+            num_completion_tokens=num_completion_tokens,
+        )
 
 
 # ── Implementation ─────────────────────────────────────────────────────────
@@ -116,74 +190,20 @@ def query_model(model_input: ModelInput, environment: dict[str, Any]) -> RawMode
 def convert_model_output(raw_model_output: RawModelOutput) -> OpenResponsesModelOutput:
     """Convert the raw LangGraph response into the Open Responses format.
 
-    Encodes all the tool calls, tool outputs, and the final assistant message
-    produced during this turn.
+    `/runs/wait` returns the FULL thread state, so first keep only the messages
+    produced by THIS turn (everything after the last human message), flatten
+    them into per-item units, then run the converter over them.
     """
     thread_id = raw_model_output.thread_id
     messages = raw_model_output.final_state.get("messages", [])
 
-    # `/runs/wait` returns the FULL thread state. Keep only messages produced
-    # by this turn — everything after the last human message.
     last_human = -1
     for i, msg in enumerate(messages):
         if msg.get("type") == "human":
             last_human = i
     turn_messages = messages[last_human + 1 :] if last_human >= 0 else messages
 
-    items: list[Any] = []
-    num_prompt_tokens = 0
-    num_completion_tokens = 0
-    final_text = ""
-
-    for msg in turn_messages:
-        msg_type = msg.get("type")
-        if msg_type == "ai":
-            usage = msg.get("usage_metadata") or {}
-            num_prompt_tokens += usage.get("input_tokens", 0) or 0
-            num_completion_tokens += usage.get("output_tokens", 0) or 0
-
-            for call in msg.get("tool_calls") or []:
-                items.append(
-                    FunctionCall(
-                        id=str(uuid.uuid4()),
-                        call_id=call["id"],
-                        name=call["name"],
-                        arguments=json.dumps(call.get("args") or {}),
-                        status=FunctionCallStatus.completed,
-                    )
-                )
-
-            content = msg.get("content") or ""
-            if isinstance(content, str) and content.strip():
-                final_text = content
-        elif msg_type == "tool":
-            items.append(
-                FunctionCallOutput(
-                    id=str(uuid.uuid4()),
-                    call_id=msg["tool_call_id"],
-                    output=msg.get("content") or "",
-                    status=FunctionCallOutputStatusEnum.completed,
-                )
-            )
-
-    items.append(
-        Message(
-            id=str(uuid.uuid4()),
-            status=MessageStatus.completed,
-            role=MessageRole.assistant,
-            content=[OutputTextContent(text=final_text, annotations=[])],
-            # Carried as an extra field so the next turn can reuse the thread.
-            thread_id=thread_id,
-        )
-    )
-
-    return OpenResponsesModelOutput(
-        items=items,
-        usage=ModelUsage(
-            num_prompt_tokens=num_prompt_tokens,
-            num_completion_tokens=num_completion_tokens,
-        ),
-    )
+    return OpenResponsesConverter().build(turn_messages, thread_id=thread_id)
 
 
 # ── Entry point ───────────────────────────────────────────────────────────

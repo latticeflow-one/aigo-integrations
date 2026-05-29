@@ -1,0 +1,5 @@
+key: tutorial-tau2bench
+display_name: "Tutorial: Sample-Dependent Scoring"
+description: >
+  Tutorial project demonstrating how to evaluate pre-recorded agent traces
+  with per-sample assertion rules using a Python scorer.

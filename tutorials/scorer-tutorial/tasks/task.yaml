@@ -1,0 +1,38 @@
+key: tau2bench-tutorial-eval
+display_name: "Tau2Bench Tutorial Evaluation"
+description: >
+  Evaluates pre-recorded agent traces against per-sample evaluation criteria.
+  The scorer reads each sample's assertion rules and applies them dynamically.
+
+config_spec:
+  - type: dataset
+    key: eval_dataset
+    display_name: Evaluation Dataset
+
+definition:
+  evaluated_entity_type: model
+  dataset:
+    key: "<< config.eval_dataset >>"
+  solver:
+    type: pass_through_solver
+    trace_column: "trace"
+    message_format: "open_responses"
+  scorers:
+    - type: python
+      compute_scores_snippet: !include "./scorer.py"
+      metrics:
+        - type: mean
+          field: score
+          name: "Task Score"
+        - type: mean
+          key: action_score_mean
+          field: action_score
+          name: "Action Score"
+        - type: mean
+          key: env_assertion_score_mean
+          field: env_assertion_score
+          name: "Env Assertion Score"
+        - type: mean
+          key: action_coverage_mean
+          field: action_coverage
+          name: "Action Coverage"

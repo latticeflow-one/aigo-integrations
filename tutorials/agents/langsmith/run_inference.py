@@ -191,8 +191,8 @@ def convert_model_output(raw_model_output: RawModelOutput) -> OpenResponsesModel
     """Convert the raw LangGraph response into the Open Responses format.
 
     `/runs/wait` returns the FULL thread state, so first keep only the messages
-    produced by THIS turn (everything after the last human message), flatten
-    them into per-item units, then run the converter over them.
+    produced by THIS turn (everything after the last human message), then run the
+    converter over them.
     """
     thread_id = raw_model_output.thread_id
     messages = raw_model_output.final_state.get("messages", [])

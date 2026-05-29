@@ -4,3 +4,4 @@
 .latticeflow
 .agents
 .mypy_cache
+__pycache__

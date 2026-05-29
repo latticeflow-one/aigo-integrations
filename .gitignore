@@ -2,3 +2,6 @@
 .DS_Store
 .idea/
 .latticeflow
+.mypy_cache
+.agents
+__pycache__

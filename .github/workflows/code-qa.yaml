@@ -1,3 +1,4 @@
+# This workflow runs the AI GO! Integrations Code QA (pre-commit checks).
 name: code-qa
 on:
   push:
@@ -22,17 +23,12 @@ jobs:
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           enable-cache: true
-      - name: Create venv and install pre-commit
-        run: |
-          uv venv
-          source .venv/bin/activate
-          uv pip install pre-commit
+      - name: Install pre-commit into uv-managed venv
+        run: uv pip install --python "$VIRTUAL_ENV/bin/python" pre-commit
       - name: Cache pre-commit hook environments
         uses: actions/cache@v4
         with:
           path: ~/.cache/pre-commit
           key: pre-commit-${{ runner.os }}-${{ hashFiles('.pre-commit-config.yaml') }}
       - name: Run pre-commit on all files
-        run: |
-          source .venv/bin/activate
-          pre-commit run --all-files --show-diff-on-failure
+        run: "$VIRTUAL_ENV/bin/pre-commit run --all-files --show-diff-on-failure"

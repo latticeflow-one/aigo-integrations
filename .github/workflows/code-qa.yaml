@@ -12,23 +12,32 @@ concurrency:
 
 env:
   PYTHON_VERSION: "3.12"
+  VENV_PATH: ".venv-code-qa"
 
 jobs:
   code_qa:
     runs-on: ubuntu-slim
     steps:
       - uses: actions/checkout@v4
-      - name: Install uv
-        uses: astral-sh/setup-uv@v5
+      - name: Install uv and create venv
+        id: setup-uv
+        uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           enable-cache: true
-      - name: Install pre-commit into uv-managed venv
-        run: uv pip install --python "$VIRTUAL_ENV/bin/python" pre-commit
+          activate-environment: true
+          venv-path: ${{ env.VENV_PATH }}
+          no-project: true
+      - name: Install pre-commit
+        run: |
+          source "${{ steps.setup-uv.outputs.venv }}/bin/activate"
+          uv pip install pre-commit
       - name: Cache pre-commit hook environments
         uses: actions/cache@v4
         with:
           path: ~/.cache/pre-commit
           key: pre-commit-${{ runner.os }}-${{ hashFiles('.pre-commit-config.yaml') }}
       - name: Run pre-commit on all files
-        run: "$VIRTUAL_ENV/bin/pre-commit run --all-files --show-diff-on-failure"
+        run: |
+          source "${{ steps.setup-uv.outputs.venv }}/bin/activate"
+          pre-commit run --all-files --show-diff-on-failure

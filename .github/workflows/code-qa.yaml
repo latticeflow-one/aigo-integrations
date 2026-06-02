@@ -19,18 +19,16 @@ jobs:
     runs-on: ubuntu-slim
     steps:
       - uses: actions/checkout@v4
-      - name: Install uv and create venv
-        id: setup-uv
+      - name: Install uv
         uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           enable-cache: true
-          activate-environment: true
-          venv-path: ${{ env.VENV_PATH }}
-          no-project: true
+      - name: Create venv
+        run: uv venv "${{ env.VENV_PATH }}"
       - name: Install pre-commit
         run: |
-          source "${{ steps.setup-uv.outputs.venv }}/bin/activate"
+          source "${{ env.VENV_PATH }}/bin/activate"
           uv pip install pre-commit
       - name: Cache pre-commit hook environments
         uses: actions/cache@v4
@@ -39,5 +37,5 @@ jobs:
           key: pre-commit-${{ runner.os }}-${{ hashFiles('.pre-commit-config.yaml') }}
       - name: Run pre-commit on all files
         run: |
-          source "${{ steps.setup-uv.outputs.venv }}/bin/activate"
+          source "${{ env.VENV_PATH }}/bin/activate"
           pre-commit run --all-files --show-diff-on-failure

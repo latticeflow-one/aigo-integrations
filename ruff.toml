@@ -16,8 +16,6 @@ extend-select = [
     # Enable all `pydocstyle` rules, limiting to those that adhere to the
     # Google convention via `convention = "google"`, below.
     "D",
-    # Doc line length.
-    "W505",
     # Check for breakpoint() statements
     "T10",
     # Enable warnings for f-strings in log messages.

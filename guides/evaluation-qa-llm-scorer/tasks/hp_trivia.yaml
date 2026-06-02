@@ -23,7 +23,7 @@ definition:
         candidate answer are semantically the same. Semantically the same means that
         you do not care about small spelling mistakes, capitalization or whether
         additional information is given. This is all still considered correct.
-        
+
         Respond only with 'correct' or 'incorrect' and nothing else.
       user_prompt: |
         Ground Truth Answer: {{ sample.gt_answer }}

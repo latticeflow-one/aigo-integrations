@@ -1,7 +1,7 @@
 display_name: "Identity Chat Completion"
 key: "identity-adapter"
 description: >
-  This is an identity adapter, i.e. adapter that does no transformation of the model 
+  This is an identity adapter, i.e. adapter that does no transformation of the model
   input or output.
 task: "chat_completion"
 process_input:

@@ -26,7 +26,7 @@ tasks:
               content: >
                 Respond with YES if the text is foobarized (starts with 'foo' and ends
                 with 'bar'), otherwise respond with NO.
-                
+
                 TEXT: '{{ sample.text }}'
       scorers:
         - type: "string_equals"

@@ -2,13 +2,13 @@
 
 ## Overview
 
-This guide shows an example of a dataset generator that uses no source dataset and 
+This guide shows an example of a dataset generator that uses no source dataset and
 an LLM as a synthesizer. The dataset generator is then used to generate a sample
 dataset.
 
 ## Usage
 
-This guide uses an OpenAI model as an example. It requires the OpenAI integration to 
+This guide uses an OpenAI model as an example. It requires the OpenAI integration to
 be configured either in the UI or as an environment variable `OPENAI_API_KEY` in the
 terminal. To use a different model, please adjust the model configuration.
 

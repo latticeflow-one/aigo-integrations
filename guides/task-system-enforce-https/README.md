@@ -21,4 +21,3 @@ running:
 task_config:
   url: "https://your-url-here.com"
 ```
-

@@ -3,68 +3,12 @@
 Uses Dify's `/v1/chat-messages` streaming endpoint and returns an Open
 Responses-style trace (assistant message plus any agent tool calls).
 
-The integration runs as a three-stage pipeline, mirroring the AI GO!
-`run_inference` template:
+Pipeline:
 
     ChatCompletionInput  ->  ModelInput  ->  RawModelOutput  ->  OpenResponsesModelOutput
        (from AI GO!)          convert_        query_model        convert_model_output
-                              user_input
+                               user_input
 """
-
-# Example body (LatticeFlow -> run_inference)
-# {
-#   "messages": [
-#     {"role": "user", "content": "Search the catalog for shoes."}
-#   ]
-# }
-#
-# Multi-turn (subsequent turns include prior assistant message with extras):
-# {
-#   "messages": [
-#     {"role": "user", "content": "Hello!"},
-#     {"role": "assistant", "content": "Hello! How can I assist you today?",
-#      "conversation_id": "a12690e1-cda8-4bf2-acfc-b588d6846425",
-#      "dify_user": "latticeflow-dc4f1f002667"},
-#     {"role": "user", "content": "What is my conversation id?"}
-#   ]
-# }
-
-# Example raw model output (agent API -> query_model)
-# Dify streams SSE events; query_model returns the parsed event list plus the
-# user identifier we sent (so convert_model_output can echo it back).
-# {
-#   "dify_user": "latticeflow-5fa47d159030",
-#   "events": [
-#     {"event": "agent_thought", "id": "239b...", "position": 1,
-#      "tool": "search_products",
-#      "tool_input": "{\"search_products\": {\"query\": \"shoes\"}}",
-#      "observation": "{\"search_products\": \"... result=[] ...\"}"},
-#     {"event": "agent_message", "answer": "It looks "},
-#     {"event": "agent_message", "answer": "like there are no products..."},
-#     {"event": "message_end",
-#      "conversation_id": "cdb01cc3-3754-4f36-91b9-df643506a982",
-#      "metadata": {"usage": {"prompt_tokens": 407, "completion_tokens": 51}}}
-#   ]
-# }
-
-# Example LF model output (convert_model_output)
-# {
-#   "items": [
-#     {"type": "function_call", "id": "5bf9...", "call_id": "97eb...",
-#      "name": "search_products", "arguments": "{\"query\": \"shoes\"}",
-#      "status": "completed"},
-#     {"type": "function_call_output", "id": "9da4...", "call_id": "97eb...",
-#      "output": "{\"search_products\": \"... result=[] ...\"}",
-#      "status": "completed"},
-#     {"type": "message", "id": "44c2...", "status": "completed",
-#      "role": "assistant",
-#      "content": [{"type": "output_text", "text": "It looks like ...",
-#                   "annotations": []}],
-#      "conversation_id": "cdb01cc3-3754-4f36-91b9-df643506a982",
-#      "dify_user": "latticeflow-5fa47d159030"}
-#   ],
-#   "usage": {"num_prompt_tokens": 407, "num_completion_tokens": 51}
-# }
 
 from __future__ import annotations
 
@@ -76,12 +20,13 @@ import httpx
 from pydantic import BaseModel
 from pydantic import Field
 
-from latticeflow.core.dtypes import AssistantMessage
 from latticeflow.core.dtypes import ChatCompletionInput
 from latticeflow.core.dtypes import FunctionCall
 from latticeflow.core.dtypes import FunctionCallOutput
 from latticeflow.core.dtypes import FunctionCallOutputStatusEnum
 from latticeflow.core.dtypes import FunctionCallStatus
+from latticeflow.core.dtypes import Message
+from latticeflow.core.dtypes import MessageRole
 from latticeflow.core.dtypes import MessageStatus
 from latticeflow.core.dtypes import ModelUsage
 from latticeflow.core.dtypes import OpenResponsesModelOutput
@@ -93,27 +38,19 @@ from latticeflow.core.dtypes import TraceItem
 
 
 class ModelInput(BaseModel):
-    """Request payload the Dify `/v1/chat-messages` endpoint accepts.
-
-    Produced by ``convert_user_input`` and consumed by ``query_model``.
-    """
+    """Request payload the Dify `/v1/chat-messages` endpoint accepts."""
 
     query: str
     user: str
     conversation_id: str = ""
-    inputs: dict[str, Any] = Field(default_factory=dict)
+    inputs: dict = Field(default_factory=dict)
     response_mode: str = "streaming"
 
 
 class RawModelOutput(BaseModel):
-    """Raw response returned by the Dify endpoint.
+    """The parsed SSE events, plus the user id we sent."""
 
-    Dify streams Server-Sent Events; ``query_model`` parses them into a flat
-    ``events`` list and carries the ``dify_user`` so it can be echoed back to
-    AI GO! for multi-turn continuity.
-    """
-
-    events: list[dict[str, Any]]
+    events: list
     dify_user: str
 
 
@@ -121,22 +58,12 @@ class RawModelOutput(BaseModel):
 
 
 class OpenResponsesConverter:
-    """Converts Dify's SSE event stream into an ``OpenResponsesModelOutput``.
-
-    Dify streams partial, repeated events rather than role-tagged messages, so
-    ``build`` first collapses the stream (agent thoughts merged by id, answer
-    chunks joined) and then constructs the Open Responses items in one pass.
-    """
+    """Collapses Dify's SSE event stream into an ``OpenResponsesModelOutput``."""
 
     def build(
         self, events: list[dict[str, Any]], dify_user: str = "", **kwargs: Any
     ) -> OpenResponsesModelOutput:
-        """Collapse the Dify event stream and convert it into Open Responses items.
-
-        Agent thoughts are merged by id (Dify emits the same thought id across
-        several partial events) into ordered tool call / tool output pairs, and
-        the streamed answer chunks are joined into a single assistant message.
-        """
+        """Merge agent thoughts by id into tool call/output pairs, join answer chunks."""
         thoughts: dict[str, dict[str, Any]] = {}
         thought_order: list[str] = []
         answer_chunks: list[str] = []
@@ -220,16 +147,12 @@ class OpenResponsesConverter:
 
     def build_assistant_message(
         self, text: str, conversation_id: str, dify_user: str
-    ) -> AssistantMessage:
-        """Build the assistant ``AssistantMessage`` from the joined answer text.
-
-        ``conversation_id`` and ``dify_user`` are attached as extra fields so
-        AI GO! round-trips them back on the next turn, keeping the conversation
-        pinned to the same Dify-side thread.
-        """
-        return AssistantMessage(
+    ) -> Message:
+        """Build the assistant ``Message``, carrying conversation_id/dify_user to round-trip."""
+        return Message(
             id=str(uuid.uuid4()),
             status=MessageStatus.completed,
+            role=MessageRole.assistant,
             content=[OutputTextContent(text=text, annotations=[])],
             conversation_id=conversation_id,
             dify_user=dify_user,
@@ -266,13 +189,10 @@ class OpenResponsesConverter:
 
 
 def convert_user_input(data: ChatCompletionInput) -> ModelInput:
-    """Build the Dify chat-messages request from LatticeFlow input.
+    """Build the Dify request: latest user query + the user/conversation to reuse.
 
-    Dify scopes per-conversation state (memory, agent thoughts) to the `user`
-    field, so every turn for the same thread must send the *same* user
-    identifier. We mint a fresh `latticeflow-<hex>` id on turn 1 and reuse the
-    one the assistant echoed back on subsequent turns; this avoids pinning
-    every conversation to the same Dify-side bucket.
+    Dify scopes conversation state to the `user`, so we mint a stable
+    `latticeflow-<hex>` id on turn 1 and reuse the one echoed back afterwards.
     """
     messages = data.messages
     last_user = next(m for m in reversed(messages) if m.role == "user")

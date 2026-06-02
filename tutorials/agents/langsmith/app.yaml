@@ -1,7 +1,4 @@
-display_name: "Customer Support Agent (LangSmith)"
-key: "customer-support-agent-langsmith"
+display_name: "Playground App"
+key: "playground-app"
 description: >
-  A customer-support agent deployed on the LangGraph Platform and served via
-  LangSmith. It handles order and product inquiries, authenticating users and
-  calling tools such as search_products, list_orders, and authenticate to
-  resolve requests.
+  Shared app for trying out model integrations.

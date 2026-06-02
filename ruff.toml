@@ -40,8 +40,6 @@ extend-select = [
     # that lack the required `from __future__ import annotations` import for
     # compatibility with older Python versions.
     "FA102",
-    # Checks for banned imports (see [lint.flake8-tidy-imports.banned-api] below)
-    "TID251",
     # Checks for uses of the try-except-pass pattern.
     "S110",
 ]

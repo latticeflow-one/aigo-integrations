@@ -1,19 +1,51 @@
 #!/usr/bin/env bash
-# Export all OpenCode sessions to individual JSON files.
+# Export OpenCode sessions to individual JSON files.
 #
 # Usage:
-#   ./export_sessions.sh [output_dir]
+#   ./export_sessions.sh [-n N] [output_dir]
+#
+# Options:
+#   -n N    Export up to N sessions (default: 10). Use 0 for all.
 #
 # Defaults to ./session_data if no output directory is given.
 # Requires: opencode CLI with `db` and `export` subcommands.
 
 set -euo pipefail
 
+command -v opencode >/dev/null 2>&1 || {
+  echo "Error: 'opencode' CLI not found in PATH." >&2
+  exit 1
+}
+
+LIMIT=10
+while getopts ":n:h" opt; do
+  case "$opt" in
+    n) LIMIT="$OPTARG" ;;
+    h)
+      sed -n '2,9p' "$0" | sed 's/^# \{0,1\}//'
+      exit 0
+      ;;
+    \?) echo "Unknown option: -$OPTARG" >&2; exit 1 ;;
+    :)  echo "Option -$OPTARG requires an argument." >&2; exit 1 ;;
+  esac
+done
+shift $((OPTIND - 1))
+
+if ! [[ "$LIMIT" =~ ^[0-9]+$ ]]; then
+  echo "Error: -n must be a non-negative integer (got '$LIMIT')." >&2
+  exit 1
+fi
+
 OUTPUT_DIR="${1:-$(dirname "$0")/session_data}"
 mkdir -p "$OUTPUT_DIR"
 
 echo "Fetching session IDs..."
-SESSION_IDS=$(opencode db "SELECT id FROM session ORDER BY time_created;" --format json \
+SQL="SELECT id FROM session ORDER BY time_created"
+if [[ "$LIMIT" -gt 0 ]]; then
+  SQL+=" LIMIT $LIMIT"
+fi
+SQL+=";"
+SESSION_IDS=$(opencode db "$SQL" --format json \
   | python3 -c "import sys, json; [print(s['id']) for s in json.load(sys.stdin)]")
 
 TOTAL=$(echo "$SESSION_IDS" | wc -l)

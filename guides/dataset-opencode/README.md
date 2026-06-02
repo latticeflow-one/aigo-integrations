@@ -2,38 +2,30 @@
 
 ## Overview
 
-This guide shows how to export OpenCode coding agent sessions and convert them into
-an AI GO! Trace dataset. The pipeline exports raw session data from the local OpenCode
-database, converts each session into the Open Responses trace format (with sub-agent
-spans, tool calls, and model usage metadata), and registers the resulting JSONL file
-as a dataset.
+This guide shows how to turn your local [OpenCode](https://opencode.ai) coding
+agent sessions into a trace dataset in AI GO!, so you can browse, evaluate, and
+benchmark past agent runs alongside other datasets.
+
+Requires the `opencode` CLI installed and on `PATH`.
 
 ## Usage
 
-**1. Export sessions from the local OpenCode database:**
+The commands below register the guide app, export raw sessions from the local
+OpenCode database into `datasets/session_data/` as one JSON file per session,
+convert the root sessions (excluding sub-agent sessions) into the
+[Open Responses](https://www.openresponses.org/) trace format and write them
+to `datasets/opencode_traces.jsonl` (one trace per line, with sub-agent spans,
+tool calls, and model usage metadata), and register that JSONL as a dataset.
 
-Requires `opencode` CLI installed.
-
-```bash
-./export_sessions.sh [output_dir]
-```
-
-This writes each session as a JSON file into `./session_data/` (or the specified
-output directory). Sessions that have already been exported are skipped.
-
-**2. Convert exported sessions to Trace JSONL:**
+By default, 10 sessions are exported and converted. Use `--num-samples 0` to
+process all sessions.
 
 ```bash
-python convert_sessions.py [--num-samples N] [--session-dir DIR] [--output FILE]
-```
-
-This reads the exported JSON files, selects root sessions (excluding sub-agent
-sessions), converts them to `Trace` objects, and writes the output to
-`opencode_traces.jsonl`. By default it samples 10 sessions; use `--num-samples 0`
-to convert all.
-
-**3. Register the dataset:**
-
-```bash
-lf add dataset -f opencode_traces.yaml
+lf add app -f app.yaml
+lf switch playground-app
+cd datasets
+./export_sessions.sh --num-samples 10 ./session_data
+python convert_sessions.py --session-dir ./session_data --output ./opencode_traces.jsonl
+cd ..
+lf add dataset -f datasets/opencode_traces.yaml
 ```

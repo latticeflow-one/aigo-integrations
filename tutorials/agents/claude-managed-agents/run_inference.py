@@ -7,70 +7,12 @@ converts the resulting session-event stream into an Open Responses trace
 The Anthropic SDK auto-attaches `anthropic-beta: managed-agents-2026-04-01`
 for any call through `client.beta.sessions.*`.
 
-The integration runs as a three-stage pipeline, mirroring the AI GO!
-`run_inference` template:
+Pipeline:
 
     ChatCompletionInput  ->  ModelInput  ->  RawModelOutput  ->  OpenResponsesModelOutput
        (from AI GO!)          convert_        query_model        convert_model_output
                               user_input
 """
-
-# Example body (LatticeFlow -> run_inference)
-# {
-#   "messages": [
-#     {"role": "user", "content": "Search the catalog for shoes."}
-#   ]
-# }
-#
-# Multi-turn (subsequent turns echo the prior assistant message with
-# `session_id` so we keep using the same Managed Agents session):
-# {
-#   "messages": [
-#     {"role": "user", "content": "Hello!"},
-#     {"role": "assistant", "content": "Hello! How can I assist you today?",
-#      "session_id": "sesn_01ABcDeFgHiJkLmNoPqRsTuV"},
-#     {"role": "user", "content": "What is my session id?"}
-#   ]
-# }
-
-# Example raw model output (Managed Agents -> query_model)
-# {
-#   "session_id": "sesn_01ABcDeFgHiJkLmNoPqRsTuV",
-#   "events": [
-#     {"type": "agent.mcp_tool_use", "id": "evt_01...",
-#      "name": "search_products", "input": {"query": "shoes"},
-#      "mcp_server_name": "retail-tools"},
-#     {"type": "agent.mcp_tool_result", "id": "evt_02...",
-#      "mcp_tool_use_id": "evt_01...",
-#      "content": [{"type": "text", "text": "[]"}],
-#      "is_error": false},
-#     {"type": "agent.message", "id": "evt_03...",
-#      "content": [{"type": "text",
-#                   "text": "I couldn't find any shoes in the catalog..."}]},
-#     {"type": "span.model_request_end", "id": "evt_04...",
-#      "model_usage": {"input_tokens": 201, "output_tokens": 22, "speed": "standard"}},
-#     {"type": "session.status_idle", "id": "evt_05...",
-#      "stop_reason": {"type": "end_turn"}}
-#   ]
-# }
-
-# Example LF model output (convert_model_output)
-# {
-#   "items": [
-#     {"type": "function_call", "id": "5bf9...", "call_id": "evt_01...",
-#      "name": "search_products", "arguments": "{\"query\": \"shoes\"}",
-#      "status": "completed"},
-#     {"type": "function_call_output", "id": "9da4...",
-#      "call_id": "evt_01...", "output": "[]", "status": "completed"},
-#     {"type": "message", "id": "44c2...", "status": "completed",
-#      "role": "assistant",
-#      "content": [{"type": "output_text",
-#                   "text": "I couldn't find any shoes in the catalog...",
-#                   "annotations": []}],
-#      "session_id": "sesn_01ABcDeFgHiJkLmNoPqRsTuV"}
-#   ],
-#   "usage": {"num_prompt_tokens": 201, "num_completion_tokens": 22}
-# }
 
 from __future__ import annotations
 
@@ -81,12 +23,13 @@ from typing import Any
 import anthropic
 from pydantic import BaseModel
 
-from latticeflow.core.dtypes import AssistantMessage
 from latticeflow.core.dtypes import ChatCompletionInput
 from latticeflow.core.dtypes import FunctionCall
 from latticeflow.core.dtypes import FunctionCallOutput
 from latticeflow.core.dtypes import FunctionCallOutputStatusEnum
 from latticeflow.core.dtypes import FunctionCallStatus
+from latticeflow.core.dtypes import Message
+from latticeflow.core.dtypes import MessageRole
 from latticeflow.core.dtypes import MessageStatus
 from latticeflow.core.dtypes import ModelUsage
 from latticeflow.core.dtypes import OpenResponsesModelOutput
@@ -94,14 +37,10 @@ from latticeflow.core.dtypes import OutputTextContent
 from latticeflow.core.dtypes import TraceItem
 
 
-# Event-stream stop reasons that mean "the turn is over, stop iterating".
+# Stop reasons that mean the turn is over.
 _TERMINAL_STOP_REASONS = {"end_turn", "retries_exhausted"}
 
-# Tool-call events live on the subthread where the work happens; coordinator
-# topologies (`multiagent`) emit them on the spawned specialist's thread, not
-# on the primary. Pulling them lets the trace report the tool calls that drove
-# the assistant's answer. Single-agent topologies never spawn subthreads, so
-# this code is a no-op for them.
+# Tool-call event types fetched from spawned subthreads (coordinator topologies).
 _SUBTHREAD_TOOL_EVENT_TYPES = frozenset({"agent.mcp_tool_use", "agent.mcp_tool_result"})
 
 
@@ -109,42 +48,29 @@ _SUBTHREAD_TOOL_EVENT_TYPES = frozenset({"agent.mcp_tool_use", "agent.mcp_tool_r
 
 
 class ModelInput(BaseModel):
-    """Request payload the Managed Agents session accepts.
-
-    Produced by ``convert_user_input`` and consumed by ``query_model``.
-    """
+    """Request payload the Managed Agents session accepts."""
 
     session_id: str = ""  # empty on the first turn, reused afterwards
     user_message: str
 
 
 class RawModelOutput(BaseModel):
-    """The collected session events, plus the session id we used (to echo back)."""
+    """The collected session events, plus the session id we used."""
 
     session_id: str
-    events: list[dict[str, Any]]
+    events: list
 
 
 # ── Open Responses converter ──────────────────────────────────────────────
 
 
 class OpenResponsesConverter:
-    """Converts a Managed Agents event stream into an ``OpenResponsesModelOutput``.
-
-    Each MCP tool-use event becomes a ``function_call``, each tool-result event
-    becomes a ``function_call_output``, the ``agent.message`` text chunks are
-    joined into a single assistant message, and per-request usage is summed.
-    """
+    """Converts a Managed Agents event stream into an ``OpenResponsesModelOutput``."""
 
     def build(
         self, events: list[dict[str, Any]], session_id: str = "", **kwargs: Any
     ) -> OpenResponsesModelOutput:
-        """Convert the session events into ordered Open Responses items.
-
-        Items are emitted in stream order (tool calls and their outputs as they
-        occur), with the assistant message appended last and carrying the
-        ``session_id`` to round-trip.
-        """
+        """Convert the session events into ordered Open Responses items."""
         items: list[TraceItem] = []
         num_prompt_tokens = 0
         num_completion_tokens = 0
@@ -191,16 +117,12 @@ class OpenResponsesConverter:
             status=FunctionCallOutputStatusEnum.completed,
         )
 
-    def build_assistant_message(self, text: str, session_id: str) -> AssistantMessage:
-        """Build the assistant ``AssistantMessage`` from the joined answer text.
-
-        ``session_id`` is attached as an extra field so AI GO! round-trips it
-        back on the next turn, keeping the conversation pinned to the same
-        Managed Agents session.
-        """
-        return AssistantMessage(
+    def build_assistant_message(self, text: str, session_id: str) -> Message:
+        """Build the assistant ``Message``, carrying ``session_id`` to round-trip."""
+        return Message(
             id=str(uuid.uuid4()),
             status=MessageStatus.completed,
+            role=MessageRole.assistant,
             content=[OutputTextContent(text=text, annotations=[])],
             session_id=session_id,
         )
@@ -239,11 +161,7 @@ class OpenResponsesConverter:
 
 
 def convert_user_input(data: ChatCompletionInput) -> ModelInput:
-    """Pull the latest user turn + reuse a session_id echoed by a prior assistant.
-
-    On the first turn there is no prior assistant message, so ``session_id``
-    stays empty — signalling that a new session must be created.
-    """
+    """Pull the latest user turn + reuse a session_id echoed by a prior assistant."""
     messages = data.messages
     last_user = next(m for m in reversed(messages) if m.role == "user")
 
@@ -261,10 +179,8 @@ def convert_user_input(data: ChatCompletionInput) -> ModelInput:
 def query_model(model_input: ModelInput, environment: dict[str, Any]) -> RawModelOutput:
     """Create/reuse a session, send `user.message`, collect events until idle.
 
-    Includes tool-call events from any subthreads the agent spawned during
-    the turn so the trace reflects what actually ran — important for
-    coordinator topologies whose tool calls happen on the specialist's
-    subthread, not the primary stream.
+    Also pulls tool-call events from any subthreads the agent spawned so the
+    trace reflects coordinator topologies, not just the primary stream.
     """
     client = anthropic.Anthropic(api_key=environment["ANTHROPIC_API_KEY"])
 

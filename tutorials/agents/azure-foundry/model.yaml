@@ -1,0 +1,26 @@
+display_name: "Customer Support Agent (Azure AI Foundry)"
+key: "customer-support-agent-azure-foundry"
+description: >-
+  A customer-support agent deployed on Azure AI Foundry, driven via its
+  OpenAI-compatible Responses API.
+rate_limit: 15
+task: "chat_completion"
+config:
+  connection_type: "custom_inference"
+  adapter:
+    key: "latticeflow$identity_chat_completion"
+  run_inference_snippet: !include "./run_inference.py"
+  environment:
+    AZURE_AI_PROJECT_ENDPOINT: $AZURE_AI_PROJECT_ENDPOINT
+    AZURE_FOUNDRY_AGENT_NAME: $AZURE_FOUNDRY_AGENT_NAME
+    # DefaultAzureCredential reads the service-principal env vars below
+    # (EnvironmentCredential). Create one with `az ad sp create-for-rbac`
+    # and grant it `Azure AI User` on the Foundry project.
+    AZURE_TENANT_ID: "<< secrets.AZURE_TENANT_ID >>"
+    AZURE_CLIENT_ID: "<< secrets.AZURE_CLIENT_ID >>"
+    AZURE_CLIENT_SECRET: "<< secrets.AZURE_CLIENT_SECRET >>"
+  timeout: 120
+secrets:
+  AZURE_TENANT_ID: $AZURE_TENANT_ID
+  AZURE_CLIENT_ID: $AZURE_CLIENT_ID
+  AZURE_CLIENT_SECRET: $AZURE_CLIENT_SECRET

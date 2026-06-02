@@ -19,7 +19,8 @@ import json
 import logging
 import random
 import uuid
-from datetime import datetime, timezone
+from datetime import datetime
+from datetime import timezone
 from pathlib import Path
 from typing import Any
 
@@ -44,6 +45,7 @@ from latticeflow.core.dtypes import TraceItem
 from latticeflow.core.dtypes import TraceMetadata
 from latticeflow.core.dtypes import UserMessage
 
+
 logger = logging.getLogger(__name__)
 
 # ---------------------------------------------------------------------------
@@ -59,14 +61,10 @@ def _msg_id() -> str:
     return f"msg_{_MESSAGE_ID_COUNTER:06d}"
 
 
-def _make_user_message(
-    texts: list[str],
-) -> UserMessage:
+def _make_user_message(texts: list[str]) -> UserMessage:
     """Build an Open Responses user message."""
     return UserMessage(
-        id=_msg_id(),
-        status=STATUS,
-        content=[InputTextContent(text=t) for t in texts],
+        id=_msg_id(), status=STATUS, content=[InputTextContent(text=t) for t in texts]
     )
 
 
@@ -74,11 +72,7 @@ def _make_assistant_message(
     content_parts: list[OutputTextContent | ReasoningTextContent],
 ) -> AssistantMessage:
     """Build an Open Responses assistant message."""
-    return AssistantMessage(
-        id=_msg_id(),
-        status=STATUS,
-        content=content_parts,
-    )
+    return AssistantMessage(id=_msg_id(), status=STATUS, content=content_parts)
 
 
 def _ts(epoch_ms: int | float | None) -> datetime | None:
@@ -188,9 +182,7 @@ class SessionConverter:
         return None
 
     def _convert_messages(
-        self,
-        messages: list[dict[str, Any]],
-        span_id: str | None,
+        self, messages: list[dict[str, Any]], span_id: str | None
     ) -> list[TraceEvent]:
         """Convert a list of OpenCode messages into TraceEvents.
 
@@ -246,9 +238,7 @@ class SessionConverter:
         return groups
 
     def _convert_user_message(
-        self,
-        msg: dict[str, Any],
-        span_id: str | None,
+        self, msg: dict[str, Any], span_id: str | None
     ) -> list[TraceEvent]:
         """Convert a user message into events."""
         events: list[TraceEvent] = []
@@ -266,9 +256,7 @@ class SessionConverter:
             elif part_type == "compaction":
                 events.append(
                     CompactionEvent(
-                        span_id=span_id,
-                        timestamp=timestamp,
-                        strategy="summary",
+                        span_id=span_id, timestamp=timestamp, strategy="summary"
                     )
                 )
             elif part_type == "file":
@@ -279,19 +267,13 @@ class SessionConverter:
         if texts:
             user_msg = _make_user_message(texts)
             events.append(
-                MessageEvent(
-                    span_id=span_id,
-                    timestamp=timestamp,
-                    item=user_msg,
-                )
+                MessageEvent(span_id=span_id, timestamp=timestamp, item=user_msg)
             )
 
         return events
 
     def _convert_assistant_turn(
-        self,
-        assistant_messages: list[dict[str, Any]],
-        span_id: str | None,
+        self, assistant_messages: list[dict[str, Any]], span_id: str | None
     ) -> list[TraceEvent]:
         """Convert a group of assistant messages (one logical turn) into events.
 
@@ -481,10 +463,7 @@ class SessionConverter:
         # If there were text/reasoning parts, add as an assistant message.
         content = reasoning_parts + text_parts
         if content:
-            items.insert(
-                0,
-                _make_assistant_message(content),
-            )
+            items.insert(0, _make_assistant_message(content))
 
         return items
 
@@ -504,10 +483,7 @@ class SessionConverter:
         return None
 
     def _convert_tool_part(
-        self,
-        part: dict[str, Any],
-        span_id: str | None,
-        mc_event_id: str | None,
+        self, part: dict[str, Any], span_id: str | None, mc_event_id: str | None
     ) -> list[TraceEvent]:
         """Convert a tool part into FunctionCallEvent(s) and optionally spans."""
         events: list[TraceEvent] = []
@@ -574,10 +550,7 @@ class SessionConverter:
                 events.extend(child_events)
 
                 events.append(
-                    SpanEndEvent(
-                        span_id=child_span_id,
-                        timestamp=_ts(end_ms),
-                    )
+                    SpanEndEvent(span_id=child_span_id, timestamp=_ts(end_ms))
                 )
 
                 # Root-level FunctionCallEvent linking to the span.
@@ -654,10 +627,7 @@ def main() -> None:
         help="Output JSONL file path.",
     )
     parser.add_argument(
-        "--seed",
-        type=int,
-        default=42,
-        help="Random seed for session selection.",
+        "--seed", type=int, default=42, help="Random seed for session selection."
     )
     args = parser.parse_args()
 

@@ -129,10 +129,7 @@ class OpenResponsesConverter:
     """
 
     def build(
-        self,
-        events: list[dict[str, Any]],
-        dify_user: str = "",
-        **kwargs: Any,
+        self, events: list[dict[str, Any]], dify_user: str = "", **kwargs: Any
     ) -> OpenResponsesModelOutput:
         """Collapse the Dify event stream and convert it into Open Responses items.
 

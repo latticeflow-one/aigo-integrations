@@ -159,10 +159,7 @@ def query_model(model_input: ModelInput, environment: dict[str, Any]) -> RawMode
     api_key = environment["LANGSMITH_API_KEY"]
     assistant_id = environment["LANGGRAPH_ASSISTANT_ID"]
 
-    headers = {
-        "x-api-key": api_key,
-        "Content-Type": "application/json",
-    }
+    headers = {"x-api-key": api_key, "Content-Type": "application/json"}
 
     with httpx.Client(timeout=120) as client:
         thread_id = model_input.thread_id

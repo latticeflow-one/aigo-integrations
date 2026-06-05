@@ -1,4 +1,6 @@
-display_name: "Playground App"
-key: "playground-app"
+display_name: "LangSmith App"
+key: "langsmith-app"
+tags: ["Agents", "LangSmith"]
 description: >
-  Shared app for trying out model integrations.
+  Custom-inference integration for a LangSmith agent-chat app, exposing its
+  endpoint as an AI GO! model with Open Responses traces.

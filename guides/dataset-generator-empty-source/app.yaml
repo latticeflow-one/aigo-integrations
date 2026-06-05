@@ -2,6 +2,6 @@ display_name: "Playground App"
 key: "playground-app"
 tags: ["Guides", "Dataset Generation"]
 description: >
-  This guide shows an example of a dataset generator that uses no source dataset and 
+  This guide shows an example of a dataset generator that uses no source dataset and
   an LLM as a synthesizer.
 long_description: !include README.md

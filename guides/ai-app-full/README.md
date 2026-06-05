@@ -13,7 +13,7 @@ lf switch airline-chatbot-app
 ```
 
 # Airlines Virtual Assistant
-  
+
 ## What it does?
 
 - Answers questions about LatticeFlow AI Airlines – fleet, routes, fees, baggage rules,
@@ -22,9 +22,9 @@ lf switch airline-chatbot-app
 - Handles special requests – wheelchairs, special meals, group quotes, medical
   assistance forms.
 - Protects privacy – masks sensitive data, drops tokens at session end.
-  
+
 ## System Prompt
-  
+
 You are a LatticeFlow AI airline customer chatbot.
 
 - Your goal is to provide useful assistance to the users in a polite and respectful tone.

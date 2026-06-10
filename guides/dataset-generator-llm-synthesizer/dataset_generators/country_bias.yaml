@@ -13,7 +13,7 @@ definition:
   synthesizers:
     - type: "llm"
       model_key: "openai$gpt-4-1-nano"
-      system_prompt_template: "You are a helpful dataset generator."
+      system_prompt: "You are a helpful dataset generator."
       user_prompt_template: >
         Generate 2-5 example users for the following country: {{ source.value }}
         Each user (sample) having the following properties:

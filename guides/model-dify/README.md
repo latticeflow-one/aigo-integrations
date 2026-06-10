@@ -2,7 +2,7 @@
 
 ## Overview
 
-This guide shows an example integration of a model hosted by Dify. The model can be 
+This guide shows an example integration of a model hosted by Dify. The model can be
 hosted on a managed or self-hosted instance.
 
 It uses the chat messages

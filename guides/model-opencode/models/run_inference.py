@@ -59,7 +59,7 @@ def send_message(
             headers=headers,
             # Large number since this should be controlled via
             # the `timeout` field in the `model-opencode.yaml` file
-            timeout=30*60,
+            timeout=30 * 60,
         )
         resp.raise_for_status()
         response_json = resp.json()
@@ -75,7 +75,7 @@ def send_message(
     return full_response
 
 
-def run_inference(body: str, environment: dict[str, Any]):
+def run_inference(body: str, environment: dict[str, Any]) -> str:
     base_url = environment["BASE_URL"].rstrip("/")
     model_provider_id = environment["MODEL_PROVIDER_ID"]
     model_id = environment["MODEL_ID"]

@@ -1,5 +1,5 @@
 display_name: "HTTPS Enforcement System Task"
-key: "system-task-enforces-https"
+key: "playground-app"
 tags: ["Guides", "Tasks", "System Task"]
 description: >
   This guide shows how to define and run a system task that checks a

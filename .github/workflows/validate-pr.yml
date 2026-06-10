@@ -1,0 +1,32 @@
+name: validate-pr
+on:
+  pull_request_target:
+    types:
+      - opened
+      - reopened
+      - edited
+      - synchronize
+jobs:
+  pr-title-cu-link:
+    runs-on: [ubuntu-latest]
+    permissions:
+      pull-requests: read
+    steps:
+      - name: Check PR Title
+        env:
+          TITLE: ${{ github.event.pull_request.title }}
+        run: |
+          echo "Validating PR title: $TITLE"
+          if [[ "$TITLE" =~ ^.*CU-[a-z0-9]{9}[\)\,\ ].*$ ]]; then
+            echo "PR title contains expected regex (Example: Add Feature X CU-86c7cz1x9, CU-86c7cz1x1)"
+            exit 0
+          elif [[ "$TITLE" =~ ^.*CU-[a-z0-9]{9}$ ]]; then
+            echo "PR title contains expected regex (Example: Add Feature X CU-86c7cz1x9)"
+            exit 0
+          else
+            echo "PR title MUST contain the link to the associated CU task. (Example: Add Feature X CU-86c7cz1x9)"
+            exit 1
+          fi
+      - uses: amannn/action-semantic-pull-request@v6
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

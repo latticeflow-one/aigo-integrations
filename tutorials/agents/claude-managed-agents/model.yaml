@@ -1,0 +1,20 @@
+display_name: "Customer Support Agent (Claude Managed Agents)"
+key: "customer-support-agent-claude"
+description: >-
+  A customer-support agent deployed on Claude Managed Agents, driven via the
+  beta sessions API.
+rate_limit: 5
+task: "chat_completion"
+config:
+  connection_type: "custom_inference"
+  adapter:
+    key: "latticeflow$identity_chat_completion"
+  run_inference_snippet: !include "./run_inference.py"
+  environment:
+    CLAUDE_AGENT_ID: $CLAUDE_AGENT_ID
+    CLAUDE_ENVIRONMENT_ID: $CLAUDE_ENVIRONMENT_ID
+    CLAUDE_VAULT_ID: $CLAUDE_VAULT_ID
+    ANTHROPIC_API_KEY: "<< secrets.ANTHROPIC_API_KEY >>"
+  timeout: 180
+secrets:
+  ANTHROPIC_API_KEY: $ANTHROPIC_API_KEY

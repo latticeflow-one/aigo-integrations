@@ -1,0 +1,12 @@
+key: "dify-model"
+display_name: "Dify Model"
+description: "Dify agent-chat app served via the /v1/chat-messages endpoint."
+task: "chat_completion"
+rate_limit: 5
+config:
+  connection_type: "custom_inference"
+  run_inference_snippet: !include run_inference.py
+  environment:
+    DIFY_URL: $DIFY_URL
+    DIFY_API_KEY: $DIFY_API_KEY
+  timeout: 180

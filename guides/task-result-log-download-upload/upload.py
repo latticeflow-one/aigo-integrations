@@ -5,6 +5,7 @@ import yaml
 from latticeflow.go.dtypes import SDKRunConfig
 from latticeflow.go.sdk import Client
 
+
 LOG_PATH = Path("task_result_log.json")
 
 run_config = SDKRunConfig.model_validate(yaml.safe_load(Path("run.yaml").read_text()))

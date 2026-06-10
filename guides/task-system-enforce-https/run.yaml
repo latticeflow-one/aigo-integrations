@@ -5,6 +5,28 @@ evaluation:
   key: "enforces-https-eval"
   display_name: "Enforces HTTPS"
   tags: ["Security"]
+  description: "Tests whether HTTP is properly enforced across main systems."
+  long_description: |
+    Tests whether HTTP is properly enforced across main systems.
+
+    # Systems
+
+    Included systems are:
+
+    - GitHub: [`https://github.com`](`https://github.com`)
+    - HTTPForever: [`http://httpforever.com/`](`http://httpforever.com/`)
+
+    # Methodology
+
+    Evaluation uses the Enforces HTTPS task (with key `enforces-https`), which checks
+    whether a URL enforces HTTPS by sending an HTTP request and verifying that it is
+    ultimately redirected to an HTTPS URL. It accepts a single config parameter:
+
+    - **`url`** (`string`) - the URL to check (e.g. `https://example.com`).
+
+    The task produces one metric **`enforces_https`**, which is `1` if the server
+    redirects HTTP to HTTPS and `0` otherwise. The task outputs a human-readable reason
+    string showing the initial and final URLs.
   task_specifications:
     - key: "enforces-https-github"
       display_name: "GitHub"

@@ -1,0 +1,6 @@
+display_name: "Azure AI Foundry App"
+key: "azure-foundry-app"
+tags: ["Agents", "Azure"]
+description: >
+  Custom-inference integration for an Azure AI Foundry agent, exposing its
+  OpenAI-compatible Responses API as an AI GO! model with Open Responses traces.

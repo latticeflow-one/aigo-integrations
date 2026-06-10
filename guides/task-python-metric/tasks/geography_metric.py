@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from latticeflow.assessment.dtypes import SampleScore
+from latticeflow.core.dtypes import SampleScore
 
 
 def compute_metrics(scores: list[SampleScore]) -> dict[str, int | float]:

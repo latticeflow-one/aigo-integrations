@@ -4,7 +4,7 @@
 </p>
 
 <div align="center">
-    AI GO! is a platform for AI governance operationalization developed by 
+    AI GO! is a platform for AI governance operationalization developed by
 
 [LatticeFlow AI](https://latticeflow.ai/).
 </div>
@@ -18,7 +18,7 @@
 
 # AI GO! Integrations
 
-Welcome to the **LatticeFlow AI GO! Integrations** repository. 
+Welcome to the **LatticeFlow AI GO! Integrations** repository.
 
 This repository serves as the central hub for learning how to connect your AI ecosystem
 with the LatticeFlow AI GO! platform. Whether you are benchmarking your AI system,
@@ -48,3 +48,20 @@ For example, to run an evaluation on the knowledge of a model on a specific topi
     ```
 
 3. Explore results.
+
+## Developer Guide
+
+Create a virtual environment and install dependencies:
+
+```bash
+uv venv --python 3.12
+source .venv/bin/activate
+uv pip install latticeflow-go-sdk
+```
+
+Install pre-commit hooks before contributing:
+
+```bash
+uv pip install pre-commit
+pre-commit install && pre-commit install -t pre-push
+```

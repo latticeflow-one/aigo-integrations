@@ -9,4 +9,4 @@ source:
   split: "validation"
   filters:
     - op: "is_true"
-      expression: "{{ answer }}"
+      expression: "{{ sample.answer }}"

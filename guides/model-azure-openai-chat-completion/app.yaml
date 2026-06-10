@@ -1,0 +1,7 @@
+display_name: "Playground App"
+key: "playground-app"
+tags: ["Guides", "Models"]
+description: >
+  This guide shows an Azure OpenAI integration using the deployment-scoped Chat
+  Completions endpoint.
+long_description: !include README.md

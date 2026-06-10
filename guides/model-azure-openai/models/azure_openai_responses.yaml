@@ -1,0 +1,17 @@
+display_name: "Azure OpenAI Responses"
+key: "azure-openai-responses"
+description: >
+  Azure OpenAI model using the /openai/responses endpoint.
+rate_limit: 30
+task: "chat_completion"
+config:
+  adapter:
+    key: "latticeflow$openai_responses"
+  connection_type: "custom_connection"
+  url: $AZURE_OPENAI_RESPONSES_URL
+  api_key: ""
+  model_key: "gpt-5.4-mini"
+  custom_headers:
+    api-key: "<< secrets.AZURE_OPENAI_API_KEY >>"
+secrets:
+  AZURE_OPENAI_API_KEY: $AZURE_OPENAI_API_KEY

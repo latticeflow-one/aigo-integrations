@@ -1,0 +1,7 @@
+display_name: "Playground App"
+key: "playground-app"
+tags: ["Guides", "Models"]
+description: >
+  This guide shows three Azure OpenAI model integration patterns for Chat
+  Completions and Responses APIs.
+long_description: !include README.md

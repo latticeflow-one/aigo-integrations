@@ -1,2 +1,0 @@
-models:
-  - $ref: "./models/azure_openai_chat_completion.yaml"

@@ -1,7 +1,0 @@
-display_name: "Playground App"
-key: "playground-app"
-tags: ["Guides", "Models"]
-description: >
-  This guide shows an Azure OpenAI integration using the Responses API on the
-  legacy /openai surface.
-long_description: !include README.md

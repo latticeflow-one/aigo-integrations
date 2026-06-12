@@ -1,7 +1,7 @@
 display_name: "Azure OpenAI Chat Completions"
 key: "azure-openai-chat-completion"
 description: >
-  Azure OpenAI model using the deployment-scoped Chat Completions endpoint.
+  Azure OpenAI model using the Chat Completions endpoint.
 rate_limit: 30
 task: "chat_completion"
 config:
@@ -9,9 +9,5 @@ config:
     key: "latticeflow$openai_chat_completion"
   connection_type: "custom_connection"
   url: $AZURE_OPENAI_CHAT_COMPLETIONS_URL
-  api_key: ""
-  model_key: "gpt-5.4-mini"
-  custom_headers:
-    api-key: "<< secrets.AZURE_OPENAI_API_KEY >>"
-secrets:
-  AZURE_OPENAI_API_KEY: $AZURE_OPENAI_API_KEY
+  api_key: "<< secrets.AZURE_OPENAI_API_KEY >>"
+  model_key: "gpt-5-nano"

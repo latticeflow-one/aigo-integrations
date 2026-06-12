@@ -8,7 +8,7 @@ task: "chat_completion"
 config:
   connection_type: "custom_inference"
   adapter:
-    key: "latticeflow$identity_chat_completion"
+    key: "latticeflow$identity"
   run_inference_snippet: !include "./run_inference.py"
   environment:
     AZURE_AI_PROJECT_ENDPOINT: $AZURE_AI_PROJECT_ENDPOINT

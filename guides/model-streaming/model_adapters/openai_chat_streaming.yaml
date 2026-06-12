@@ -7,7 +7,6 @@ long_description: >
   [OpenAI's documentation](https://developers.openai.com/api/reference/resources/chat/subresources/completions/methods/create)
   for model input and output structure. Streaming response is requested by sending
   `'stream'` set to `'true'` in the model request.
-task: "chat_completion"
 process_input:
   language: "jinja"
   source_code: !include "./openai_chat_streaming_input.jinja"

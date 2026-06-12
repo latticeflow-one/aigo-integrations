@@ -22,6 +22,7 @@ definition:
       compute_scores_snippet: !include "./scorer.py"
       metrics:
         - type: mean
+          key: task_score_mean
           field: score
           name: "Task Score"
         - type: mean

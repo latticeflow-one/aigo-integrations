@@ -6,8 +6,6 @@ rate_limit: 15
 task: "chat_completion"
 config:
   connection_type: "custom_inference"
-  adapter:
-    key: "latticeflow$identity"
   run_inference_snippet: !include "./run_inference.py"
   environment:
     AWS_REGION: $AWS_REGION

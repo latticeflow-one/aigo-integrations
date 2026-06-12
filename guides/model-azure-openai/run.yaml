@@ -1,6 +1,5 @@
 models:
   - $ref: "./models/azure_openai_chat_completion.yaml"
   - $ref: "./models/azure_openai_responses.yaml"
-  - $ref: "./models/azure_openai_v1_responses.yaml"
 secrets:
-  AZURE_OPENAI_API_KEY: AZURE_OPENAI_API_KEY
+  AZURE_OPENAI_API_KEY: $AZURE_OPENAI_API_KEY

@@ -27,7 +27,7 @@ definition:
         Respond only with 'correct' or 'incorrect' and nothing else.
       user_prompt: |
         Ground Truth Answer: {{ sample.gt_answer }}
-        Candidate Answer: {{ solver_output.output }}
+        Candidate Answer: {{ trace.get_last_assistant_text() }}
       correct_labels:
         - "correct"
       incorrect_labels:

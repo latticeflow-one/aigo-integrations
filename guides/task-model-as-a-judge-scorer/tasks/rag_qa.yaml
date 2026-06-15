@@ -42,7 +42,7 @@ definition:
         Return only the numeric score.
       user_prompt: >
         <context>{{ sample.context }}</context>
-        <response>{{ model_output.choices[0].message.content }}</response>
+        <response>{{ trace.get_last_assistant_text() }}</response>
       score_min: 0
       score_max: 100
       metrics:

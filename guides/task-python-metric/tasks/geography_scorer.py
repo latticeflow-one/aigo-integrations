@@ -4,7 +4,7 @@ from typing import Any
 
 
 def compute_scores(sample: dict[str, Any], solver_output: Any) -> dict[str, Any]:
-    model_completion = solver_output.output["choices"][0]["message"]["content"]
+    model_completion = solver_output.trace.get_last_assistant_text() or ""
     is_valid = model_completion != ""
     return {
         "country": sample["country"],

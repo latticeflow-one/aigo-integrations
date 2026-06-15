@@ -17,16 +17,16 @@ from typing import Any
 import yaml
 
 from latticeflow.core.dtypes import AssistantMessage
-from latticeflow.core.dtypes import SYNTHETIC_MESSAGE_STATUS
-from latticeflow.core.dtypes import Trace
-from latticeflow.core.dtypes import TraceItem
-from latticeflow.core.dtypes import UserMessage
 from latticeflow.core.dtypes import FunctionCall
 from latticeflow.core.dtypes import FunctionCallOutput
 from latticeflow.core.dtypes import FunctionCallOutputStatusEnum
 from latticeflow.core.dtypes import FunctionCallStatus
 from latticeflow.core.dtypes import InputTextContent
 from latticeflow.core.dtypes import OutputTextContent
+from latticeflow.core.dtypes import SYNTHETIC_MESSAGE_STATUS
+from latticeflow.core.dtypes import Trace
+from latticeflow.core.dtypes import TraceItem
+from latticeflow.core.dtypes import UserMessage
 
 
 class Tau2BenchMessageConverter:
@@ -180,10 +180,7 @@ def main() -> None:
         description="Convert a tau2bench JSON trace into a LatticeFlow AI GO dataset."
     )
     parser.add_argument(
-        "--input-file",
-        type=Path,
-        required=True,
-        help="Path to a tau2bench JSON file.",
+        "--input-file", type=Path, required=True, help="Path to a tau2bench JSON file."
     )
     args = parser.parse_args()
 

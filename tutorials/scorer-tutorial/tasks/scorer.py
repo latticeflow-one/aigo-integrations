@@ -50,12 +50,14 @@ class TraceScorer:
         for item in self.trace.items:
             if item.type == "function_call":
                 args = json.loads(item.arguments) if item.arguments else {}
-                calls.append({
-                    "name": item.name,
-                    "args": args,
-                    "created_by": item.created_by,
-                    "output": outputs.get(item.call_id),
-                })
+                calls.append(
+                    {
+                        "name": item.name,
+                        "args": args,
+                        "created_by": item.created_by,
+                        "output": outputs.get(item.call_id),
+                    }
+                )
         return calls
 
     def find_last_status_bar(self) -> str | None:
@@ -112,8 +114,10 @@ class TraceScorer:
     def assert_service_status(self, expected: dict) -> bool:
         status = expected["expected_status"]
         if self.status_bar is not None:
-            has_signal = "\U0001f4f6" in self.status_bar          # 📶
-            no_signal = "\U0001f4f5" in self.status_bar or "\u2708" in self.status_bar  # 📵 ✈
+            has_signal = "\U0001f4f6" in self.status_bar  # 📶
+            no_signal = (
+                "\U0001f4f5" in self.status_bar or "\u2708" in self.status_bar
+            )  # 📵 ✈
             if status == "connected":
                 return has_signal and not no_signal
             return no_signal or not has_signal
@@ -130,7 +134,11 @@ class TraceScorer:
             return False
         desc = expected["expected_desc"]
         if desc == "excellent":
-            return "\U0001f4f6\u2074" in self.status_bar and "5G" in self.status_bar and "Data Enabled" in self.status_bar
+            return (
+                "\U0001f4f6\u2074" in self.status_bar
+                and "5G" in self.status_bar
+                and "Data Enabled" in self.status_bar
+            )
         if desc == "good":
             return "\U0001f4f6\u00b3" in self.status_bar
         return False
@@ -162,7 +170,9 @@ class TraceScorer:
         """Score the trace against the given evaluation criteria."""
         action_results = self.check_actions(criteria.get("actions", []))
         action_score = 1.0 if all(action_results) else 0.0 if action_results else 1.0
-        action_coverage = sum(action_results) / len(action_results) if action_results else 1.0
+        action_coverage = (
+            sum(action_results) / len(action_results) if action_results else 1.0
+        )
 
         env_results = self.check_env_assertions(criteria.get("env_assertions", []))
         env_score = 1.0 if all(env_results) else 0.0 if env_results else 1.0
@@ -180,5 +190,7 @@ class TraceScorer:
 
 def compute_scores(sample: dict[str, Any], solver_output: Any) -> dict[str, Any]:
     """Called once per sample by the AI GO! platform."""
-    scorer = TraceScorer(solver_output.trace, sample["initial_state"]["initialization_actions"])
+    scorer = TraceScorer(
+        solver_output.trace, sample["initial_state"]["initialization_actions"]
+    )
     return scorer.score(sample["evaluation_criteria"])

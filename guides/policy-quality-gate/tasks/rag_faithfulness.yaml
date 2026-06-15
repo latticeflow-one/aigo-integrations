@@ -26,7 +26,7 @@ definition:
         Respond with 'unfaithful' if the answer contains information not present in the context.
       user_prompt: |
         Context: {{ sample.context }}
-        Answer: {{ solver_output.output }}
+        Answer: {{ trace.get_last_assistant_text() }}
       correct_labels: ["faithful"]
       incorrect_labels: ["unfaithful"]
       use_structured_outputs: true

@@ -7,8 +7,6 @@ rate_limit: 60
 task: "custom"
 config:
   connection_type: "custom_connection"
-  adapter:
-    key: "latticeflow$identity_custom"
   url: "https://api.openai.com/v1/chat/completions"
   api_key: "<< secrets.OPENAI_API_KEY >>"
 secrets:

@@ -8,17 +8,17 @@ evaluation:
   description: "Tests whether HTTP is properly enforced across main systems."
   long_description: |
     Tests whether HTTP is properly enforced across main systems.
-    
+
     # Systems
-    
+
     Included systems are:
-    
+
     - GitHub: [`https://github.com`](`https://github.com`)
     - HTTPForever: [`http://httpforever.com/`](`http://httpforever.com/`)
-    
+
     # Methodology
-    
-    Evaluation uses the Enforces HTTPS task (with key `enforces-https`), which checks 
+
+    Evaluation uses the Enforces HTTPS task (with key `enforces-https`), which checks
     whether a URL enforces HTTPS by sending an HTTP request and verifying that it is
     ultimately redirected to an HTTPS URL. It accepts a single config parameter:
 

@@ -1,0 +1,6 @@
+display_name: "Claude Managed Agents App"
+key: "claude-managed-agents-app"
+tags: ["Agents", "Claude"]
+description: >
+  Custom-inference integration for a Claude Managed Agents deployment, exposing
+  its session API as an AI GO! model with Open Responses traces.

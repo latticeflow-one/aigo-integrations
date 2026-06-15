@@ -1,0 +1,18 @@
+display_name: "Customer Support Agent (AWS Bedrock AgentCore)"
+key: "customer-support-agent-aws-bedrock"
+description: >-
+  A customer-support agent deployed as an AWS Bedrock AgentCore Harness.
+rate_limit: 15
+task: "chat_completion"
+config:
+  connection_type: "custom_inference"
+  run_inference_snippet: !include "./run_inference.py"
+  environment:
+    AWS_REGION: $AWS_REGION
+    AWS_HARNESS_ARN: $AWS_HARNESS_ARN
+    AWS_ACCESS_KEY_ID: "<< secrets.AWS_ACCESS_KEY_ID >>"
+    AWS_SECRET_ACCESS_KEY: "<< secrets.AWS_SECRET_ACCESS_KEY >>"
+  timeout: 120
+secrets:
+  AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+  AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY

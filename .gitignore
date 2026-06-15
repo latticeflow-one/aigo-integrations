@@ -3,3 +3,9 @@
 .idea/
 .latticeflow
 .mypy_cache
+.agents
+__pycache__
+
+# Temporary files
+guides/dataset-opencode/datasets/session_data
+guides/dataset-opencode/datasets/opencode_traces.jsonl

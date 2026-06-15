@@ -2,7 +2,7 @@
 
 ## Overview
 
-This guide shows an example integration of a model hosted by LangSmith. 
+This guide shows an example integration of a model hosted by LangSmith.
 
 ## Usage
 

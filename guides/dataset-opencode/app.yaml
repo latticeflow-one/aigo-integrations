@@ -1,0 +1,7 @@
+display_name: "Playground App"
+key: "playground-app"
+tags: ["Guides", "Datasets", "OpenCode"]
+description: >
+  This guide shows how to export traces from your local OpenCode agent and
+  integrate it as a dataset in AI GO!.
+long_description: !include "README.md"

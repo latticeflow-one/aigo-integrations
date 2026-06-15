@@ -1,0 +1,5 @@
+key: tutorial-samples
+display_name: "Tutorial Samples (17 tau2bench traces)"
+source:
+  type: local
+  file_path: "./tutorial-samples.jsonl"

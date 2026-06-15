@@ -1,0 +1,17 @@
+models:
+  - $provider: "openai/gpt-4.1-nano"
+
+datasets:
+  - $ref: "./datasets/tutorial-samples.yaml"
+
+tasks:
+  - $ref: "./tasks/task.yaml"
+
+evaluation:
+  key: tutorial-tau2bench-eval
+  display_name: "Tutorial: Sample-Dependent Scoring"
+  task_specifications:
+    - task_key: tau2bench-tutorial-eval
+      model_key: "openai$gpt-4-1-nano"
+      task_config:
+        eval_dataset: tutorial-samples

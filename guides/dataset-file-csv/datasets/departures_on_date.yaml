@@ -1,0 +1,12 @@
+key: "airline-departures-2025-07-04"
+display_name: "Airline: Departures on 4 July 2025"
+description: >-
+  Airline passenger authentication records filtered to only include bookings
+  departing on 4 July 2025.
+source:
+  type: "local"
+  file_path: "./test_cases.csv"
+  filters:
+    - op: "equals"
+      expression: "{{ sample['Departure Date'] }}"
+      value: "2025-07-04"

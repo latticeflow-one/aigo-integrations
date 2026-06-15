@@ -1,0 +1,11 @@
+key: "prompt-injection-jailbreaks"
+display_name: "Prompt Injection: Jailbreak Attempts"
+description: >-
+  Adversarial prompt-injection samples filtered to only include prompts flagged as
+  jailbreak attempts.
+source:
+  type: "local"
+  file_path: "data.jsonl"
+  filters:
+    - op: "is_true"
+      expression: "{{ sample.jailbreak }}"

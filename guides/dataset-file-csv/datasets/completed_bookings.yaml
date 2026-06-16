@@ -1,0 +1,11 @@
+key: "airline-completed-bookings"
+display_name: "Airline: Completed Bookings"
+description: >-
+  Airline passenger authentication records filtered to only include bookings that
+  have been completed.
+source:
+  type: "local"
+  file_path: "./test_cases.csv"
+  filters:
+    - op: "is_true"
+      expression: "{{ sample['Complete (True / False)'] }}"

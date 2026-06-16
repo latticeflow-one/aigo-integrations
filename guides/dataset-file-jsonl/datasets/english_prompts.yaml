@@ -1,0 +1,12 @@
+key: "prompt-injection-english"
+display_name: "Prompt Injection: English Samples"
+description: >-
+  Adversarial prompt-injection samples filtered to only include prompts written in
+  English.
+source:
+  type: "local"
+  file_path: "data.jsonl"
+  filters:
+    - op: "equals"
+      expression: "{{ sample.language }}"
+      value: "English"

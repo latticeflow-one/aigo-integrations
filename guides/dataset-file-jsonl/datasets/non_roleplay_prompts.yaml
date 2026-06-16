@@ -1,0 +1,14 @@
+key: "prompt-injection-non-roleplay"
+display_name: "Prompt Injection: Excluding Role-Play & Context Manipulation"
+description: >-
+  Adversarial prompt-injection samples filtered to exclude the role-playing and
+  context-manipulation attack techniques.
+source:
+  type: "local"
+  file_path: "data.jsonl"
+  filters:
+    - op: "not_in"
+      expression: "{{ sample.technique }}"
+      values:
+        - "role_playing"
+        - "context_manipulation"

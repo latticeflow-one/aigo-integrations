@@ -1,0 +1,14 @@
+key: "airline-excluded-departures"
+display_name: "Airline: Excluded Departure Dates"
+description: >-
+  Airline passenger authentication records filtered to exclude bookings departing
+  on 4 July 2025 and 29 July 2025.
+source:
+  type: "local"
+  file_path: "./test_cases.csv"
+  filters:
+    - op: "not_in"
+      expression: "{{ sample['Departure Date'] }}"
+      values:
+        - "2025-07-04"
+        - "2025-07-29"

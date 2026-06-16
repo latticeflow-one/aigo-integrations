@@ -33,7 +33,7 @@ definition:
         - 'ENGLISH': if the text is entirely in English
         - 'OTHER': if the text is in any other language or mixed languages
       user_prompt: >
-        <TEXT>{{ solver_output.output }}</TEXT>
+        <TEXT>{{ trace.get_last_assistant_text() }}</TEXT>
         Label:
       valid_labels:
         - "ENGLISH"
@@ -48,7 +48,7 @@ definition:
         Return only the numeric score.
       user_prompt: >
         <question>{{ sample.question }}</question>
-        <answer>{{ solver_output.output }}</answer>
+        <answer>{{ trace.get_last_assistant_text() }}</answer>
       score_min: 0
       score_max: 100
       metrics:

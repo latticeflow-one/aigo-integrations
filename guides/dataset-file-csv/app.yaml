@@ -1,6 +1,6 @@
 display_name: "Playground App"
 key: "playground-app"
-tags: ["Guides", "Datasets"]
+tags: ["Guides", "Datasets", "Filters"]
 description: >
-  This guide shows an example integration of a dataset in CSV format.
+  This guide shows an example integration of a dataset in CSV format and how to filter it.
 long_description: !include "README.md"

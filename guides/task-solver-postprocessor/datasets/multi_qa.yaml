@@ -1,0 +1,6 @@
+display_name: "Multi-QA Dataset"
+key: "multi-qa"
+description: "Dataset of general knowledge questions-answers for RAG evaluations where multiple questions are answered in a single turn."
+source:
+  type: "local"
+  file_path: "./multi_qa.jsonl"

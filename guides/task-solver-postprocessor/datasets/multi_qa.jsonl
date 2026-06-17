@@ -1,0 +1,4 @@
+{"sample_id": "japan", "questions":["What is the capital city of Japan?", "On which continent is Japan located?"],"targets":["Tokyo", "Asia"]}
+{"sample_id": "austria", "questions":["What is the capital city of Austria?", "On which continent is Austria located?"],"targets":["Vienna", "Europe"]}
+{"sample_id": "south_korea", "questions":["What is the capital city of South Korea?", "On which continent is South Korea located?"],"targets":["Seoul", "Asia"]}
+{"sample_id": "germany", "questions":["What is the capital city of Germany?", "On which continent is Germany located?"],"targets":["Berlin", "Europe"]}

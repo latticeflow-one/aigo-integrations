@@ -1,0 +1,5 @@
+display_name: "Playground App"
+key: "playground-app"
+tags: ["Guides", "Tasks"]
+description: "This guide shows an example of a task that uses a solver post-processor."
+long_description: !include README.md

@@ -1,0 +1,26 @@
+display_name: "AI Knowledge MCQA Task"
+key: "ai-knowledge-mcqa"
+description: "Evaluates a model's accuracy on multiple-choice AI knowledge questions."
+config_spec: []
+definition:
+  evaluated_entity_type: "model"
+  dataset:
+    key: "ai-knowledge-mcqa-dataset"
+  solver:
+    type: "single_turn_solver"
+    input_builder:
+      type: "chat_completion"
+      input_messages:
+        - role: "system"
+          content: "You are a helpful assistant. Respond with the letter of the correct answer only (A, B, C, or D)."
+        - role: "user"
+          content: |
+            {{ sample.question }}
+            A) {{ sample.A }}
+            B) {{ sample.B }}
+            C) {{ sample.C }}
+            D) {{ sample.D }}
+  scorers:
+    - type: "string_equals_mcqa"
+      ground_truth_choice: "{{ sample.answer }}"
+      choices: '["A", "B", "C", "D"]'

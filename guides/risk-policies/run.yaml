@@ -1,0 +1,17 @@
+datasets:
+  - $ref: "./datasets/qa_dataset.yaml"
+models:
+  - $provider: "openai/gpt-4.1-nano"
+tasks:
+  - $ref: "./tasks/qa_task.yaml"
+
+evaluation:
+  key: "qa_evaluation"
+  display_name: "AI Knowledge MCQA Evaluation"
+  task_specifications:
+    - key: "ai-knowledge-mcqa-gpt-4-1-nano"
+      task_key: "ai-knowledge-mcqa"
+      display_name: "AI Knowledge MCQA GPT-4.1 Nano"
+      task_config:
+        config_key: []
+      model_key: "openai$gpt-4-1-nano"

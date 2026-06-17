@@ -1,0 +1,9 @@
+question,A,B,C,D,answer
+"What does LLM stand for?","Large Language Model","Long Learning Model","Language Learning Module","Large Learning Matrix","A"
+"Which technique is used to align language models with human preferences?","Supervised Fine-Tuning","Reinforcement Learning from Human Feedback","Retrieval-Augmented Generation","Knowledge Distillation","B"
+"What does RAG stand for?","Retrieval-Augmented Generation","Recursive Attention Gradient","Regularised Auto-encoder Generator","Residual Activation Graph","A"
+"Which activation function is defined as max(0, x)?","Sigmoid","Tanh","ReLU","Softmax","C"
+"What is the term for a model producing confident but false information?","Overfitting","Hallucination","Underfitting","Catastrophic Forgetting","B"
+"What does the 'T' in GPT stand for?","Trained","Transformer","Transfer","Tokenised","B"
+"Which metric measures the fraction of relevant documents that were retrieved?","Precision","F1 Score","Recall","Accuracy","C"
+"What is prompt injection?","A technique to compress prompts","An attack that embeds malicious instructions in input","A method to fine-tune models","A type of data augmentation","B"

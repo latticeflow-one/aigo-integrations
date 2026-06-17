@@ -1,0 +1,26 @@
+models:
+  - $provider: "openai/gpt-4.1-nano"
+
+datasets:
+  - $ref: "./datasets/qa.yaml"
+  - $ref: "./datasets/conversations.yaml"
+
+tasks:
+  - $ref: "./tasks/qa_basic.yaml"
+  - $ref: "./tasks/conversation_advanced.yaml"
+
+evaluation:
+  key: "model-as-a-judge"
+  display_name: "Model As A Judge Scoring"
+  tags: ["Guides"]
+  task_specifications:
+    - key: "judge-qa-basic-gpt-4-1-nano"
+      task_key: "judge-qa-basic"
+      model_key: "openai$gpt-4-1-nano"
+      task_config:
+        judge_model: "openai$gpt-4-1-nano"
+    - key: "judge-conversation-advanced-gpt-4-1-nano"
+      task_key: "judge-conversation-advanced"
+      model_key: "openai$gpt-4-1-nano"
+      task_config:
+        judge_model: "openai$gpt-4-1-nano"

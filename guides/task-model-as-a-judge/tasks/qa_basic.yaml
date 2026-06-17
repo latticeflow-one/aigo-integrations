@@ -1,0 +1,76 @@
+display_name: "Judge QA (Basic)"
+key: "judge-qa-basic"
+description: >
+  Single-turn QA scored two ways by a judge model: a classifier for
+  correctness (correct/incorrect) and a numeric scorer for answer quality (0-100).
+config_spec:
+  - type: "model"
+    key: "judge_model"
+    display_name: "Judge Model"
+    description: "The model used to grade the answers."
+definition:
+  evaluated_entity_type: "model"
+  dataset:
+    key: "judge-qa"
+  solver:
+    type: "single_turn_solver"
+    input_builder:
+      type: "chat_completion"
+      input_messages:
+        - role: "system"
+          content: "You are a helpful assistant. Answer concisely."
+        - role: "user"
+          content: "{{ sample.question }}"
+  scorers:
+    # 1) Classifier: discrete correct/incorrect judgement against the ground truth.
+    - type: "model_as_a_judge_classifier"
+      key: "correctness"
+      display_name: "Answer Correctness"
+      model_key: "<< config.judge_model >>"
+      system_prompt: |
+        You grade whether a candidate answer is semantically correct given the
+        ground-truth answer. Ignore spelling, capitalisation, and extra detail;
+        only the factual content matters.
+
+        Respond with exactly one label: 'correct' or 'incorrect'.
+      user_prompt: |
+        Question: {{ sample.question }}
+        Ground truth: {{ sample.gt_answer }}
+        Candidate answer: {{ trace.get_last_assistant_text() }}
+      correct_labels: ["correct"]
+      incorrect_labels: ["incorrect"]
+      use_structured_outputs: true
+      metrics:
+        - type: "mean"
+          key: "accuracy"
+          field: "is_correct"
+          name: "Accuracy"
+    # 2) Scorer: a graded numeric quality score on the same answer.
+    - type: "model_as_a_judge_scorer"
+      key: "answer_quality"
+      display_name: "Answer Quality"
+      model_key: "<< config.judge_model >>"
+      system_prompt: >
+        You are an expert evaluator. Rate the overall quality of the answer to the
+        question on a scale from 0 to 100, considering correctness, clarity, and
+        completeness. 100 is an ideal answer, 0 is wrong or unhelpful.
+        Return only the numeric score.
+      user_prompt: >
+        <question>{{ sample.question }}</question>
+        <ground_truth>{{ sample.gt_answer }}</ground_truth>
+        <answer>{{ trace.get_last_assistant_text() }}</answer>
+      score_min: 0
+      score_max: 100
+      metrics:
+        - type: "mean"
+          key: "quality_mean"
+          field: "score"
+          name: "Mean Quality"
+        - type: "min"
+          key: "quality_min"
+          field: "score"
+          name: "Min Quality"
+        - type: "max"
+          key: "quality_max"
+          field: "score"
+          name: "Max Quality"

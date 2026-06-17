@@ -21,7 +21,7 @@ definition:
         - role: "user"
           content: >
             Respond to all of these questions and separate the answers with '---':
-            {{ '\n---\n'.join(sample.questions) }}.
+            {{ '\n---\n'.join(sample.questions) }}
 
             Answer with a single word and no explanations.
     postprocessor:

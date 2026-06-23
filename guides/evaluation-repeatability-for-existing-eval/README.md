@@ -3,9 +3,9 @@
 ## Overview
 
 This guide shows an example of how to evaluate assess the repeatability of an existing
-evaluation, i.e. assess the consistency/stability of the metric values and 
-the sample-level scores produced by the task specification in that evaluation. 
-In this case, the original tasks specification uses a question-and-answer dataset 
+evaluation, i.e. assess the consistency/stability of the metric values and
+the sample-level scores produced by the task specification in that evaluation.
+In this case, the original tasks specification uses a question-and-answer dataset
 and an LLM as a judge scorer.
 
 ## Usage

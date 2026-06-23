@@ -9,3 +9,5 @@ __pycache__
 # Temporary files
 guides/dataset-opencode/datasets/session_data
 guides/dataset-opencode/datasets/opencode_traces.jsonl
+
+*venv*

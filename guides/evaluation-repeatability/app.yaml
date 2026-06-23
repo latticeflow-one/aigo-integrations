@@ -1,0 +1,9 @@
+display_name: "Playground App"
+key: "playground-app"
+tags: ["Guides", "Evaluations"]
+description: >
+  This guide shows an example of how to assess the repeatability of a task specification,
+  i.e. the consistency/stability of the metric values and sample-level scores it produces.
+  In this case, the original task specification uses a question-and-answer dataset and an
+  LLM as a judge scorer.
+long_description: !include README.md

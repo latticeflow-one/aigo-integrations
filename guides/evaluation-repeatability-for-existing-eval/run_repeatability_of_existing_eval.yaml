@@ -1,0 +1,11 @@
+evaluation:
+  key: "repeatability-of-hp-trivia-evaluation"
+  display_name: "Repeatability of Harry Potter Trivia evaluation"
+  task_specifications:
+    - key: "repeatability-hp"
+      type: "repeatability"
+      config:
+        num_runs: 3
+      inputs:
+        - evaluation_key: "hp-trivia-evaluation"
+      num_samples: 5  # We only consider a subset of the samples to reduce cost and time

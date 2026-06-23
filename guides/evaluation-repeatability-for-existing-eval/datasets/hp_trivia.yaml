@@ -1,0 +1,6 @@
+display_name: "Harry Potter Trivia Dataset"
+key: "hp-trivia-dataset"
+description: "A dataset about Harry Potter trivia"
+source:
+  type: "local"
+  file_path: "./hp_trivia.csv"

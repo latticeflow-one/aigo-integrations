@@ -1,0 +1,56 @@
+display_name: "RAG QA Evaluation"
+key: "rag-qa"
+description: >
+  Evaluates model responses on retrieval-augmented generation tasks using a
+  model-as-a-judge scorer. Supports configurable judge model and evaluation dimension.
+config_spec:
+  - type: "dataset"
+    key: "qa_dataset"
+    display_name: "QA Dataset"
+    description: "The dataset to evaluate against."
+  - type: "model"
+    key: "judge_model"
+    display_name: "Judge Model"
+definition:
+  evaluated_entity_type: "model"
+  dataset:
+    key: "<< config.qa_dataset >>"
+  solver:
+    type: "single_turn_solver"
+    input_builder:
+      type: "chat_completion"
+      input_messages:
+        - role: "system"
+          content: "You are a helpful assistant. Use only the provided context to answer."
+        - role: "user"
+          content: |
+            Context: {{ sample.context }}
+            Question: {{ sample.question }}
+  scorers:
+    - type: "model_as_a_judge_classifier"
+      model_key: "<< config.judge_model >>"
+      system_prompt: >
+        You are an evaluator assessing the groundedness of a
+        model response to a question.
+        Please assess whether the response is fully grounded in the context,
+        producing 'GROUNDED' if it is and 'NOT_GROUNDED' otherwise. Partially
+        grounded answers or hallucinations are considered 'NOT_GROUNDED'.
+      user_prompt: >
+        <context>{{ sample.context }}</context>
+        <response>{{ trace.get_last_assistant_text() }}</response>
+      correct_labels:
+        - GROUNDED
+      incorrect_labels:
+        - NOT_GROUNDED
+      metrics:
+        - type: "mean"
+          field: "pass^3"
+          name: "Model Reliability (pass^3.mean)"
+  trials:
+    num_trials: 5
+    score_aggregators:
+      - score_name: is_correct
+        aggregator:
+          function: "pass^k"
+          k: 3
+          score_name: "pass^3"

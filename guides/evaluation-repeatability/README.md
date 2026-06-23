@@ -2,10 +2,10 @@
 
 ## Overview
 
-This guide shows an example of how to evaluate assess the repeatability of a task
-specification, i.e. assess the consistency/stability of the metric values and
-the sample-level scores it produces. In this case, the original tasks specification
-uses a question-and-answer dataset and an LLM as a judge scorer.
+This guide shows an example of how to assess the repeatability of a task specification,
+i.e. the consistency/stability of the metric values and sample-level scores it produces.
+In this case, the original task specification uses a question-and-answer dataset and an
+LLM as a judge scorer.
 
 ## Usage
 

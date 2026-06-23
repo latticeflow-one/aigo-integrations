@@ -1,8 +1,8 @@
 display_name: "RAG QA Evaluation"
 key: "rag-qa"
 description: >
-  Evaluates model responses on retrieval-augmented generation tasks using a
-  model-as-a-judge scorer. Supports configurable judge model and evaluation dimension.
+  Evaluates the groundedness of model responses on retrieval-augmented generation
+  tasks using a model-as-a-judge scorer.
 config_spec:
   - type: "dataset"
     key: "qa_dataset"
@@ -42,6 +42,7 @@ definition:
         - GROUNDED
       incorrect_labels:
         - NOT_GROUNDED
+      use_structured_outputs: true
       metrics:
         - type: "mean"
           field: "pass^3"

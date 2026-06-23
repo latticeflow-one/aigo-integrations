@@ -20,5 +20,5 @@ lf run -f run.yaml
 If you want to iterate on the task definition, try:
 
 ```bash
-lf test task -f run.yaml
+lf test task -f run.yaml -sk multi-qa-gpt-4-1-nano
 ```

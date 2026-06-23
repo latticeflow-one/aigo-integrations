@@ -1,0 +1,30 @@
+key: "performance_risk_scorer"
+display_name: "Performance Risk Scorer"
+description: >
+  Converts a model accuracy metric into a risk score by treating low accuracy as
+  failure and scaling it by the business impact and deployment reach of the system.
+function: "(1 - accuracy) * impact * deployment_reach"
+metric_key: "accuracy"
+config_spec:
+  - type: float
+    key: "impact"
+    display_name: "Impact"
+    description: >
+      How severely poor performance in this area affects the system. Higher values
+      amplify the risk score for the same accuracy drop.
+    default_value: 5.0
+    min: 0.0
+    max: 10.0
+  - type: categorical
+    key: "deployment_reach"
+    display_name: "Deployment Reach"
+    description: >
+      Whether the system is externally user-facing or internal only. External
+      deployments amplify the score; internal deployments reduce it.
+    allowed_values:
+      - "internal"
+      - "external"
+    default_value: "external"
+    values_mapping:
+      internal: 0.5
+      external: 1.0

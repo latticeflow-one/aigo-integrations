@@ -1,0 +1,30 @@
+policies:
+
+- key: "quality_internal"
+  display_name: "Quality Risk Policy (Internal)"
+  description: >
+    Monitors model accuracy on the QA evaluation for internally deployed systems.
+  domain: "quality"
+  risk_scorer_key: "performance_risk_scorer"
+  scope:
+    evaluation_keys: ["qa_evaluation"]
+  config:
+    impact: 4.0
+    deployment_reach: "internal"
+  metric: "accuracy"
+  aggregation: "mean"
+
+- key: "quality_external"
+  display_name: "Quality Risk Policy (External)"
+  description: >
+    Monitors model accuracy on the QA evaluation for externally deployed systems.
+    External deployment amplifies the risk score relative to the internal policy.
+  domain: "quality"
+  risk_scorer_key: "performance_risk_scorer"
+  scope:
+    evaluation_keys: ["qa_evaluation"]
+  config:
+    impact: 4.0
+    deployment_reach: "external"
+  metric: "accuracy"
+  aggregation: "mean"

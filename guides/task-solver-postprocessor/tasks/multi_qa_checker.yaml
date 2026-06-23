@@ -1,0 +1,32 @@
+display_name: "Multi QA Checker"
+key: "multi-qa-checker"
+description: >
+  Example task that uses solver post-processor, such that the scorers can be applied to
+  each individual question-answer pair, even when multiple questions are answered in a
+  single turn.
+config_spec:
+  - type: "model"
+    key: "judge_model"
+    display_name: "Judge Model"
+definition:
+  dataset:
+    key: "multi-qa"
+  solver:
+    type: "single_turn_solver"
+    input_builder:
+      type: "chat_completion"
+      input_messages:
+        - role: "system"
+          content: "You are a helpful assistant."
+        - role: "user"
+          content: >
+            Respond to all of these questions and separate the answers with '---':
+            {{ '\n---\n'.join(sample.questions) }}
+
+            Answer with a single word and no explanations.
+    postprocessor:
+      type: "python"
+      postprocess_snippet: !include postprocessor.py
+  scorers:
+    - type: "string_equals"
+      ground_truth: "{{ sample.target }}"

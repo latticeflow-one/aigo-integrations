@@ -1,0 +1,6 @@
+display_name: "Judge QA Dataset"
+key: "judge-qa"
+description: "Short factual questions with ground-truth answers for judge scoring."
+source:
+  type: "local"
+  file_path: "./qa.jsonl"

@@ -1,0 +1,8 @@
+display_name: "Playground App"
+key: "playground-app"
+tags: ["Guides", "Tasks"]
+description: >
+  Model-as-a-judge scoring: a basic single-turn task that scores answers with a
+  classifier and a numeric judge, plus an advanced multi-turn task that judges a
+  whole conversation against a graded rubric.
+long_description: !include README.md

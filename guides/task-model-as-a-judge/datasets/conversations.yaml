@@ -1,0 +1,8 @@
+display_name: "Multi-turn Conversations Dataset"
+key: "judge-conversations"
+description: >
+  Two-turn conversations where the second user message adds a constraint or
+  reframing, with a reference describing the expected good behaviour across turns.
+source:
+  type: "local"
+  file_path: "./conversations.jsonl"

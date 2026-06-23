@@ -1,10 +1,3 @@
-datasets:
-  - $ref: "./datasets/hp_trivia.yaml"
-models:
-  - $provider: "openai/gpt-4.1-nano"
-tasks:
-  - $ref: "./tasks/hp_trivia.yaml"
-
 evaluation:
   key: "repeatability-of-hp-trivia-evaluation"
   display_name: "Repeatability of Harry Potter Trivia evaluation"

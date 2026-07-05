@@ -1,0 +1,28 @@
+display_name: "Claim Labeling"
+key: "claim-labeling"
+description: "Label extracted claims (e.g. supported, unsupported, irrelevant)."
+definition:
+  type: "declarative_dataset_generator"
+  data_source:
+    type: "inline_samples"
+    samples:
+      - question: "What is the capital of France?"
+        expected_answer: "Paris is the capital of France."
+        response: "The capital of France is Paris. Paris is well known for its Eiffel Tower."
+        response_claims:
+          - claim:
+              subject: "Paris"
+              predicate: "is the capital of"
+              object: "France"
+          - claim:
+              subject: "Paris"
+              predicate: "is well known for its"
+              object: "Eiffel Tower"
+  synthesizers:
+    - type: claim_labeling
+      model_key: "openai$gpt-4-1-nano"
+      columns:
+        question: question
+        answer: response
+        claims: response_claims
+      output_field: response_claims_labels

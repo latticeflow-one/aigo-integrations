@@ -1,0 +1,7 @@
+display_name: "Claim Extraction"
+key: "claim-extraction"
+description: "Generated using the claim extraction generator."
+generator_specification:
+  dataset_generator_key: "claim-extraction"
+  num_samples: 1
+  dataset_generator_config: {}

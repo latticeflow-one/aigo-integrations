@@ -1,0 +1,6 @@
+display_name: "Dataset Generator with Link Claim Quotes Synthesizer"
+key: "dataset-generator-link-claim-quotes"
+tags: ["Guides", "Dataset Generators"]
+description: >
+  Example of a dataset generator that uses the link claim quotes synthesizer.
+long_description: !include README.md

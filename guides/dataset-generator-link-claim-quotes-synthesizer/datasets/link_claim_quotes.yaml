@@ -1,0 +1,7 @@
+display_name: "Link Claim Quotes"
+key: "link-claim-quotes"
+description: "Generated using the link claim quotes generator."
+generator_specification:
+  dataset_generator_key: "link-claim-quotes"
+  num_samples: 1
+  dataset_generator_config: {}

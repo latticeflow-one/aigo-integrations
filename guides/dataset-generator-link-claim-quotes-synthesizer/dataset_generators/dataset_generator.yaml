@@ -1,0 +1,22 @@
+display_name: "Link Claim Quotes"
+key: "link-claim-quotes"
+description: "Link extracted claims to verbatim quotes in the candidate answer."
+definition:
+  type: "declarative_dataset_generator"
+  data_source:
+    type: "inline_samples"
+    samples:
+      - question: "What is the capital of France?"
+        expected_answer: "That is an interesting question. Luckily, I have a great answer for you -- the capital of France is no other city than Paris. Would you like to know more about Paris?"
+        claims:
+          - claim:
+              subject: "Paris"
+              predicate: "is the capital of"
+              object: "France"
+  synthesizers:
+    - type: link_claim_quotes
+      model_key: "openai$gpt-4-1-nano"
+      columns:
+        question: question
+        answer: expected_answer
+        claims: claims

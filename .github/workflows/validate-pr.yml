@@ -7,26 +7,32 @@ on:
       - edited
       - synchronize
 jobs:
-  pr-title-cu-link:
-    runs-on: [ubuntu-latest]
+  validate-ticket-link:
+    runs-on: ubuntu-slim
     permissions:
       pull-requests: read
     steps:
-      - name: Check PR Title
+      - name: Check Jira Ticket Link
         env:
           TITLE: ${{ github.event.pull_request.title }}
         run: |
           echo "Validating PR title: $TITLE"
-          if [[ "$TITLE" =~ ^.*CU-[a-z0-9]{9}[\)\,\ ].*$ ]]; then
-            echo "PR title contains expected regex (Example: Add Feature X CU-86c7cz1x9, CU-86c7cz1x1)"
+          if [[ "$TITLE" =~ ^.*PE-[0-9]+[\)\,\ ].*$ ]]; then
+            echo "PR title contains expected regex (Example: Add Feature X PE-123, PE-456)"
             exit 0
-          elif [[ "$TITLE" =~ ^.*CU-[a-z0-9]{9}$ ]]; then
-            echo "PR title contains expected regex (Example: Add Feature X CU-86c7cz1x9)"
+          elif [[ "$TITLE" =~ ^.*PE-[0-9]+$ ]]; then
+            echo "PR title contains expected regex (Example: Add Feature X PE-123)"
             exit 0
           else
-            echo "PR title MUST contain the link to the associated CU task. (Example: Add Feature X CU-86c7cz1x9)"
+            echo "PR title MUST contain the link to the associated PE task. (Example: Add Feature X PE-123)"
             exit 1
           fi
-      - uses: amannn/action-semantic-pull-request@v6
+  validate-semantic-pr-title:
+    runs-on: ubuntu-slim
+    permissions:
+      pull-requests: read
+    steps:
+      - name: Check Semantic PR Title
+        uses: amannn/action-semantic-pull-request@v6
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

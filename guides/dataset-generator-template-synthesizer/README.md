@@ -9,7 +9,7 @@ synthesizer. The dataset generator is then used to generate a sample dataset.
 
 ```bash
 lf add app -f app.yaml
-lf switch playground-app
+lf switch dataset-generator-template-synthesizer
 lf run -f run.yaml
 ```
 

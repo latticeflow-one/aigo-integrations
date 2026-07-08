@@ -1,7 +1,9 @@
-display_name: "Playground App"
-key: "playground-app"
+display_name: "Model As A Judge Scorer"
+key: "task-model-as-a-judge-scorer"
 tags: ["Guides", "Tasks"]
 description: >
-  This guide shows an example of the model-as-a-judge scorer for evaluating
-  RAG task responses, with configurable judge model and evaluation dimension.
+  Model-as-a-judge scoring across three tasks: RAG QA scored by a configurable
+  judge on groundedness or relevance; basic single-turn QA graded with a
+  correctness classifier and a numeric scorer; and an advanced multi-turn
+  conversation graded against a rubric.
 long_description: !include README.md

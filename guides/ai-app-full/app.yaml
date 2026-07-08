@@ -1,6 +1,6 @@
 display_name: "Full AI App"
 key: "full-ai-app"
-tags: ["Guides", "Chatbot", "Airlines", "EU AI Act"]
+tags: ["Guides", "AI App"]
 description: "LatticeFlow AI Airlines Virtual Assistant"
 long_description: !include "./README.md"
 key_info:

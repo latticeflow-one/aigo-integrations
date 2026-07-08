@@ -1,5 +1,5 @@
-display_name: "Playground App"
-key: "playground-app"
+display_name: "Python Solver"
+key: "task-python-solver"
 tags: ["Guides", "Tasks"]
 description: >
   This guide shows an example of a Python solver that manages the conversation

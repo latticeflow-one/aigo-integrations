@@ -1,6 +1,6 @@
-display_name: "Playground App"
-key: "playground-app"
-tags: ["Guides", "Dataset Generation"]
+display_name: "Dataset Generator with Python Synthesizer"
+key: "dataset-generator-python-synthesizer"
+tags: ["Guides", "Dataset Generators"]
 description: >
   This guide shows an example of a dataset generator that uses a Python script as the
   synthesizer.

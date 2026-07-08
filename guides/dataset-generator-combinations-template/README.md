@@ -13,6 +13,6 @@ for travel direction.
 
 ```sh
 lf add app -f app.yaml
-lf switch playground-app
+lf switch dataset-generator-combinations-template
 lf run -f run.yaml
 ```

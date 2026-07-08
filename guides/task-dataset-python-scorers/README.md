@@ -10,7 +10,7 @@ and the uniqueness of dataset samples using an all-samples Python scorer.
 
 ```bash
 lf add app -f app.yaml
-lf switch playground-app
+lf switch task-dataset-python-scorers
 lf run -f run.yaml
 ```
 

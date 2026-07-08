@@ -1,4 +1,4 @@
-display_name: "Policy Quality Gate"
+display_name: "Policy (Legacy)"
 key: "policy-quality-gate"
 tags: ["Guides", "Policies"]
 description: >

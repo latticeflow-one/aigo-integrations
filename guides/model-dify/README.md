@@ -14,14 +14,14 @@ A custom model adapter is defined to transform Dify messages into AI GO! message
 This guide uses a model hosted by Dify. Configure the endpoint and the API key by
 creating a `.env` file.
 
-```bash
+```dotenv
 DIFY_URL=<DIFY_URL>
 DIFY_API_KEY=<DIFY_API_KEY>
 ```
 
 ```bash
 lf add app -f app.yaml
-lf switch playground-app
+lf switch model-dify
 lf add -f run.yaml
 lf test model model-dify
 ```

@@ -1,5 +1,5 @@
-display_name: "Playground App"
-key: "playground-app"
+display_name: "Inspect AI Traces Dataset"
+key: "dataset-inspect-ai-traces"
 tags: ["Guides", "Datasets", "Inspect AI"]
 description: >
   This guide shows how to ingest traces from Inspect AI eval logs as a dataset.

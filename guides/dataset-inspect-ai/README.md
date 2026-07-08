@@ -10,13 +10,13 @@ is needed.
 This source type requires the `traces` extra to be installed:
 
 ```bash
-pip install 'latticeflow-go-sdk[traces]'
+uv pip install 'latticeflow-go-sdk[traces]'
 ```
 
 ## Usage
 
 ```bash
 lf add app -f app.yaml
-lf switch playground-app
+lf switch dataset-inspect-ai-traces
 lf add dataset -f datasets/inspect_ai_traces.yaml
 ```

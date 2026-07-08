@@ -1,4 +1,4 @@
-# OpenAI GPT-4.1 Nano
+# OpenAI Chat Completion Model
 
 ## Overview
 
@@ -13,13 +13,13 @@ The model uses the default chat completion API
 This guide uses an OpenAI model as an example. Configure the OpenAI API key by
 creating a `.env` file.
 
-```bash
+```dotenv
 OPENAI_API_KEY=<OPENAI_API_KEY>
 ```
 
 ```bash
 lf add app -f app.yaml
-lf switch playground-app
+lf switch model-openai-chat-completion
 lf add -f run.yaml
 lf test model openai-gpt-4-1-nano
 ```

@@ -9,7 +9,7 @@ chatbot.
 
 ```bash
 lf add app -f app.yaml
-lf switch airline-chatbot-app
+lf switch full-ai-app
 ```
 
 # Airlines Virtual Assistant

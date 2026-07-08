@@ -1,5 +1,5 @@
-display_name: "Playground App"
-key: "playground-app"
+display_name: "Dataset in CSV Format"
+key: "dataset-file-csv"
 tags: ["Guides", "Datasets", "Filters"]
 description: >
   This guide shows an example integration of a dataset in CSV format and how to filter it.

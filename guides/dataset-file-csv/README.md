@@ -26,7 +26,7 @@ the same `test_cases.csv` file of airline passenger authentication records.
 
 ```bash
 lf add app -f app.yaml
-lf switch playground-app
+lf switch dataset-file-csv
 lf add dataset -f datasets/dataset.yaml
 lf add dataset -f datasets/completed_bookings.yaml
 lf add dataset -f datasets/departures_on_date.yaml

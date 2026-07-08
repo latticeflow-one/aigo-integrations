@@ -10,13 +10,13 @@ This guide shows how to create a dataset by ingesting traces from local
 This source type requires the `traces` extra to be installed:
 
 ```bash
-pip install 'latticeflow-go-sdk[traces]'
+uv pip install 'latticeflow-go-sdk[traces]'
 ```
 
 ## Usage
 
 ```bash
 lf add app -f app.yaml
-lf switch playground-app
+lf switch dataset-claude-code-traces
 lf add dataset -f datasets/claude_code_traces.yaml
 ```

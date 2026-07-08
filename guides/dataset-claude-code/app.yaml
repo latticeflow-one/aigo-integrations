@@ -1,5 +1,5 @@
-display_name: "Playground App"
-key: "playground-app"
+display_name: "Claude Code Traces Dataset"
+key: "dataset-claude-code-traces"
 tags: ["Guides", "Datasets", "Claude Code"]
 description: >
   This guide shows how to ingest traces from Claude Code as a dataset.

@@ -1,4 +1,4 @@
-# System Task: Enforces HTTPS
+# System Task for HTTPS Enforcement
 
 ## Overview
 
@@ -10,7 +10,7 @@ interacting with a model or dataset.
 
 ```bash
 lf add app -f app.yaml
-lf switch playground-app
+lf switch task-system-enforce-https
 lf run -f run.yaml
 ```
 

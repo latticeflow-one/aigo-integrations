@@ -1,5 +1,5 @@
-display_name: "Playground App"
-key: "playground-app"
+display_name: "HuggingFace Dataset Filters"
+key: "dataset-huggingface"
 tags: ["Guides", "Datasets", "HuggingFace"]
 description: >
   This guide shows an example integration of a dataset hosted by HuggingFace.

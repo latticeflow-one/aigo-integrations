@@ -19,7 +19,7 @@ terminal. To use a different model, please adjust the model configuration.
 
 ```bash
 lf add app -f app.yaml
-lf switch playground-app
+lf switch task-python-metric
 lf integration add --provider openai --api-key $OPENAI_API_KEY
 lf run -f run.yaml
 ```

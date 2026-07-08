@@ -1,5 +1,5 @@
-display_name: "Playground App"
-key: "playground-app"
+display_name: "Multi-turn Task"
+key: "task-multiturn-solver"
 tags: ["Guides", "Tasks"]
 description: "This guide shows an example of a multi-turn evaluation task."
 long_description: !include README.md

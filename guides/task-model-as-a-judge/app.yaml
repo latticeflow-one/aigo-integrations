@@ -1,5 +1,5 @@
-display_name: "Playground App"
-key: "playground-app"
+display_name: "Task with Model As A Judge Scoring"
+key: "task-model-as-a-judge"
 tags: ["Guides", "Tasks"]
 description: >
   Model-as-a-judge scoring: a basic single-turn task that scores answers with a

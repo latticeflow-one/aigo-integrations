@@ -1,4 +1,4 @@
-# Model As A Judge Scoring
+# Task with Model As A Judge Scoring
 
 ## Overview
 
@@ -25,7 +25,7 @@ adjust the model configuration.
 
 ```bash
 lf add app -f app.yaml
-lf switch playground-app
+lf switch task-model-as-a-judge
 lf integration add --provider openai --api-key $OPENAI_API_KEY
 lf run -f run.yaml
 ```

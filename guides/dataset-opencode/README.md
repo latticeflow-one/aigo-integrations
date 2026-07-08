@@ -22,7 +22,7 @@ process all sessions.
 
 ```bash
 lf add app -f app.yaml
-lf switch playground-app
+lf switch dataset-opencode-traces
 cd datasets
 ./export_sessions.sh --num-samples 10 ./session_data
 python convert_sessions.py --session-dir ./session_data --output ./opencode_traces.jsonl

@@ -1,6 +1,6 @@
-display_name: "Conversation Memory Evaluation"
-key: "playground-app"
-tags: ["General Purpose AI", "Tasks", "Models"]
+display_name: "Multi-turn Evaluation of Stateful Model Endpoint"
+key: "evaluation-multiturn-stateful-responses"
+tags: ["Guides", "Tasks", "Models"]
 description: >
   Evaluation of a chat model's ability to remember information from previous messages in
   the conversation.

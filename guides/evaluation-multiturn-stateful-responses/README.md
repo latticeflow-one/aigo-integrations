@@ -13,12 +13,12 @@ that the conversation history is preserved across multiple turns.
 This guide uses an OpenAI model as an example. Configure the OpenAI API key by
 creating a `.env` file.
 
-```bash
+```dotenv
 OPENAI_API_KEY=<OPENAI_API_KEY>
 ```
 
 ```bash
 lf add app -f app.yaml
-lf switch playground-app
+lf switch evaluation-multiturn-stateful-responses
 lf run -f run.yaml
 ```

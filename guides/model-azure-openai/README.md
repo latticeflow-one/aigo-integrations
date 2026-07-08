@@ -17,7 +17,7 @@ AZURE_OPENAI_API_KEY=<AZURE_OPENAI_API_KEY>
 
 ```bash
 lf add app -f app.yaml
-lf switch playground-app
+lf switch model-azure-openai
 lf add -f run.yaml
 lf test model azure-openai-chat-completion
 lf test model azure-openai-responses

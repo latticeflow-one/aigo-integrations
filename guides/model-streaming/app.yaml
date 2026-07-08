@@ -1,5 +1,5 @@
-display_name: "Playground App"
-key: "playground-app"
+display_name: "Model with Streaming Response"
+key: "model-streaming"
 tags: ["Guides", "Models"]
 description: >
   This guide shows an example integration of a model with a (SSE) streaming response.

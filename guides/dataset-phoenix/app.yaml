@@ -1,5 +1,5 @@
-display_name: "Playground App"
-key: "playground-app"
+display_name: "Arize Phoenix Traces Dataset"
+key: "dataset-phoenix-traces"
 tags: ["Guides", "Datasets", "Phoenix"]
 description: >
   This guide shows how to ingest traces from Arize Phoenix as a dataset.

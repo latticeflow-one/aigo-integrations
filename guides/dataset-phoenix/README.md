@@ -9,14 +9,14 @@ type connects to the Phoenix API and imports traces as dataset samples.
 This source type requires the `traces` extra to be installed:
 
 ```bash
-pip install 'latticeflow-go-sdk[traces]'
+uv pip install 'latticeflow-go-sdk[traces]'
 ```
 
 ## Usage
 
 Configure the required environment variables by creating a `.env` file.
 
-```bash
+```dotenv
 PHOENIX_API_KEY=<PHOENIX_API_KEY>
 PHOENIX_BASE_URL=<PHOENIX_BASE_URL>
 PHOENIX_PROJECT=<PHOENIX_PROJECT>
@@ -24,6 +24,6 @@ PHOENIX_PROJECT=<PHOENIX_PROJECT>
 
 ```bash
 lf add app -f app.yaml
-lf switch playground-app
+lf switch dataset-phoenix-traces
 lf add dataset -f datasets/phoenix_traces.yaml
 ```

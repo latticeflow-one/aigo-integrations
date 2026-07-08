@@ -1,5 +1,5 @@
-display_name: "Playground App"
-key: "playground-app"
+display_name: "String Equals MCQA Scorer"
+key: "task-string-equals-mcqa-scorer"
 tags: ["Guides", "Tasks"]
 description: >
   This guide shows an example of the string equals MCQA scorer for evaluating

@@ -1,5 +1,5 @@
-key: "another-app"
-display_name: "Another App"
+display_name: "Destination App"
+key: "destination-app"
 tags: ["Guides", "Task Result Log"]
 description: "Destination AI app used in the task result log download/upload guide."
 long_description: !include "../README.md"

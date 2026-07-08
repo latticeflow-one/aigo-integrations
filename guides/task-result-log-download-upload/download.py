@@ -12,7 +12,7 @@ LOG_PATH = Path("task_result_log.json")
 run_config = SDKRunConfig.model_validate(yaml.safe_load(Path("run.yaml").read_text()))
 
 # Create and run the evaluation on the source app, waiting until it finishes.
-client = Client(ai_app_key="my-app")
+client = Client(ai_app_key="source-app")
 print(f"[{client.ai_app_key}] Creating evaluation...")
 evaluation = client.create_evaluation(run_config.evaluation)
 print(f"[{client.ai_app_key}] Starting evaluation {evaluation.id}...")

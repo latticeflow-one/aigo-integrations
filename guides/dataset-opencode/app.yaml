@@ -1,5 +1,5 @@
-display_name: "Playground App"
-key: "playground-app"
+display_name: "OpenCode Session Traces Dataset"
+key: "dataset-opencode-traces"
 tags: ["Guides", "Datasets", "OpenCode"]
 description: >
   This guide shows how to export traces from your local OpenCode agent and

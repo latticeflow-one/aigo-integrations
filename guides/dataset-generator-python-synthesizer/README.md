@@ -13,7 +13,7 @@ standard Python libraries and how to introduce randomness.
 
 ```bash
 lf add app -f app.yaml
-lf switch playground-app
+lf switch dataset-generator-python-synthesizer
 lf add -f run.yaml
 ```
 

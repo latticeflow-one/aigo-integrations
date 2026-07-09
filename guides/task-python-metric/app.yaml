@@ -1,5 +1,5 @@
-display_name: "Playground App"
-key: "playground-app"
+display_name: "Python Metric"
+key: "task-python-metric"
 tags: ["Guides", "Tasks"]
 description: >
   This guide shows an example of a Python scorer paired with a Python metric

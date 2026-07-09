@@ -1,6 +1,6 @@
-display_name: "Playground App"
-key: "playground-app"
-tags: ["Guides", "Evaluations"]
+display_name: "Task Repeatability"
+key: "evaluation-repeatability"
+tags: ["Guides", "Evaluations", "Repeatability"]
 description: >
   This guide shows an example of how to assess the repeatability of a task specification,
   i.e. the consistency/stability of the metric values and sample-level scores it produces.

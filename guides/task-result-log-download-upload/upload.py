@@ -11,7 +11,7 @@ LOG_PATH = Path("task_result_log.json")
 run_config = SDKRunConfig.model_validate(yaml.safe_load(Path("run.yaml").read_text()))
 
 # Create the same evaluation on the destination app.
-client = Client(ai_app_key="another-app")
+client = Client(ai_app_key="destination-app")
 print(f"[{client.ai_app_key}] Creating evaluation...")
 evaluation = client.create_evaluation(run_config.evaluation)
 

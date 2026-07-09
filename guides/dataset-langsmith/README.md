@@ -9,14 +9,14 @@ type connects to the LangSmith API and imports traces as dataset samples.
 This source type requires the `traces` extra to be installed:
 
 ```bash
-pip install 'latticeflow-go-sdk[traces]'
+uv pip install 'latticeflow-go-sdk[traces]'
 ```
 
 ## Usage
 
 Configure the required environment variables by creating a `.env` file.
 
-```bash
+```dotenv
 LANGSMITH_API_KEY=<LANGSMITH_API_KEY>
 LANGSMITH_ENDPOINT_URL=<LANGSMITH_ENDPOINT_URL>
 LANGSMITH_PROJECT=<LANGSMITH_PROJECT>
@@ -24,6 +24,6 @@ LANGSMITH_PROJECT=<LANGSMITH_PROJECT>
 
 ```bash
 lf add app -f app.yaml
-lf switch playground-app
+lf switch dataset-langsmith-traces
 lf add dataset -f datasets/langsmith_traces.yaml
 ```

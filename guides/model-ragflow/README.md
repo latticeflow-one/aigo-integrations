@@ -14,7 +14,7 @@ A custom model adapter is defined to transform RAGFlow messages into AI GO! mess
 This guide uses a model hosted by RAGFlow. Configure the endpoint and the API key by
 creating a `.env` file.
 
-```bash
+```dotenv
 RAGFLOW_URL=<RAGFLOW_URL>
 RAGFLOW_API_KEY=<RAGFLOW_API_KEY>
 RAGFLOW_MODEL=<RAGFLOW_MODEL>
@@ -22,7 +22,7 @@ RAGFLOW_MODEL=<RAGFLOW_MODEL>
 
 ```bash
 lf add app -f app.yaml
-lf switch playground-app
+lf switch model-ragflow
 lf add -f run.yaml
 lf test model model-ragflow
 ```

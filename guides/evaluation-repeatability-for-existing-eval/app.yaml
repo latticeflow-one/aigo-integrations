@@ -1,6 +1,6 @@
-display_name: "Playground App"
-key: "playground-app"
-tags: ["Guides", "Evaluations"]
+display_name: "Task Repeatability for Existing Evaluation"
+key: "evaluation-repeatability-for-existing-eval"
+tags: ["Guides", "Evaluations", "Repeatability"]
 description: >
   This guide shows an example of how to assess the repeatability of an existing
   evaluation, i.e. the consistency/stability of the metric values and

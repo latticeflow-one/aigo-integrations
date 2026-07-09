@@ -1,2 +1,8 @@
-display_name: "Playground App"
-key: "playground-app"
+display_name: "Risk Policies"
+key: "risk-policies"
+tags: ["Guides", "Risk Policies"]
+description: >
+  This guide shows how to configure a **risk scorer** and attach **risk policies** to an
+  AI app so that evaluation metrics are translated into risk scores and surfaced in the AI app
+  risk dashboard.
+long_description: !include "README.md"

@@ -28,7 +28,7 @@ terminal.
 
 ```bash
 lf add app -f app.yaml
-lf switch playground-app
+lf switch risk-policies
 lf integration add --provider openai --api-key $OPENAI_API_KEY
 lf add risk-scorer -f risk_scorer.yaml
 lf set risk-policies -f risk_policies.yaml

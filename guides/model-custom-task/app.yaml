@@ -1,5 +1,5 @@
-display_name: "Playground App"
-key: "playground-app"
+display_name: "OpenAI GPT-4.1 Nano (Custom Task)"
+key: "model-custom-task"
 tags: ["Guides", "Models"]
 description: >
   This guide shows an example integration of OpenAI GPT-4.1 Nano integrated as a

@@ -3,9 +3,13 @@ models:
 
 datasets:
   - $ref: "./datasets/rag_qa.yaml"
+  - $ref: "./datasets/qa.yaml"
+  - $ref: "./datasets/conversations.yaml"
 
 tasks:
   - $ref: "./tasks/rag_qa.yaml"
+  - $ref: "./tasks/qa_basic.yaml"
+  - $ref: "./tasks/conversation_advanced.yaml"
 
 evaluation:
   key: "model-as-a-judge-scorer"
@@ -26,3 +30,13 @@ evaluation:
         qa_dataset: "rag-qa"
         judge_model: "openai$gpt-4-1-nano"
         evaluation_dimension: "relevance"
+    - key: "judge-qa-basic-gpt-4-1-nano"
+      task_key: "judge-qa-basic"
+      model_key: "openai$gpt-4-1-nano"
+      task_config:
+        judge_model: "openai$gpt-4-1-nano"
+    - key: "judge-conversation-advanced-gpt-4-1-nano"
+      task_key: "judge-conversation-advanced"
+      model_key: "openai$gpt-4-1-nano"
+      task_config:
+        judge_model: "openai$gpt-4-1-nano"

@@ -1,5 +1,5 @@
-display_name: "Playground App"
-key: "playground-app"
+display_name: "Single-turn Task with Generic Input Builder"
+key: "task-singleturn-solver-generic-input"
 tags: ["Guides", "Tasks"]
 description: >
   This guide shows an example of a task that uses a single-turn solver with generic

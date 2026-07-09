@@ -8,6 +8,6 @@ This guide shows an example integration of a remote dataset in CSV format.
 
 ```bash
 lf add app -f app.yaml
-lf switch playground-app
+lf switch dataset-url-remote
 lf add dataset -f datasets/dataset.yaml
 ```

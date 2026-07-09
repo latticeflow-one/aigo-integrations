@@ -16,7 +16,7 @@ Downloading a task result log exports the inference outputs and scores from a co
 ```bash
 lf integration add --provider openai --api-key $OPENAI_API_KEY
 lf add app -f apps/my_app.yaml
-lf switch my-app
+lf switch source-app
 lf run -f run.yaml --wait
 ```
 
@@ -40,7 +40,7 @@ Uploading a task result log injects pre-computed inference outputs and scores in
 
 ```bash
 lf add app -f apps/another_app.yaml
-lf switch another-app
+lf switch destination-app
 lf add -f run.yaml
 ```
 

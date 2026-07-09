@@ -14,13 +14,13 @@ The model uses the default chat completion API
 This guide uses an OpenAI model as an example. Configure the OpenAI API key by
 creating a `.env` file.
 
-```bash
+```dotenv
 OPENAI_API_KEY=<OPENAI_API_KEY>
 ```
 
 ```bash
 lf add app -f app.yaml
-lf switch playground-app
+lf switch model-custom-task
 lf add model -f models/openai_gpt_4-1-nano.yaml
 ```
 

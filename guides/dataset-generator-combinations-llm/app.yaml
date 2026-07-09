@@ -1,5 +1,5 @@
-display_name: "Playground App"
-key: "playground-app"
+display_name: "Dataset Generator: Combinations + LLM Synthesizer"
+key: "dataset-generator-combinations-llm"
 tags: ["Guides", "Dataset Generators"]
 description: >
   This guide shows how to generate a dataset from all combinations of two source

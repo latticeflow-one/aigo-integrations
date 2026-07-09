@@ -1,5 +1,5 @@
-display_name: "Playground App"
-key: "playground-app"
+display_name: "String Equals Scorer"
+key: "task-string-equals-scorer"
 tags: ["Guides", "Tasks"]
 description: >
   This guide shows examples of the string equals scorer with fixed and dynamic

@@ -36,7 +36,7 @@ It is recommended to include the following files in the ZIP package for ease of 
 
 It is recommended to use the following structure for the evaluation ZIP package:
 
-```
+```bash
 evaluation.zip/
 ├── run.yaml
 ├── evaluation.yaml
@@ -61,8 +61,8 @@ terminal. To use a different model, please adjust the model configuration.
 
 ```bash
 lf add app -f app.yaml
-lf switch playground-app
-lf add model -f model.yaml
+lf switch evaluation-init-from-zip-package
+lf add model -f models/model.yaml
 lf init --url https://github.com/latticeflow-one/aigo-integrations/raw/refs/heads/master/guides/evaluation-init-from-zip-package/evaluation.zip
 MODEL_KEY=openai-gpt-4-1-nano lf run -f evaluation/run.yaml
 ```

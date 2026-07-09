@@ -1,5 +1,5 @@
-display_name: "Playground App"
-key: "playground-app"
+display_name: "Initialize and Run Evaluation from ZIP Package"
+key: "evaluation-init-from-zip-package"
 tags: ["Guides", "Evaluations"]
 description: >
   This guide shows an example of running an initializing and running an evaluation via

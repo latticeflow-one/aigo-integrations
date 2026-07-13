@@ -1,0 +1,4 @@
+datasets:
+  - $ref: "./datasets/dataset.yaml"
+dataset_generators:
+  - $ref: "./dataset_generators/dataset_generator.yaml"

@@ -1,0 +1,7 @@
+display_name: "QA Dataset with Secrets"
+key: "dataset-python-synthesizer-secrets"
+description: "Dataset of simple math questions."
+generator_specification:
+  dataset_generator_key: "dataset-generator-python-synthesizer-secrets"
+  num_samples: 10
+  dataset_generator_config: {}

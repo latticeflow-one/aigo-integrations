@@ -1,0 +1,7 @@
+display_name: "Harry Potter Questions Dataset"
+key: "dataset-python-synthesizer-secrets"
+description: "Dataset of Harry Potter questions."
+generator_specification:
+  dataset_generator_key: "dataset-generator-python-synthesizer-secrets"
+  num_samples: 10
+  dataset_generator_config: {}

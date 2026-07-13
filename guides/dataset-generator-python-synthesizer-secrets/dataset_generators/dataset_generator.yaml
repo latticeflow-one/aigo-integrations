@@ -1,0 +1,12 @@
+display_name: "Dataset Generator with Python Synthesizer and Secrets"
+key: "dataset-generator-python-synthesizer-secrets"
+description: "This is a simple dataset generator that uses a Python synthesizer and supports secrets."
+config_spec: []
+definition:
+  data_source:
+    type: "empty"
+  synthesizers:
+    - type: "python"
+      synthesize_snippet: !include "./synthesize.py"
+secrets:
+  OPENAI_API_KEY: $OPENAI_API_KEY

@@ -1,0 +1,7 @@
+display_name: "Dataset Generator Synthesizer with Secrets"
+key: "dataset-generator-synthesizer-secrets"
+tags: ["Guides", "Dataset Generation", "Secrets"]
+description: >
+  This guide shows an example of a dataset generator that uses a Python script as the
+  synthesizer where secrets can be referenced and used in the script.
+long_description: !include "README.md"

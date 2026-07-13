@@ -9,4 +9,4 @@ definition:
     - type: "python"
       synthesize_snippet: !include "./synthesize.py"
 secrets:
-  SYMBOL: $SYMBOL
+  OPENAI_API_KEY: $OPENAI_API_KEY

@@ -1,0 +1,7 @@
+display_name: "Airline Policy Documents"
+key: "airline-policy-documents"
+description: "Dataset built from the airline's Markdown policy documents."
+source:
+  type: "folder"
+  directory_path: "../documents"
+  extension: "md"

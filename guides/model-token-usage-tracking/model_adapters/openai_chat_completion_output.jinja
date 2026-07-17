@@ -1,0 +1,31 @@
+{% if status_code != 200 %}
+    {"error": "A non-200 status code ({{ status_code }}) was returned by the model."}
+{% else %}
+{% set response = body | fromjson %}
+    {
+        "choices": [
+            {% for choice in response.choices %}
+            {
+                "message": {
+                "role": {{ (choice.message.role if choice.message.role is defined and choice.message.role is not none else '') | tojson }},
+                "content": {{ (choice.message.content if choice.message.content is defined and choice.message.content is not none else '') | tojson }}
+                {% if choice.message.refusal is defined and choice.message.refusal is not none %}
+                ,"refusal": {{ choice.message.refusal | tojson }}
+                {% endif %}
+            }
+            }{% if not loop.last %},{% endif %}
+            {% endfor %}
+        ]
+        {% if response.usage is defined and response.usage is not none %}
+            {# Reporting usage as a sibling of "choices", using LatticeFlow AI's
+               num_prompt_tokens/num_completion_tokens keys, is what makes token
+               usage tracked and shown in the model's usage breakdown. The
+               provider's raw usage object (e.g. reasoning_tokens, cached_tokens)
+               is not read directly -- it must be mapped to this schema. #}
+            ,"usage": {
+                "num_prompt_tokens": {{ response.usage.prompt_tokens }},
+                "num_completion_tokens": {{ response.usage.completion_tokens }}
+            }
+        {% endif %}
+    }
+{% endif %}

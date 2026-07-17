@@ -17,6 +17,8 @@
             {% endfor %}
         ]
         {% if response.usage is defined and response.usage is not none %}
+            {# Use `usage.num_prompt_tokens/num_completion_tokens` to integrate
+               the token usage of the model.  #}
             ,"usage": {
                 "num_prompt_tokens": {{ response.usage.prompt_tokens }},
                 "num_completion_tokens": {{ response.usage.completion_tokens }}

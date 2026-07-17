@@ -19,9 +19,7 @@
         {% if response.usage is defined and response.usage is not none %}
             {# Reporting usage as a sibling of "choices", using LatticeFlow AI's
                num_prompt_tokens/num_completion_tokens keys, is what makes token
-               usage tracked and shown in the model's usage breakdown. The
-               provider's raw usage object (e.g. reasoning_tokens, cached_tokens)
-               is not read directly -- it must be mapped to this schema. #}
+               usage tracked and shown in the model's usage breakdown. #}
             ,"usage": {
                 "num_prompt_tokens": {{ response.usage.prompt_tokens }},
                 "num_completion_tokens": {{ response.usage.completion_tokens }}

@@ -1,7 +1,0 @@
-display_name: "Model Token Usage Tracking"
-key: "model-token-usage-tracking"
-tags: ["Guides", "Models"]
-description: >
-  This guide shows how to report token usage from a model adapter so it is
-  tracked and displayed on the LatticeFlow AI platform.
-long_description: !include README.md

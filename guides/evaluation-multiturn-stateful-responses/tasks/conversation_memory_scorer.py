@@ -1,7 +1,12 @@
 from __future__ import annotations
 
+from typing import Any
 
-def compute_scores(sample, solver_output):
+from latticeflow.core.dtypes import RawSample
+from latticeflow.core.dtypes import SolverOutput
+
+
+def compute_scores(sample: RawSample, solver_output: SolverOutput) -> dict[str, Any]:
     # Extract the two assistant responses from the conversation trace, one per turn.
     response_0 = solver_output.trace.assistant_messages[0].content
     response_1 = solver_output.trace.assistant_messages[1].content

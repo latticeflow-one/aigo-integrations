@@ -2,8 +2,11 @@ from __future__ import annotations
 
 from typing import Any
 
+from latticeflow.core.dtypes import RawSample
+from latticeflow.core.dtypes import SolverOutput
 
-def compute_scores(sample: dict[str, Any], solver_output: Any) -> dict[str, Any]:
+
+def compute_scores(sample: RawSample, solver_output: SolverOutput) -> dict[str, Any]:
     model_completion = solver_output.trace.get_last_assistant_text() or ""
     is_valid = model_completion != ""
     return {

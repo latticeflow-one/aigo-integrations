@@ -2,8 +2,10 @@ from __future__ import annotations
 
 from typing import Any
 
+from latticeflow.core.dtypes import RawSample
 
-def compute_scores(sample: dict[str, Any]) -> dict[str, Any]:
+
+def compute_scores(sample: RawSample) -> dict[str, Any]:
     field_name = "<< config.field >>"
 
     field_value = sample.get(field_name, None)

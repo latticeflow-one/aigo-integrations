@@ -3,8 +3,10 @@ from __future__ import annotations
 from collections import Counter
 from typing import Any
 
+from latticeflow.core.dtypes import RawSample
 
-def compute_scores(samples: list[dict[str, Any]]) -> list[dict[str, Any]]:
+
+def compute_scores(samples: list[RawSample]) -> list[dict[str, Any]]:
     field_name = "<< config.field >>"
     values = [
         sample[field_name] if field_name in sample else None for sample in samples

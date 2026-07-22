@@ -1,0 +1,16 @@
+display_name: "Claim Extraction"
+key: "claim-extraction"
+description: "Extract structured claims from question–answer pairs."
+definition:
+  type: "declarative_dataset_generator"
+  data_source:
+    type: "inline_samples"
+    samples:
+      - question: "What is the capital of France?"
+        expected_answer: "Paris is the capital of France."
+  synthesizers:
+    - type: claim_extraction
+      model_key: "openai$gpt-4-1-nano"
+      columns:
+        question: question
+        answer: expected_answer

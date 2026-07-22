@@ -1,0 +1,6 @@
+display_name: "Dataset Generator with Claim Extraction Synthesizer"
+key: "dataset-generator-claim-extraction"
+tags: ["Guides", "Dataset Generators"]
+description: >
+  Example of a dataset generator that uses the claim extraction synthesizer.
+long_description: !include README.md

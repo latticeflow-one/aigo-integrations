@@ -1,0 +1,17 @@
+display_name: "Prompt Injection"
+key: "prompt_injection"
+description: >-
+  A comprehensive dataset of 2,202 adversarial prompts designed to test model
+  robustness against prompt injection attacks. Combines prompt injection samples from
+  the deepset/prompt-injections dataset (label=1) and jailbreak samples from the
+  qualifire/prompt-injections-benchmark dataset. Contains various attack techniques
+  including instruction override, role-playing exploits, jailbreaking (DAN mode),
+  context manipulation, and multi-language attacks. The dataset includes prompts in
+  English, German, Spanish, French, and other languages, using techniques like direct
+  commands to ignore instructions, fictional scenarios to justify harmful outputs,
+  character obfuscation, and sophisticated jailbreaking narratives. Used to evaluate
+  whether models can maintain safety guardrails and resist attempts to override their
+  intended behavior through adversarial user inputs.
+source:
+  type: "local"
+  file_path: "data.jsonl"

@@ -8,4 +8,4 @@ config:
     key: "adapter-dify"
   connection_type: "custom_connection"
   url: $DIFY_URL
-  api_key: $DIFY_API_KEY
+  api_key: << secrets.DIFY_API_KEY >>

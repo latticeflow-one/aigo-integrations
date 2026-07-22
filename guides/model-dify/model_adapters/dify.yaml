@@ -1,11 +1,32 @@
 display_name: "Dify Chat Completion"
 key: "adapter-dify"
 long_description: >
-  Adapter for Dify chat messages. See
-  [documentation](https://docs.dify.ai/api-reference/chatflow/send-chat-message#send-chat-message).
+  Adapter for [Dify chat messages](https://docs.dify.ai/en/api-reference/chat-messages/send-chat-message).
 process_input:
   language: "jinja"
-  source_code: !include "./dify_input.jinja"
+  source_code: |
+    {% set assistants = input.messages | selectattr("role", "equalto", "assistant") | list %}
+    {
+        "inputs": {},
+        "query": {{ input.messages[-1].content | tojson }},
+        "response_mode": "blocking",
+        "conversation_id": {{ (assistants[-1].conversation_id | default("", true) if assistants else "") | tojson }},
+        "user": "latticeflow",
+        "files": []
+    }
 process_output:
   language: "jinja"
-  source_code: !include "./dify_output.jinja"
+  source_code: |
+    {% set body = body | fromjson %}
+    {
+        "choices": [
+        {
+            "message": {
+                "role": "assistant",
+                "content": {{ body.answer | tojson }},
+                "conversation_id": {{ body.conversation_id | tojson }}
+            },
+            "references": {{ ((body.metadata | default({}, true)).retriever_resources | default([], true)) | tojson }}
+        }
+        ]
+    }

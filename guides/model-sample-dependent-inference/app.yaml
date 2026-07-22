@@ -1,0 +1,6 @@
+display_name: "Model with Sample Dependent Inference"
+key: "model-sample-dependent-inference"
+tags: ["Guides", "Models"]
+description: >
+  This guide shows an example integration of a model with sample dependent inference logic.
+long_description: !include README.md

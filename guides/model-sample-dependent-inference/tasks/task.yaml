@@ -1,0 +1,15 @@
+display_name: "Example Task with Sample Dependent Inference"
+key: "example-task-with-sample-dependent-inference"
+description: "Example task that uses a sample dependent inference."
+definition:
+  evaluated_entity_type: "model"
+  dataset:
+    key: "prompt_injection"
+  solver:
+    type: "single_turn_solver"
+    input_builder:
+      type: "chat_completion"
+      input_messages:
+        - role: "user"
+          content: >
+            {{ sample["text"] }}

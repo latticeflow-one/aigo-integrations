@@ -1,0 +1,12 @@
+display_name: "Custom Sample Dependent Inference"
+key: "custom-sample-dependent-inference"
+description: "Custom sample dependent inference."
+rate_limit: 60
+task: "chat_completion"
+config:
+  connection_type: "custom_inference"
+  adapter:
+    key: "latticeflow$openai_chat_completion"
+  run_inference_snippet: !include "./run_inference.py"
+  environment: {}
+  timeout: 15

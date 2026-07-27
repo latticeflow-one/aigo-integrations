@@ -1,0 +1,5 @@
+datasets:
+  - $ref: "./datasets/temperatures.yaml"
+  - $ref: "./datasets/unit_conversion_qa.yaml"
+dataset_generators:
+  - $ref: "./dataset_generators/unit_conversion_qa_generator.yaml"

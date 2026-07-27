@@ -7,7 +7,7 @@ definition:
     type: "inline_samples"
     samples:
       - question: "What is the capital of France?"
-        expected_answer: "Paris is the capital of France."
+        expected_answer: "The capital of France is Paris. Paris is well known for its Eiffel Tower."
   synthesizers:
     - type: claim_extraction
       model_key: "openai$gpt-4-1-nano"

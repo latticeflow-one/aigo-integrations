@@ -35,6 +35,20 @@ category: baggage
 If a header is present but not valid YAML, a warning is logged and the file is
 still included with its original content, but without metadata columns.
 
+## Resulting dataset
+
+The two documents of this guide produce two rows, with `title` and `category`
+added as columns from their front matter headers:
+
+```text
+| sample_id   | file_name                | content                                         | title          | category |
+| :---------- | :----------------------- | :---------------------------------------------- | :------------- | :------- |
+| 3249fbcd... | baggage_policy.md        | "\n# Baggage Policy\n\nEach passenger may ..."  | Baggage Policy | baggage  |
+| d93894c0... | refunds/refund_policy.md | "\n# Refund Policy\n\nRefundable fares can ..." | Refund Policy  | refunds  |
+```
+
+The `sample_id` is the SHA-256 hash of the file's bytes, abbreviated above.
+
 ## Usage
 
 ```bash

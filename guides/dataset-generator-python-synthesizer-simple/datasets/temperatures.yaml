@@ -1,0 +1,6 @@
+display_name: "City Temperatures"
+key: "city-temperatures"
+description: "Seed dataset with a temperature measurement per city."
+source:
+  type: "local"
+  file_path: "./temperatures.csv"

@@ -1,0 +1,11 @@
+display_name: "Unit Conversion QA Generator"
+key: "unit-conversion-qa-generator"
+description: "Turns each seed temperature into two conversion questions."
+config_spec: []
+definition:
+  data_source:
+    type: "dataset_samples"
+    dataset_key: "city-temperatures"
+  synthesizers:
+    - type: "python"
+      synthesize_snippet: !include "./synthesize.py"

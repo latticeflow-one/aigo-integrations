@@ -1,4 +1,4 @@
-country,city
-Germany,Berlin
-France,Paris
-Japan,Tokyo
+country,city,language
+Germany,Berlin,German
+France,Paris,French
+Japan,Tokyo,Japanese

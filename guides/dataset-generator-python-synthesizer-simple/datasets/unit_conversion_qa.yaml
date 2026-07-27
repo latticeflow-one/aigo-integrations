@@ -1,0 +1,7 @@
+display_name: "Unit Conversion QA Dataset"
+key: "unit-conversion-qa"
+description: "Temperature conversion questions derived from the seed dataset."
+generator_specification:
+  dataset_generator_key: "unit-conversion-qa-generator"
+  num_samples: 6
+  dataset_generator_config: {}

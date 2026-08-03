@@ -15,5 +15,5 @@ evaluation:
       task_key: "language-labeling"
       display_name: "Language Labeling OpenAI GPT-4.1 Nano"
       task_config:
-        judge_model: "openai$gpt-4-1-nano"
+        judge_model_key: "openai$gpt-4-1-nano"
       model_key: "openai$gpt-4-1-nano"

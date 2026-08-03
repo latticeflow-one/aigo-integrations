@@ -5,14 +5,18 @@ description: >
   with a loop message builder that handles clarifying questions before producing a
   final answer.
 config_spec:
+  - key: "dataset_key"
+    type: "dataset"
+    display_name: "Dataset"
+    default_value: "qa-single-answers"
   - type: "model"
-    key: "judge_model"
+    key: "judge_model_key"
     display_name: "Judge Model"
     description: "Model used to respond to clarifying questions within the loop."
 definition:
   evaluated_entity_type: "model"
   dataset:
-    key: "qa-single-answers"
+    key: "<< config.dataset_key >>"
   solver:
     type: "multi_turn_solver"
     message_builders:
@@ -34,7 +38,7 @@ definition:
         on_max_iterations: "continue"
         message_builders:
           - type: "generate_message"
-            model_key: "<< config.judge_model >>"
+            model_key: "<< config.judge_model_key >>"
             extra_input_messages:
               - type: "chat_message"
                 role: "user"

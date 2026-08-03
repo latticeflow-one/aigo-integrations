@@ -4,14 +4,18 @@ description: >
   Single-turn QA scored two ways by a judge model: a classifier for
   correctness (correct/incorrect) and a numeric scorer for answer quality (0-100).
 config_spec:
+  - key: "dataset_key"
+    type: "dataset"
+    display_name: "Dataset"
+    default_value: "judge-qa"
   - type: "model"
-    key: "judge_model"
+    key: "judge_model_key"
     display_name: "Judge Model"
     description: "The model used to grade the answers."
 definition:
   evaluated_entity_type: "model"
   dataset:
-    key: "judge-qa"
+    key: "<< config.dataset_key >>"
   solver:
     type: "single_turn_solver"
     input_builder:
@@ -26,7 +30,7 @@ definition:
     - type: "model_as_a_judge_classifier"
       key: "correctness"
       display_name: "Answer Correctness"
-      model_key: "<< config.judge_model >>"
+      model_key: "<< config.judge_model_key >>"
       system_prompt: |
         You grade whether a candidate answer is semantically correct given the
         ground-truth answer. Ignore spelling, capitalisation, and extra detail;
@@ -49,7 +53,7 @@ definition:
     - type: "model_as_a_judge_scorer"
       key: "answer_quality"
       display_name: "Answer Quality"
-      model_key: "<< config.judge_model >>"
+      model_key: "<< config.judge_model_key >>"
       system_prompt: >
         You are an expert evaluator. Rate the overall quality of the answer to the
         question on a scale from 0 to 100, considering correctness, clarity, and

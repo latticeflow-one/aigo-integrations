@@ -6,14 +6,18 @@ description: >
   assigns one of four labels. A weighted average turns those labels into a single
   quality score, and a frequency metric shows the label distribution.
 config_spec:
+  - key: "dataset_key"
+    type: "dataset"
+    display_name: "Dataset"
+    default_value: "judge-conversations"
   - type: "model"
-    key: "judge_model"
+    key: "judge_model_key"
     display_name: "Judge Model"
     description: "The model used to grade the conversation."
 definition:
   evaluated_entity_type: "model"
   dataset:
-    key: "judge-conversations"
+    key: "<< config.dataset_key >>"
   solver:
     type: "multi_turn_solver"
     message_builders:
@@ -34,7 +38,7 @@ definition:
     - type: "labeler_via_model"
       key: "conversation_grade"
       display_name: "Conversation Grade"
-      model_key: "<< config.judge_model >>"
+      model_key: "<< config.judge_model_key >>"
       system_prompt: |
         You grade a multi-turn conversation between a user and an assistant.
         The second user message adds a constraint or a reframing, so a good

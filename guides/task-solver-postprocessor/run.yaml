@@ -10,6 +10,4 @@ evaluation:
   task_specifications:
     - key: "multi-qa-gpt-4-1-nano"
       task_key: "multi-qa-checker"
-      task_config:
-        judge_model: "openai$gpt-4-1-nano"
       model_key: "openai$gpt-4-1-nano"

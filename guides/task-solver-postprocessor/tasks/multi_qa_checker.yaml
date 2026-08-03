@@ -5,12 +5,13 @@ description: >
   each individual question-answer pair, even when multiple questions are answered in a
   single turn.
 config_spec:
-  - type: "model"
-    key: "judge_model"
-    display_name: "Judge Model"
+  - key: "dataset_key"
+    type: "dataset"
+    display_name: "Dataset"
+    default_value: "multi-qa"
 definition:
   dataset:
-    key: "multi-qa"
+    key: "<< config.dataset_key >>"
   solver:
     type: "single_turn_solver"
     input_builder:

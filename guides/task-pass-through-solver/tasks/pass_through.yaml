@@ -3,10 +3,14 @@ key: "pass-through-qa"
 description: >
   Example task that uses the pass-through solver to evaluate pre-recorded
   conversations without invoking any model.
-config_spec: []
+config_spec:
+  - key: "dataset_key"
+    type: "dataset"
+    display_name: "Dataset"
+    default_value: "recorded-qa-traces"
 definition:
   dataset:
-    key: "recorded-qa-traces"
+    key: "<< config.dataset_key >>"
   solver:
     type: "pass_through_solver"
     message_format: "open_responses"

@@ -1,10 +1,14 @@
 display_name: "Single-turn Solver Generic Input"
 key: "singleturn-generic-input"
 description: "Example task that uses a single-turn solver with generic input builder."
-config_spec: []
+config_spec:
+  - key: "dataset_key"
+    type: "dataset"
+    display_name: "Dataset"
+    default_value: "qa-single-answers"
 definition:
   dataset:
-    key: "qa-single-answers"
+    key: "<< config.dataset_key >>"
   solver:
     type: "single_turn_solver"
     input_builder:

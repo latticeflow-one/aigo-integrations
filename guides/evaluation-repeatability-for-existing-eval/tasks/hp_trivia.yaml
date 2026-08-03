@@ -1,11 +1,19 @@
 display_name: "Harry Potter Trivia Task"
 key: "hp-trivia"
 description: "Assesses the model knowledge of Harry Potter trivia."
-config_spec: []
+config_spec:
+  - key: "dataset_key"
+    type: "dataset"
+    display_name: "Dataset"
+    default_value: "hp-trivia-dataset"
+  - key: "judge_model_key"
+    type: "model"
+    display_name: "Judge Model"
+    default_value: "openai$gpt-4-1-nano"
 definition:
   evaluated_entity_type: "model"
   dataset:
-    key: "hp-trivia-dataset"
+    key: "<< config.dataset_key >>"
   solver:
     type: "single_turn_solver"
     input_builder:
@@ -17,7 +25,7 @@ definition:
           content: "Respond to this question concisely. {{ sample.question }}"
   scorers:
     - type: "model_as_a_judge_classifier"
-      model_key: "openai$gpt-4-1-nano"
+      model_key: "<< config.judge_model_key >>"
       system_prompt: |
         You are a helpful assistant and rate whether the ground truth answer and the
         candidate answer are semantically the same. Semantically the same means that

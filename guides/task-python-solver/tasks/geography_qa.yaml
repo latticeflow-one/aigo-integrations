@@ -3,11 +3,15 @@ key: "geography-qa"
 description: >
   Evaluates model answers on geography questions using a Python solver that
   manages the conversation trace programmatically.
-config_spec: []
+config_spec:
+  - key: "dataset_key"
+    type: "dataset"
+    display_name: "Dataset"
+    default_value: "geography-qa"
 definition:
   evaluated_entity_type: "model"
   dataset:
-    key: "geography-qa"
+    key: "<< config.dataset_key >>"
   solver:
     type: "python"
     run_solver_snippet: |

@@ -1,10 +1,15 @@
 display_name: "Example Task with Sample Dependent Inference"
 key: "example-task-with-sample-dependent-inference"
 description: "Example task that uses a sample dependent inference."
+config_spec:
+  - key: "dataset_key"
+    type: "dataset"
+    display_name: "Dataset"
+    default_value: "prompt_injection"
 definition:
   evaluated_entity_type: "model"
   dataset:
-    key: "prompt_injection"
+    key: "<< config.dataset_key >>"
   solver:
     type: "single_turn_solver"
     input_builder:

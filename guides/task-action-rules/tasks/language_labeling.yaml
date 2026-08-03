@@ -5,14 +5,18 @@ description: >
   quality. Action rules exclude non-English responses, specific sample IDs, and
   dataset-flagged holdout samples from the quality metric.
 config_spec:
+  - key: "dataset_key"
+    type: "dataset"
+    display_name: "Dataset"
+    default_value: "multilingual-questions"
   - type: "model"
-    key: "judge_model"
+    key: "judge_model_key"
     display_name: "Judge Model"
     description: "The model used to label the language of model responses."
 definition:
   evaluated_entity_type: "model"
   dataset:
-    key: "multilingual-questions"
+    key: "<< config.dataset_key >>"
   solver:
     type: "single_turn_solver"
     input_builder:
@@ -26,7 +30,7 @@ definition:
     - type: "labeler_via_model"
       key: "language_labeller"
       purpose: "qa"
-      model_key: "<< config.judge_model >>"
+      model_key: "<< config.judge_model_key >>"
       system_prompt: >
         You are a language detection assistant.
         Respond with exactly one of these labels:
@@ -40,7 +44,7 @@ definition:
         - "OTHER"
     - type: "model_as_a_judge_scorer"
       key: "answer_quality"
-      model_key: "<< config.judge_model >>"
+      model_key: "<< config.judge_model_key >>"
       system_prompt: >
         You are an expert evaluator. Rate the quality of the answer to the given
         question on a scale from 0 to 100, where 100 means the answer is fully

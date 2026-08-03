@@ -1,11 +1,15 @@
 display_name: "AI Knowledge MCQA Task"
 key: "ai-knowledge-mcqa"
 description: "Evaluates a model's accuracy on multiple-choice AI knowledge questions."
-config_spec: []
+config_spec:
+  - key: "dataset_key"
+    type: "dataset"
+    display_name: "Dataset"
+    default_value: "ai-knowledge-mcqa-dataset"
 definition:
   evaluated_entity_type: "model"
   dataset:
-    key: "ai-knowledge-mcqa-dataset"
+    key: "<< config.dataset_key >>"
   solver:
     type: "single_turn_solver"
     input_builder:

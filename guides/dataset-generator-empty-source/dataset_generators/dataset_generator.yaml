@@ -2,6 +2,10 @@ display_name: "My Question Generator"
 key: "question-generator"
 description: "Generates questions about arbitrary topics."
 config_spec:
+  - key: "synthesizer_model_key"
+    type: "model"
+    display_name: "Synthesizer Model"
+    default_value: "openai$gpt-4-1-nano"
   - key: "topic"
     type: "string"
     display_name: "Topic"
@@ -11,7 +15,7 @@ definition:
     type: "empty"
   synthesizers:
     - type: "llm"
-      model_key: "openai$gpt-4-1-nano"
+      model_key: "<< config.synthesizer_model_key >>"
       use_structured_outputs: true
       system_prompt: "You are a helpful dataset generator."
       user_prompt_template: >

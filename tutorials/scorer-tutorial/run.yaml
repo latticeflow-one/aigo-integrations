@@ -14,4 +14,4 @@ evaluation:
     - task_key: tau2bench-tutorial-eval
       model_key: "openai$gpt-4-1-nano"
       task_config:
-        eval_dataset: tutorial-samples
+        dataset_key: tutorial-samples

@@ -1,17 +1,29 @@
 key: "city-language-qa-generator"
 display_name: "City Language QA Generator"
 description: "Generates QA samples from all combinations of cities and languages."
-config_spec: []
+config_spec:
+  - key: "cities_dataset_key"
+    type: "dataset"
+    display_name: "Cities Dataset"
+    default_value: "cities_dataset"
+  - key: "languages_dataset_key"
+    type: "dataset"
+    display_name: "Languages Dataset"
+    default_value: "languages_dataset"
+  - key: "synthesizer_model_key"
+    type: "model"
+    display_name: "Synthesizer Model"
+    default_value: "openai$gpt-4-1-nano"
 definition:
   type: "declarative_dataset_generator"
   data_source:
     type: "dataset_sample_combinations"
     dataset_keys:
-      - "cities_dataset"
-      - "languages_dataset"
+      - "<< config.cities_dataset_key >>"
+      - "<< config.languages_dataset_key >>"
   synthesizers:
     - type: "llm"
-      model_key: "openai$gpt-4-1-nano"
+      model_key: "<< config.synthesizer_model_key >>"
       use_structured_outputs: true
       system_prompt: "You are a helpful dataset generator."
       user_prompt_template: >

@@ -3,10 +3,15 @@ key: "conversation_memory"
 description: >
   Checks that the model can remember information from previous interactions in a
   conversation.
+config_spec:
+  - key: "dataset_key"
+    type: "dataset"
+    display_name: "Dataset"
+    default_value: "conversation_memory_questions"
 definition:
   evaluated_entity_type: "model"
   dataset:
-    key: "conversation_memory_questions"
+    key: "<< config.dataset_key >>"
   solver:
     type: "multi_turn_solver"
     message_builders:

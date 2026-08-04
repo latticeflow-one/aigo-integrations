@@ -1,11 +1,20 @@
 key: "rag-faithfulness-task"
 display_name: "RAG Faithfulness Evaluation"
 description: "Evaluates whether model responses are faithful to the provided context."
-config_spec: []
+config_spec:
+  - key: "dataset_key"
+    type: "dataset"
+    display_name: "Dataset"
+    default_value: "rag-qa-dataset"
+    description: "Dataset containing context, question, and answer samples."
+  - key: "judge_model_key"
+    type: "model"
+    display_name: "Judge Model"
+    description: "Model used to judge faithfulness of responses."
 definition:
   evaluated_entity_type: "model"
   dataset:
-    key: "rag-qa-dataset"
+    key: "<< config.dataset_key >>"
   solver:
     type: "single_turn_solver"
     input_builder:
@@ -19,7 +28,7 @@ definition:
             Question: {{ sample.question }}
   scorers:
     - type: "model_as_a_judge_classifier"
-      model_key: "openai$gpt-4-1-nano"
+      model_key: "<< config.judge_model_key >>"
       system_prompt: |
         You are a judge evaluating whether an answer is faithful to the provided context.
         Respond with 'faithful' if the answer only contains information from the context.

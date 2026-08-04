@@ -3,11 +3,16 @@ key: "geography-qa"
 description: >
   Evaluates model answers on geography questions using a Python scorer for
   per-sample scoring and a Python metric for custom cross-sample aggregation.
-config_spec: []
+config_spec:
+  - key: "dataset_key"
+    type: "dataset"
+    display_name: "Dataset"
+    default_value: "geography-qa"
+    description: "Dataset containing geography questions and answers."
 definition:
   evaluated_entity_type: "model"
   dataset:
-    key: "geography-qa"
+    key: "<< config.dataset_key >>"
   solver:
     type: "single_turn_solver"
     input_builder:

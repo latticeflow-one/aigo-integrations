@@ -3,12 +3,18 @@ key: "multiturn-clarification"
 description: >
   Example task that uses multiturn solver to answer extra clarifying model questions.
 config_spec:
+  - key: "dataset_key"
+    type: "dataset"
+    display_name: "Dataset"
+    default_value: "qa-single-answers"
+    description: "Dataset containing questions and expected single-word answers."
   - type: "model"
-    key: "judge_model"
+    key: "judge_model_key"
     display_name: "Judge Model"
+    description: "Model used to respond to clarifying questions."
 definition:
   dataset:
-    key: "qa-single-answers"
+    key: "<< config.dataset_key >>"
   solver:
     type: "multi_turn_solver"
     message_builders:
@@ -31,7 +37,7 @@ definition:
         content: "{{ sample.question }}"
       - type: "generate"
       - type: "generate_message"
-        model_key: "<< config.judge_model >>"
+        model_key: "<< config.judge_model_key >>"
         extra_input_messages:
           - type: "chat_message"
             role: "user"

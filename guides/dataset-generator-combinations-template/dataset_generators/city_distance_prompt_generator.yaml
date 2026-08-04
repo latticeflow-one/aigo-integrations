@@ -1,14 +1,24 @@
 key: "city-distance-prompt-generator"
 display_name: "City Distance Prompt Generator"
 description: "Generates navigation prompts from all combinations of cities and distances."
-config_spec: []
+config_spec:
+  - key: "cities_dataset_key"
+    type: "dataset"
+    display_name: "Cities Dataset"
+    default_value: "cities_dataset"
+    description: "Dataset containing the cities to generate navigation prompts from."
+  - key: "distances_dataset_key"
+    type: "dataset"
+    display_name: "Distances Dataset"
+    default_value: "distances_dataset"
+    description: "Dataset containing the distances to use in navigation prompts."
 definition:
   type: "declarative_dataset_generator"
   data_source:
     type: "dataset_sample_combinations"
     dataset_keys:
-      - "cities_dataset"
-      - "distances_dataset"
+      - "<< config.cities_dataset_key >>"
+      - "<< config.distances_dataset_key >>"
   synthesizers:
     - type: "template"
       template: |

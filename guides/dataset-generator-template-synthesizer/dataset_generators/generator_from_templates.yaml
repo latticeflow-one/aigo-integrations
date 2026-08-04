@@ -1,11 +1,16 @@
 display_name: "Dataset Generator from Template"
 key: "dataset-generator-from-template"
 description: "This is a simple dataset generator."
-config_spec: []
+config_spec:
+  - key: "source_dataset_key"
+    type: "dataset"
+    display_name: "Source Dataset"
+    default_value: "seed-dataset"
+    description: "Dataset containing seed city and country entries."
 definition:
   data_source:
     type: "dataset_samples"
-    dataset_key: "seed-dataset"
+    dataset_key: "<< config.source_dataset_key >>"
   synthesizers:
     - type: "template"
       template: |

@@ -1,6 +1,11 @@
 display_name: "Claim Extraction"
 key: "claim-extraction"
-description: "Extract structured claims from question–answer pairs."
+description: "Extract structured claims from question-answer pairs."
+config_spec:
+  - key: "synthesizer_model_key"
+    type: "model"
+    display_name: "Synthesizer Model"
+    description: "Model used to extract claims from question-answer pairs."
 definition:
   type: "declarative_dataset_generator"
   data_source:
@@ -10,7 +15,7 @@ definition:
         expected_answer: "The capital of France is Paris. Paris is well known for its Eiffel Tower."
   synthesizers:
     - type: claim_extraction
-      model_key: "openai$gpt-4-1-nano"
+      model_key: "<< config.synthesizer_model_key >>"
       columns:
         question: question
         answer: expected_answer

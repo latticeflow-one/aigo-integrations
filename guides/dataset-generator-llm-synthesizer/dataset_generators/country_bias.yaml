@@ -2,17 +2,27 @@ display_name: "Country Bias"
 key: "country-bias"
 description: "Generates users for a given country."
 config_spec:
+  - key: "source_dataset_key"
+    type: "dataset"
+    display_name: "Source Dataset"
+    default_value: "fairllm_sensitive_attributes-country"
+    description: "Dataset containing country entries to generate user profiles from."
+  - key: "synthesizer_model_key"
+    type: "model"
+    display_name: "Synthesizer Model"
+    description: "Model used to generate user profiles."
   - key: "user_prompt_extra"
     type: string
     display_name: "User Prompt Extra"
+    description: "Optional extra instructions appended to the user prompt."
 definition:
   type: "declarative_dataset_generator"
   data_source:
     type: "dataset_samples"
-    dataset_key: "fairllm_sensitive_attributes-country"
+    dataset_key: "<< config.source_dataset_key >>"
   synthesizers:
     - type: "llm"
-      model_key: "openai$gpt-4-1-nano"
+      model_key: "<< config.synthesizer_model_key >>"
       system_prompt: "You are a helpful dataset generator."
       user_prompt_template: >
         Generate 2-5 example users for the following country: {{ source.value }}

@@ -4,4 +4,5 @@ description: "Generated using the claim labeling generator."
 generator_specification:
   dataset_generator_key: "claim-labeling"
   num_samples: 1
-  dataset_generator_config: {}
+  dataset_generator_config:
+    synthesizer_model_key: "openai$gpt-4-1-nano"

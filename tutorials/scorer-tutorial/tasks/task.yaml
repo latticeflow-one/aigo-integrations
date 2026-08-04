@@ -6,13 +6,14 @@ description: >
 
 config_spec:
   - type: dataset
-    key: eval_dataset
-    display_name: Evaluation Dataset
+    key: dataset_key
+    display_name: "Dataset"
+    description: "Dataset containing agent traces to evaluate."
 
 definition:
   evaluated_entity_type: model
   dataset:
-    key: "<< config.eval_dataset >>"
+    key: "<< config.dataset_key >>"
   solver:
     type: pass_through_solver
     trace_column: "trace"

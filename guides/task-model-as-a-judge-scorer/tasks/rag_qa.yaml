@@ -5,12 +5,13 @@ description: >
   model-as-a-judge scorer. Supports configurable judge model and evaluation dimension.
 config_spec:
   - type: "dataset"
-    key: "qa_dataset"
-    display_name: "QA Dataset"
+    key: "dataset_key"
+    display_name: "Dataset"
     description: "The dataset to evaluate against."
   - type: "model"
-    key: "judge_model"
+    key: "judge_model_key"
     display_name: "Judge Model"
+    description: "Model used to score the evaluation dimension."
   - type: "categorical"
     key: "evaluation_dimension"
     display_name: "Evaluation Dimension"
@@ -19,7 +20,7 @@ config_spec:
 definition:
   evaluated_entity_type: "model"
   dataset:
-    key: "<< config.qa_dataset >>"
+    key: "<< config.dataset_key >>"
   solver:
     type: "single_turn_solver"
     input_builder:
@@ -33,7 +34,7 @@ definition:
             Question: {{ sample.question }}
   scorers:
     - type: "model_as_a_judge_scorer"
-      model_key: "<< config.judge_model >>"
+      model_key: "<< config.judge_model_key >>"
       system_prompt: >
         You are an evaluator assessing the << config.evaluation_dimension >> of a
         model response to a question.

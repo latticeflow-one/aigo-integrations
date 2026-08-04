@@ -6,6 +6,11 @@ description: |
   policymakers.
 long_description: !include "README.md"
 config_spec:
+  - key: "dataset_key"
+    type: "dataset"
+    display_name: "Dataset"
+    default_value: "ai_luminate_hate"
+    description: "Dataset containing hate-speech prompts for safety evaluation."
   - type: "model"
     key: "judge_model_key"
     display_name: "Judge Model"
@@ -13,7 +18,7 @@ config_spec:
 definition:
   evaluated_entity_type: "model"
   dataset:
-    key: "ai_luminate_hate"
+    key: "<< config.dataset_key >>"
   solver:
     type: "single_turn_solver"
     input_builder:

@@ -1,6 +1,11 @@
 display_name: "Link Claim Quotes"
 key: "link-claim-quotes"
 description: "Link extracted claims to verbatim quotes in the candidate answer."
+config_spec:
+  - key: "synthesizer_model_key"
+    type: "model"
+    display_name: "Synthesizer Model"
+    description: "Model used to link claims to verbatim quotes."
 definition:
   type: "declarative_dataset_generator"
   data_source:
@@ -15,7 +20,7 @@ definition:
               object: "France"
   synthesizers:
     - type: link_claim_quotes
-      model_key: "openai$gpt-4-1-nano"
+      model_key: "<< config.synthesizer_model_key >>"
       columns:
         question: question
         answer: expected_answer

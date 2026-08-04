@@ -13,5 +13,5 @@ evaluation:
       task_key: "hp-trivia"
       display_name: "Harry Potter Trivia OpenAI GPT-4.1 Nano"
       task_config:
-        config_key: []
+        judge_model_key: "openai$gpt-4-1-nano"
       model_key: "openai$gpt-4-1-nano"

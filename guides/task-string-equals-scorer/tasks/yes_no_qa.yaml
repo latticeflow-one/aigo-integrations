@@ -4,6 +4,11 @@ description: >
   Evaluates model accuracy on yes/no questions. Supports configurable response
   length and optional context inclusion.
 config_spec:
+  - key: "dataset_key"
+    type: "dataset"
+    display_name: "Dataset"
+    default_value: "yes-no-qa"
+    description: "Dataset containing yes/no questions and answers."
   - type: "int"
     key: "max_words"
     display_name: "Max Words"
@@ -18,7 +23,7 @@ config_spec:
 definition:
   evaluated_entity_type: "model"
   dataset:
-    key: "yes-no-qa"
+    key: "<< config.dataset_key >>"
   solver:
     type: "single_turn_solver"
     input_builder:

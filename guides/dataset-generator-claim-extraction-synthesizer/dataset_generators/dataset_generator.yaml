@@ -1,10 +1,11 @@
 display_name: "Claim Extraction"
 key: "claim-extraction"
-description: "Extract structured claims from question–answer pairs."
+description: "Extract structured claims from question-answer pairs."
 config_spec:
   - key: "synthesizer_model_key"
     type: "model"
     display_name: "Synthesizer Model"
+    description: "Model used to extract claims from question-answer pairs."
 definition:
   type: "declarative_dataset_generator"
   data_source:

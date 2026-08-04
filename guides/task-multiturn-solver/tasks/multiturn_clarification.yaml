@@ -7,9 +7,11 @@ config_spec:
     type: "dataset"
     display_name: "Dataset"
     default_value: "qa-single-answers"
+    description: "Dataset containing questions and expected single-word answers."
   - type: "model"
     key: "judge_model_key"
     display_name: "Judge Model"
+    description: "Model used to respond to clarifying questions."
 definition:
   dataset:
     key: "<< config.dataset_key >>"

@@ -8,6 +8,7 @@ config_spec:
     type: "dataset"
     display_name: "Dataset"
     default_value: "judge-qa"
+    description: "Dataset containing questions and ground-truth answers."
   - type: "model"
     key: "judge_model_key"
     display_name: "Judge Model"

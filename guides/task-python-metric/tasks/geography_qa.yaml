@@ -8,6 +8,7 @@ config_spec:
     type: "dataset"
     display_name: "Dataset"
     default_value: "geography-qa"
+    description: "Dataset containing geography questions and answers."
 definition:
   evaluated_entity_type: "model"
   dataset:

@@ -17,4 +17,4 @@ evaluation:
       model_key: "openai$gpt-4-1-nano"
       repeatability:
         num_runs: 3
-      num_samples: 5 # We only consider a subset of the samples to reduce cost and time
+      num_samples: 5  # We only consider a subset of the samples to reduce cost and time

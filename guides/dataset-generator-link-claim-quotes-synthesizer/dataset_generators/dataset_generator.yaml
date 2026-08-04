@@ -5,6 +5,7 @@ config_spec:
   - key: "synthesizer_model_key"
     type: "model"
     display_name: "Synthesizer Model"
+    description: "Model used to link claims to verbatim quotes."
 definition:
   type: "declarative_dataset_generator"
   data_source:

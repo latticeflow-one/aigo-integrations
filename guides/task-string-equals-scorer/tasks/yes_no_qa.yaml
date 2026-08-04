@@ -8,6 +8,7 @@ config_spec:
     type: "dataset"
     display_name: "Dataset"
     default_value: "yes-no-qa"
+    description: "Dataset containing yes/no questions and answers."
   - type: "int"
     key: "max_words"
     display_name: "Max Words"

@@ -6,13 +6,16 @@ config_spec:
     type: "dataset"
     display_name: "Cities Dataset"
     default_value: "cities_dataset"
+    description: "Dataset containing the cities to generate QA samples from."
   - key: "languages_dataset_key"
     type: "dataset"
     display_name: "Languages Dataset"
     default_value: "languages_dataset"
+    description: "Dataset containing the languages to generate QA samples in."
   - key: "synthesizer_model_key"
     type: "model"
     display_name: "Synthesizer Model"
+    description: "Model used to generate QA samples."
 definition:
   type: "declarative_dataset_generator"
   data_source:

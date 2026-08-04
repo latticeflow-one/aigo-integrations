@@ -6,6 +6,7 @@ config_spec:
     type: "dataset"
     display_name: "Source Dataset"
     default_value: "seed-dataset"
+    description: "Dataset containing seed city and country entries."
 definition:
   data_source:
     type: "dataset_samples"

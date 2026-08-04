@@ -6,10 +6,12 @@ config_spec:
     type: "dataset"
     display_name: "Cities Dataset"
     default_value: "cities_dataset"
+    description: "Dataset containing the cities to generate navigation prompts from."
   - key: "distances_dataset_key"
     type: "dataset"
     display_name: "Distances Dataset"
     default_value: "distances_dataset"
+    description: "Dataset containing the distances to use in navigation prompts."
 definition:
   type: "declarative_dataset_generator"
   data_source:

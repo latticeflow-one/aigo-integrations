@@ -6,12 +6,15 @@ config_spec:
     type: "dataset"
     display_name: "Source Dataset"
     default_value: "fairllm_sensitive_attributes-country"
+    description: "Dataset containing country entries to generate user profiles from."
   - key: "synthesizer_model_key"
     type: "model"
     display_name: "Synthesizer Model"
+    description: "Model used to generate user profiles."
   - key: "user_prompt_extra"
     type: string
     display_name: "User Prompt Extra"
+    description: "Optional extra instructions appended to the user prompt."
 definition:
   type: "declarative_dataset_generator"
   data_source:

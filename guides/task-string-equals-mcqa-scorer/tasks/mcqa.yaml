@@ -8,6 +8,7 @@ config_spec:
     type: "dataset"
     display_name: "Dataset"
     default_value: "mcqa"
+    description: "Dataset containing multiple-choice questions and answer options."
   - type: "dataset_column"
     key: "answer_column"
     display_name: "Answer Column"

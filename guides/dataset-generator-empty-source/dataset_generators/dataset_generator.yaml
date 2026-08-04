@@ -5,9 +5,11 @@ config_spec:
   - key: "synthesizer_model_key"
     type: "model"
     display_name: "Synthesizer Model"
+    description: "Model used to generate questions."
   - key: "topic"
     type: "string"
     display_name: "Topic"
+    description: "Topic for which questions will be generated."
 definition:
   type: "declarative_dataset_generator"
   data_source:

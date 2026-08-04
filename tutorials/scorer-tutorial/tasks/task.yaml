@@ -8,6 +8,7 @@ config_spec:
   - type: dataset
     key: dataset_key
     display_name: "Dataset"
+    description: "Dataset containing agent traces to evaluate."
 
 definition:
   evaluated_entity_type: model

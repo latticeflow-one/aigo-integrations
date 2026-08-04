@@ -8,6 +8,7 @@ config_spec:
     type: "dataset"
     display_name: "Dataset"
     default_value: "conversation_memory_questions"
+    description: "Dataset containing multi-turn conversation questions."
 definition:
   evaluated_entity_type: "model"
   dataset:

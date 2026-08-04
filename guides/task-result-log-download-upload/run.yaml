@@ -17,6 +17,7 @@ tasks:
         type: "dataset"
         display_name: "Dataset"
         default_value: "simple-dataset"
+        description: "Dataset used for the foobarization evaluation."
     definition:
       evaluated_entity_type: "model"
       type: "benchmark_task"

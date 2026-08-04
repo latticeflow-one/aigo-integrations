@@ -6,9 +6,11 @@ config_spec:
     type: "dataset"
     display_name: "Dataset"
     default_value: "rag-qa-dataset"
+    description: "Dataset containing context, question, and answer samples."
   - key: "judge_model_key"
     type: "model"
     display_name: "Judge Model"
+    description: "Model used to judge faithfulness of responses."
 definition:
   evaluated_entity_type: "model"
   dataset:

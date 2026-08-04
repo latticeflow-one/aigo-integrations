@@ -6,6 +6,7 @@ config_spec:
     type: "dataset"
     display_name: "Dataset"
     default_value: "qa-single-answers"
+    description: "Dataset containing questions and expected single-word answers."
 definition:
   dataset:
     key: "<< config.dataset_key >>"

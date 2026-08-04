@@ -11,6 +11,7 @@ config_spec:
   - type: "model"
     key: "judge_model_key"
     display_name: "Judge Model"
+    description: "Model used to score the evaluation dimension."
   - type: "categorical"
     key: "evaluation_dimension"
     display_name: "Evaluation Dimension"

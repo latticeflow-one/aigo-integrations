@@ -6,3 +6,4 @@ generator_specification:
   num_samples: 10
   dataset_generator_config:
     user_prompt_extra: "Every name should contain an X."
+    synthesizer_model_key: "openai$gpt-4-1-nano"

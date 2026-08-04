@@ -12,7 +12,8 @@ evaluation:
     - key: "hp-trivia-gpt-repeatability-4-1-nano"
       task_key: "hp-trivia"
       display_name: "Harry Potter Trivia Repeatability - OpenAI GPT-4.1 Nano"
-      task_config: {}
+      task_config: 
+        judge_model_key: "openai$gpt-4-1-nano"
       model_key: "openai$gpt-4-1-nano"
       repeatability:
         num_runs: 3

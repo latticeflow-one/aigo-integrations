@@ -9,7 +9,6 @@ config_spec:
   - key: "synthesizer_model_key"
     type: "model"
     display_name: "Synthesizer Model"
-    default_value: "openai$gpt-4-1-nano"
   - key: "user_prompt_extra"
     type: string
     display_name: "User Prompt Extra"

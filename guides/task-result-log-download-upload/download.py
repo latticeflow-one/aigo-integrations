@@ -14,9 +14,9 @@ run_config = SDKRunConfig.model_validate(yaml.safe_load(Path("run.yaml").read_te
 # Create and run the evaluation on the source app, waiting until it finishes.
 client = Client(ai_app_key="source-app")
 print(f"[{client.ai_app_key}] Creating evaluation...")
-evaluation = client.create_evaluation(run_config.evaluation)
+evaluation = client.create_evaluation_run(run_config.evaluation)
 print(f"[{client.ai_app_key}] Starting evaluation {evaluation.id}...")
-client.start_evaluation(evaluation.id, wait=True, poll_interval=5)
+client.start_evaluation_run(evaluation.id, wait=True, poll_interval=5)
 print(f"[{client.ai_app_key}] Evaluation complete.")
 
 # Download the task result log and save it to disk.

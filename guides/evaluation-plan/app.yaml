@@ -1,0 +1,7 @@
+display_name: "Evaluation Plan"
+key: "evaluation-plan"
+tags: ["Guides", "Evaluations"]
+description: >
+  This guide shows how to bundle several evaluations into a single evaluation plan and
+  run them together, comparing two OpenAI models on a Harry Potter trivia task.
+long_description: !include README.md

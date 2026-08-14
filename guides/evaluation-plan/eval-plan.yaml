@@ -1,0 +1,23 @@
+key: "hp-trivia-model-comparison-plan"
+display_name: "Harry Potter Trivia Model Comparison Plan"
+evaluations:
+  # Option 1: declare the run config inline.
+  - datasets:
+      - $ref: "./datasets/hp_trivia.yaml"
+    models:
+      - $provider: "openai/gpt-4.1-nano"
+    tasks:
+      - $ref: "./tasks/hp_trivia.yaml"
+    evaluation:
+      key: "hp-trivia-gpt-4-1-nano-eval"
+      display_name: "Harry Potter Trivia - GPT-4.1 Nano"
+      task_specifications:
+        - key: "hp-trivia-gpt-4-1-nano"
+          task_key: "hp-trivia"
+          display_name: "Harry Potter Trivia GPT-4.1 Nano"
+          task_config:
+            judge_model_key: "openai$gpt-4-1-nano"
+          model_key: "openai$gpt-4-1-nano"
+  # Option 2: pull the run config in from its own file with `$ref`, so it can be
+  # reused and run on its own with `lf run -f ./evaluations/hp_trivia.yaml`.
+  - $ref: "./evaluations/hp_trivia.yaml"

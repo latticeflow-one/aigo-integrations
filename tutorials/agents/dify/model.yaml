@@ -1,3 +1,5 @@
+# Custom-inference integration for a Dify agent-chat app, exposing its
+# /v1/chat-messages endpoint as an AI GO! model with Open Responses traces.
 key: "dify-model"
 display_name: "Dify Model"
 description: "Dify agent-chat app served via the /v1/chat-messages endpoint."

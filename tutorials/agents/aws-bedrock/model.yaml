@@ -1,3 +1,5 @@
+# Custom-inference integration for an AWS Bedrock AgentCore Harness, exposing
+# it as an AI GO! model with Open Responses traces.
 display_name: "Customer Support Agent (AWS Bedrock AgentCore)"
 key: "customer-support-agent-aws-bedrock"
 description: >-

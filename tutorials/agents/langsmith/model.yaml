@@ -1,3 +1,5 @@
+# Custom-inference integration for a LangSmith agent-chat app, exposing its
+# endpoint as an AI GO! model with Open Responses traces.
 display_name: "Customer Support Agent (LangSmith)"
 key: "customer-support-agent-langsmith"
 description: >-

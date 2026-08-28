@@ -1,3 +1,5 @@
+# Custom-inference integration for an Azure AI Foundry agent, exposing its
+# OpenAI-compatible Responses API as an AI GO! model with Open Responses traces.
 display_name: "Customer Support Agent (Azure AI Foundry)"
 key: "customer-support-agent-azure-foundry"
 description: >-

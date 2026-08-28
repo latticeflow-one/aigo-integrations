@@ -1,6 +1,0 @@
-display_name: "AWS Bedrock App"
-key: "aws-bedrock-app"
-tags: ["Agents", "AWS"]
-description: >
-  Custom-inference integration for an AWS Bedrock AgentCore Harness, exposing
-  it as an AI GO! model with Open Responses traces.

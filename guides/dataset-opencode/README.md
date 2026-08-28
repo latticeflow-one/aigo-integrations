@@ -10,7 +10,7 @@ Requires the `opencode` CLI installed and on `PATH`.
 
 ## Usage
 
-The commands belo export raw sessions from the local OpenCode database into
+The commands below export raw sessions from the local OpenCode database into
 `datasets/session_data/` as one JSON file per session, convert the root 
 sessions (excluding sub-agent sessions) into the
 [Open Responses](https://www.openresponses.org/) trace format and write them

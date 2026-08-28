@@ -33,5 +33,5 @@ Requires OpenAI integration (UI or `OPENAI_API_KEY` env var).
 
 ```sh
 lf integration add --provider openai --api-key $OPENAI_API_KEY
-lf run -f run.yaml
+lf add -f run.yaml
 ```

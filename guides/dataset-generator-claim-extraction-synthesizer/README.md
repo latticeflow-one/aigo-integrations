@@ -39,7 +39,7 @@ in the UI or set `OPENAI_API_KEY` in your terminal.
 
 ```bash
 lf integration add --provider openai --api-key $OPENAI_API_KEY
-lf run -f run.yaml
+lf add -f run.yaml
 ```
 
 To iterate on the generator:

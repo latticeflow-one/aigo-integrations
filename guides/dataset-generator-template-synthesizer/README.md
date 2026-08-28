@@ -8,7 +8,7 @@ synthesizer. The dataset generator is then used to generate a sample dataset.
 ## Usage
 
 ```bash
-lf run -f run.yaml
+lf add -f run.yaml
 ```
 
 If you want to iterate on the dataset generation, try:

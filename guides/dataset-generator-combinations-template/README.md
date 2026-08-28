@@ -12,5 +12,5 @@ for travel direction.
 ## Usage
 
 ```sh
-lf run -f run.yaml
+lf add -f run.yaml
 ```

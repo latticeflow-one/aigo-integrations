@@ -13,7 +13,7 @@ terminal. To use a different model, please adjust the model configuration.
 
 ```bash
 lf integration add --provider openai --api-key $OPENAI_API_KEY
-lf run -f run.yaml
+lf add -f run.yaml
 ```
 
 If you want to iterate on the dataset generation, try:

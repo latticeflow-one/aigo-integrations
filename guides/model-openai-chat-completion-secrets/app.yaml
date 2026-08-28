@@ -1,7 +1,0 @@
-display_name: "OpenAI Chat Completion Model with Secrets"
-key: "model-openai-chat-completion-secrets"
-tags: ["Guides", "Models", "Secrets"]
-description: >
-  This guide shows an example integration of OpenAI GPT-4.1 Nano model using the secrets
-  to hide the sensitive API key.
-long_description: !include README.md

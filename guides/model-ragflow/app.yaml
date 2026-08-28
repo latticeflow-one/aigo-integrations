@@ -1,6 +1,0 @@
-display_name: "RAGFlow Model"
-key: "model-ragflow"
-tags: ["Guides", "Models", "RAGFlow"]
-description: >
-  This guide shows an example integration of a model hosted by RAGFlow.
-long_description: !include README.md

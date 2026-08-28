@@ -9,8 +9,6 @@ Concretely, it shows that run_inference snippet can receive the dataset sample a
 ## Usage
 
 ```bash
-lf add app -f app.yaml
-lf switch model-sample-dependent-inference
 lf run -f run.yaml
 ```
 

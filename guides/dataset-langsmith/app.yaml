@@ -1,6 +1,0 @@
-display_name: "LangSmith Traces Dataset"
-key: "dataset-langsmith-traces"
-tags: ["Guides", "Datasets", "LangSmith"]
-description: >
-  This guide shows how to ingest traces from LangSmith as a dataset.
-long_description: !include "README.md"

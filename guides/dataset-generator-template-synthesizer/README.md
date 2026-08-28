@@ -8,8 +8,6 @@ synthesizer. The dataset generator is then used to generate a sample dataset.
 ## Usage
 
 ```bash
-lf add app -f app.yaml
-lf switch dataset-generator-template-synthesizer
 lf run -f run.yaml
 ```
 

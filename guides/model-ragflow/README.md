@@ -21,8 +21,6 @@ RAGFLOW_MODEL=<RAGFLOW_MODEL>
 ```
 
 ```bash
-lf add app -f app.yaml
-lf switch model-ragflow
 lf add -f run.yaml
 lf test model model-ragflow
 ```

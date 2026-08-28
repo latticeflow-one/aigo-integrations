@@ -1,7 +1,0 @@
-display_name: "Dataset Generator: Combinations + Template Synthesizer"
-key: "dataset-generator-combinations-template"
-tags: ["Guides", "Dataset Generators"]
-description: >
-  This guide shows how to generate a dataset from all combinations of two source
-  datasets using a template synthesizer.
-long_description: !include README.md

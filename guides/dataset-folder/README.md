@@ -52,7 +52,5 @@ The `sample_id` is the SHA-256 hash of the file's bytes, abbreviated above.
 ## Usage
 
 ```bash
-lf add app -f app.yaml
-lf switch dataset-folder
 lf add dataset -f datasets/dataset.yaml
 ```

@@ -1,6 +1,0 @@
-display_name: "Dify Model"
-key: "model-dify"
-tags: ["Guides", "Models", "Dify"]
-description: >
-  This guide shows an example integration of a model hosted by Dify.
-long_description: !include README.md

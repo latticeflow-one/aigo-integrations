@@ -12,8 +12,6 @@ This guide uses an OpenAI model as an example. Configure the OpenAI integration
 in the UI or set `OPENAI_API_KEY` in your terminal.
 
 ```bash
-lf add app -f app.yaml
-lf switch dataset-generator-claim-labeling
 lf integration add --provider openai --api-key $OPENAI_API_KEY
 lf run -f run.yaml
 ```

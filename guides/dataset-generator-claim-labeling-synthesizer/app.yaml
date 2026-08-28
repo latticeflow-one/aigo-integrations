@@ -1,6 +1,0 @@
-display_name: "Dataset Generator with Claim Labeling Synthesizer"
-key: "dataset-generator-claim-labeling"
-tags: ["Guides", "Dataset Generators"]
-description: >
-  Example of a dataset generator that uses the claim labeling synthesizer.
-long_description: !include README.md

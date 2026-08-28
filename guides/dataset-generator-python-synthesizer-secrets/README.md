@@ -17,8 +17,6 @@ OPENAI_API_KEY=<OPENAI_API_KEY>
 ```
 
 ```bash
-lf add app -f app.yaml
-lf switch dataset-generator-synthesizer-secrets
 lf add -f run.yaml
 ```
 

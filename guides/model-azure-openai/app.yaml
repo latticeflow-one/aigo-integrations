@@ -1,7 +1,0 @@
-display_name: "Azure OpenAI Models"
-key: "model-azure-openai"
-tags: ["Guides", "Models", "Azure Foundry", "OpenAI"]
-description: >
-  This guide shows three Azure OpenAI model integration patterns for Chat
-  Completions and Responses APIs.
-long_description: !include "README.md"

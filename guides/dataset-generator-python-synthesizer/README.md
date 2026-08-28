@@ -12,8 +12,6 @@ standard Python libraries and how to introduce randomness.
 ## Usage
 
 ```bash
-lf add app -f app.yaml
-lf switch dataset-generator-python-synthesizer
 lf add -f run.yaml
 ```
 

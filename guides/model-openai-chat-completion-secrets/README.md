@@ -18,8 +18,6 @@ OPENAI_API_KEY=<OPENAI_API_KEY>
 ```
 
 ```bash
-lf add app -f app.yaml
-lf switch model-openai-chat-completion-secrets
 lf add model -f models/openai_gpt_4-1-nano.yaml
 lf test model openai-gpt-4-1-nano
 ```

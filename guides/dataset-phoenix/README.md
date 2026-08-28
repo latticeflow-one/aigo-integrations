@@ -23,7 +23,5 @@ PHOENIX_PROJECT=<PHOENIX_PROJECT>
 ```
 
 ```bash
-lf add app -f app.yaml
-lf switch dataset-phoenix-traces
 lf add dataset -f datasets/phoenix_traces.yaml
 ```

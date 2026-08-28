@@ -1,7 +1,0 @@
-display_name: "OpenAI Chat Completion Model"
-key: "model-openai-chat-completion"
-tags: ["Guides", "Models", "Token Usage"]
-description: >
-  This guide shows an example integration of OpenAI GPT-4.1 Nano model without the use
-  of any built-in models or model adapters.
-long_description: !include README.md

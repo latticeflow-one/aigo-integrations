@@ -1,7 +1,0 @@
-display_name: "Dataset Generator with Empty Source"
-key: "dataset-generator-empty-source"
-tags: ["Guides", "Dataset Generators"]
-description: >
-  This guide shows an example of a dataset generator that uses no source dataset and
-  an LLM as a synthesizer.
-long_description: !include README.md

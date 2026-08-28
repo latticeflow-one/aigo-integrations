@@ -23,7 +23,7 @@ evaluation:
       display_name: "Harry Potter Trivia GPT-4.1 Mini"
       task_config:
         judge_model_key: "<< config.judge_model_key >>"
-      model_key: "<< config.model_key >>"ƒ
+      model_key: "<< config.model_key >>"
 
 config:
   model_key: "openai$gpt-4-1-mini"

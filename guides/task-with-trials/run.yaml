@@ -32,7 +32,7 @@ evaluation:
         dataset_key: "<< config.dataset_key >>"
         judge_model_key: "<< config.judge_model_key >>"
       trials:
-        num_trials: 2  # We can override the amount of trials set in the task definition
+        num_trials: 2 # We can override the amount of trials set in the task definition
 
 config:
   model_key: "openai$gpt-4-1-nano"

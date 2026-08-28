@@ -8,13 +8,26 @@ tasks:
 evaluation:
   key: "hp-trivia-repeatability-evaluation"
   display_name: "Harry Potter Trivia Repeatability evaluation"
+  config_spec:
+    - key: "model_key"
+      type: "model"
+      display_name: "Model"
+      description: "Model to be used for the task."
+    - key: "judge_model_key"
+      type: "model"
+      display_name: "Model"
+      description: "Judge model to be used for the task."
   task_specifications:
     - key: "hp-trivia-gpt-repeatability-4-1-nano"
       task_key: "hp-trivia"
       display_name: "Harry Potter Trivia Repeatability - OpenAI GPT-4.1 Nano"
       task_config:
-        judge_model_key: "openai$gpt-4-1-nano"
-      model_key: "openai$gpt-4-1-nano"
+        judge_model_key: "<< config.judge_model_key >>"
+      model_key: "<< config.model_key >>"
       repeatability:
         num_runs: 3
       num_samples: 5  # We only consider a subset of the samples to reduce cost and time
+
+config:
+  model_key: "openai$gpt-4-1-nano"
+  judge_model_key: "openai$gpt-4-1-nano"

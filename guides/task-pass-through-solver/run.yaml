@@ -8,8 +8,17 @@ evaluation:
   key: "pass-through-solver"
   display_name: "Pass-through Solver"
   tags: ["Guides"]
+  config_spec:
+    - key: "model_key"
+      type: "model"
+      display_name: "Model"
+      description: "Model to be used for the task."
   task_specifications:
     - key: "pass-through-qa"
       task_key: "pass-through-qa"
       display_name: "Pass-through QA"
-      model_key: "openai$gpt-4-1-nano"
+      model_key: "<< config.model_key >>"
+
+config:
+  model_key: "openai$gpt-4-1-nano"
+  judge_model_key: "openai$gpt-4-1-nano"

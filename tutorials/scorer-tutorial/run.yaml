@@ -10,8 +10,21 @@ tasks:
 evaluation:
   key: tutorial-tau2bench-eval
   display_name: "Tutorial: Sample-Dependent Scoring"
+  config_spec:
+    - key: "model_key"
+      type: "model"
+      display_name: "Model"
+      description: "Model to be used for the task."
+    - key: "dataset_key"
+      type: "dataset"
+      display_name: "Dataset"
+      description: "Dataset to be used for the task."
   task_specifications:
     - task_key: tau2bench-tutorial-eval
-      model_key: "openai$gpt-4-1-nano"
+      model_key: "<< config.model_key >>"
       task_config:
-        dataset_key: tutorial-samples
+        dataset_key: "<< config.dataset_key >>"
+
+config:
+  model_key: "openai$gpt-4-1-nano"
+  dataset_key: "tutorial-samples"

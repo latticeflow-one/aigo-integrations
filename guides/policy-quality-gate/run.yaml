@@ -10,13 +10,26 @@ tasks:
 evaluation:
   key: "rag-faithfulness-evaluation"
   display_name: "RAG Faithfulness Evaluation"
+  config_spec:
+    - key: "model_key"
+      type: "model"
+      display_name: "Model"
+      description: "Model to be used for the task."
+    - key: "judge_model_key"
+      type: "model"
+      display_name: "Model"
+      description: "Judge model to be used for the task."
   task_specifications:
     - key: "rag-faithfulness-gpt-4-1-nano"
       task_key: "rag-faithfulness-task"
       display_name: "RAG Faithfulness OpenAI GPT-4.1 Nano"
-      model_key: "openai$gpt-4-1-nano"
+      model_key: "<< config.model_key >>"
       task_config:
-        judge_model_key: "openai$gpt-4-1-nano"
+        judge_model_key: "<< config.judge_model_key >>"
+
+config:
+  model_key: "openai$gpt-4-1-nano"
+  judge_model_key: "openai$gpt-4-1-nano"
 
 policies:
   - key: "rag_quality_gate_v1"

@@ -7,16 +7,24 @@ evaluation:
   display_name: "Data Quality"
   key: "data-quality"
   tags: ["Data Quality", "Uniqueness", "Completeness"]
+  config_spec:
+    - key: "dataset_key"
+      type: "dataset"
+      display_name: "Dataset"
+      description: "Dataset to be used for the task."
   task_specifications:
     - key: "uniqueness-task-hello-dataset"
       task_key: "uniqueness-task"
       task_config:
         field: "content"
-      dataset_key: "hello-dataset"
+      dataset_key: "<< config.dataset_key >>"
       display_name: "Sample Uniqueness in Hello Dataset"
     - key: "completeness-task-hello-dataset"
       task_key: "completeness-task"
       task_config:
         field: "content"
-      dataset_key: "hello-dataset"
+      dataset_key: "<< config.dataset_key >>"
       display_name: "Sample Completeness in Hello Dataset"
+
+config:
+  dataset_key: "hello-dataset"

@@ -46,8 +46,16 @@ tasks:
 evaluation:
   key: "foobarization-evaluation"
   display_name: "Foobarization Evaluation"
+  config_spec:
+    - key: "model_key"
+      type: "model"
+      display_name: "Model"
+      description: "Model to be used for the task."
   task_specifications:
     - key: "foobarization-spec"
       task_key: "is-foobarized"
       task_config: {}
-      model_key: "openai$gpt-4-1-nano"
+      model_key: "<< config.model_key >>"
+
+config:
+  model_key: "openai$gpt-4-1-nano"

@@ -38,4 +38,6 @@ evaluation:
       task_key: "enforces-https"
       task_config:
         url: "http://httpforever.com/"
+
+run_config:
   cache_policy: "no-cache"

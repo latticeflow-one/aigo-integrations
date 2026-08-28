@@ -8,8 +8,16 @@ evaluation:
   key: "conversation_memory"
   display_name: "Conversation Memory"
   tags: ["General Purpose AI", "Chat Completion"]
+  config_spec:
+    - key: "model_key"
+      type: "model"
+      display_name: "Model"
+      description: "Model to be used for the task."
   task_specifications:
     - key: "conversation_memory_gpt_4-1_nano"
       display_name: "Conversation Memory"
       task_key: "conversation_memory"
-      model_key: "openai-gpt-4-1-nano"
+      model_key: "<< config.model_key >>"
+
+config:
+  model_key: "openai-gpt-4-1-nano"

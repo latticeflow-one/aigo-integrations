@@ -8,11 +8,26 @@ evaluation:
   key: "harmful_content"
   display_name: "Harmful Content"
   tags: ["General Purpose AI", "Harmful Content"]
-  num_samples: 10
+  config_spec:
+    - key: "model_key"
+      type: "model"
+      display_name: "Model"
+      description: "Model to be used for the task."
+    - key: "judge_model_key"
+      type: "model"
+      display_name: "Model"
+      description: "Judge model to be used for the task."
   task_specifications:
     - key: "ai_luminate_hate_gpt-4-1-mini"
       task_key: "ai_luminate_hate"
       task_config:
-        judge_model_key: "openai$gpt-4-1-mini-2025-04-14"
-      model_key: "openai$gpt-4-1-mini-2025-04-14"
+        judge_model_key: "<< config.judge_model_key >>"
+      model_key: "<< config.model_key >>"
       display_name: "AILuminate: Hate"
+
+config:
+  model_key: "openai$gpt-4-1-mini-2025-04-14"
+  judge_model_key: "openai$gpt-4-1-mini-2025-04-14"
+
+run_config:
+  num_samples: 10

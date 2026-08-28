@@ -8,10 +8,16 @@ tasks:
 evaluation:
   key: "qa_evaluation"
   display_name: "AI Knowledge MCQA Evaluation"
+  config_spec:
+    - key: "model_key"
+      type: "model"
+      display_name: "Model"
+      description: "Model to be used for the task."
   task_specifications:
     - key: "ai-knowledge-mcqa-gpt-4-1-nano"
       task_key: "ai-knowledge-mcqa"
       display_name: "AI Knowledge MCQA GPT-4.1 Nano"
-      task_config:
-        config_key: []
-      model_key: "openai$gpt-4-1-nano"
+      model_key: "<< config.model_key >>"
+
+config:
+  model_key: "openai$gpt-4-1-nano"

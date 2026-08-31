@@ -4,4 +4,3 @@ description: "Dataset of simple math questions."
 generator_specification:
   dataset_generator_key: "dataset-generator-python-synthesizer"
   num_samples: 10
-  dataset_generator_config: {}

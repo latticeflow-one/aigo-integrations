@@ -1,4 +1,4 @@
-display_name: "Geography QA Evaluation"
+display_name: "Geography QA"
 key: "geography-qa"
 description: >
   Evaluates model answers on geography questions using a Python scorer for

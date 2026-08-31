@@ -1,14 +1,16 @@
 models:
   - $provider: "openai/gpt-4.1-nano"
+
 datasets:
   - key: "simple-dataset"
     display_name: "Simple Dataset"
     source:
       type: local
       file_path: "./datasets/simple_dataset.csv"
+
 tasks:
   - key: "is-foobarized"
-    description: "Check if text is foobarized"
+    description: "This task checks if a model can correctly identify whether text is foobarized or not."
     display_name: "Is Foobarized?"
     tasks: ["custom"]
     tags: []
@@ -43,18 +45,20 @@ tasks:
               type: "mean"
               field: "is_correct"
               name: "Mean Accuracy"
+
 evaluation:
-  key: "foobarization-evaluation"
-  display_name: "Foobarization Evaluation"
+  key: "is-foobarized"
+  display_name: "Is Foobarized?"
+  description: >-
+    This evaluation checks if a model can correctly identify whether text is foobarized or not.
   config_spec:
     - key: "model_key"
       type: "model"
       display_name: "Model"
       description: "Model to be used for the task."
   task_specifications:
-    - key: "foobarization-spec"
+    - key: "is-foobarized"
       task_key: "is-foobarized"
-      task_config: {}
       model_key: "<< config.model_key >>"
 
 config:

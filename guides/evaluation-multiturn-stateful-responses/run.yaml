@@ -1,20 +1,26 @@
 models:
   - $ref: "./models/model.yaml"
+
 datasets:
   - $ref: "./datasets/conversation_memory_questions.yaml"
+
 tasks:
   - $ref: "./tasks/conversation_memory.yaml"
+
 evaluation:
   key: "conversation_memory"
   display_name: "Conversation Memory"
   tags: ["General Purpose AI", "Chat Completion"]
+  description: >-
+    This evaluation checks that the model can remember information from 
+    previous interactions in a conversation.
   config_spec:
     - key: "model_key"
       type: "model"
       display_name: "Model"
       description: "Model to be used for the task."
   task_specifications:
-    - key: "conversation_memory_gpt_4-1_nano"
+    - key: "conversation_memory"
       display_name: "Conversation Memory"
       task_key: "conversation_memory"
       model_key: "<< config.model_key >>"

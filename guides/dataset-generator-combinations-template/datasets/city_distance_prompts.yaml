@@ -4,4 +4,3 @@ description: "A generated dataset of navigation prompts from city and distance c
 generator_specification:
   dataset_generator_key: "city-distance-prompt-generator"
   num_samples: 3
-  dataset_generator_config: {}

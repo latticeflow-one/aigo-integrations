@@ -1,30 +1,35 @@
 datasets:
   - $ref: "./datasets/dataset.yaml"
+
 tasks:
   - $ref: "./tasks/uniqueness.yaml"
   - $ref: "./tasks/completeness.yaml"
+
 evaluation:
   display_name: "Data Quality"
   key: "data-quality"
   tags: ["Data Quality", "Uniqueness", "Completeness"]
+  description: >-
+    This evaluation checks the quality of a dataset by evaluating the uniqueness
+    and completeness of a specified field across samples in the dataset.
   config_spec:
     - key: "dataset_key"
       type: "dataset"
       display_name: "Dataset"
       description: "Dataset to be used for the task."
   task_specifications:
-    - key: "uniqueness-task-hello-dataset"
-      task_key: "uniqueness-task"
+    - key: "uniqueness"
+      task_key: "uniqueness"
       task_config:
         field: "content"
       dataset_key: "<< config.dataset_key >>"
-      display_name: "Sample Uniqueness in Hello Dataset"
-    - key: "completeness-task-hello-dataset"
-      task_key: "completeness-task"
+      display_name: "Sample Uniqueness"
+    - key: "completeness"
+      task_key: "completeness"
       task_config:
         field: "content"
       dataset_key: "<< config.dataset_key >>"
-      display_name: "Sample Completeness in Hello Dataset"
+      display_name: "Sample Completeness"
 
 config:
   dataset_key: "hello-dataset"

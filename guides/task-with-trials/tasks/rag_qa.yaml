@@ -1,4 +1,4 @@
-display_name: "RAG QA Evaluation"
+display_name: "RAG QA"
 key: "rag-qa"
 description: >
   Evaluates the groundedness of model responses on retrieval-augmented generation

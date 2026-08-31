@@ -2,7 +2,7 @@ tasks:
   - $ref: "./tasks/enforces_https.yaml"
 
 evaluation:
-  key: "enforces-https-eval"
+  key: "enforces-https"
   display_name: "Enforces HTTPS"
   tags: ["Security"]
   description: "Tests whether HTTP is properly enforced across main systems."

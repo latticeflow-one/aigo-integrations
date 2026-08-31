@@ -10,6 +10,8 @@ tasks:
 evaluation:
   key: "sample-dependent-inference"
   display_name: "Sample Dependent Inference"
+  description: >-
+    This evaluation shows how to use sample-dependent inference.
   config_spec:
     - key: "model_key"
       type: "model"

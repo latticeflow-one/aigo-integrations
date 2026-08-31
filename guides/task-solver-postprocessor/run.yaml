@@ -1,19 +1,24 @@
 models:
   - $provider: "openai/gpt-4.1-nano"
+
 datasets:
   - $ref: "./datasets/multi_qa.yaml"
+
 tasks:
   - $ref: "./tasks/multi_qa_checker.yaml"
+
 evaluation:
-  key: "solver-postprocessor-eval"
-  display_name: "Evaluation using Solver Postprocessor"
+  key: "solver-postprocessor"
+  display_name: "Solver Postprocessor"
+  description: >-
+    This evaluation shows how to use a solver postprocessor.
   config_spec:
     - key: "model_key"
       type: "model"
       display_name: "Model"
       description: "Model to be used for the task."
   task_specifications:
-    - key: "multi-qa-gpt-4-1-nano"
+    - key: "multi-qa"
       task_key: "multi-qa-checker"
       model_key: "<< config.model_key >>"
 

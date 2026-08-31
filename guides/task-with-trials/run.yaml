@@ -11,6 +11,8 @@ evaluation:
   key: "model-as-a-judge-scorer"
   display_name: "Model As A Judge Scorer"
   tags: ["Guides"]
+  description: >-
+    This evaluation shows how to use a model-as-a-judge scorer.
   config_spec:
     - key: "model_key"
       type: "model"
@@ -18,14 +20,15 @@ evaluation:
       description: "Model to be used for the task."
     - key: "judge_model_key"
       type: "model"
-      display_name: "Model"
+      display_name: "Judge Model"
       description: "Judge model to be used for the task."
     - key: "dataset_key"
       type: "dataset"
       display_name: "Dataset"
       description: "Dataset to be used for the task."
+      default_value: "rag-qa"
   task_specifications:
-    - key: "rag-qa-groundedness-gpt-4-1-nano"
+    - key: "rag-qa-groundedness"
       task_key: "rag-qa"
       model_key: "<< config.model_key >>"
       task_config:
@@ -37,4 +40,3 @@ evaluation:
 config:
   model_key: "openai$gpt-4-1-nano"
   judge_model_key: "openai$gpt-4-1-nano"
-  dataset_key: "rag-qa"

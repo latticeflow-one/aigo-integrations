@@ -11,6 +11,10 @@ evaluation:
   key: "generate-loop"
   display_name: "Generate Loop"
   tags: ["Guides"]
+  description: >-
+    This evaluation checks how the model model answers on general knowledge questions
+    using a multi-turn solver with a loop message builder that handles clarifying 
+    questions before producing a final answer.
   config_spec:
     - key: "model_key"
       type: "model"
@@ -18,10 +22,10 @@ evaluation:
       description: "Model to be used for the task."
     - key: "judge_model_key"
       type: "model"
-      display_name: "Model"
+      display_name: "Judge Model"
       description: "Judge model to be used for the task."
   task_specifications:
-    - key: "generate-loop-gpt-4-1-nano"
+    - key: "generate-loop"
       task_key: "generate-loop"
       model_key: "<< config.model_key >>"
       task_config:

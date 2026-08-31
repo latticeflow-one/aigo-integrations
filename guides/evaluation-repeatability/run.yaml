@@ -1,13 +1,18 @@
 datasets:
   - $ref: "./datasets/hp_trivia.yaml"
+
 models:
   - $provider: "openai/gpt-4.1-nano"
+
 tasks:
   - $ref: "./tasks/hp_trivia.yaml"
 
 evaluation:
-  key: "hp-trivia-repeatability-evaluation"
-  display_name: "Harry Potter Trivia Repeatability evaluation"
+  key: "hp-trivia-repeatability"
+  display_name: "Harry Potter Trivia Repeatability"
+  description: >-
+    This evaluation checks the repeatability of the Harry Potter Trivia evaluation
+    by repeating the evaluation multiple times.
   config_spec:
     - key: "model_key"
       type: "model"
@@ -15,12 +20,12 @@ evaluation:
       description: "Model to be used for the task."
     - key: "judge_model_key"
       type: "model"
-      display_name: "Model"
+      display_name: "Judge Model"
       description: "Judge model to be used for the task."
   task_specifications:
-    - key: "hp-trivia-gpt-repeatability-4-1-nano"
+    - key: "hp-trivia-repeatability"
       task_key: "hp-trivia"
-      display_name: "Harry Potter Trivia Repeatability - OpenAI GPT-4.1 Nano"
+      display_name: "Harry Potter Trivia Repeatability"
       task_config:
         judge_model_key: "<< config.judge_model_key >>"
       model_key: "<< config.model_key >>"

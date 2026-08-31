@@ -10,6 +10,6 @@ Configure the `config.env` file by providing your OpenCode URL, as well as the I
 model and model provider to use.
 
 ```bash
-lf --env config.env add -f run.yaml
+lf --env config.env add model -f ./personal/opencode.yaml
 lf test model opencode-agent
 ```

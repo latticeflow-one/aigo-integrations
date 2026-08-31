@@ -1,13 +1,18 @@
 models:
   - $provider: "openai/gpt-4.1-nano"
+
 datasets:
   - $ref: "./datasets/recorded_qa_traces.yaml"
+
 tasks:
   - $ref: "./tasks/pass_through.yaml"
+
 evaluation:
   key: "pass-through-solver"
   display_name: "Pass-through Solver"
   tags: ["Guides"]
+  description: >-
+    This evaluation shows how to use a pass-through solver.
   config_spec:
     - key: "model_key"
       type: "model"

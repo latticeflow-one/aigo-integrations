@@ -1,7 +1,9 @@
 models:
   - $provider: "openai/gpt-4.1-nano"
+
 datasets:
   - $ref: "./datasets/fairllm_sensitive_attributes-country.yaml"
   - $ref: "./datasets/country_bias.yaml"
+
 dataset_generators:
   - $ref: "./dataset_generators/country_bias.yaml"

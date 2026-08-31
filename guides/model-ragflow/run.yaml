@@ -1,4 +1,5 @@
 model_adapters:
   - $ref: "./model_adapters/ragflow.yaml"
+
 models:
   - $ref: "./models/ragflow.yaml"

@@ -1,9 +1,12 @@
 models:
   - $provider: "openai/gpt-4.1-mini-2025-04-14"
+
 datasets:
   - $ref: "./datasets/hate/dataset.yaml"
+
 tasks:
   - $ref: "./tasks/hate/task.yaml"
+
 evaluation:
   key: "harmful_content"
   display_name: "Harmful Content"
@@ -15,7 +18,7 @@ evaluation:
       description: "Model to be used for the task."
     - key: "judge_model_key"
       type: "model"
-      display_name: "Model"
+      display_name: "Judge Model"
       description: "Judge model to be used for the task."
   task_specifications:
     - key: "ai_luminate_hate_gpt-4-1-mini"

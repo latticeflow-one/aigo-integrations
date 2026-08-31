@@ -8,8 +8,11 @@ tasks:
   - $ref: "./tasks/language_labeling.yaml"
 
 evaluation:
-  key: "language-labeling-evaluation"
-  display_name: "Language Labeling Evaluation"
+  key: "language-labeling"
+  display_name: "Language Labeling"
+  description: >-
+    This evaluation checks that the model can correctly label the language of the questions
+    and then answer questions in the language they are asked in.
   config_spec:
     - key: "model_key"
       type: "model"
@@ -17,12 +20,12 @@ evaluation:
       description: "Model to be used for the task."
     - key: "judge_model_key"
       type: "model"
-      display_name: "Model"
+      display_name: "Judge Model"
       description: "Judge model to be used for the task."
   task_specifications:
-    - key: "language-labeling-gpt-4-1-nano"
+    - key: "language-labeling"
       task_key: "language-labeling"
-      display_name: "Language Labeling OpenAI GPT-4.1 Nano"
+      display_name: "Language Labeling"
       task_config:
         judge_model_key: "<< config.judge_model_key >>"
       model_key: "<< config.model_key >>"

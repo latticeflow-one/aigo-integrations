@@ -1,4 +1,4 @@
-display_name: "Multiple Choice QA Evaluation"
+display_name: "Multiple Choice QA"
 key: "mcqa"
 description: >
   Evaluates model accuracy on multiple choice questions using MCQA string equality

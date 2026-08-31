@@ -1,5 +1,5 @@
-key: "rag-faithfulness-task"
-display_name: "RAG Faithfulness Evaluation"
+key: "rag-faithfulness"
+display_name: "RAG Faithfulness"
 description: "Evaluates whether model responses are faithful to the provided context."
 config_spec:
   - key: "dataset_key"

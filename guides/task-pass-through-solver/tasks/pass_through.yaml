@@ -1,4 +1,4 @@
-display_name: "Pass-through QA Evaluation"
+display_name: "Pass-through QA"
 key: "pass-through-qa"
 description: >
   Example task that uses the pass-through solver to evaluate pre-recorded

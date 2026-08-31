@@ -1,4 +1,4 @@
-display_name: "Harry Potter Trivia Task"
+display_name: "Harry Potter Trivia"
 key: "hp-trivia"
 description: "Assesses the model knowledge of Harry Potter trivia."
 config_spec:

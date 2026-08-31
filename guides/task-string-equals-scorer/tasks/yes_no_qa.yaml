@@ -1,4 +1,4 @@
-display_name: "Yes/No QA Evaluation"
+display_name: "Yes/No QA"
 key: "yes-no-qa"
 description: >
   Evaluates model accuracy on yes/no questions. Supports configurable response

@@ -1,5 +1,5 @@
 datasets:
-  - $ref: "./datasets/questions.yaml"
+  - $ref: "./datasets/multilingual-questions.yaml"
 
 models:
   - $provider: "openai/gpt-4.1-nano"

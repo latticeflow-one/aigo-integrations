@@ -10,6 +10,8 @@ tasks:
 evaluation:
   key: tutorial-tau2bench-eval
   display_name: "Tutorial: Sample-Dependent Scoring"
+  description: >-
+    This evaluation checks that the model can correctly answer questions in a sample-dependent manner.
   config_spec:
     - key: "model_key"
       type: "model"

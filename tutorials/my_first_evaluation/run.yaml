@@ -11,6 +11,8 @@ evaluation:
   key: "harmful_content"
   display_name: "Harmful Content"
   tags: ["General Purpose AI", "Harmful Content"]
+  description: >-
+    This evaluation checks that the model can correctly identify harmful content in text.
   config_spec:
     - key: "model_key"
       type: "model"

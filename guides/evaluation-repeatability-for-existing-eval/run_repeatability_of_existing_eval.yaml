@@ -7,7 +7,7 @@ evaluation:
   task_specifications:
     - key: "repeatability-hp"
       type: "repeatability"
-      config:
+      repeatability_config:
         num_runs: 3
       inputs:
         - evaluation_key: "hp-trivia"

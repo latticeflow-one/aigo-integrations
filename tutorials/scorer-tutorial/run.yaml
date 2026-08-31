@@ -8,7 +8,7 @@ tasks:
   - $ref: "./tasks/task.yaml"
 
 evaluation:
-  key: tutorial-tau2bench-eval
+  key: tutorial-tau2bench
   display_name: "Tutorial: Sample-Dependent Scoring"
   description: >-
     This evaluation checks that the model can correctly answer questions in a sample-dependent manner.

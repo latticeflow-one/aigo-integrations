@@ -26,4 +26,3 @@ evaluation:
 
 config:
   model_key: "openai$gpt-4-1-nano"
-  judge_model_key: "openai$gpt-4-1-nano"

@@ -1,5 +1,5 @@
-display_name: "Uniqueness Task"
-key: "uniqueness-task"
+display_name: "Uniqueness"
+key: "uniqueness"
 description: >
   Evaluates the uniqueness rate of values in a field across samples in a dataset.
 tags: ["Data Quality"]

@@ -1,7 +1,0 @@
-display_name: "Folder Dataset"
-key: "dataset-folder"
-tags: ["Guides", "Datasets"]
-description: >
-  This guide shows an example integration of a dataset built from all files in
-  a local folder.
-long_description: !include "README.md"

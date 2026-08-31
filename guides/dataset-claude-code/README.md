@@ -16,7 +16,5 @@ uv pip install 'latticeflow-go-sdk[traces]'
 ## Usage
 
 ```bash
-lf add app -f app.yaml
-lf switch dataset-claude-code-traces
 lf add dataset -f datasets/claude_code_traces.yaml
 ```

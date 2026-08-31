@@ -1,7 +1,0 @@
-display_name: "Dataset Generator with a Simple Python Synthesizer"
-key: "dataset-generator-python-synthesizer-simple"
-tags: ["Guides", "Dataset Generators"]
-description: >
-  This guide shows a minimal dataset generator that uses a Python synthesizer to
-  transform the samples of a seed dataset.
-long_description: !include "README.md"

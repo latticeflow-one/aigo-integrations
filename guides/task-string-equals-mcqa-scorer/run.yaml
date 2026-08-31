@@ -11,9 +11,19 @@ evaluation:
   key: "string-equals-mcqa-scorer"
   display_name: "String Equals MCQA Scorer"
   tags: ["Guides"]
+  description: >-
+    This evaluation shows how to use a string equals scorer for multiple-choice questions.
+  config_spec:
+    - key: "model_key"
+      type: "model"
+      display_name: "Model"
+      description: "Model to be used for the task."
   task_specifications:
-    - key: "mcqa-gpt-4-1-nano"
+    - key: "mcqa"
       task_key: "mcqa"
-      model_key: "openai$gpt-4-1-nano"
+      model_key: "<< config.model_key >>"
       task_config:
         answer_column: "answer"
+
+config:
+  model_key: "openai$gpt-4-1-nano"

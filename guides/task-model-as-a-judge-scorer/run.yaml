@@ -15,28 +15,48 @@ evaluation:
   key: "model-as-a-judge-scorer"
   display_name: "Model As A Judge Scorer"
   tags: ["Guides"]
+  description: >-
+    This evaluation shows how to use a model as a judge and scorer for multiple tasks.
+  config_spec:
+    - key: "model_key"
+      type: "model"
+      display_name: "Model"
+      description: "Model to be used for the task."
+    - key: "judge_model_key"
+      type: "model"
+      display_name: "Judge Model"
+      description: "Judge model to be used for the task."
+    - key: "dataset_key"
+      type: "dataset"
+      display_name: "Dataset"
+      description: "Dataset to be used for the task."
   task_specifications:
-    - key: "rag-qa-groundedness-gpt-4-1-nano"
+    - key: "rag-qa-groundedness"
       task_key: "rag-qa"
-      model_key: "openai$gpt-4-1-nano"
+      model_key: "<< config.model_key >>"
       task_config:
-        dataset_key: "rag-qa"
-        judge_model_key: "openai$gpt-4-1-nano"
+        dataset_key: "<< config.dataset_key >>"
+        judge_model_key: "<< config.judge_model_key >>"
         evaluation_dimension: "groundedness"
-    - key: "rag-qa-relevance-gpt-4-1-nano"
+    - key: "rag-qa-relevance"
       task_key: "rag-qa"
-      model_key: "openai$gpt-4-1-nano"
+      model_key: "<< config.model_key >>"
       task_config:
-        dataset_key: "rag-qa"
-        judge_model_key: "openai$gpt-4-1-nano"
+        dataset_key: "<< config.dataset_key >>"
+        judge_model_key: "<< config.judge_model_key >>"
         evaluation_dimension: "relevance"
-    - key: "judge-qa-basic-gpt-4-1-nano"
+    - key: "judge-qa-basic"
       task_key: "judge-qa-basic"
-      model_key: "openai$gpt-4-1-nano"
+      model_key: "<< config.model_key >>"
       task_config:
-        judge_model_key: "openai$gpt-4-1-nano"
-    - key: "judge-conversation-advanced-gpt-4-1-nano"
+        judge_model_key: "<< config.judge_model_key >>"
+    - key: "judge-conversation-advanced"
       task_key: "judge-conversation-advanced"
-      model_key: "openai$gpt-4-1-nano"
+      model_key: "<< config.model_key >>"
       task_config:
-        judge_model_key: "openai$gpt-4-1-nano"
+        judge_model_key: "<< config.judge_model_key >>"
+
+config:
+  model_key: "openai$gpt-4-1-nano"
+  judge_model_key: "openai$gpt-4-1-nano"
+  dataset_key: "rag-qa"

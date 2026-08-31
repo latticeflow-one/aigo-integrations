@@ -47,7 +47,7 @@ lf add -f run.yaml
 2. Upload the results to the destination app. This will populate the evaluation so that you can see the results without rerunning inference.
 
 ```bash
-lf run -f results/foobarization-evaluation.yaml --wait
+lf run -f results/is-foobarized.yaml --wait
 ```
 
 You can also use the Python SDK with [upload.py](upload.py).

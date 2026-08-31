@@ -11,10 +11,20 @@ evaluation:
   key: "string-equals-scorer"
   display_name: "String Equals Scorer"
   tags: ["Guides"]
+  description: >-
+    This evaluation shows how to use a string equals scorer.
+  config_spec:
+    - key: "model_key"
+      type: "model"
+      display_name: "Model"
+      description: "Model to be used for the task."
   task_specifications:
-    - key: "yes-no-qa-gpt-4-1-nano"
+    - key: "yes-no-qa"
       task_key: "yes-no-qa"
-      model_key: "openai$gpt-4-1-nano"
+      model_key: "<< config.model_key >>"
       task_config:
         max_words: 1
         include_context: true
+
+config:
+  model_key: "openai$gpt-4-1-nano"

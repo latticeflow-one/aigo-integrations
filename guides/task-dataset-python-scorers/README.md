@@ -17,6 +17,6 @@ lf run -f run.yaml
 If you want to iterate on the task definitions, try:
 
 ```bash
-lf test task -f run.yaml -sk uniqueness-task-hello-dataset -n 10
-lf test task -f run.yaml -sk completeness-task-hello-dataset -n 10
+lf test task -f run.yaml -sk uniqueness -n 10
+lf test task -f run.yaml -sk completeness -n 10
 ```

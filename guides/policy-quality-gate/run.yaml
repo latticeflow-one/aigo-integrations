@@ -8,15 +8,30 @@ tasks:
   - $ref: "./tasks/rag_faithfulness.yaml"
 
 evaluation:
-  key: "rag-faithfulness-evaluation"
-  display_name: "RAG Faithfulness Evaluation"
+  key: "rag-faithfulness"
+  display_name: "RAG Faithfulness"
+  description: >-
+    This evaluation checks whether model responses are faithful to the provided context.
+  config_spec:
+    - key: "model_key"
+      type: "model"
+      display_name: "Model"
+      description: "Model to be used for the task."
+    - key: "judge_model_key"
+      type: "model"
+      display_name: "Judge Model"
+      description: "Judge model to be used for the task."
   task_specifications:
-    - key: "rag-faithfulness-gpt-4-1-nano"
-      task_key: "rag-faithfulness-task"
-      display_name: "RAG Faithfulness OpenAI GPT-4.1 Nano"
-      model_key: "openai$gpt-4-1-nano"
+    - key: "rag-faithfulness"
+      task_key: "rag-faithfulness"
+      display_name: "RAG Faithfulness"
+      model_key: "<< config.model_key >>"
       task_config:
-        judge_model_key: "openai$gpt-4-1-nano"
+        judge_model_key: "<< config.judge_model_key >>"
+
+config:
+  model_key: "openai$gpt-4-1-nano"
+  judge_model_key: "openai$gpt-4-1-nano"
 
 policies:
   - key: "rag_quality_gate_v1"
@@ -47,6 +62,6 @@ policies:
           metric: "faithfulness"
         scope:
           evaluation_keys:
-            - "rag-faithfulness-evaluation"
+            - "rag-faithfulness"
           task_specification_keys:
-            - "rag-faithfulness-gpt-4-1-nano"
+            - "rag-faithfulness"

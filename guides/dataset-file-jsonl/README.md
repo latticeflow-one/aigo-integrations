@@ -25,8 +25,6 @@ carries a `language`, `technique` and `jailbreak` field alongside its `text`.
 ## Usage
 
 ```bash
-lf add app -f app.yaml
-lf switch dataset-file-jsonl
 lf add dataset -f datasets/dataset.yaml
 lf add dataset -f datasets/english_prompts.yaml
 lf add dataset -f datasets/non_roleplay_prompts.yaml

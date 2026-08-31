@@ -1,6 +1,0 @@
-display_name: "Dataset in JSONL Format"
-key: "dataset-file-jsonl"
-tags: ["Guides", "Datasets", "Filters"]
-description: >
-  This guide shows an example integration of a dataset in JSONL format and how to filter it.
-long_description: !include "README.md"

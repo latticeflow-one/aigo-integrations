@@ -1,17 +1,27 @@
 datasets:
-  - $ref: "./datasets/qa_dataset.yaml"
+  - $ref: "./datasets/ai-knowledge-mcqa.yaml"
+
 models:
   - $provider: "openai/gpt-4.1-nano"
+
 tasks:
-  - $ref: "./tasks/qa_task.yaml"
+  - $ref: "./tasks/ai-knowledge-mcqa.yaml"
 
 evaluation:
-  key: "qa_evaluation"
-  display_name: "AI Knowledge MCQA Evaluation"
+  key: "ai-knowledge-mcqa"
+  display_name: "AI Knowledge MCQA"
+  description: >-
+    This evaluation checks a model's accuracy on multiple-choice AI knowledge questions.
+  config_spec:
+    - key: "model_key"
+      type: "model"
+      display_name: "Model"
+      description: "Model to be used for the task."
   task_specifications:
-    - key: "ai-knowledge-mcqa-gpt-4-1-nano"
+    - key: "ai-knowledge-mcqa"
       task_key: "ai-knowledge-mcqa"
-      display_name: "AI Knowledge MCQA GPT-4.1 Nano"
-      task_config:
-        config_key: []
-      model_key: "openai$gpt-4-1-nano"
+      display_name: "AI Knowledge MCQA"
+      model_key: "<< config.model_key >>"
+
+config:
+  model_key: "openai$gpt-4-1-nano"

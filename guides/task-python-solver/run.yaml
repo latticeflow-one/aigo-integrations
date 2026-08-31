@@ -11,7 +11,17 @@ evaluation:
   key: "python-solver"
   display_name: "Python Solver"
   tags: ["Guides"]
+  description: >-
+    This evaluation shows how to use a Python solver.
+  config_spec:
+    - key: "model_key"
+      type: "model"
+      display_name: "Model"
+      description: "Model to be used for the task."
   task_specifications:
-    - key: "geography-qa-gpt-4-1-nano"
+    - key: "geography-qa"
       task_key: "geography-qa"
-      model_key: "openai$gpt-4-1-nano"
+      model_key: "<< config.model_key >>"
+
+config:
+  model_key: "openai$gpt-4-1-nano"

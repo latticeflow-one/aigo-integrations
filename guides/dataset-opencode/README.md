@@ -10,9 +10,9 @@ Requires the `opencode` CLI installed and on `PATH`.
 
 ## Usage
 
-The commands below register the guide app, export raw sessions from the local
-OpenCode database into `datasets/session_data/` as one JSON file per session,
-convert the root sessions (excluding sub-agent sessions) into the
+The commands below export raw sessions from the local OpenCode database into
+`datasets/session_data/` as one JSON file per session, convert the root
+sessions (excluding sub-agent sessions) into the
 [Open Responses](https://www.openresponses.org/) trace format and write them
 to `datasets/opencode_traces.jsonl` (one trace per line, with sub-agent spans,
 tool calls, and model usage metadata), and register that JSONL as a dataset.
@@ -21,8 +21,6 @@ By default, 10 sessions are exported and converted. Use `--num-samples 0` to
 process all sessions.
 
 ```bash
-lf add app -f app.yaml
-lf switch dataset-opencode-traces
 cd datasets
 ./export_sessions.sh --num-samples 10 ./session_data
 python convert_sessions.py --session-dir ./session_data --output ./opencode_traces.jsonl

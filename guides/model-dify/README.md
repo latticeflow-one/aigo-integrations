@@ -15,8 +15,6 @@ This guide uses a model hosted by Dify. Configure the endpoint and the API key s
 `DIFY_URL` and `DIFY_API_KEY`, respectively.
 
 ```bash
-lf add app -f app.yaml
-lf switch model-dify
 lf secret add --name DIFY_API_KEY --value $DIFY_API_KEY
 lf add -f run.yaml
 lf test model model-dify

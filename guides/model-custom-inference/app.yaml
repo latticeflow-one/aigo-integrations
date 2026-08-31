@@ -1,6 +1,0 @@
-display_name: "Model with Custom Inference"
-key: "model-custom-inference"
-tags: ["Guides", "Models"]
-description: >
-  This guide shows an example integration of a model with custom inference logic.
-long_description: !include README.md

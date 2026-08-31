@@ -1,5 +1,5 @@
-display_name: "Completeness Task"
-key: "completeness-task"
+display_name: "Completeness"
+key: "completeness"
 description: >
   Evaluates the completeness rate of a field for each sample in a dataset.
 tags: ["Data Quality"]

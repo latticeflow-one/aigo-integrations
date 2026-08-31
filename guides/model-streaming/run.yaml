@@ -1,4 +1,5 @@
 model_adapters:
   - $ref: "./model_adapters/openai_chat_streaming.yaml"
+
 models:
   - $ref: "./models/openai_gpt-4-1-nano.yaml"

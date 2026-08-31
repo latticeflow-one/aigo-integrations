@@ -17,8 +17,6 @@ OPENAI_API_KEY=<OPENAI_API_KEY>
 ```
 
 ```bash
-lf add app -f app.yaml
-lf switch model-custom-inference
 lf add model -f models/model.yaml
 lf test model gpt-4-1-nano-custom-inference
 ```

@@ -2,7 +2,7 @@ tasks:
   - $ref: "./tasks/enforces_https.yaml"
 
 evaluation:
-  key: "enforces-https-eval"
+  key: "enforces-https"
   display_name: "Enforces HTTPS"
   tags: ["Security"]
   description: "Tests whether HTTP is properly enforced across main systems."
@@ -38,4 +38,6 @@ evaluation:
       task_key: "enforces-https"
       task_config:
         url: "http://httpforever.com/"
+
+run_config:
   cache_policy: "no-cache"

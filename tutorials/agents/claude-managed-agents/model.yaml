@@ -1,3 +1,5 @@
+# Custom-inference integration for a Claude Managed Agents deployment, exposing
+# its session API as an AI GO! model with Open Responses traces.
 display_name: "Customer Support Agent (Claude Managed Agents)"
 key: "customer-support-agent-claude"
 description: >-

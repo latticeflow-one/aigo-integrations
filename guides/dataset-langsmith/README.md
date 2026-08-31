@@ -23,7 +23,5 @@ LANGSMITH_PROJECT=<LANGSMITH_PROJECT>
 ```
 
 ```bash
-lf add app -f app.yaml
-lf switch dataset-langsmith-traces
 lf add dataset -f datasets/langsmith_traces.yaml
 ```

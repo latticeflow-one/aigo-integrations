@@ -40,8 +40,6 @@ produce 6 output samples:
 ## Usage
 
 ```bash
-lf add app -f app.yaml
-lf switch dataset-generator-python-synthesizer-simple
 lf add -f run.yaml
 ```
 

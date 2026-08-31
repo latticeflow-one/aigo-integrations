@@ -1,14 +1,27 @@
 models:
   - $provider: "openai/gpt-4.1-nano"
+
 datasets:
   - $ref: "./datasets/qa_single_answers.yaml"
+
 tasks:
   - $ref: "./tasks/singleturn_generic_input.yaml"
+
 evaluation:
   key: "singleturn-generic-input"
   display_name: "Single-turn Solver Generic Input"
   tags: ["Guides"]
+  description: >-
+    This evaluation shows how to use a single-turn solver with generic input.
+  config_spec:
+    - key: "model_key"
+      type: "model"
+      display_name: "Model"
+      description: "Model to be used for the task."
   task_specifications:
-    - key: "singleturn-generic-input-gpt-4-1-nano"
+    - key: "singleturn-generic-input"
       task_key: "singleturn-generic-input"
-      model_key: "openai$gpt-4-1-nano"
+      model_key: "<< config.model_key >>"
+
+config:
+  model_key: "openai$gpt-4-1-nano"

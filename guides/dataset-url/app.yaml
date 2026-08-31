@@ -1,6 +1,0 @@
-display_name: "Remote Dataset"
-key: "dataset-url-remote"
-tags: ["Guides", "Datasets"]
-description: >
-  This guide shows an example integration of a remote dataset in CSV format.
-long_description: !include "README.md"

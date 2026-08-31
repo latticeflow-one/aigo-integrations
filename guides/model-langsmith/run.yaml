@@ -1,2 +1,0 @@
-models:
-  - $ref: "./models/langsmith.yaml"

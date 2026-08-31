@@ -1,0 +1,6 @@
+display_name: "AI Knowledge MCQA"
+key: "ai-knowledge-mcqa"
+description: "A small multiple-choice dataset covering basic AI concepts."
+source:
+  type: "local"
+  file_path: "./ai-knowledge-mcqa.csv"

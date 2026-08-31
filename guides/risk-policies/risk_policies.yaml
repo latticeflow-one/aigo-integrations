@@ -7,7 +7,7 @@ policies:
   domain: "performance_and_reliability"
   risk_scorer_key: "performance_risk_scorer"
   scope:
-    evaluation_keys: ["qa_evaluation"]
+    evaluation_keys: ["ai-knowledge-mcqa"]
   config:
     impact: 4.0
     deployment_reach: "internal"
@@ -22,7 +22,7 @@ policies:
   domain: "performance_and_reliability"
   risk_scorer_key: "performance_risk_scorer"
   scope:
-    evaluation_keys: ["qa_evaluation"]
+    evaluation_keys: ["ai-knowledge-mcqa"]
   config:
     impact: 4.0
     deployment_reach: "external"

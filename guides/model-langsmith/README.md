@@ -9,8 +9,6 @@ This guide shows an example integration of a model hosted by LangSmith.
 Configure the `config.env` file by providing your LangSmith endpoint URL, agent ID and API key.
 
 ```bash
-lf add app -f app.yaml
-lf switch model-langsmith
-lf --env config.env add -f run.yaml
+lf --env config.env add model -f ./models/langsmith.yaml
 lf test model langsmith-model
 ```

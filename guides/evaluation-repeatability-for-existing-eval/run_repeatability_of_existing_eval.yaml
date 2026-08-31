@@ -1,11 +1,14 @@
 evaluation:
-  key: "repeatability-of-hp-trivia-evaluation"
+  key: "repeatability-of-hp-trivia"
   display_name: "Repeatability of Harry Potter Trivia evaluation"
+  description: >-
+    This evaluation checks that the model can consistently answer
+    Harry Potter trivia questions correctly across multiple runs.
   task_specifications:
     - key: "repeatability-hp"
       type: "repeatability"
-      config:
+      repeatability_config:
         num_runs: 3
       inputs:
-        - evaluation_key: "hp-trivia-evaluation"
+        - evaluation_key: "hp-trivia"
       num_samples: 5  # We only consider a subset of the samples to reduce cost and time

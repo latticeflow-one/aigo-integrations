@@ -9,15 +9,30 @@ evaluations:
     tasks:
       - $ref: "./tasks/hp_trivia.yaml"
     evaluation:
-      key: "hp-trivia-gpt-4-1-nano-eval"
-      display_name: "Harry Potter Trivia - GPT-4.1 Nano"
+      key: "hp-trivia"
+      display_name: "Harry Potter Trivia"
+      description: >-
+        This evaluation checks that the model can answer trivia questions about
+        the Harry Potter universe.
+      config_spec:
+        - key: "model_key"
+          type: "model"
+          display_name: "Model"
+          description: "Model to be used for the task."
+        - key: "judge_model_key"
+          type: "model"
+          display_name: "Judge Model"
+          description: "Judge model to be used for the task."
       task_specifications:
-        - key: "hp-trivia-gpt-4-1-nano"
+        - key: "hp-trivia"
           task_key: "hp-trivia"
-          display_name: "Harry Potter Trivia GPT-4.1 Nano"
+          display_name: "Harry Potter Trivia"
           task_config:
-            judge_model_key: "openai$gpt-4-1-nano"
-          model_key: "openai$gpt-4-1-nano"
+            judge_model_key: "<< config.judge_model_key >>"
+          model_key: "<< config.model_key >>"
+    config:
+      model_key: "openai$gpt-4-1-nano"
+      judge_model_key: "openai$gpt-4-1-nano"
   # Option 2: pull the run config in from its own file with `$ref`, so it can be
   # reused and run on its own with `lf run -f ./evaluations/hp_trivia.yaml`.
   - $ref: "./evaluations/hp_trivia.yaml"

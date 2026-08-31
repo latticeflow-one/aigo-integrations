@@ -1,6 +1,8 @@
 models:
   - $provider: "openai/gpt-4.1-nano"
+
 datasets:
   - $ref: "./datasets/claim_labeling.yaml"
+
 dataset_generators:
   - $ref: "./dataset_generators/dataset_generator.yaml"

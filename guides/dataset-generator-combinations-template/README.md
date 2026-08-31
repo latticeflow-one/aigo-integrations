@@ -12,7 +12,5 @@ for travel direction.
 ## Usage
 
 ```sh
-lf add app -f app.yaml
-lf switch dataset-generator-combinations-template
-lf run -f run.yaml
+lf add -f run.yaml
 ```

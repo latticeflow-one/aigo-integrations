@@ -12,7 +12,7 @@ evaluation:
   display_name: "Conversation Memory"
   tags: ["General Purpose AI", "Chat Completion"]
   description: >-
-    This evaluation checks that the model can remember information from 
+    This evaluation checks that the model can remember information from
     previous interactions in a conversation.
   config_spec:
     - key: "model_key"

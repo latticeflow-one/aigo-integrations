@@ -4,12 +4,12 @@
 
 This guide shows how to bundle several evaluation runs into a single evaluation plan
 and run them together. The plan reuses one Harry Potter trivia task and dataset and
-compares two OpenAI models - GPT-4.1 Nano and GPT-4.1 Mini - each judged by an 
+compares two OpenAI models - GPT-4.1 Nano and GPT-4.1 Mini - each judged by an
 LLM-as-a-judge scorer. Every entry under `evaluations` is a complete run config, so
 the same file creates all dependencies and starts one evaluation per entry, grouped
 under one plan run. The plan shows both ways to declare an entry: the first is written
 inline, and the second is pulled in from its own file (`evaluations/hp_trivia.yaml`)
-with `$ref`, so that run config can also be reused and run on its own with 
+with `$ref`, so that run config can also be reused and run on its own with
 `lf run -f ./evaluations/hp_trivia.yaml`.
 
 ## Usage

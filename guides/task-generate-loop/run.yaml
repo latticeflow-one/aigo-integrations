@@ -13,7 +13,7 @@ evaluation:
   tags: ["Guides"]
   description: >-
     This evaluation checks how the model model answers on general knowledge questions
-    using a multi-turn solver with a loop message builder that handles clarifying 
+    using a multi-turn solver with a loop message builder that handles clarifying
     questions before producing a final answer.
   config_spec:
     - key: "model_key"

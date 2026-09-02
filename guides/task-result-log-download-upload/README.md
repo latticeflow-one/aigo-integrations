@@ -23,7 +23,7 @@ lf run -f run.yaml --wait
 2. Export the results together with linked task result logs to analyze, postprocess, or integrate with external tools.
 
 ```bash
-lf export eval --id <eval ID> --output results --link-logs
+lf export eval-run --id <evaluation run ID> --output results --link-logs
 ```
 
 You can also use the Python SDK with [download.py](download.py).

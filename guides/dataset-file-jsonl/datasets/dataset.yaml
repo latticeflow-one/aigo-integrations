@@ -1,5 +1,5 @@
 display_name: "Prompt Injection"
-key: "prompt_injection"
+key: "prompt-injection-all"
 description: >-
   A comprehensive dataset of 2,202 adversarial prompts designed to test model
   robustness against prompt injection attacks. Combines prompt injection samples from

@@ -5,7 +5,7 @@ config_spec:
   - key: "dataset_key"
     type: "dataset"
     display_name: "Dataset"
-    default_value: "prompt_injection"
+    default_value: "sample-dependent-inference-prompts"
     description: "Dataset containing prompts for sample-dependent inference."
 definition:
   evaluated_entity_type: "model"

@@ -3,10 +3,11 @@ key: "full-ai-app"
 tags: ["Guides", "AI App"]
 description: "LatticeFlow AI Airlines Virtual Assistant"
 long_description: !include "./README.md"
-key_info:
-  lifecycle_stage: "production"
-  user_types: "external"
-  data_classification: "confidential"
-  has_pii_access: true
-  has_client_data_access: true
-  built_by: "in_house"
+risk_profile:
+  deployment_reach: "internal_broad"
+  autonomy: "human_in_the_loop"
+  data_sensitivity: "personal_data_pii"
+  action_capability: "reversible_write_actions"
+  untrusted_content_exposure: "user_uploaded_or_third_party_documents"
+  domain_criticality: "consequential_decisions"
+  audience_vulnerability: "general_public"

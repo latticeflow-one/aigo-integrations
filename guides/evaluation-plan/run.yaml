@@ -1,0 +1,12 @@
+datasets:
+  - $ref: "./datasets/hp_trivia.yaml"
+
+models:
+  - $provider: "openai/gpt-4.1-nano"
+  - $provider: "openai/gpt-4.1-mini"
+
+tasks:
+  - $ref: "./tasks/hp_trivia.yaml"
+
+evaluation:
+  $ref: "./evaluations/hp_trivia.yaml"
